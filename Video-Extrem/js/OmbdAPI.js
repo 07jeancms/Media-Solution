@@ -1,7 +1,7 @@
 var $Form = $('form'), $Container = $('#container');
 $Container.hide();
 $Form.on('submit', function(p_oEvent){
-    alert(" :) ")
+   
     var sUrl, sMovie, oData;
     p_oEvent.preventDefault();
     sMovie = $Form.find('input').val();
@@ -18,3 +18,5 @@ $Form.on('submit', function(p_oEvent){
         }
     });    
 });
+
+
