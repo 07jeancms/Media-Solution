@@ -78,18 +78,41 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
                     <ul class="nav navbar-nav">
-                        <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                        <!-- Hidden li included to remove active class from inicio link when scrolled up past inicio section -->
                         <li class="hidden">
                             <a href="#page-top"></a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#about">Información</a>
+                            <a class="page-scroll" href="#inicio">Inicio</a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Peliculas<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#estrenos">Estrenos</a></li>
+                              <li><a href="#masvendidas">Mas vendidas</a></li>
+                              <li><a href="#nominadas">Nominadas al oscar</a></li>
+                            </ul>
+                        </li>
+
+                        <li>
+                            <a class="page-scroll" href="#reservaciones">Reservaciones</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#download">Peliculas</a>
+                            <a class="page-scroll" href="#promociones">Promociones</a>
                         </li>
                         <li>
-                            <a class="page-scroll" href="#contact">Localización</a>
+                            <a class="page-scroll" href="#sugerencias">Sugerencias</a>
+                        </li>
+                        <li>
+                            <a class="page-scroll" href="#contactenos">Contactenos</a>
+                        </li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Acerca de nosotros<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                              <li><a href="#quienessomos">Quienes somos?</a></li>
+                              <li><a href="#establecimientos">Establecimientos</a></li>
+                              <li><a href="#encuentrenos">Encuentrenos en</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
@@ -108,19 +131,19 @@
          |_|  |_|______/_/    \_\_____/|______|_|  \_\
         -->
         
-        <a name="about"></a>
+        <a name="inicio"></a>
         <header class="intro">
             <div class="intro-body">
                 <div class="container">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
                             <h1 class="brand-heading">Video Extreme</h1>
-                            <p class="intro-text">Entretenimiento para su hogar.
-                                <br></p>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Unase</span></a>
+                            <p class="intro-text">Entretenimiento y calidad al mejor precio </p>
+                            
+                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Registrate</span> </a>
+                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Inicia Sesion</span> </a>
                             <br>
-
-                            <a href="#about" class="btn btn-circle page-scroll">
+                            <a href="#estrenos" class="btn btn-circle page-scroll">
                                 <i class="fa fa-angle-double-down animated"></i>
                             </a>
                         </div>
@@ -139,17 +162,17 @@
 
         -->
         
-        <a  name="services"></a>
-        <div class="content-section-a">
 
-            <!-- CONTAINER -->
+        <!-- Estrenos -->
+        <a name="estrenos"></a>
+        <div class="content-section-a">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-5 col-sm-6">
                         <hr class="section-heading-spacer">
                         <div class="clearfix"></div>
                         <h2 class="section-heading">Estrenos:<br></h2>
-                        <p class="lead">En  <a target="_blank" href="http://join.deathtothestockphoto.com/">Video Extrem</a> podras encontrar siempre los ultimos estrenos listos para llevar a su hogar.</p>
+                        <p class="lead">En video extrem<!-- <a target="_blank" href="http://join.deathtothestockphoto.com/">Video Extrem</a>  --> encontraras lo ultimo del mundo del entretemiento, ponemos a tu disposicion mas de 20 titulos nuevos cada semana.</p>
                     </div>
                     <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                         <div class="row">
@@ -197,91 +220,281 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-            <!-- /.CONTAINER -->
-
         </div>
-        <!-- /.content-section-a -->
+        <!-- Estrenos -->
 
-        <div class="content-section-b">
-
-            <div class="container">
-
-                <div class="row">
-                    <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">                    <h2>Visitanos :</h2>
-<br></h2>
-                        <p class="lead">Estamos a su dispocisión en cualquiera de nuestras siguientes sedes </p>
-                         <ul class="list-inline banner-social-buttons">
-                    <li>
-                        <button class="btn btn-default btn-lg" onclick="createMap(9.962058,-84.0526522)"><i class="fa fa-play-circle fa-fw"></i><span>Moravia</span></button>
-                    </li>
-                    <li>
-                       <button class="btn btn-default btn-lg" onclick="createMap(9.9935837,-84.0241678)"><i class="fa fa-play-circle fa-fw"></i> <span>Coronado</span></button>
-                    </li>
-                    <li>
-                          <button class="btn btn-default btn-lg" onclick="createMap(9.9438646,-84.0252511)"><i class="fa fa-play-circle   fa-fw"></i> Sabanilla</span></button>
-                    </li>
-                </ul>
-                    </div>
-                    <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                         <div id="map"></div>
-                    </div>
-                </div>
-
-            </div>
-            <!-- /.container -->
-
-        </div>
-        <!-- /.content-section-b -->
-
+        <!-- Mas vendidas -->
+        <a name="masvendidas"></a>
         <div class="content-section-a">
-
             <div class="container">
-
                 <div class="row">
                     <div class="col-lg-5 col-sm-6">
                         <hr class="section-heading-spacer">
                         <div class="clearfix"></div>
-                        <h2 class="section-heading">Accede a nuestra aplicación desde tu dispositivo favorito</h2>
-                        <p class="lead">La aplicación de  <a target="_blank" href="http://www.google.com/fonts">Video Extrem </a>te brinda la posibilidad de consultar, reservar tus peliculas favoritas desde cualquier lugar. </p>
+                        <h2 class="section-heading">Top 10:<br></h2>
+                        <p class="lead">Con el fin de brindarte la mejor informacion ponemos a tu disposicion el top 10 con las peliculas mas vendidas en nuestros diferentes puntos de venta.</p>
+                    </div>
+                    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                        <div class="row">
+                            <div >
+                              
+                                <div id="myCarousel" class="carousel slide col-lg-8 col-lg-offset-4" data-ride="carousel">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                                    </ol>
+
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <img src="img/moonligth.jpg" alt="Moonligth">
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="img/fences.jpg" alt="Fences">
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="img/lalaland.jpg" alt="La la land">
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="img/manchester.jpg" alt="Manchester">
+                                        </div>
+                                    </div>
+
+                                    <!-- Left and right controls -->
+                                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Mas vendidas -->
+
+        <!-- Nominadas al oscar -->
+        <a name="nominadas"></a>
+        <div class="content-section-a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Nominadas al oscar<br></h2>
+                        <p class="lead">Porque mantenerte informado es nuestra prioridad, aca podes encontrar cada uno de los titulos nominados a los premios de la academia.</p>
+                    </div>
+                    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                        <div class="row">
+                            <div >
+                              
+                                <div id="myCarousel" class="carousel slide col-lg-8 col-lg-offset-4" data-ride="carousel">
+                                    <!-- Indicators -->
+                                    <ol class="carousel-indicators">
+                                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                                        <li data-target="#myCarousel" data-slide-to="3"></li>
+                                    </ol>
+
+                                    <!-- Wrapper for slides -->
+                                    <div class="carousel-inner" role="listbox">
+                                        <div class="item active">
+                                            <img src="img/moonligth.jpg" alt="Moonligth">
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="img/fences.jpg" alt="Fences">
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="img/lalaland.jpg" alt="La la land">
+                                        </div>
+
+                                        <div class="item">
+                                            <img src="img/manchester.jpg" alt="Manchester">
+                                        </div>
+                                    </div>
+
+                                    <!-- Left and right controls -->
+                                    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>      
+        <!-- Nominadas al oscar -->
+
+        <!-- Reservaciones -->
+        <a  name="reservaciones"></a>
+        <div class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <h2>Reservacion Online</h2>
+                        <p>Con el sistema de reserva online tu eliges cuando y donde deseas retirar tus peliculas favoritas.</p>
+                    </div>
+<!--                     <div class="col-lg-2">
+                        <a class="btn btn-default btn-lg">Reservar</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- Reservaciones -->
+
+        <!-- Promociones -->
+        <a name="promociones"></a>
+        <div class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <h2>Promociones</h2>
+                        <p>Porque nuestros clientes merecen lo mejor, ponemos a su disposicion nuevas promociones cada semana.</p>
+                    </div>
+<!--                     <div class="col-lg-2">
+                        <a class="btn btn-default btn-lg">Reservar</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- Promociones -->
+
+        <!-- Promociones -->
+        <a name="sugerencias"></a>
+        <div class="banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-10">
+                        <h2>Sugerencias</h2>
+                        <p>Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un buzon de sugerencias, en el cual puedes brindarnos tus inquietudes, quejas y consultas.</p>
+                    </div>
+<!--                     <div class="col-lg-2">
+                        <a class="btn btn-default btn-lg">Reservar</a>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!-- Promociones -->
+
+        <!-- Contactenos -->
+        <a name="contactenos"></a>
+        <div class="content-section-a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Contactos</h2>
+                        <p class="lead">Whastapp </p>
+                        <p class="lead">Video Club Extrem Moravia </p>
+                        <p class="lead">Video Club Extrem San Jose </p>
+                        <p class="lead">Video Club Extrem Coronado </p>
+                        <p class="lead">Video Club Extrem Sabanilla </p>
                     </div>
                     <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                         <img class="img-responsive" src="img/phones.png" alt="">
                     </div>
                 </div>
-
             </div>
-            <!-- /.container -->
-
         </div>
-        <!-- /.content-section-a -->
+        <!-- Contactenos -->
 
-        <a  name="contact"></a>
-        <div class="banner">
+        <!-- Acerca de nosotros -->
 
+        <!-- Quienes somos -->
+        <a name="quienessomos"></a>
+        <div class="content-section-a">
             <div class="container">
-
                 <div class="row">
-                    <div class="col-lg-10">
-                        <h2>Reservaciones</h2>
-                        
-                        <p>Ahora puedes reservar la pelicula que deseas y definir cuando y donde recogerla.</p>
+                    <div class="col-lg-5 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Quienes Somos?</h2>
+                        <p class="lead">Somos una cadena de videos con mas de 13 años de experiencia en temas relacionados al mundo del entretemiento, actualmente contamos con 4 diferentes sedes que se extienden por el GAM, actualmente contamos con un amplio catalogo de mas de 13.000 peliculas, con ingresos semanales de hasta mas de 20 titulos, contamos con peliculas en formato blu-ray, 3D y DVD.</p>
                     </div>
-                    <div class="col-lg-2">
-                        <a class="btn btn-default btn-lg">Reservar</a>
-                      
+                    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                        <img class="img-responsive" src="img/phones.png" alt="">
                     </div>
                 </div>
-
             </div>
-            <!-- /.container -->
-
         </div>
-        <!-- /.banner -->
+        <!-- Quienes somos -->
+
+        <!-- Establecimientos -->
+
+        <a name="establecimientos"></a>
+        <div class="content-section-b">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading"><h2>Visitanos:</h2> </h2>
+                        <p class="lead">Contamos con 4 diferentes puntos de venta a lo largo del GAM. </p>
+                        <ul class="list-inline banner-social-buttons">
+                            <li>
+                                <button class="btn btn-default btn-lg" onclick="createMap(9.962058,-84.0526522)"><i class="fa fa-play-circle fa-fw"></i><span>Moravia</span></button>
+                            </li>
+                            <li>
+                                <button class="btn btn-default btn-lg" onclick="createMap(9.9935837,-84.0241678)"><i class="fa fa-play-circle fa-fw"></i> <span>Coronado</span></button>
+                            </li>
+                            <li>
+                                <button class="btn btn-default btn-lg" onclick="createMap(9.9438646,-84.0252511)"><i class="fa fa-play-circle   fa-fw"></i><span> Sabanilla</span></button>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                         <div id="map"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Establecimientos -->
+
+        <!-- Encuentrenos -->
+        <a name="encuentrenos"></a>
+        <div class="content-section-a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Encuentrenos en</h2>
+                        <p class="lead">Whastapp </p>
+                        <p class="lead">Facebook </p>
+                        <p class="lead">Waze </p>
+                    </div>
+                    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                        <img class="img-responsive" src="img/phones.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Encuentrenos -->
+
+        <!-- Acerca de nosotros -->
 
         <!-- 
 
@@ -304,11 +517,11 @@
                             </li>
                             <li class="footer-menu-divider">&sdot;</li>
                             <li>
-                                <a href="#about">About</a>
+                                <a href="#inicio">inicio</a>
                             </li>
                             <li class="footer-menu-divider">&sdot;</li>
                             <li>
-                                <a href="#services">Services</a>
+                                <a href="#estrenos">estrenos</a>
                             </li>
                             <li class="footer-menu-divider">&sdot;</li>
                             <li>
@@ -316,8 +529,6 @@
                             </li>
                         </ul>
                         <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
-                      
-
                     </div>
                 </div>
             </div>
