@@ -253,6 +253,7 @@ a:focus {
     }
 }
 
+
 .network-name {
     text-transform: uppercase;
     font-size: 14px;
@@ -261,11 +262,19 @@ a:focus {
 }
 
 .content-section-a {
+    min-height: 85vh;
     padding: 50px 0;
     background-color: #f8f8f8;
 }
 
 .content-section-b {
+    min-height:  85vh;
+    padding: 50px 0;
+    border-top: 1px solid #b43333;
+    border-bottom: 1px solid #b43333;
+}
+.content-section-c {
+    min-height:  50vh;
     padding: 50px 0;
     border-top: 1px solid #b43333;
     border-bottom: 1px solid #b43333;
@@ -395,3 +404,11 @@ p.copyright {
     background-color: rgba(134,0,0,0.98);
     color :  white;
 }
+
+.mediaIcon{
+     height: 100px;
+    width : 100px;
+    cursor: pointer; 
+    cursor: hand;
+}
+
