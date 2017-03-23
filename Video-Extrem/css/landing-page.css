@@ -60,10 +60,10 @@ a:focus {
 /* Pone la barra negra del header*/
 .navbar-custom { 
   margin-bottom: 0;
-  border-bottom: 2px solid rgba(255, 0, 0, 0.8);
+  border-bottom: 2px solid rgba(134, 0, 0, 0.2);
   text-transform: uppercase;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: #f6755e;
+  background-color:  rgba(134,0,0,0.98);
 }
 
 /* Pone la palabra extrem del nav mas grande*/
