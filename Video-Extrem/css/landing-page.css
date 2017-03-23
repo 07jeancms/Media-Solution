@@ -350,7 +350,39 @@ p.copyright {
   height: 300px;
   margin-top: 100px;
 }
-.carousel {
-  width:322px;
-  height:400px;
+.multi-item-carousel{
+  .carousel-inner{
+    > .item{
+      transition: 500ms ease-in-out left;
+    }
+    .active{
+      &.left{
+        left:-25%;
+      }
+      &.right{
+        left:20%;
+      }
+    }
+    .next{
+      left: 20%;
+    }
+    .prev{
+      left: -20%;
+    }
+    @media all and (transform-3d), (-webkit-transform-3d) {
+      > .item{
+       
+      }
+    }
+  }
+  .carouse-control{
+    &.left, &.right{
+      background-image: none;
+    }
+  }
+}
+
+.carouselImg{
+    height: 300px;
+    width : 250px;
 }
