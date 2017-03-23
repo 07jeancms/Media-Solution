@@ -62,7 +62,7 @@ a:focus {
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   text-transform: uppercase;
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  background-color: black;
+  background-color: #f6755e;
 }
 .navbar-custom .navbar-toggle {
   color: white;
@@ -118,7 +118,7 @@ a:focus {
   }
   .navbar-custom.top-nav-collapse {
     padding: 0;
-    background: black;
+    background:  rgba(134, 0, 0, 0.98);;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
   }
 }
@@ -385,4 +385,22 @@ p.copyright {
 .carouselImg{
     height: 300px;
     width : 250px;
+}
+
+.img-responsive{
+    max-height: 400px;
+    max-width : 400px; 
+}
+
+.btn{
+    color: rgba(34,0,0,0.98);
+}
+
+.btn:hover {
+    color: rgba(72,0,0,0.98);
+}
+
+.selected {
+    background-color: rgba(134,0,0,0.98);
+    color :  white;
 }
