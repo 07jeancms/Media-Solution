@@ -24,7 +24,9 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
+        <link href="css/navbar.css" rel="stylesheet">
         <link href="css/landing-page.css" rel="stylesheet">
+        
 
         <!-- Custom Fonts -->
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -44,7 +46,7 @@ _   _     __      _______ _____       _______ _____ ____  _   _
 | |\  |/ ____ \  /   _| || |__| |/ ____ \| |   _| || |__| | |\  |
 |_| \_/_/    \_\/   |_____\_____/_/    \_\_|  |_____\____/|_| \_|
 -->
-
+<!-- 
         <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
             <div class="container">
                 <div class="navbar-header">
@@ -56,12 +58,8 @@ _   _     __      _______ _____       _______ _____ ____  _   _
                         <i class="fa fa-play-circle"></i> <span class="light">Video</span> Extreme
                     </a>
                 </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
                     <ul class="nav navbar-nav">
-
-                        <!-- Hidden li included to remove active class from inicio link when scrolled up past inicio section -->
                         <li class="hidden">
                             <a href="#page-top"></a>
                         </li>
@@ -101,6 +99,50 @@ _   _     __      _______ _____       _______ _____ ____  _   _
                     </ul>
                 </div>
             </div>
+        </nav> -->
+
+        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+        <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand page-scroll" href="#inicio">
+                <i class="fa fa-play-circle"></i> <span class="light">Video</span> Extreme
+            </a>
+        </div>
+        <label for="drop" class="toggle">Menu</label>
+        <input type="checkbox" id="drop" />
+            <ul class="menu">
+                <li>
+                    <!-- First Tier Drop Down -->
+                    <label for="drop-1" class="toggle">Peliculas</label>
+                    <a href="#">Peliculas</a>
+                    <input type="checkbox" id="drop-1"/>
+                    <ul >
+                        <li><a href="#carousel" onclick ="changeCarousel(1)">Estrenos</a></li>
+                        <li><a href="#carousel" onclick ="changeCarousel(2)">Mas vendidas</a></li>
+                        <li><a href="#carousel" onclick ="changeCarousel(3)">Nominadas al oscar</a></li>
+                        <li><a href="#buscatupelicula">Busca tu pelicula</a></li>
+                    </ul>
+                </li>
+
+                <li><a class="page-scroll" href="#reservaciones">Reservaciones</a></li>
+                <li><a class="page-scroll" href="#promociones">Promociones</a></li>
+                <li><a class="page-scroll" href="#contactenos">Contactenos</a></li>
+
+                <li>
+                    <!-- First Tier Drop Down -->
+                    <label for="drop-2" class="toggle">Acerca de nosotros</label>
+                    <a href="#">Acerca de nosotros</a>
+                    <input type="checkbox" id="drop-2"/>
+                        <ul >
+                            <li><a href="#quienessomos">Quienes somos?</a></li>
+                            <li><a href="#establecimientos">Establecimientos</a></li>
+                            <li><a href="#encuentrenos">Encuentrenos en</a></li>
+                            <li><a class="page-scroll" href="#sugerencias">Sugerencias</a></li>
+                        </ul>
+                </li>
+
+            </ul>
+        </div>
         </nav>
 
 
@@ -195,10 +237,10 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                         <p class="lead">Porque mantenerte informado es nuestra prioridad, aca podes encontrar cada uno de los titulos nominados a los premios de la academia.</p>
                     </div>
 
+                    <a name="buscatupelicula"></a>
                     <div class="col-lg-12  col-sm-12">
                         <div class="row">
                             <div >
-
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-12">
