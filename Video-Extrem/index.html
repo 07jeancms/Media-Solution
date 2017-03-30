@@ -9,14 +9,15 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <!-- 
-_____ _   _  _____ _     _    _ _____  ______  _____ 
-|_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
-| | |  \| | |    | |   | |  | | |  | | |__  | (___  
-| | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
-_| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
-|_____|_| \_|\_____|______\____/|_____/|______|_____/ 
--->
+    <!-- 
+      _____ _   _  _____ _     _    _ _____  ______  _____ 
+     |_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
+       | | |  \| | |    | |   | |  | | |  | | |__  | (___  
+       | | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
+      _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
+     |_____|_| \_|\_____|______\____/|_____/|______|_____/ 
+
+    -->
 
 
 
@@ -24,7 +25,9 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
         <!-- Custom CSS -->
+        <link href="css/navbar.css" rel="stylesheet">
         <link href="css/landing-page.css" rel="stylesheet">
+        
 
         <!-- Custom Fonts -->
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -33,86 +36,63 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
         <title>Video Extrem</title>
 
     </head>
-
+    
     <body>
 
-        <!-- 
-_   _     __      _______ _____       _______ _____ ____  _   _ 
-| \ | |   /\ \    / /_   _/ ____|   /\|__   __|_   _/ __ \| \ | |
-|  \| |  /  \ \  / /  | || |  __   /  \  | |    | || |  | |  \| |
-| . ` | / /\ \ \/ /   | || | |_ | / /\ \ | |    | || |  | | . ` |
-| |\  |/ ____ \  /   _| || |__| |/ ____ \| |   _| || |__| | |\  |
-|_| \_/_/    \_\/   |_____\_____/_/    \_\_|  |_____\____/|_| \_|
--->
-
         <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse"> Menu <i class="fa fa-bars"></i>
-                    </button>
-
-                    <a class="navbar-brand page-scroll" href="#inicio">
-
-                        <i class="fa fa-play-circle"></i> <span class="light">Video</span> Extreme
-                    </a>
-                </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
-                <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
-                    <ul class="nav navbar-nav">
-
-                        <!-- Hidden li included to remove active class from inicio link when scrolled up past inicio section -->
-                        <li class="hidden">
-                            <a href="#page-top"></a>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Peliculas<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#carousel" onclick ="changeCarousel(1)">Estrenos</a></li>
-                                <li><a href="#carousel" onclick ="changeCarousel(2)">Mas vendidas</a></li>
-                                <li><a href="#carousel" onclick ="changeCarousel(3)">Nominadas al oscar</a></li>
-
-                            </ul>
-                        </li>
-
-                        <li>
-                            <a class="page-scroll" href="#reservaciones">Reservaciones</a>
-                        </li>
-                        <li>
-                            <a class="page-scroll" href="#promociones">Promociones</a>
-                        </li>
-
-
-                        <li>
-                            <a class="page-scroll" href="#contactenos">Contactenos</a>
-                        </li>
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">Acerca de nosotros<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#quienessomos">Quienes somos?</a></li>
-                                <li><a href="#establecimientos">Establecimientos</a></li>
-                                <li><a href="#encuentrenos">Encuentrenos en</a></li>
-
-                                <li>
-                                    <a class="page-scroll" href="#sugerencias">Sugerencias</a>
-                                </li>
-                            </ul>
-                        </li>
+        <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand page-scroll" href="#inicio">
+                <i class="fa fa-play-circle"></i> <span class="light">Video</span> Extreme
+            </a>
+        </div>
+        <label for="drop" class="toggle">Menu</label>
+        <input type="checkbox" id="drop" />
+            <ul class="menu">
+                <li>
+                    <!-- First Tier Drop Down -->
+                    <label for="drop-1" class="toggle">Peliculas</label>
+                    <a href="#">Peliculas</a>
+                    <input type="checkbox" id="drop-1"/>
+                    <ul >
+                        <li><a href="#carousel" onclick ="changeCarousel(1)">Estrenos</a></li>
+                        <li><a href="#carousel" onclick ="changeCarousel(2)">Mas vendidas</a></li>
+                        <li><a href="#carousel" onclick ="changeCarousel(3)">Nominadas al oscar</a></li>
+                        <li><a href="#buscatupelicula">Busca tu pelicula</a></li>
                     </ul>
-                </div>
-            </div>
+                </li>
+
+                <li><a class="page-scroll" href="#reservaciones">Reservaciones</a></li>
+                <li><a class="page-scroll" href="#promociones">Promociones</a></li>
+                <li><a class="page-scroll" href="#contactenos">Contactenos</a></li>
+
+                <li>
+                    <!-- First Tier Drop Down -->
+                    <label for="drop-2" class="toggle">Acerca de nosotros</label>
+                    <a href="#">Acerca de nosotros</a>
+                    <input type="checkbox" id="drop-2"/>
+                        <ul >
+                            <li><a href="#quienessomos">Quienes somos?</a></li>
+                            <li><a href="#establecimientos">Establecimientos</a></li>
+                            <li><a href="#encuentrenos">Encuentrenos en</a></li>
+                        </ul>
+                </li>
+
+            </ul>
+        </div>
         </nav>
 
 
+    <!--
+      _    _ ______          _____  ______ _____  
+     | |  | |  ____|   /\   |  __ \|  ____|  __ \ 
+     | |__| | |__     /  \  | |  | | |__  | |__) |
+     |  __  |  __|   / /\ \ | |  | |  __| |  _  / 
+     | |  | | |____ / ____ \| |__| | |____| | \ \ 
+     |_|  |_|______/_/    \_\_____/|______|_|  \_\
 
-        <!-- 
-_    _ ______          _____  ______ _____  
-| |  | |  ____|   /\   |  __ \|  ____|  __ \ 
-| |__| | |__     /  \  | |  | | |__  | |__) |
-|  __  |  __|   / /\ \ | |  | |  __| |  _  / 
-| |  | | |____ / ____ \| |__| | |____| | \ \ 
-|_|  |_|______/_/    \_\_____/|______|_|  \_\
--->
+    -->                                              
+                                              
 
 
         <a name="inicio"></a>
@@ -136,14 +116,15 @@ _    _ ______          _____  ______ _____
             </div>
         </header>
 
-        <!-- 
-_____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______ 
-|  __ \ /\   / ____|  ____|  / ____/ __ \| \ | |__   __|  ____| \ | |__   __|
-| |__) /  \ | |  __| |__    | |   | |  | |  \| |  | |  | |__  |  \| |  | |   
-|  ___/ /\ \| | |_ |  __|   | |   | |  | | . ` |  | |  |  __| | . ` |  | |   
-| |  / ____ \ |__| | |____  | |___| |__| | |\  |  | |  | |____| |\  |  | |   
-|_| /_/    \_\_____|______|  \_____\____/|_| \_|  |_|  |______|_| \_|  |_|   
--->
+    <!-- 
+      _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______ 
+     |  __ \ /\   / ____|  ____|  / ____/ __ \| \ | |__   __|  ____| \ | |__   __|
+     | |__) /  \ | |  __| |__    | |   | |  | |  \| |  | |  | |__  |  \| |  | |   
+     |  ___/ /\ \| | |_ |  __|   | |   | |  | | . ` |  | |  |  __| | . ` |  | |   
+     | |  / ____ \ |__| | |____  | |___| |__| | |\  |  | |  | |____| |\  |  | |   
+     |_| /_/    \_\_____|______|  \_____\____/|_| \_|  |_|  |______|_| \_|  |_|   
+
+    -->
 
 
         <!-- Estrenos -->
@@ -195,10 +176,10 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                         <p class="lead">Porque mantenerte informado es nuestra prioridad, aca podes encontrar cada uno de los titulos nominados a los premios de la academia.</p>
                     </div>
 
+                    <a name="buscatupelicula"></a>
                     <div class="col-lg-12  col-sm-12">
                         <div class="row">
                             <div >
-
                                 <div class="container">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -346,8 +327,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                     <div class="col-lg-5 col-sm-6">
                         <hr class="section-heading-spacer">
                         <div class="clearfix"></div>
-                        <h2 class="section-heading">Contactos</h2>
-                        <p class="lead">Whastapp </p>
+                        <h2 class="section-heading">Contactenos</h2>
+                        <p class="lead">Whatsapp </p>
                         <p class="lead">Video Club Extrem Moravia </p>
                         <p class="lead">Video Club Extrem San Jose </p>
                         <p class="lead">Video Club Extrem Coronado </p>
@@ -450,78 +431,74 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
 
 
-
-
-            <!-- 
-______ ____   ____ _______ ______ _____  
-
-|  ____/ __ \ / __ \__   __|  ____|  __ \ 
-| |__ | |  | | |  | | | |  | |__  | |__) |
-|  __|| |  | | |  | | | |  |  __| |  _  / 
-| |   | |__| | |__| | | |  | |____| | \ \ 
-|_|    \____/ \____/  |_|  |______|_|  \_\
-
-
+<!--
+  ______ ____   ____ _______ ______ _____  
+ |  ____/ __ \ / __ \__   __|  ____|  __ \ 
+ | |__ | |  | | |  | | | |  | |__  | |__) |
+ |  __|| |  | | |  | | | |  |  __| |  _  / 
+ | |   | |__| | |__| | | |  | |____| | \ \ 
+ |_|    \____/ \____/  |_|  |______|_|  \_\
+                                           
 -->
+        
 
-            <!-- 
-______ ____   ____ _______ ______ _____  
-|  ____/ __ \ / __ \__   __|  ____|  __ \ 
-| |__ | |  | | |  | | | |  | |__  | |__) |
-|  __|| |  | | |  | | | |  |  __| |  _  / 
-| |   | |__| | |__| | | |  | |____| | \ \ 
-|_|    \____/ \____/  |_|  |______|_|  \_\
--->
-
-
-            <footer>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <ul class="list-inline">
-                                <li>
-                                    <a href="#">Home</a>
-                                </li>
-                                <li class="footer-menu-divider">&sdot;</li>
-                                <li>
-                                    <a href="#inicio">inicio</a>
-                                </li>
-                                <li class="footer-menu-divider">&sdot;</li>
-                                <li>
-                                    <a href="#estrenos">estrenos</a>
-                                </li>
-                                <li class="footer-menu-divider">&sdot;</li>
-                                <li>
-                                    <a href="#contact">Contact</a>
-                                </li>
-                            </ul>
-                            <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
-                        </div>
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <ul class="list-inline">
+                            <li class="footer-menu-divider">&sdot;</li>
+                            
+                            <li>
+                                <a href="#inicio">Inicio</a>
+                            </li>
+                            
+                            <li class="footer-menu-divider">&sdot;</li>
+                            
+                            <li>
+                                <a href="#estrenos">Estrenos</a>
+                            </li>
+                            
+                            <li class="footer-menu-divider">&sdot;</li>
+                            
+                            <li>
+                                <a href="#contact">Nuestras redes sociales</a>
+                            </li>
+                                
+                            <li class="footer-menu-divider">&sdot;</li>                                
+                            
+                            <li>
+                                <a href="#sugerencias">Sugerencias</a>
+                            </li>
+                        </ul>
+                            
+                        <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
                     </div>
                 </div>
-            </footer>
+            </div>
+        </footer>
+    
+    </body>
 
-            </body>
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
 
-        <!-- jQuery -->
-        <script src="js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
 
-        <!-- Bootstrap Core JavaScript -->
-        <script src="js/bootstrap.min.js"></script>
+    <!-- Plugin JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-        <!-- Plugin JavaScript -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <!-- Google Maps API Key-Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFvXfKy-vn2ilKVHLFrLIuLoE3JQjptfU&sensor=false"></script>
 
-        <!-- Google Maps API Key-Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFvXfKy-vn2ilKVHLFrLIuLoE3JQjptfU&sensor=false"></script>
+    <!-- Theme JavaScript -->
+    <script src="js/grayscale.js"></script>
 
-        <!-- Theme JavaScript -->
-        <script src="js/grayscale.js"></script>
+    <!--OMBD API --->
+    <script src="js/OmbdAPI.js"></script>
 
-        <!--OMBD API --->
-        <script src="js/OmbdAPI.js"></script>
+    <!--Carousel Control  --->
+    <script src="js/carousel.js"></script>
 
-        <!--Carousel Control  --->
-        <script src="js/carousel.js"></script>
-
-        </html>
+</html>
