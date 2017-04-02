@@ -4,6 +4,10 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
  */
 
+/*
+Palete colors: https://coolors.co/ff8360-fb4b4e-4ea2be-59c9a5-ba0c31
+*/
+
 body {
   width: 100%;
   height: 100%;
@@ -42,7 +46,7 @@ p {
   }
 }
 a {
-  color: #42DCA3;
+  color: #4EA2BE;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
@@ -50,7 +54,7 @@ a {
 a:hover,
 a:focus {
   text-decoration: none;
-  color: #1d9b6c;
+  color: #4EA2BE;
 }
 
 
@@ -116,6 +120,7 @@ a:focus {
 }
 .intro .intro-body .brand-heading {
   font-size: 40px;
+    color: #4EA2BE;
 }
 .intro .intro-body .intro-text {
   font-size: 18px;
@@ -284,6 +289,7 @@ a:focus {
 footer {
     padding: 50px 0;
     background-color: #f8f8f8;
+    text-align: center;
 }
 
 p.copyright {
@@ -337,15 +343,19 @@ p.copyright {
 }
 
 .btn{
-    color: rgba(34,0,0,0.98);
+    color: #4EA2BE;
 }
 
 .btn:hover {
     color: rgba(72,0,0,0.98);
 }
 
+.searchButton{
+    color: #BA0C31;
+}
+
 .selected {
-    background-color: rgba(134,0,0,0.98);
+    background-color: #BA0C31;
     color :  white;
 }
 
