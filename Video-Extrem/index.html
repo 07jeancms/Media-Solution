@@ -31,7 +31,10 @@
 
         <!-- Custom Fonts -->
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">        
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+        
+        <script type="text/javascript" src="js/sugerencias.js"></script>
 
         <title>Video Extrem</title>
 
@@ -140,7 +143,7 @@
                             <hr class="section-heading-spacer">
                         </div>
                         <div class="col-lg-2 col-sm-6 ">
-                            <btn class ="btn btn-default btn-lg selected " id="estrenos" onclick ="changeCarousel(1)">Estrenos</btn>
+                            <btn class ="btnFilterMovies btn-default btn-lg selected " id="estrenos" onclick ="changeCarousel(1)">Estrenos</btn>
                         </div>
                         <div class="col-lg-2 col-sm-6">
                             <btn class ="btn btn-default btn-lg" id="top" onclick ="changeCarousel(2)" >Top 10</btn>
@@ -246,7 +249,7 @@
                     <form class="btmspace-50" method="post" action="#">
                         <fieldset>
                             <input class="btmspace-15" name="movie" type="text" value="" placeholder="MovieName">
-                            <button >Buscar</button>
+                            <button class="searchButton">Buscar</button>
                         </fieldset>
                     </form>
 
@@ -294,26 +297,35 @@
                         <h2>Promociones</h2>
                         <p>Porque nuestros clientes merecen lo mejor, ponemos a su disposicion nuevas promociones cada semana.</p>
                     </div>
-                    <!--                     <div class="col-lg-2">
-<a class="btn btn-default btn-lg">Reservar</a>
-</div> -->
                 </div>
             </div>
         </div>
         <!-- Promociones -->
 
-        <!-- Promociones -->
+        <!-- Sugerencias -->
         <a name="sugerencias"></a>
-        <div class="banner">
+        <div class="bannerSugerencias">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-10">
                         <h2>Sugerencias</h2>
                         <p>Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un buzon de sugerencias, en el cual puedes brindarnos tus inquietudes, quejas y consultas.</p>
+                        <button id="suggestionButton" value = "Show" onclick="showHideTextArea()">+</button>
+                        <div id="suggestionTextArea" class="collapse">
+                            <select id="selectLocal">
+                                <option value="local">Seleccion el local a dirigir tu sugerencia</option>
+                                <option value="moravia">Moravia</option>
+                                <option value="coronado">Coronado</option>
+                                <option value="sabanilla">Sabanilla</option>
+                                <option value="san_jose">San Jose</option>
+                                <option value="general">General</option>
+                            </select>
+                            <br>
+                            <textarea id="textAreaSuggestion" rows="5" cols="60" placeholder="Sugerencia"></textarea>
+                            <br>
+                            <button id="sendSuggestion" onclick="sendSuggestionInfo()">Enviar</button>
+                        </div>
                     </div>
-                    <!--                     <div class="col-lg-2">
-<a class="btn btn-default btn-lg">Reservar</a>
-</div> -->
                 </div>
             </div>
         </div>
@@ -397,7 +409,7 @@
 
         <!-- Encuentrenos -->
         <a name="encuentrenos"></a>
-        <div class="content-section-c ">
+        <div class="content-section-c">
             <div class="container row-lg-12">
                 <div class="row">
                     <div class="col-lg-12 col-sm-6">
@@ -405,23 +417,21 @@
                         <div class="clearfix"></div>
                         <h2 class="section-heading">Encuentrenos en</h2>
                     </div>
-
-
-
                 </div>
-                <div class="col-lg-12  col-sm-6 vcenter">
-
+                
+                <div class="socialMediaLinks">
                     <div class="col-lg-4 col-sm-6">
-                        <img src="img/Waze.png" class="mediaIcon">
+                        <a href="https://www.waze.com">
+                        <img border="0" alt="Waze" src="img/Waze.png" width="100" height="100">
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <img src="img/Facebook.png" class="mediaIcon">
+                        <a href="https://facebook.com">
+                        <img border="0" alt="Facebook" src="img/Facebook.png" width="100" height="100">
                     </div>
                     <div class="col-lg-4 col-sm-6">
-                        <img src="img/Whatsapp.png" class="mediaIcon">
+                        <a href="https://everardoherrera.com">
+                        <img border="0" alt="Whatsapp" src="img/Whatsapp.png" width="100" height="100">
                     </div>
-
-
                 </div>
             </div>
         </div>
@@ -456,7 +466,7 @@
                             <li class="footer-menu-divider">&sdot;</li>
                             
                             <li>
-                                <a href="#estrenos">Estrenos</a>
+                                <a href="#contactenos">Contactenos</a>
                             </li>
                             
                             <li class="footer-menu-divider">&sdot;</li>
