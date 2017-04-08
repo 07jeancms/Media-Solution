@@ -121,9 +121,11 @@ a:focus {
 .intro .intro-body .brand-heading {
   font-size: 40px;
     color: #4EA2BE;
+    font-family: 'Indie Flower', cursive;
 }
 .intro .intro-body .intro-text {
   font-size: 18px;
+    font-family: 'Indie Flower', cursive;
 }
 @media (min-width: 768px) {
   .intro {
@@ -246,10 +248,34 @@ a:focus {
     background-size: cover;
 }
 
+.bannerSugerencias {
+    padding: 100px 0;
+    color: black;
+    background: url(../img/suggestion_1.jpg) no-repeat center center;
+    background-size: cover;
+}
+
 .banner h2 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
     font-size: 3em;
+}
+
+.bannerSugerencias h2 {
+    margin: 0;
+    text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 3em;
+}
+
+.bannerSugerencias p {
+    margin: 0;
+    text-decoration-color: 2px 2px 3px rgba(0,0,0,0.6);
+    font-size: 1em;
+}
+
+.bannerSugerencias button {
+    color: #4EA2BE;
+    margin-bottom: 5px;
 }
 
 .banner ul {
