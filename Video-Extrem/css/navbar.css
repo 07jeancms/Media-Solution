@@ -1,7 +1,6 @@
 /* CSS Document */
 
-@import url(http://fonts.googleapis.com/css?family=Open+Sans);
-@import url(http://fonts.googleapis.com/css?family=Bree+Serif);
+
 
 body {
 	background: #212121;
@@ -29,10 +28,7 @@ h3 {
 
 h3 a {
 	color: #FFF;
-}
 
-a {
-	color: #FFF;
 }
 
 h1 {
@@ -55,9 +51,11 @@ p {
 .toggle,
 [id^=drop] {
 	display: none;
+
 }
 
 /* Giving a background-color to the nav container. */
+/* complete navbar*/
 nav { 
 	margin:0;
 	padding: 0;
@@ -104,16 +102,18 @@ nav a {
 	display:block;
 	padding:14px 20px;	
 	color:#FFF;
-	font-size:17px;
 	text-decoration:none;
+	font-size:20px;
 }
 
 
-nav ul li ul li:hover { background: #000000; }
+nav ul li ul li:hover { background: #BA0C31; }
 
 /* Background color change on Hover */
 nav a:hover { 
-	background-color: rgba(255,0,0,0.3);
+	background-color: #4EA2BE;
+	color: #FFF;
+	text-decoration:none;
 }
 
 /* Hide Dropdowns by Default
@@ -128,6 +128,7 @@ nav ul ul {
 /* Display Dropdowns on Hover */
 nav ul li:hover > ul {
 	display:inherit;
+	position: absolute; 
 }
 	
 /* Fisrt Tier Dropdown */
@@ -137,6 +138,7 @@ nav ul ul li {
 	display:list-item;
 	position: relative;
 }
+
 
 /* Second, Third and more Tiers	
  * We move the 2nd and 3rd etc tier dropdowns to the left
@@ -154,6 +156,11 @@ nav ul ul ul li {
 li > a:after { content:  ' +'; }
 li > a:only-child:after { content: ''; }
 
+input ul li label a .toggle{
+		display: none;
+		text-decoration:none;
+	
+}
 
 /* Media Queries
 --------------------------------------------- */
@@ -177,6 +184,7 @@ li > a:only-child:after { content: ''; }
 	.toggle + a,
 	.menu {
 		display: none;
+		text-decoration:none;
 	}
 
 	/* Stylinf the toggle lable */
@@ -191,7 +199,7 @@ li > a:only-child:after { content: ''; }
 	}
 
 	.toggle:hover {
-		background-color: rgba(255,0,0,0.3);
+		background-color: #59C9A5;
 	}
 
 	/* Display Dropdown when clicked on Parent Lable */
@@ -224,13 +232,14 @@ li > a:only-child:after { content: ''; }
   nav ul ul ul a{
 		padding:14px 20px;	
 		color:#FFF;
-		font-size:17px; 
+		font-size:17px;
+
 	}
   
   
 	nav ul li ul li .toggle,
 	nav ul ul a {
-		background-color: #212121; 
+		background-color: #BA0C31;
 	}
 
 	/* Hide Dropdowns by Default */
@@ -251,6 +260,7 @@ li > a:only-child:after { content: ''; }
 	nav ul ul li {
 		display: block;
 		width: 100%;
+
 	}
 
 	nav ul ul ul li {
