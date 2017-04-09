@@ -43,6 +43,7 @@ p {
     margin: 0 0 35px;
     font-size: 20px;
     line-height: 1.6;
+
   }
 }
 
@@ -141,6 +142,7 @@ a:hover{
 .lead {
     font-size: 18px;
     font-weight: 400;
+    text-align: justify;
 }
 
 .intro-header {
@@ -363,6 +365,10 @@ p.copyright {
 .img-responsive{
     max-height: 400px;
     max-width : 400px; 
+    margin: 5px;
+    border: inset;
+    border-width: 5px;
+    border-color: #59C9A5;
 }
 
 .btn{
