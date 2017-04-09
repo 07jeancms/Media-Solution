@@ -31,7 +31,10 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
 
         <!-- Custom Fonts -->
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">        
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"> 
+
+        <!-- Include Bootstrap-select CSS, JS -->
+        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
 
         <title>Video Extrem</title>
 
@@ -65,7 +68,7 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                     <li><a class="page-scroll" href="#sugerencias"> Sugerencias</a></li>
                     <li><a class="page-scroll" href="#establecimientos"> Sugerencias</a></li>
 
-                  
+
 
                 </ul>
             </div>
@@ -87,19 +90,21 @@ _    _ ______          _____  ______ _____
         <a name="inicio"></a>
         <header class="intro">
             <div class="intro-body">
-                <div class="container">
+                <div class="container principalImage">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <h1 class="brand-heading">Video Extreme</h1>
+
+                            <h1 class="brand-heading">Video <div class ="exColor">Ex</div>treme</h1>
                             <p class="intro-text">Entretenimiento y calidad al mejor precio </p>
 
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Registrate</span> </a>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name">Inicia Sesion</span> </a>
+                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name"></span> </a>
+                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Inicia Sesion</span> </a>
                             <br>
-                            <a href="#estrenos" class="btn btn-circle page-scroll">
-                                <i class="fa fa-angle-double-down animated"></i>
-                            </a>
+
                         </div>
+                        <a href="#estrenos" class="btn btn-circle page-scroll">
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -116,222 +121,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 -->
 
 
-        <!-- Estrenos -->
-
-        <a name="carousel"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <!--Botones que cambian el contenido de los carousels.-->
-                    <div class="col-lg-12 col-sm-6">
-
-                        <div class="col-lg-6 col-sm-6">
-                            <hr class="section-heading-spacer">
-                        </div>
-                        <div class="col-lg-2 col-sm-6 ">
-                            <btn class ="btn btn-default btn-lg selected " id="estrenos" onclick ="changeCarousel(1)">Estrenos</btn>
-                        </div>
-                        <div class="col-lg-2 col-sm-6">
-                            <btn class ="btn btn-default btn-lg" id="top" onclick ="changeCarousel(2)" >Top 10</btn>
-                        </div>
-                        <div class="col-lg-2 col-sm-6">
-                            <btn class ="btn btn-default btn-lg" id="otro" onclick ="changeCarousel(3)">Nominadas al Oscar</btn>
-                        </div>
-
-
-                    </div>
-
-                    <!--Estrenos-->
-                    <div class="col-lg-12 col-sm-6" id="estrenosDiv">
-                        <br>
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Estrenos:</h2> 
-
-                        <br>
-                        <p class="lead">En video extrem<!-- <a target="_blank" href="http://join.deathtothestockphoto.com/">Video Extrem</a>  --> encontraras lo ultimo del mundo del entretemiento, ponemos a tu disposicion mas de 20 titulos nuevos cada semana.</p>
-                    </div>
-
-                    <!--Top 10-->
-                    <div class="col-lg-12 col-sm-6" id="topDiv">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Top 10:<br></h2>
-                        <p class="lead">Con el fin de brindarte la mejor informacion ponemos a tu disposicion el top 10 con las peliculas mas vendidas en nuestros diferentes puntos de venta.</p>
-                    </div>
-
-                    <!--Otros-->
-                    <div class="col-lg-5 col-sm-6" id="otroDiv">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Nominadas al oscar<br></h2>
-                        <p class="lead">Porque mantenerte informado es nuestra prioridad, aca podes encontrar cada uno de los titulos nominados a los premios de la academia.</p>
-                    </div>
-
-                    <a name="buscatupelicula"></a>
-                    <div class="col-lg-12  col-sm-12">
-                        <div class="row">
-                            <div >
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="carousel slide multi-item-carousel" id="theCarousel">
-                                                <div class="carousel-inner">
-                                                    <div class="item active">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/moonligth.jpg" alt="Moonligth" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/lalaland.jpg" alt="La la land" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/manchester.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/fences.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/movie 1.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/movie2.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/movie6.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/movie4.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <!-- add  more items here -->
-                                                    <!-- Example item start:  -->
-
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/movie3.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-
-                                                    <!--  Example item end -->
-                                                </div>
-                                                <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                                                <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        </div>
-
-
-    <!-- OMBD API --->
-    <a name="ombdAPI"></a>
-    <div class="content-section-b">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading"><h2>Busca tu pelicula favorita:</h2> </h2>
-
-                    <form class="btmspace-50" method="post" action="#">
-                        <fieldset>
-                            <input class="btmspace-15" name="movie" type="text" value="" placeholder="MovieName">
-                            <button >Buscar</button>
-                        </fieldset>
-                    </form>
-
-                    <div id="container">
-
-                        <h2 class="title">Title</h3>
-
-                        <p class="plot">Plot</p>
-                        <label>Year:</label><span class="year">Year</span>
-                        <span>TODO: IMDB Rating / Votes</span>
-                        <span>TODO: Tomatoes Rating / Votes </span>
-
-                    </div>
-
-                </div>
-                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <figure id="featuredpost"><img id="moviePoster" src="" alt="">
-                        </div>
-                </div>
-            </div>
-        </div>
-        <!-- Reservaciones -->
-        <a  name="reservaciones"></a>
-        <div class="banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10">
-                        <h2>Reservacion Online</h2>
-                        <p>Con el sistema de reserva online tu eliges cuando y donde deseas retirar tus peliculas favoritas.</p>
-                    </div>
-                    <!--                     <div class="col-lg-2">
-<a class="btn btn-default btn-lg">Reservar</a>
-</div> -->
-                </div>
-            </div>
-        </div>
-        <!-- Reservaciones -->
-
-        <!-- Promociones -->
-        <a name="promociones"></a>
-        <div class="banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10">
-                        <h2>Promociones</h2>
-                        <p>Porque nuestros clientes merecen lo mejor, ponemos a su disposicion nuevas promociones cada semana.</p>
-                    </div>
-                    <!--                     <div class="col-lg-2">
-<a class="btn btn-default btn-lg">Reservar</a>
-</div> -->
-                </div>
-            </div>
-        </div>
-        <!-- Promociones -->
-
-        <!-- Promociones -->
-        <a name="sugerencias"></a>
-        <div class="banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10">
-                        <h2>Sugerencias</h2>
-                        <p>Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un buzon de sugerencias, en el cual puedes brindarnos tus inquietudes, quejas y consultas.</p>
-                    </div>
-                    <!--                     <div class="col-lg-2">
-<a class="btn btn-default btn-lg">Reservar</a>
-</div> -->
-                </div>
-            </div>
-        </div>
-        <!-- Promociones -->
-
-        <!-- Contactenos -->
-        <a name="contactenos"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Contactenos</h2>
-                        <p class="lead">Whatsapp </p>
-                        <p class="lead">Video Club Extrem Moravia </p>
-                        <p class="lead">Video Club Extrem San Jose </p>
-                        <p class="lead">Video Club Extrem Coronado </p>
-                        <p class="lead">Video Club Extrem Sabanilla </p>
-                    </div>
-                    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                        <img class="img-responsive" src="img/phones.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Contactenos -->
-
-        <!-- Acerca de nosotros -->
+        
 
         <!-- Quienes somos -->
         <a name="quienessomos"></a>
@@ -349,9 +139,112 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                     <tr ng-repeat="row in $data.Search " >
                                         <td data-title="'Title'"  filter="{Title: 'text'}">{{row.Title}}</td>
                                         <td data-title="'Year'" filter="{Year: 'number'}" sortable="'Year'">{{row.Year}}</td>
+                                        
                                         <td data-title="'Poster'" filter="{poweredBy: 'text'}" sortable="'poweredBy'"><img src={{row.Poster}}></td>
                                     </tr>
                                 </table>
+
+                            </div>
+
+                        </div>
+
+                        <!-- Button trigger modal -->
+                        <button class="btn" data-toggle="modal" data-target="#createMovieModal">
+                            Agregar Pelicula 
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="createMovieModal" tabindex="-1" role="dialog" 
+                             aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <!-- Modal Header -->
+                                    <div class="modal-header">
+                                        <button type="button" class="close" 
+                                                data-dismiss="modal">
+                                            <span aria-hidden="true">&times;</span>
+                                            <span class="sr-only">Close</span>
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel">
+                                            Agregar Pelicula 
+                                        </h4>
+                                        
+                                    </div>
+                                    <!-- Modal Body -->
+                                    <div class="modal-body">
+
+                                        <form class="form-horizontal" role="form">
+                                            <div class="form-group">
+                                                <label  class="col-sm-2 control-label"
+                                                       for="inputNombre">Nombre</label>
+                                                <div class="col-sm-10">
+                                                    <input class="form-control" id="movieName" placeholder="Nombre de la Pelicula"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="col-sm-2 control-label"
+                                                       for="inputYear">Año</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number" min="1900" max="2099" step="1" value="2016" class="form-control" id="movieYear" placeholder="Nombre de la Pelicula"/> 
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="col-sm-2 control-label"
+                                                       for="inputNombre">Genero</label>
+                                                <div class="col-sm-10">
+                                                    <select name="gendre" class="form-control">
+                                                        <option value="60">Comedia</option>
+                                                        <option value="69">Sci-Fi</option>
+                                                        <option value="79.99">Drama</option>
+                                                        <option value="89">Romantica</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="col-sm-2 control-label"
+                                                       for="inputNombre">Idioma</label>
+                                                <div class="col-sm-10">
+                                                    <select name="gendre" class="form-control">
+                                                        <option value="60">Latino</option>
+                                                        <option value="69">Ingles</option>
+                                                        <option value="79.99">Frances</option>
+                                                        <option value="89">Japones</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="col-sm-2 control-label"
+                                                       for="inputNombre">Trama</label>
+                                                <div class="col-sm-10">
+                                                    <textarea  rows="5"  class="form-control" id="movieName" placeholder="Trama de la Pelicula"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label  class="col-sm-2 control-label"
+                                                       for="inputYear">Precio</label>
+                                                <div class="col-sm-10">
+                                                    <input type="number"  step="100" value="0" class="form-control" id="movieYear" placeholder="Precio de la Pelicula"/> 
+                                                </div>
+                                            </div>
+                                            
+
+
+
+                                            
+                                        </form>   
+                                    </div>
+
+                                    <!-- Modal Footer -->
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default"
+                                                data-dismiss="modal">
+                                            Cancelar
+                                        </button>
+                                        <button type="button" class="btn btn-primary">
+                                            Crear Pelicula
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -359,72 +252,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                 </div>
             </div>
         </div>
-        <!-- Quienes somos -->
-
-        <!-- Establecimientos -->
-
-        <a name="establecimientos"></a>
-        <div class="content-section-b">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading"><h2>Visitanos:</h2> </h2>
-                        <p class="lead">Contamos con 4 diferentes puntos de venta a lo largo del GAM. </p>
-                        <ul class="list-inline banner-social-buttons">
-                            <li>
-                                <button class="btn btn-default btn-lg" onclick="createMap(9.962058,-84.0526522)"><i class="fa fa-play-circle fa-fw"></i><span>Moravia</span></button>
-                            </li>
-                            <li>
-                                <button class="btn btn-default btn-lg" onclick="createMap(9.9935837,-84.0241678)"><i class="fa fa-play-circle fa-fw"></i> <span>Coronado</span></button>
-                            </li>
-                            <li>
-                                <button class="btn btn-default btn-lg" onclick="createMap(9.9438646,-84.0252511)"><i class="fa fa-play-circle   fa-fw"></i><span> Sabanilla</span></button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                        <div id="map"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Establecimientos -->
-
-        <!-- Encuentrenos -->
-        <a name="encuentrenos"></a>
-        <div class="content-section-c ">
-            <div class="container row-lg-12">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Encuentrenos en</h2>
-                    </div>
-
-
-
-                </div>
-                <div class="col-lg-12  col-sm-6 vcenter">
-
-                    <div class="col-lg-4 col-sm-6">
-                        <img src="img/Waze.png" class="mediaIcon">
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <img src="img/Facebook.png" class="mediaIcon">
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <img src="img/Whatsapp.png" class="mediaIcon">
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-        <!-- Encuentrenos -->
-
+       
         <!-- Acerca de nosotros -->
 
 
@@ -480,8 +308,8 @@ ______ ____   ____ _______ ______ _____
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
-    
-     <!--Angular.js  --->
+
+    <!--Angular.js  --->
     <script src="node_modules/angular/angular.min.js"></script>
 
     <!--Angular.js Resources  --->
@@ -502,11 +330,11 @@ ______ ____   ____ _______ ______ _____
     <!--OMBD API --->
     <script src="js/OmbdAPI.js"></script>
 
-    <!--Carousel Control  --->
-    <script src="js/carousel.js"></script>
 
-   
-    
+    <!-- Include Bootstrap-select CSS, JS -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+
+
     <!--Angular Table   --->
     <script src="js/ng-table.min.js"></script>
 

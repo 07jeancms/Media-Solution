@@ -48,7 +48,7 @@ p {
 
 a:hover{
   text-decoration: none;
-  color: #4EA2BE;
+  color: #D64900;
 }
 
 
@@ -101,7 +101,7 @@ a:hover{
   padding: 100px 0;
   text-align: center;
   color: white;
-  background: url(../img/intro-bg.jpg) no-repeat bottom center scroll;
+  background: url(../img/intro-bg2.png) no-repeat bottom center scroll;
   background-color: black;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -112,14 +112,32 @@ a:hover{
   display: table-cell;
   vertical-align: middle;
 }
-.intro .intro-body .brand-heading {
-  font-size: 40px;
-    color: #4EA2BE;
-    font-family: 'Indie Flower', cursive;
+
+@font-face {
+    font-family: Ostrich-Font-Bold;  
+    src:  url('../fonts/OstrichSans-Bold.otf') format("truetype");
 }
+@font-face {
+    font-family: Ostrich-Font;  
+    src:  url('../fonts/ostrich-regular.ttf') format("truetype");
+}
+.intro .intro-body .brand-heading {
+    
+  font-size: 4pc;
+    color: white;
+    font-family: 'Ostrich-Font-Bold';
+    font-weight: bold;
+}
+.exColor{
+    display:inline;
+    color: rgb(214,73,0);
+    
+    
+}
+
 .intro .intro-body .intro-text {
-  font-size: 18px;
-    font-family: 'Indie Flower', cursive;
+  font-size: 1.5pc;
+    font-family: 'Ostrich-Font', cursive;
 }
 @media (min-width: 768px) {
   .intro {
@@ -215,14 +233,14 @@ a:hover{
 .content-section-b {
     min-height:  85vh;
     padding: 50px 0;
-    border-top: 1px solid #b43333;
-    border-bottom: 1px solid #b43333;
+    border-top: 1px solid #860002;
+    border-bottom: 1px solid #860002;
 }
 .content-section-c {
     min-height:  50vh;
     padding: 50px 0;
-    border-top: 1px solid #b43333;
-    border-bottom: 1px solid #b43333;
+    border-top: 1px solid #860002;
+    border-bottom: 1px solid #860002;
 }
 
 .section-heading {
@@ -232,7 +250,7 @@ a:hover{
 .section-heading-spacer {
     float: left;
     width: 200px;
-    border-top: 3px solid #b43333;
+    border-top: 3px solid #860002;
 }
 
 .banner {
@@ -268,7 +286,7 @@ a:hover{
 }
 
 .bannerSugerencias button {
-    color: #4EA2BE;
+    color: #D64900;
     margin-bottom: 5px;
 }
 
@@ -366,21 +384,21 @@ p.copyright {
 }
 
 .btn{
-    background-color: #4EA2BE;
+    background-color: rgba(134,0,0,0.4);
     color: #FFF;
 }
 
 .btn:hover {
-    background-color: #FFF;
-    color: #4EA2BE;
+    background-color: rgba(134,0,0,0.9);
+    color: #FFF;
 }
 
 .searchButton{
-    color: #BA0C31;
+    color: #860002;
 }
 
 .selected {
-    background-color: #BA0C31;
+    background-color: #860002;
     color :  white;
 }
 
@@ -390,4 +408,18 @@ p.copyright {
     cursor: pointer; 
     cursor: hand;
 }
+.principalImage{
+    background-color: rgba(0,0,0,0.1);
+}
 
+.modal-body .form-horizontal .col-sm-2,
+.modal-body .form-horizontal .col-sm-10 {
+    width: 100%
+}
+
+.modal-body .form-horizontal .control-label {
+    text-align: left;
+}
+.modal-body .form-horizontal .col-sm-offset-2 {
+    margin-left: 15px;
+}
