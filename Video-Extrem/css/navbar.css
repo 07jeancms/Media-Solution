@@ -1,7 +1,6 @@
 /* CSS Document */
 
 
-
 body {
 	background: #212121;
 	font-size:22px;
@@ -12,6 +11,7 @@ body {
 	word-wrap:break-word !important;
 	font-family: 'Open Sans', sans-serif;
 	}
+
 
 h1 {
 	font-size: 60px;
@@ -59,7 +59,7 @@ p {
 nav { 
 	margin:0;
 	padding: 0;
-	background-color: #BA0C31;
+	background-color: #860002;
 }
 
 #logo {
@@ -94,7 +94,7 @@ nav ul li {
 	margin: 0px;
 	display:inline-block;
 	float: left;
-	background-color: #BA0C31;
+	background-color: #860002;
 	}
 
 /* Styling the links */
@@ -107,11 +107,11 @@ nav a {
 }
 
 
-nav ul li ul li:hover { background: #BA0C31; }
+nav ul li ul li:hover { background: #860002; }
 
 /* Background color change on Hover */
 nav a:hover { 
-	background-color: #4EA2BE;
+	background-color: #D64900;
 	color: #FFF;
 	text-decoration:none;
 }
@@ -190,7 +190,7 @@ input ul li label a .toggle{
 	/* Stylinf the toggle lable */
 	.toggle {
 		display: block;
-		background-color: #BA0C31;
+		background-color: #860002;
 		padding:14px 20px;	
 		color:#FFF;
 		font-size:17px;
@@ -199,7 +199,7 @@ input ul li label a .toggle{
 	}
 
 	.toggle:hover {
-		background-color: #59C9A5;
+		background-color: #933707;
 	}
 
 	/* Display Dropdown when clicked on Parent Lable */
@@ -239,7 +239,7 @@ input ul li label a .toggle{
   
 	nav ul li ul li .toggle,
 	nav ul ul a {
-		background-color: #BA0C31;
+		background-color: #860002;
 	}
 
 	/* Hide Dropdowns by Default */
