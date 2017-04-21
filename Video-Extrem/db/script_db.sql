@@ -40,7 +40,8 @@ CREATE TABLE IF NOT EXISTS `video_extrem`.`Generos` (
   `idGenero` BIGINT NOT NULL AUTO_INCREMENT,
   `genero` VARCHAR(100) NOT NULL,
   `descripcion` VARCHAR(500) NULL,
-  PRIMARY KEY (`idGenero`))
+  PRIMARY KEY (`idGenero`),
+  UNIQUE INDEX `genero_UNIQUE` (`genero` ASC))
 ENGINE = InnoDB;
 
 
@@ -73,7 +74,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `video_extrem`.`Categorias` (
   `idCategoria` BIGINT NOT NULL AUTO_INCREMENT,
   `categoria` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`idCategoria`))
+  PRIMARY KEY (`idCategoria`),
+  UNIQUE INDEX `categoria_UNIQUE` (`categoria` ASC))
 ENGINE = InnoDB;
 
 
@@ -106,7 +108,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `video_extrem`.`Idiomas` (
   `idIdioma` BIGINT NOT NULL AUTO_INCREMENT,
   `idioma` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`idIdioma`))
+  PRIMARY KEY (`idIdioma`),
+  UNIQUE INDEX `idioma_UNIQUE` (`idioma` ASC))
 ENGINE = InnoDB;
 
 
@@ -139,7 +142,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `video_extrem`.`Actores` (
   `idActor` BIGINT NOT NULL AUTO_INCREMENT,
   `actor` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`idActor`))
+  PRIMARY KEY (`idActor`),
+  UNIQUE INDEX `actor_UNIQUE` (`actor` ASC))
 ENGINE = InnoDB;
 
 
@@ -172,7 +176,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `video_extrem`.`Subtitulos` (
   `idSubtitulo` BIGINT NOT NULL AUTO_INCREMENT,
   `subtitulo` VARCHAR(100) NOT NULL,
-  PRIMARY KEY (`idSubtitulo`))
+  PRIMARY KEY (`idSubtitulo`),
+  UNIQUE INDEX `subtitulo_UNIQUE` (`subtitulo` ASC))
 ENGINE = InnoDB;
 
 
@@ -254,7 +259,10 @@ CREATE TABLE IF NOT EXISTS `video_extrem`.`Usuarios` (
   `fechIngreso` DATETIME NOT NULL,
   `correo` VARCHAR(75) NOT NULL,
   `telefono` VARCHAR(50) NOT NULL,
-  PRIMARY KEY (`idUsuario`))
+  PRIMARY KEY (`idUsuario`),
+  UNIQUE INDEX `token_UNIQUE` (`token` ASC),
+  UNIQUE INDEX `correo_UNIQUE` (`correo` ASC),
+  UNIQUE INDEX `telefono_UNIQUE` (`telefono` ASC))
 ENGINE = InnoDB;
 
 
@@ -264,7 +272,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `video_extrem`.`Roles` (
   `idRol` BIGINT NOT NULL AUTO_INCREMENT,
   `rol` VARCHAR(75) NOT NULL,
-  PRIMARY KEY (`idRol`))
+  PRIMARY KEY (`idRol`),
+  UNIQUE INDEX `rol_UNIQUE` (`rol` ASC))
 ENGINE = InnoDB;
 
 
@@ -335,6 +344,8 @@ CREATE TABLE IF NOT EXISTS `video_extrem`.`Test` (
   `idTest` BIGINT NOT NULL AUTO_INCREMENT,
   `test` VARCHAR(45) NOT NULL,
   `num` INT NULL,
+  `num2` INT NULL,
+  `num3` INT NOT NULL,
   PRIMARY KEY (`idTest`))
 ENGINE = InnoDB;
 
