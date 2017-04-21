@@ -1,15 +1,28 @@
-	DELIMITER //
-		CREATE PROCEDURE addGenre
-			(IN pGenero VARCHAR(100), IN pDescripcion VARCHAR(500))
-			
-			BEGIN
-			
-				INSERT INTO generos (genero, descripcion) VALUES (pGenero, pDescripcion);
+DELIMITER //
+	CREATE PROCEDURE addGenre
+		(IN pGenero VARCHAR(100), IN pDescripcion VARCHAR(500))
+		
+		BEGIN
+		
+			INSERT INTO generos (genero, descripcion) VALUES (pGenero, pDescripcion);
 				
-			END //	
-	DELIMITER ;
+		END //	
+DELIMITER ;
 
 -- call addGenre("Terror", "Peliculas de Terror");
+------------------------------------------------------------------------
+DELIMITER //
+	CREATE PROCEDURE addCategory
+		(IN pCategoria VARCHAR(100))
+		
+		BEGIN
+		
+			INSERT INTO categorias (categoria) VALUES (pCategoria);
+			
+		END //
+DELIMITER ;
+
+-- call addCategory("Top 10")
 ------------------------------------------------------------------------
 DELIMITER //
 CREATE PROCEDURE addGenreByMovie
