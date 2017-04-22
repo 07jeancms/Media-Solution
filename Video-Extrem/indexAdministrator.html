@@ -40,7 +40,7 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
 
     </head>
 
-    <body>
+    <body ng-app="crudApp">
 
         <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
             <div class="container">
@@ -63,10 +63,83 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         </ul>
                     </li>
 
-                    <li><a class="page-scroll" href="#reservaciones"> Reservaciones</a></li>
-                    <li><a class="page-scroll" href="#promociones"> Promociones</a></li>
-                    <li><a class="page-scroll" href="#sugerencias"> Sugerencias</a></li>
-                    <li><a class="page-scroll" href="#establecimientos"> Sugerencias</a></li>
+                   <li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Idiomas</label>
+                        <a href="#">Idiomas</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul >
+                            <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Idioma</a></li>
+                            <li><a href="#buscatuIdioma">Busca tu Idioma</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Actores</label>
+                        <a href="#">Actores</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul >
+                            <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Actor</a></li>
+                            <li><a href="#buscatuActor">Busca tu Actor</a></li>
+                        </ul>
+                    </li><li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Subtitulos</label>
+                        <a href="#">Subtitulos</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul >
+                            <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Subtitulo</a></li>
+                            <li><a href="#buscatuSubtitulo">Busca tu Subtitulo</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Generos</label>
+                        <a href="#">Generos</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul >
+                            <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Genero</a></li>
+                            <li><a href="#buscatuGenero">Busca tu Genero</a></li>
+                        </ul>
+                    </li><li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Categorias</label>
+                        <a href="#">Categorias</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul >
+                            <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Categoria</a></li>
+                            <li><a href="#buscatuCategoria">Busca tu Categoria</a></li>
+                        </ul>
+                    </li><li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Sugerencias</label>
+                        <a href="#">Sugerencias</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul >
+                            <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Sugerencia</a></li>
+                            <li><a href="#buscatuSugerencia">Busca tu Sugerencia</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Usuarios</label>
+                        <a href="#">Usuarios</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul >
+                            <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Usuario</a></li>
+                            <li><a href="#buscatuUsuario">Busca tu Usuario</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Roles</label>
+                        <a href="#">Roles</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul >
+                            <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Roles</a></li>
+                            <li><a href="#buscatuRoles">Busca tu Roles</a></li>
+                        </ul>
+                    </li>
 
 
 
@@ -95,7 +168,7 @@ _    _ ______          _____  ______ _____
                         <div class="col-md-8 col-md-offset-2">
 
                             <h1 class="brand-heading">Video <div class ="exColor">Ex</div>treme</h1>
-                            <p class="intro-text">Entretenimiento y calidad al mejor precio </p>
+                            <p class="intro-text">Entretenimiento y calidad al mejor precio </p> {{3+4}}
 
                             <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name"></span> </a>
                             <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Inicia Sesion</span> </a>
@@ -121,139 +194,316 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 -->
 
 
-        
 
-        <!-- Quienes somos -->
-        <a name="quienessomos"></a>
+
+        <!-- Peliculas -->
+        <a name="peliculas"></a>
         <div class="content-section-a">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-sm-6">
                         <hr class="section-heading-spacer">
                         <div class="clearfix"></div>
-                        <h2 class="section-heading">Peliculas Prueba</h2>
-                        <div ng-app="myApp">
-                            <div ng-controller="demoController as demo">
+                        <h2 class="section-heading">Peliculas</h2>
+                        <div >
+                            <div ng-controller="movieTableController as movie">
 
-                                <table ng-table="demo.tableParams" class="table table-bordered table-striped table-condensed">
+                                <table ng-table="movie.tableParams" class="table table-bordered table-striped table-condensed">
                                     <tr ng-repeat="row in $data.Search " >
                                         <td data-title="'Title'"  filter="{Title: 'text'}">{{row.Title}}</td>
                                         <td data-title="'Year'" filter="{Year: 'number'}" sortable="'Year'">{{row.Year}}</td>
-                                        
+
                                         <td data-title="'Poster'" filter="{poweredBy: 'text'}" sortable="'poweredBy'"><img src={{row.Poster}}></td>
                                     </tr>
                                 </table>
 
                             </div>
 
-                        </div>
 
+                            <div ng-include="'movieModal.html'"></div> 
+                        </div>
                         <!-- Button trigger modal -->
-                        <button class="btn" data-toggle="modal" data-target="#createMovieModal">
-                            Agregar Pelicula 
-                        </button>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="createMovieModal" tabindex="-1" role="dialog" 
-                             aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <!-- Modal Header -->
-                                    <div class="modal-header">
-                                        <button type="button" class="close" 
-                                                data-dismiss="modal">
-                                            <span aria-hidden="true">&times;</span>
-                                            <span class="sr-only">Close</span>
-                                        </button>
-                                        <h4 class="modal-title" id="myModalLabel">
-                                            Agregar Pelicula 
-                                        </h4>
-                                        
-                                    </div>
-                                    <!-- Modal Body -->
-                                    <div class="modal-body">
-
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
-                                                <label  class="col-sm-2 control-label"
-                                                       for="inputNombre">Nombre</label>
-                                                <div class="col-sm-10">
-                                                    <input class="form-control" id="movieName" placeholder="Nombre de la Pelicula"/>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label  class="col-sm-2 control-label"
-                                                       for="inputYear">Año</label>
-                                                <div class="col-sm-10">
-                                                    <input type="number" min="1900" max="2099" step="1" value="2016" class="form-control" id="movieYear" placeholder="Nombre de la Pelicula"/> 
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label  class="col-sm-2 control-label"
-                                                       for="inputNombre">Genero</label>
-                                                <div class="col-sm-10">
-                                                    <select name="gendre" class="form-control">
-                                                        <option value="60">Comedia</option>
-                                                        <option value="69">Sci-Fi</option>
-                                                        <option value="79.99">Drama</option>
-                                                        <option value="89">Romantica</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label  class="col-sm-2 control-label"
-                                                       for="inputNombre">Idioma</label>
-                                                <div class="col-sm-10">
-                                                    <select name="gendre" class="form-control">
-                                                        <option value="60">Latino</option>
-                                                        <option value="69">Ingles</option>
-                                                        <option value="79.99">Frances</option>
-                                                        <option value="89">Japones</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label  class="col-sm-2 control-label"
-                                                       for="inputNombre">Trama</label>
-                                                <div class="col-sm-10">
-                                                    <textarea  rows="5"  class="form-control" id="movieName" placeholder="Trama de la Pelicula"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label  class="col-sm-2 control-label"
-                                                       for="inputYear">Precio</label>
-                                                <div class="col-sm-10">
-                                                    <input type="number"  step="100" value="0" class="form-control" id="movieYear" placeholder="Precio de la Pelicula"/> 
-                                                </div>
-                                            </div>
-                                            
 
 
 
-                                            
-                                        </form>   
-                                    </div>
-
-                                    <!-- Modal Footer -->
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-default"
-                                                data-dismiss="modal">
-                                            Cancelar
-                                        </button>
-                                        <button type="button" class="btn btn-primary">
-                                            Crear Pelicula
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                 </div>
             </div>
         </div>
-       
-        <!-- Acerca de nosotros -->
+
+        <!-- Idiomas -->
+        <a name="idiomas"></a>
+        <div class="content-section-a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Idiomas</h2>
+                        <div >
+                            <div ng-controller="languageController as language">
+
+                                <table ng-table="language.tableParams" class="table table-bordered table-striped table-condensed">
+                                    <tr ng-repeat="row in $data.Search " >
+                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idIdioma}}</td>
+                                        <td data-title="'Idioma'" filter="{Idioma: 'number'}" sortable="'Year'">{{row.idioma}}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+
+                            <div ng-include="'languageModal.html'"></div> 
+                        </div>
+                        <!-- Button trigger modal -->
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Actores -->
+        <a name="actores"></a>
+        <div class="content-section-a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Actores</h2>
+                        <div >
+                            <div ng-controller="actorController as actor">
+
+                                <table ng-table="actor.tableParams" class="table table-bordered table-striped table-condensed">
+                                    <tr ng-repeat="row in $data.Search " >
+                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idActor}}</td>
+                                        <td data-title="'Actor'" filter="{Actor: 'number'}" sortable="'Year'">{{row.Actor}}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+
+                            <div ng-include="'actorModal.html'"></div> 
+                        </div>
+                        <!-- Button trigger modal -->
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Subtitles -->
+        <a name="subtitles"></a>
+        <div class="content-section-a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Subtitulos</h2>
+                        <div >
+                            <div ng-controller="subtitlesController as subtitles">
+
+                                <table ng-table="subtitles.tableParams" class="table table-bordered table-striped table-condensed">
+                                    <tr ng-repeat="row in $data.Search " >
+                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idsubtitles}}</td>
+                                        <td data-title="'Subtitulos'" filter="{subtitles: 'number'}" sortable="'Year'">{{row.subtitles}}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+
+                            <div ng-include="'subtitleModal.html'"></div> 
+                        </div>
+                        <!-- Button trigger modal -->
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- genre -->
+        <a name="genre"></a>
+        <div class="content-section-a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Genero</h2>
+                        <div >
+                            <div ng-controller="genreController as genre">
+
+                                <table ng-table="genre.tableParams" class="table table-bordered table-striped table-condensed">
+                                    <tr ng-repeat="row in $data.Search " >
+                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idgenre}}</td>
+                                        <td data-title="'Genero'" filter="{genre: 'number'}" sortable="'Year'">{{row.genre}}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+
+                            <div ng-include="'genreModal.html'"></div> 
+                        </div>
+                        <!-- Button trigger modal -->
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- categories -->
+        <a name="categories"></a>
+        <div class="content-section-a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Categorias </h2>
+                        <div >
+                            <div ng-controller="categoriesController as categories">
+
+                                <table ng-table="categories.tableParams" class="table table-bordered table-striped table-condensed">
+                                    <tr ng-repeat="row in $data.Search " >
+                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idcategories}}</td>
+                                        <td data-title="'Categoria'" filter="{categories: 'number'}" sortable="'Year'">{{row.categories}}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+
+                            <div ng-include="'categorieModal.html'"></div> 
+                        </div>
+                        <!-- Button trigger modal -->
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- suggestions -->
+        <a name="suggestions"></a>
+        <div class="content-section-a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Sugerencias</h2>
+                        <div >
+                            <div ng-controller="suggestionsController as suggestions">
+
+                                <table ng-table="suggestions.tableParams" class="table table-bordered table-striped table-condensed">
+                                    <tr ng-repeat="row in $data.Search " >
+                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idsuggestions}}</td>
+                                        <td data-title="'Sugerencia'" filter="{suggestions: 'number'}" sortable="'Year'">{{row.suggestions}}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+
+                            <div ng-include="'suggestionModal.html'"></div> 
+                        </div>
+                        <!-- Button trigger modal -->
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- users -->
+        <a name="user"></a>
+        <div class="content-section-a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Usuarios</h2>
+                        <div >
+                            <div ng-controller="userController as user">
+
+                                <table ng-table="user.tableParams" class="table table-bordered table-striped table-condensed">
+                                    <tr ng-repeat="row in $data.Search " >
+                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.iduser}}</td>
+                                        <td data-title="'Usuario'" filter="{user: 'number'}" sortable="'Year'">{{row.user}}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+
+                            <div ng-include="'userModal.html'"></div> 
+                        </div>
+                        <!-- Button trigger modal -->
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- role -->
+        <a name="roles"></a>
+        <div class="content-section-a">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
+                        <h2 class="section-heading">Roles</h2>
+                        <div >
+                            <div ng-controller="roleController as role">
+
+                                <table ng-table="role.tableParams" class="table table-bordered table-striped table-condensed">
+                                    <tr ng-repeat="row in $data.Search " >
+                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idrole}}</td>
+                                        <td data-title="'Rol'" filter="{role: 'number'}" sortable="'Year'">{{row.role}}</td>
+                                    </tr>
+                                </table>
+
+                            </div>
+
+
+                            <div ng-include="'roleModal.html'"></div> 
+                        </div>
+                        <!-- Button trigger modal -->
+
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
 
 
 
@@ -304,7 +554,7 @@ ______ ____   ____ _______ ______ _____
             </div>
         </footer>
 
-        </body>
+    </body>
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
@@ -337,5 +587,6 @@ ______ ____   ____ _______ ______ _____
 
     <!--Angular Table   --->
     <script src="js/ng-table.min.js"></script>
+
 
 </html>

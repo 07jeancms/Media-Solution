@@ -1,0 +1,55 @@
+<!-- Modal -->
+<div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Agregar Usuarios
+                </h4>
+
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label"
+                               for="inputNombre">Nombre</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="UserName" placeholder="Nombre de la User"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label"
+                               for="inputYear">Id</label>
+                        <div class="col-sm-10">
+                            <input type="number" min="1" max="9999" step="1" value="1" class="form-control" id="UserId" placeholder="Id del User"/> 
+                        </div>
+                    </div>
+                    
+                </form>   
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-primary">
+                    Crear Usuarios
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn" data-toggle="modal" data-target="#createUserModal">
+    Agregar Usuarios 
+</button>
