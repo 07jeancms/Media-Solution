@@ -30,12 +30,12 @@ var app = angular.module("crudApp", ["ngTable", "ngResource"]);
     //                             
     //   
     app.controller("movieTableController", movieTableController);
-    movieTableController.$inject = ["NgTableParams", "$resource"];
+    movieTableController.$inject = ["NgTableParams", "$resource",'$scope'];
 
-    function movieTableController(NgTableParams, $resource) {
+    function movieTableController(NgTableParams, $resource, $scope) {
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
-
+        $scope.actualMovie = {};
         this.tableParams = new NgTableParams({}, {
             getData: function(params) {
                 // ajax request to api
@@ -48,6 +48,16 @@ var app = angular.module("crudApp", ["ngTable", "ngResource"]);
                     }})
             } 
         });
+        $scope.showMovie = function(selectedMovie){
+            $scope.actualMovie = selectedMovie;
+        }
+        $scope.editMovie = function(selectedMovie){
+            $scope.actualMovie = selectedMovie;
+            alert( $scope.actualMovie.Year)
+        }
+        $scope.deleteMovie = function(selectedMovie){
+            alert( "Deleting "+$scope.actualMovie.Title)
+        }
 
     }
 

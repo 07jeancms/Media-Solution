@@ -429,3 +429,35 @@ p.copyright {
 .modal-body .form-horizontal .col-sm-offset-2 {
     margin-left: 15px;
 }
+.editBtn{
+    color :  #860002;
+}
+.editBtn:hover{
+    color :  #D64900;
+     cursor: pointer; 
+}
+#wrapper {
+  margin-right: 20%;
+}
+#content {
+  float: left;
+  width: 100%;
+}
+#sidebar {
+  float: right;
+  width: 80%;
+  margin-right: -100%;
+  background-color: #860002;
+}
+#cleared {
+  clear: both;
+}
+.posterContainer {
+    width: 100%;
+    height: : 100%;
+}
+.posterImg {
+    width: 100%;
+    height: : 100%;
+}
+
