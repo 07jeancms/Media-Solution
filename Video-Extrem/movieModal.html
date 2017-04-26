@@ -1,4 +1,14 @@
-<!-- Modal -->
+<!-- Modal 
+_____                _        
+/ ____|              | |       
+| |     _ __ ___  __ _| |_ ___  
+| |    | '__/ _ \/ _` | __/ _ \ 
+| |____| | |  __/ (_| | ||  __/ 
+\_____|_|  \___|\__,_|\__\___| 
+
+
+
+-->
 <div class="modal fade" id="createMovieModal" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -95,3 +105,105 @@
 <button class="btn" data-toggle="modal" data-target="#createMovieModal">
     Agregar Pelicula 
 </button>
+
+
+<!-- Modal 
+_____ _                   
+/ ____| |                  
+| (___ | |__   _____      __
+\___ \| '_ \ / _ \ \ /\ / /
+____) | | | | (_) \ V  V / 
+|_____/|_| |_|\___/ \_/\_/  
+
+
+-->
+<div class="modal fade" id="showMovieModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content col-lg-12 ">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    {{actualMovie.Title}} 
+                </h4>
+
+            </div>
+            <!-- Modal Body -->
+            <div id="wrapper">
+                <div id="content"><div class="modal-body">
+
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                                   >Titulo: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
+                                   for="inputNombre">{{actualMovie.Title}}</h5>
+
+                        </div>
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                                   >Año: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
+                                   for="inputNombre">{{actualMovie.Year}}</h5>
+                        </div>
+                        <div class="form-group">
+                            
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                                   >Genero: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
+                                   for="inputNombre">{{actualMovie.Gendre}}</h5>
+
+                        </div>
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                                   >Idioma: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
+                                   for="inputNombre">{{Language.Year}}</h5>
+                        </div>
+                        <div class="form-group">
+                            
+                           <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                                   >Trama: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
+                                   for="inputNombre">{{actualMovie.Trama}}</h5>
+
+                        </div>
+                        <div class="form-group">
+                          <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                                   >Precio: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
+                                   for="inputNombre">{{actualMovie.Price}}</h5>
+
+                        </div>
+
+
+
+
+
+                    </form>   
+                    </div></div>
+                <div id="sidebar"><div class="modal-body posterContainer">
+                    <img class="posterImg" src={{actualMovie.Poster}}>
+                    </div></div>
+                <div id="cleared"></div>
+            </div>
+
+
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+

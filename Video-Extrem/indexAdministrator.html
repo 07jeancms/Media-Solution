@@ -63,7 +63,7 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         </ul>
                     </li>
 
-                   <li>
+                    <li>
                         <!-- First Tier Drop Down -->
                         <label for="drop-1" class="toggle">Idiomas</label>
                         <a href="#">Idiomas</a>
@@ -83,14 +83,14 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                             <li><a href="#buscatuActor">Busca tu Actor</a></li>
                         </ul>
                     </li><li>
-                        <!-- First Tier Drop Down -->
-                        <label for="drop-1" class="toggle">Subtitulos</label>
-                        <a href="#">Subtitulos</a>
-                        <input type="checkbox" id="drop-1"/>
-                        <ul >
-                            <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Subtitulo</a></li>
-                            <li><a href="#buscatuSubtitulo">Busca tu Subtitulo</a></li>
-                        </ul>
+                    <!-- First Tier Drop Down -->
+                    <label for="drop-1" class="toggle">Subtitulos</label>
+                    <a href="#">Subtitulos</a>
+                    <input type="checkbox" id="drop-1"/>
+                    <ul >
+                        <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Subtitulo</a></li>
+                        <li><a href="#buscatuSubtitulo">Busca tu Subtitulo</a></li>
+                    </ul>
                     </li>
                     <li>
                         <!-- First Tier Drop Down -->
@@ -102,23 +102,23 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                             <li><a href="#buscatuGenero">Busca tu Genero</a></li>
                         </ul>
                     </li><li>
-                        <!-- First Tier Drop Down -->
-                        <label for="drop-1" class="toggle">Categorias</label>
-                        <a href="#">Categorias</a>
-                        <input type="checkbox" id="drop-1"/>
-                        <ul >
-                            <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Categoria</a></li>
-                            <li><a href="#buscatuCategoria">Busca tu Categoria</a></li>
-                        </ul>
+                    <!-- First Tier Drop Down -->
+                    <label for="drop-1" class="toggle">Categorias</label>
+                    <a href="#">Categorias</a>
+                    <input type="checkbox" id="drop-1"/>
+                    <ul >
+                        <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Categoria</a></li>
+                        <li><a href="#buscatuCategoria">Busca tu Categoria</a></li>
+                    </ul>
                     </li><li>
-                        <!-- First Tier Drop Down -->
-                        <label for="drop-1" class="toggle">Sugerencias</label>
-                        <a href="#">Sugerencias</a>
-                        <input type="checkbox" id="drop-1"/>
-                        <ul >
-                            <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Sugerencia</a></li>
-                            <li><a href="#buscatuSugerencia">Busca tu Sugerencia</a></li>
-                        </ul>
+                    <!-- First Tier Drop Down -->
+                    <label for="drop-1" class="toggle">Sugerencias</label>
+                    <a href="#">Sugerencias</a>
+                    <input type="checkbox" id="drop-1"/>
+                    <ul >
+                        <li><a href="#carousel" onclick ="changeCarousel(1)">Agregar Sugerencia</a></li>
+                        <li><a href="#buscatuSugerencia">Busca tu Sugerencia</a></li>
+                    </ul>
                     </li>
                     <li>
                         <!-- First Tier Drop Down -->
@@ -198,7 +198,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
         <!-- Peliculas -->
         <a name="peliculas"></a>
-        <div class="content-section-a">
+        <div class="content-section-a" ng-controller="movieTableController as movie">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12 col-sm-6">
@@ -206,308 +206,318 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                         <div class="clearfix"></div>
                         <h2 class="section-heading">Peliculas</h2>
                         <div >
-                            <div ng-controller="movieTableController as movie">
+                            <div >
 
                                 <table ng-table="movie.tableParams" class="table table-bordered table-striped table-condensed">
-                                    <tr ng-repeat="row in $data.Search " >
-                                        <td data-title="'Title'"  filter="{Title: 'text'}">{{row.Title}}</td>
-                                        <td data-title="'Year'" filter="{Year: 'number'}" sortable="'Year'">{{row.Year}}</td>
-
-                                        <td data-title="'Poster'" filter="{poweredBy: 'text'}" sortable="'poweredBy'"><img src={{row.Poster}}></td>
-                                    </tr>
-                                </table>
-
-                            </div>
-
-
-                            <div ng-include="'movieModal.html'"></div> 
-                        </div>
-                        <!-- Button trigger modal -->
-
+                                    <tr ng-repeat="actualMovie in $data.Search " >
+                                        <td data-title="'Titulo'"  filter="{Title: 'text'}">{{actualMovie.Title}}</td>
+                                        <td data-title="'Año'" filter="{Year: 'number'}" sortable="'Year'">{{actualMovie.Year}}</td>
+                                        <td data-title="'Genero'" filter="{Genero: 'text'}" sortable="'Genero'"></td>
+                                        <td data-title="'Idioma'" filter="{Idioma: 'text'}" sortable="'Idioma'"></td>
+                                        <td data-title="'Precio'" filter="{Precio: 'text'}" sortable="'Precio'"></td>
+                                        <td data-title="'Editar'" >
+                                            <div class="inline col-lg-12"> 
+                                                <i class="editBtn fa fa-film col-lg-4" ng-click="this.showMovie(actualMovie)" data-toggle="modal" data-target="#showMovieModal" aria-hidden="true"> </i>
+                                                <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editMovie(actualMovie)"aria-hidden="true">  </i>
+                                                <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteMovie(actualMovie)"aria-hidden="true"></i></td>
+                                    </div>
+                                    </td>
 
 
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-        <!-- Idiomas -->
-        <a name="idiomas"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Idiomas</h2>
-                        <div >
-                            <div ng-controller="languageController as language">
-
-                                <table ng-table="language.tableParams" class="table table-bordered table-striped table-condensed">
-                                    <tr ng-repeat="row in $data.Search " >
-                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idIdioma}}</td>
-                                        <td data-title="'Idioma'" filter="{Idioma: 'number'}" sortable="'Year'">{{row.idioma}}</td>
-                                    </tr>
-                                </table>
-
-                            </div>
-
-
-                            <div ng-include="'languageModal.html'"></div> 
-                        </div>
-                        <!-- Button trigger modal -->
-
-
+                                </tr>
+                            </table>
 
                     </div>
 
+
+                    <div ng-include="'movieModal.html'"></div> 
                 </div>
+                <!-- Button trigger modal -->
+
+
+
             </div>
+
         </div>
+        </div>
+    </div>
 
-        <!-- Actores -->
-        <a name="actores"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Actores</h2>
-                        <div >
-                            <div ng-controller="actorController as actor">
+<!-- Idiomas -->
+<a name="idiomas"></a>
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Idiomas</h2>
+                <div >
+                    <div ng-controller="languageController as language">
 
-                                <table ng-table="actor.tableParams" class="table table-bordered table-striped table-condensed">
-                                    <tr ng-repeat="row in $data.Search " >
-                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idActor}}</td>
-                                        <td data-title="'Actor'" filter="{Actor: 'number'}" sortable="'Year'">{{row.Actor}}</td>
-                                    </tr>
-                                </table>
-
-                            </div>
-
-
-                            <div ng-include="'actorModal.html'"></div> 
-                        </div>
-                        <!-- Button trigger modal -->
-
-
+                        <table ng-table="language.tableParams" class="table table-bordered table-striped table-condensed">
+                            <tr ng-repeat="row in $data.Search " >
+                                <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idIdioma}}</td>
+                                <td data-title="'Idioma'" filter="{Idioma: 'number'}" sortable="'Year'">{{row.idioma}}</td>
+                            </tr>
+                        </table>
 
                     </div>
 
+
+                    <div ng-include="'languageModal.html'"></div> 
                 </div>
+                <!-- Button trigger modal -->
+
+
+
             </div>
+
         </div>
+    </div>
+</div>
 
+<!-- Actores -->
+<a name="actores"></a>
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Actores</h2>
+                <div >
+                    <div ng-controller="actorController as actor">
 
-        <!-- Subtitles -->
-        <a name="subtitles"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Subtitulos</h2>
-                        <div >
-                            <div ng-controller="subtitlesController as subtitles">
-
-                                <table ng-table="subtitles.tableParams" class="table table-bordered table-striped table-condensed">
-                                    <tr ng-repeat="row in $data.Search " >
-                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idsubtitles}}</td>
-                                        <td data-title="'Subtitulos'" filter="{subtitles: 'number'}" sortable="'Year'">{{row.subtitles}}</td>
-                                    </tr>
-                                </table>
-
-                            </div>
-
-
-                            <div ng-include="'subtitleModal.html'"></div> 
-                        </div>
-                        <!-- Button trigger modal -->
-
-
+                        <table ng-table="actor.tableParams" class="table table-bordered table-striped table-condensed">
+                            <tr ng-repeat="row in $data.Search " >
+                                <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idActor}}</td>
+                                <td data-title="'Actor'" filter="{Actor: 'number'}" sortable="'Year'">{{row.Actor}}</td>
+                            </tr>
+                        </table>
 
                     </div>
 
+
+                    <div ng-include="'actorModal.html'"></div> 
                 </div>
+                <!-- Button trigger modal -->
+
+
+
             </div>
+
         </div>
-
-        <!-- genre -->
-        <a name="genre"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Genero</h2>
-                        <div >
-                            <div ng-controller="genreController as genre">
-
-                                <table ng-table="genre.tableParams" class="table table-bordered table-striped table-condensed">
-                                    <tr ng-repeat="row in $data.Search " >
-                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idgenre}}</td>
-                                        <td data-title="'Genero'" filter="{genre: 'number'}" sortable="'Year'">{{row.genre}}</td>
-                                    </tr>
-                                </table>
-
-                            </div>
+    </div>
+</div>
 
 
-                            <div ng-include="'genreModal.html'"></div> 
-                        </div>
-                        <!-- Button trigger modal -->
+<!-- Subtitles -->
+<a name="subtitles"></a>
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Subtitulos</h2>
+                <div >
+                    <div ng-controller="subtitlesController as subtitles">
 
-
+                        <table ng-table="subtitles.tableParams" class="table table-bordered table-striped table-condensed">
+                            <tr ng-repeat="row in $data.Search " >
+                                <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idsubtitles}}</td>
+                                <td data-title="'Subtitulos'" filter="{subtitles: 'number'}" sortable="'Year'">{{row.subtitles}}</td>
+                            </tr>
+                        </table>
 
                     </div>
 
+
+                    <div ng-include="'subtitleModal.html'"></div> 
                 </div>
+                <!-- Button trigger modal -->
+
+
+
             </div>
+
         </div>
+    </div>
+</div>
 
-        <!-- categories -->
-        <a name="categories"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Categorias </h2>
-                        <div >
-                            <div ng-controller="categoriesController as categories">
+<!-- genre -->
+<a name="genre"></a>
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Genero</h2>
+                <div >
+                    <div ng-controller="genreController as genre">
 
-                                <table ng-table="categories.tableParams" class="table table-bordered table-striped table-condensed">
-                                    <tr ng-repeat="row in $data.Search " >
-                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idcategories}}</td>
-                                        <td data-title="'Categoria'" filter="{categories: 'number'}" sortable="'Year'">{{row.categories}}</td>
-                                    </tr>
-                                </table>
-
-                            </div>
-
-
-                            <div ng-include="'categorieModal.html'"></div> 
-                        </div>
-                        <!-- Button trigger modal -->
-
-
+                        <table ng-table="genre.tableParams" class="table table-bordered table-striped table-condensed">
+                            <tr ng-repeat="row in $data.Search " >
+                                <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idgenre}}</td>
+                                <td data-title="'Genero'" filter="{genre: 'number'}" sortable="'Year'">{{row.genre}}</td>
+                            </tr>
+                        </table>
 
                     </div>
 
+
+                    <div ng-include="'genreModal.html'"></div> 
                 </div>
+                <!-- Button trigger modal -->
+
+
+
             </div>
+
         </div>
-        <!-- suggestions -->
-        <a name="suggestions"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Sugerencias</h2>
-                        <div >
-                            <div ng-controller="suggestionsController as suggestions">
+    </div>
+</div>
 
-                                <table ng-table="suggestions.tableParams" class="table table-bordered table-striped table-condensed">
-                                    <tr ng-repeat="row in $data.Search " >
-                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idsuggestions}}</td>
-                                        <td data-title="'Sugerencia'" filter="{suggestions: 'number'}" sortable="'Year'">{{row.suggestions}}</td>
-                                    </tr>
-                                </table>
+<!-- categories -->
+<a name="categories"></a>
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Categorias </h2>
+                <div >
+                    <div ng-controller="categoriesController as categories">
 
-                            </div>
-
-
-                            <div ng-include="'suggestionModal.html'"></div> 
-                        </div>
-                        <!-- Button trigger modal -->
-
-
+                        <table ng-table="categories.tableParams" class="table table-bordered table-striped table-condensed">
+                            <tr ng-repeat="row in $data.Search " >
+                                <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idcategories}}</td>
+                                <td data-title="'Categoria'" filter="{categories: 'number'}" sortable="'Year'">{{row.categories}}</td>
+                            </tr>
+                        </table>
 
                     </div>
 
+
+                    <div ng-include="'categorieModal.html'"></div> 
                 </div>
+                <!-- Button trigger modal -->
+
+
+
             </div>
+
         </div>
-        <!-- users -->
-        <a name="user"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Usuarios</h2>
-                        <div >
-                            <div ng-controller="userController as user">
+    </div>
+</div>
+<!-- suggestions -->
+<a name="suggestions"></a>
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Sugerencias</h2>
+                <div >
+                    <div ng-controller="suggestionsController as suggestions">
 
-                                <table ng-table="user.tableParams" class="table table-bordered table-striped table-condensed">
-                                    <tr ng-repeat="row in $data.Search " >
-                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.iduser}}</td>
-                                        <td data-title="'Usuario'" filter="{user: 'number'}" sortable="'Year'">{{row.user}}</td>
-                                    </tr>
-                                </table>
-
-                            </div>
-
-
-                            <div ng-include="'userModal.html'"></div> 
-                        </div>
-                        <!-- Button trigger modal -->
-
-
+                        <table ng-table="suggestions.tableParams" class="table table-bordered table-striped table-condensed">
+                            <tr ng-repeat="row in $data.Search " >
+                                <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idsuggestions}}</td>
+                                <td data-title="'Sugerencia'" filter="{suggestions: 'number'}" sortable="'Year'">{{row.suggestions}}</td>
+                            </tr>
+                        </table>
 
                     </div>
 
+
+                    <div ng-include="'suggestionModal.html'"></div> 
                 </div>
+                <!-- Button trigger modal -->
+
+
+
             </div>
+
         </div>
-        <!-- role -->
-        <a name="roles"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Roles</h2>
-                        <div >
-                            <div ng-controller="roleController as role">
+    </div>
+</div>
+<!-- users -->
+<a name="user"></a>
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Usuarios</h2>
+                <div >
+                    <div ng-controller="userController as user">
 
-                                <table ng-table="role.tableParams" class="table table-bordered table-striped table-condensed">
-                                    <tr ng-repeat="row in $data.Search " >
-                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idrole}}</td>
-                                        <td data-title="'Rol'" filter="{role: 'number'}" sortable="'Year'">{{row.role}}</td>
-                                    </tr>
-                                </table>
-
-                            </div>
-
-
-                            <div ng-include="'roleModal.html'"></div> 
-                        </div>
-                        <!-- Button trigger modal -->
-
-
+                        <table ng-table="user.tableParams" class="table table-bordered table-striped table-condensed">
+                            <tr ng-repeat="row in $data.Search " >
+                                <td data-title="'Id'"  filter="{Id: 'text'}">{{row.iduser}}</td>
+                                <td data-title="'Usuario'" filter="{user: 'number'}" sortable="'Year'">{{row.user}}</td>
+                            </tr>
+                        </table>
 
                     </div>
 
+
+                    <div ng-include="'userModal.html'"></div> 
                 </div>
+                <!-- Button trigger modal -->
+
+
+
             </div>
+
         </div>
+    </div>
+</div>
+<!-- role -->
+<a name="roles"></a>
+<div class="content-section-a">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-6">
+                <hr class="section-heading-spacer">
+                <div class="clearfix"></div>
+                <h2 class="section-heading">Roles</h2>
+                <div >
+                    <div ng-controller="roleController as role">
+
+                        <table ng-table="role.tableParams" class="table table-bordered table-striped table-condensed">
+                            <tr ng-repeat="row in $data.Search " >
+                                <td data-title="'Id'"  filter="{Id: 'text'}">{{row.idrole}}</td>
+                                <td data-title="'Rol'" filter="{role: 'number'}" sortable="'Year'">{{row.role}}</td>
+                            </tr>
+                        </table>
+
+                    </div>
+
+
+                    <div ng-include="'roleModal.html'"></div> 
+                </div>
+                <!-- Button trigger modal -->
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 
 
 
 
-        <!--
+<!--
 ______ ____   ____ _______ ______ _____  
 |  ____/ __ \ / __ \__   __|  ____|  __ \ 
 | |__ | |  | | |  | | | |  | |__  | |__) |
@@ -518,75 +528,75 @@ ______ ____   ____ _______ ______ _____
 -->
 
 
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ul class="list-inline">
-                            <li class="footer-menu-divider">&sdot;</li>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <ul class="list-inline">
+                    <li class="footer-menu-divider">&sdot;</li>
 
-                            <li>
-                                <a href="#inicio">Inicio</a>
-                            </li>
+                    <li>
+                        <a href="#inicio">Inicio</a>
+                    </li>
 
-                            <li class="footer-menu-divider">&sdot;</li>
+                    <li class="footer-menu-divider">&sdot;</li>
 
-                            <li>
-                                <a href="#estrenos">Estrenos</a>
-                            </li>
+                    <li>
+                        <a href="#estrenos">Estrenos</a>
+                    </li>
 
-                            <li class="footer-menu-divider">&sdot;</li>
+                    <li class="footer-menu-divider">&sdot;</li>
 
-                            <li>
-                                <a href="#contact">Nuestras redes sociales</a>
-                            </li>
+                    <li>
+                        <a href="#contact">Nuestras redes sociales</a>
+                    </li>
 
-                            <li class="footer-menu-divider">&sdot;</li>                                
+                    <li class="footer-menu-divider">&sdot;</li>                                
 
-                            <li>
-                                <a href="#sugerencias">Sugerencias</a>
-                            </li>
-                        </ul>
+                    <li>
+                        <a href="#sugerencias">Sugerencias</a>
+                    </li>
+                </ul>
 
-                        <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
-                    </div>
-                </div>
+                <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
             </div>
-        </footer>
+        </div>
+    </div>
+</footer>
 
-    </body>
+</body>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 
-    <!--Angular.js  --->
-    <script src="node_modules/angular/angular.min.js"></script>
+<!--Angular.js  --->
+<script src="node_modules/angular/angular.min.js"></script>
 
-    <!--Angular.js Resources  --->
-    <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+<!--Angular.js Resources  --->
+<script src="node_modules/angular-resource/angular-resource.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-    <!-- Google Maps API Key-Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFvXfKy-vn2ilKVHLFrLIuLoE3JQjptfU&sensor=false"></script>
+<!-- Google Maps API Key-Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFvXfKy-vn2ilKVHLFrLIuLoE3JQjptfU&sensor=false"></script>
 
-    <!-- Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
+<!-- Theme JavaScript -->
+<script src="js/grayscale.js"></script>
 
-    <!--OMBD API --->
-    <script src="js/OmbdAPI.js"></script>
-
-
-    <!-- Include Bootstrap-select CSS, JS -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+<!--OMBD API --->
+<script src="js/OmbdAPI.js"></script>
 
 
-    <!--Angular Table   --->
-    <script src="js/ng-table.min.js"></script>
+<!-- Include Bootstrap-select CSS, JS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+
+
+<!--Angular Table   --->
+<script src="js/ng-table.min.js"></script>
 
 
 </html>
