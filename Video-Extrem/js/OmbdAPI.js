@@ -19,6 +19,7 @@ $Form.on('submit', function (p_oEvent) {
 });
 
 
+
 var app = angular.module("crudApp", ["ngTable", "ngResource"]);
 (function() {
     //    __  __            _      
@@ -48,7 +49,14 @@ var app = angular.module("crudApp", ["ngTable", "ngResource"]);
                     }})
             } 
         });
+
+        $scope.randomColor = function(){
+            var colors = ['#D64900', '#008684', '#860002'];
+            var random_color = colors[Math.floor(Math.random() * colors.length)];
+            $('#sidebar').css('background-color', random_color);
+        }
         $scope.showMovie = function(selectedMovie){
+            $scope.randomColor();
             $scope.actualMovie = selectedMovie;
         }
         $scope.editMovie = function(selectedMovie){
@@ -251,3 +259,5 @@ var app = angular.module("crudApp", ["ngTable", "ngResource"]);
 
     }
 })();
+//Esta funcion es para que el marco del poster de la pelicula cambie cada vez que se da visualizar.
+
