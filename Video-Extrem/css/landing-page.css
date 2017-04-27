@@ -389,6 +389,14 @@ p.copyright {
     border-color: #59C9A5;
 }
 
+.magic{
+    cursor: pointer;
+    
+} 
+.magic:hover{
+    color: #998100;
+    cursor: pointer;
+} 
 .btn{
     background-color: rgba(134,0,0,0.4);
     color: #FFF;
@@ -459,5 +467,8 @@ p.copyright {
 .posterImg {
     width: 100%;
     height: : 100%;
+}
+th{
+    font-size: 80%;
 }
 

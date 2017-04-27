@@ -20,8 +20,23 @@ $Form.on('submit', function (p_oEvent) {
 
 
 
+
 var app = angular.module("crudApp", ["ngTable", "ngResource"]);
 (function() {
+    //Press enter on modal 
+    app.directive('pressEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if(event.which === 13) {
+                    scope.$apply(function (){
+                        scope.$eval(attrs.pressEnter);
+                    });
+
+                    event.preventDefault();
+                }
+            });
+        };
+    });
     //    __  __            _      
     //   |  \/  |          (_)     
     //   | \  / | _____   ___  ___ 
@@ -37,17 +52,28 @@ var app = angular.module("crudApp", ["ngTable", "ngResource"]);
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
         $scope.actualMovie = {};
-        this.tableParams = new NgTableParams({}, {
+
+
+        this.tableParams = new NgTableParams({page: 1, // show first page
+                                              count: 3, // count per page
+                                              filter: {
+                                                  name: '' // initial filter
+                                              }
+                                             }, {
             getData: function(params) {
                 // ajax request to api
-                var sUrl = 'http://www.omdbapi.com/?s=Harry'
+                var sUrl = 'http://www.omdbapi.com/?s=Star&page=10'
                 return $.ajax(sUrl,{
                     complete: function(p_oXHR, p_sStatus) {
                         var oData =$.parseJSON(p_oXHR.responseText);
                         console.log(oData.Search);
                         return oData.Search
-                    }})
+                    }}).done(function(data) {
+                    params.total(data.inlineCount); // recal. page nav controls
+                    return data.results;
+                });
             } 
+
         });
 
         $scope.randomColor = function(){
@@ -65,6 +91,33 @@ var app = angular.module("crudApp", ["ngTable", "ngResource"]);
         }
         $scope.deleteMovie = function(selectedMovie){
             alert( "Deleting "+$scope.actualMovie.Title)
+        }
+        $scope.searchMovie = function(){
+            /*
+            "Title":"Lalaland","Year":"2014","Rated":"N/A","Released":"22 Sep 2014","Runtime":"N/A","Genre":"Comedy","Director":"N/A","Writer":"N/A","Actors":"Lauren Ashley Berry, Ritza Calixte, Julian Curi, Matthew Helfer","Plot":"N/A","Language":"English","Country":"USA","Awards":"N/A","Poster":"N/A","Metascore":"N/A","imdbRating":"N/A","imdbVotes":"N/A","imdbID":"tt4321350","Type":"series","totalSeasons":"N/A","Response":"True"}
+            */
+            var sUrl = 'http://www.omdbapi.com/?t='+$scope.actualMovie.title+'&type=movie&tomatoes=true';
+            return $.ajax(sUrl,{
+                complete: function(p_oXHR, p_sStatus) {
+                    var data =$.parseJSON(p_oXHR.responseText);
+
+                    console.log(data);
+                    $scope.actualMovie.title = data.Title;
+                    var released = data.Released;
+                    var year = released.substring(released.length-4, released.length);
+                    console.log(year);
+                    $scope.actualMovie.year = parseInt(year);
+                    $scope.actualMovie.genre = data.Genre;
+                    $scope.actualMovie.actors = data.Actors;
+                    $scope.actualMovie.language = data.Language;
+                    $scope.actualMovie.poster = data.Poster;
+                    $scope.actualMovie.plot = data.Plot;
+                    $scope.$apply();
+                    return data
+                }}).done(function(data) {
+
+
+            });
         }
 
     }
