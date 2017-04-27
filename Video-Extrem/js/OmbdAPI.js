@@ -21,7 +21,7 @@ $Form.on('submit', function (p_oEvent) {
 
 
 
-var app = angular.module("crudApp", ["ngTable", "ngResource"]);
+var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists'],);
 (function() {
     //Press enter on modal 
     app.directive('pressEnter', function () {
@@ -121,6 +121,40 @@ var app = angular.module("crudApp", ["ngTable", "ngResource"]);
         }
 
     }
+    /***
+         *      __  __            _                     _             
+         *     |  \/  |          (_)          /\       | |            
+         *     | \  / | _____   ___  ___     /  \   ___| |_ ___  _ __ 
+         *     | |\/| |/ _ \ \ / / |/ _ \   / /\ \ / __| __/ _ \| '__|
+         *     | |  | | (_) \ V /| |  __/  / ____ \ (__| || (_) | |   
+         *     |_|  |_|\___/ \_/ |_|\___| /_/    \_\___|\__\___/|_|   
+         *                                                            
+         *                                                            
+    */
+    app.controller("SimpleDemoController", function($scope) {
+        $scope.model = [generateList(1)];
+
+        $scope.onDrop = function(srcList, srcIndex, targetList, targetIndex) {
+            targetList.splice(targetIndex, 0, srcList[srcIndex]);
+            if (srcList == targetList && targetIndex <= srcIndex) srcIndex++;
+            srcList.splice(srcIndex, 1);
+            return true;
+        };
+
+        function generateList(id) {
+            return ['A', 'B', 'C'].map(function(letter) {
+                // angular-drag-and-drop-lists usually serializes the objects to drag, thus we
+                // can not transfer functions on the objects. However, as this fiddle uses dnd-callback
+                // to move the objects directly without serialization, we can use a function reference
+                // on the item here.
+                return {
+                    labelFunc: function(index) {
+                        return "Item " + id + letter + " at index " + index;
+                    }
+                };
+            });
+        }
+    });
 
     //    _                                              
     //   | |                                             

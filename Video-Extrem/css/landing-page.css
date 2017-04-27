@@ -457,6 +457,12 @@ p.copyright {
   margin-right: -100%;
   background-color: #860002;
 }
+#createSidebar {
+  float: right;
+  width: 60%;
+  margin-right: -70%;
+  background-color: #860002;
+}
 #cleared {
   clear: both;
 }
@@ -464,6 +470,7 @@ p.copyright {
     width: 100%;
     height: : 100%;
 }
+
 .posterImg {
     width: 100%;
     height: : 100%;
@@ -472,3 +479,26 @@ th{
     font-size: 80%;
 }
 
+ul[dnd-list] {
+  min-height: 42px;
+  padding: 0;
+}
+
+ul[dnd-list] > li {
+  border-bottom: 1px solid #ddd;
+  display: block;
+  padding: 10px 15px;
+}
+
+ul[dnd-list] > li.dndDraggingSource {
+  display: none;
+}
+
+ul[dnd-list] > li.dndPlaceholder {
+  background-color: #ddd;
+  min-height: 42px;
+}
+
+.panel .panel-body {
+  padding: 0;
+}
