@@ -26,13 +26,13 @@ _____                _
 
             </div>
             <!-- Modal Body -->
-            <div class="modal-body">
+            <div >
 
 
 
                 <div id="wrapper">
                     <div id="content">
-                        <div class="modal-body">
+                        <div class="modal-body pre-scrollable">
 
                             <form class="form-horizontal" role="form">
                                 <div class="form-group">
@@ -42,7 +42,9 @@ _____                _
                                         <input press-enter="searchMovie()"  class="form-control" id="movieName" ng-model="actualMovie.title" placeholder="Nombre de la Pelicula"/>
                                     </div>
                                     <div class="col-md-2">
-                                        <btn ng-click="searchMovie()" class="magic fa fa-magic" aria-hidden="true"></btn>
+                                        <btn ng-click="searchMovie()"  ng-show="!loading"  class=" magic fa fa-magic" aria-hidden="true"></btn>
+                                        <i ng-show="loading"  class="fa fa-spinner magic fa-spin  fa-fw"></i>
+                                        <span class="sr-only">Loading...</span>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -90,6 +92,28 @@ _____                _
                                         <input type="number"  step="100" value="0" class="form-control" id="movieYear" placeholder="Precio de la Pelicula"/> 
                                     </div>
                                 </div>
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label"
+                                        for="inputYear">Actores</h5>
+                                    <div class="col-md-8">
+                                        <div >
+                                            <div ng-controller="actorController as actor">
+
+                                                <table ng-table="actor.tableParams" class="table table-bordered table-striped table-condensed">
+                                                    <tr ng-repeat="actualActor in actors " >
+                                                        <td data-title="'Id'"  filter="{Id: 'text'}"><h5>{{actualActor.id}}</h5></td>
+                                                        <td data-title="'Actor'" filter="{Actor: 'number'}" sortable="'Year'"><h5>{{actualActor.Actor}}</h5></td>
+                                                        <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-target="#showActorModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editActor(actualActor)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                                </table>
+
+                                            </div>
+
+
+                                            <div ng-include="'actorModal.html'"></div> 
+                                        </div>
+                                    </div>
+                                </div>
+
 
 
                             </form>

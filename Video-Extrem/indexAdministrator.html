@@ -302,8 +302,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
                                 <table ng-table="actor.tableParams" class="table table-bordered table-striped table-condensed">
                                     <tr ng-repeat="actualActor in $data.Search " >
-                                        <td data-title="'Id'"  filter="{Id: 'text'}">{{actualActor.idActor}}</td>
-                                        <td data-title="'Actor'" filter="{Actor: 'number'}" sortable="'Year'">{{actualActor.Actor}}</td>
+                                        <td data-title="'Id'"  filter="{Id: 'text'}"><h5>{{actualActor.id}}</h5></td>
+                                        <td data-title="'Actor'" filter="{Actor: 'number'}" sortable="'Year'"><h5>{{actualActor.Actor}}</h5></td>
                                         <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-target="#showActorModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editActor(actualActor)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
                                 </table>
 
@@ -336,7 +336,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <div ng-controller="subtitlesController as subtitles">
 
                                 <table ng-table="subtitles.tableParams" class="table table-bordered table-striped table-condensed">
-                                    <tr ng-repeat="actualSubtitlein $data.Search " >
+                                    <tr ng-repeat="actualSubtitle in $data.Search " >
                                         <td data-title="'Id'"  filter="{Id: 'text'}">{{actualSubtitle.idsubtitles}}</td>
                                         <td data-title="'Subtitulos'" filter="{subtitles: 'number'}" sortable="'Year'">{{actualSubtitle.subtitles}}</td>
                                         <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSubtitle(actualSubtitle)" data-toggle="modal" data-target="#showSubtitleModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editSubtitle(actualSubtitle)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSubtitle(actualSubtitle)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>

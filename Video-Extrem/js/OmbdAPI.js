@@ -22,7 +22,7 @@ $Form.on('submit', function (p_oEvent) {
 
 
 var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists'],);
-(function() {
+                         (function() {
     //Press enter on modal 
     app.directive('pressEnter', function () {
         return function (scope, element, attrs) {
@@ -51,8 +51,12 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists'],);
     function movieTableController(NgTableParams, $resource, $scope) {
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
-        $scope.actualMovie = {};
+        $scope.actualMovie = {
+          
 
+        };
+        $scope.actors = [];
+        $scope.loading = false;
 
         this.tableParams = new NgTableParams({page: 1, // show first page
                                               count: 3, // count per page
@@ -96,6 +100,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists'],);
             /*
             "Title":"Lalaland","Year":"2014","Rated":"N/A","Released":"22 Sep 2014","Runtime":"N/A","Genre":"Comedy","Director":"N/A","Writer":"N/A","Actors":"Lauren Ashley Berry, Ritza Calixte, Julian Curi, Matthew Helfer","Plot":"N/A","Language":"English","Country":"USA","Awards":"N/A","Poster":"N/A","Metascore":"N/A","imdbRating":"N/A","imdbVotes":"N/A","imdbID":"tt4321350","Type":"series","totalSeasons":"N/A","Response":"True"}
             */
+            $scope.loading = true;
             var sUrl = 'http://www.omdbapi.com/?t='+$scope.actualMovie.title+'&type=movie&tomatoes=true';
             return $.ajax(sUrl,{
                 complete: function(p_oXHR, p_sStatus) {
@@ -112,12 +117,29 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists'],);
                     $scope.actualMovie.language = data.Language;
                     $scope.actualMovie.poster = data.Poster;
                     $scope.actualMovie.plot = data.Plot;
+                    var actors = data.Actors.split(",");
+                    console.log(actors);
+                    for (actualActorIndex in actors){
+
+                        console.log(actualActorIndex, actors[actualActorIndex]);
+                        $scope.addActor(actors[actualActorIndex],actualActorIndex);
+                    }
+                    $scope.loading = false;
                     $scope.$apply();
+                    
                     return data
                 }}).done(function(data) {
 
 
             });
+        }
+        $scope.addActor = function(actorName, id){
+            //Aqui se deberia de agregar a la base de datos si no existe y por otro lado traerse los que si existen.
+            var actualActor = {
+                "Actor" : actorName,
+                "id" : id
+            }
+            $scope.actors.push(actualActor);
         }
 
     }

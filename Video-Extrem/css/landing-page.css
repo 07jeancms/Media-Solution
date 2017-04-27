@@ -425,7 +425,10 @@ p.copyright {
 .principalImage{
     background-color: rgba(0,0,0,0.1);
 }
-
+.modal-body {
+    max-height: 70h;
+    overflow-y: auto;
+}
 .modal-body .form-horizontal .col-sm-2,
 .modal-body .form-horizontal .col-sm-10 {
     width: 100%
