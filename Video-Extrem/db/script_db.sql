@@ -350,6 +350,23 @@ CREATE TABLE IF NOT EXISTS `video_extrem`.`Test` (
 ENGINE = InnoDB;
 
 
+-- -----------------------------------------------------
+-- Table `video_extrem`.`Promociones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `video_extrem`.`Promociones` (
+  `idPromociones` INT NOT NULL AUTO_INCREMENT,
+  `promocion` VARCHAR(200) NULL,
+  `descripcion` VARCHAR(500) NULL,
+  `image` LONGBLOB NULL,
+  PRIMARY KEY (`idPromociones`))
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
