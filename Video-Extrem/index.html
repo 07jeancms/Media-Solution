@@ -158,7 +158,6 @@
                 <div class="row">
                     <!--Botones que cambian el contenido de los carousels.-->
                     <div class="col-lg-12 col-sm-6">
-
                         <div class="col-lg-6 col-sm-6">
                             <hr class="section-heading-spacer">
                         </div>
@@ -332,8 +331,8 @@
                         <p>Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un buzon de sugerencias, en el cual puedes brindarnos tus inquietudes, quejas y consultas.</p>
                         <button id="suggestionButton" value = "Show" onclick="showHideTextArea()">+</button>
                         <div id="suggestionTextArea" class="collapse">
-                            <select id="selectLocal">
-                                <option value="local">Seleccion el local a dirigir tu sugerencia</option>
+                            <select id="selectLocal" class="select-mobile">
+                                <option value="local">Seleccion el local</option>
                                 <option value="moravia">Moravia</option>
                                 <option value="coronado">Coronado</option>
                                 <option value="sabanilla">Sabanilla</option>
@@ -341,7 +340,9 @@
                                 <option value="general">General</option>
                             </select>
                             <br>
-                            <textarea id="textAreaSuggestion" rows="5" cols="60" placeholder="Sugerencia"></textarea>
+                            <textarea id="textAreaSuggestion" rows="5" cols="60" placeholder="Sugerencia" class="text-area-mobile"></textarea>
+                            <br>
+                            <br>
                             <br>
                             <button id="sendSuggestion" onclick="sendSuggestionInfo()">Enviar</button>
                         </div>
