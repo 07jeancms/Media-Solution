@@ -95,6 +95,10 @@ a:hover{
   -moz-animation-timing-function: linear;
 }
 
+.select-mobile{
+    font-family: cursive;
+}
+
 .intro {
   display: table;
   width: 100%;
@@ -504,4 +508,26 @@ ul[dnd-list] > li.dndPlaceholder {
 
 .panel .panel-body {
   padding: 0;
+}
+
+@media only screen and (max-width: 500px) {
+    .select-mobile {
+        font-family: monospace;
+        width: 330px;
+    }
+    .text-area-mobile {
+        font-family: monospace;
+        width: 330px;
+    }
+}
+
+@media only screen and (max-width: 330px) {
+    .select-mobile {
+        font-family: monospace;
+        width: 300px;
+    }
+    .text-area-mobile {
+        font-family: monospace;
+        width: 300px;
+    }
 }
