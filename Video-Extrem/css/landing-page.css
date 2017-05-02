@@ -1,23 +1,23 @@
 /*
- * Start Bootstrap - Landing Page (http://startbootstrap.com/)
- * Copyright 2013-2016 Start Bootstrap
- * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
- */
+* Start Bootstrap - Landing Page (http://startbootstrap.com/)
+* Copyright 2013-2016 Start Bootstrap
+* Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap/blob/gh-pages/LICENSE)
+*/
 
 /*
 Palete colors: https://coolors.co/ff8360-fb4b4e-4ea2be-59c9a5-ba0c31
 */
 
 body {
-  width: 100%;
-  height: 100%;
-  font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color:  black;
-  background-color: white;
+    width: 100%;
+    height: 100%;
+    font-family: "Lora", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color:  black;
+    background-color: white;
 }
 html {
-  width: 100%;
-  height: 100%;
+    width: 100%;
+    height: 100%;
 }
 
 h1,
@@ -26,73 +26,73 @@ h3,
 h4,
 h5,
 h6 {
-  margin: 0 0 35px;
-  text-transform: uppercase;
-  font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: 700;
-  letter-spacing: 1px;
+    margin: 0 0 35px;
+    text-transform: uppercase;
+    font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
 }
 
 p {
-  margin: 0 0 25px;
-  font-size: 18px;
-  line-height: 1.5;
+    margin: 0 0 25px;
+    font-size: 18px;
+    line-height: 1.5;
 }
 @media (min-width: 768px) {
-  p {
-    margin: 0 0 35px;
-    font-size: 20px;
-    line-height: 1.6;
+    p {
+        margin: 0 0 35px;
+        font-size: 20px;
+        line-height: 1.6;
 
-  }
+    }
 }
 
 a:hover{
-  text-decoration: none;
-  color: #D64900;
+    text-decoration: none;
+    color: #D64900;
 }
 
 
 .light {
-  font-weight: 400;
+    font-weight: 400;
 }
 
 .btn-circle {
-  width: 70px;
-  height: 70px;
-  margin-top: 15px;
-  padding: 7px 16px;
-  border: 2px solid white;
-  border-radius: 100% !important;
-  font-size: 40px;
-  color: white;
-  background: transparent;
-  -webkit-transition: background 0.3s ease-in-out;
-  -moz-transition: background 0.3s ease-in-out;
-  transition: background 0.3s ease-in-out;
+    width: 70px;
+    height: 70px;
+    margin-top: 15px;
+    padding: 7px 16px;
+    border: 2px solid white;
+    border-radius: 100% !important;
+    font-size: 40px;
+    color: white;
+    background: transparent;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background 0.3s ease-in-out;
 }
 
 .btn-circle:hover,
 .btn-circle:focus {
-  outline: none;
-  color: white;
-  background: rgba(255, 255, 255, 0.1);
+    outline: none;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
 }
 .btn-circle i.animated {
-  -webkit-transition-property: -webkit-transform;
-  -webkit-transition-duration: 1s;
-  -moz-transition-property: -moz-transform;
-  -moz-transition-duration: 1s;
+    -webkit-transition-property: -webkit-transform;
+    -webkit-transition-duration: 1s;
+    -moz-transition-property: -moz-transform;
+    -moz-transition-duration: 1s;
 }
 .btn-circle:hover i.animated {
-  -webkit-animation-name: pulse;
-  -moz-animation-name: pulse;
-  -webkit-animation-duration: 1.5s;
-  -moz-animation-duration: 1.5s;
-  -webkit-animation-iteration-count: infinite;
-  -moz-animation-iteration-count: infinite;
-  -webkit-animation-timing-function: linear;
-  -moz-animation-timing-function: linear;
+    -webkit-animation-name: pulse;
+    -moz-animation-name: pulse;
+    -webkit-animation-duration: 1.5s;
+    -moz-animation-duration: 1.5s;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
 }
 
 .select-mobile{
@@ -100,22 +100,30 @@ a:hover{
 }
 
 .intro {
-  display: table;
-  width: 100%;
-  height: auto;
-  padding: 100px 0;
-  text-align: center;
-  color: white;
-  background: url(../img/intro-bg2.png) no-repeat bottom center scroll;
-  background-color: black;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  background-size: cover;
-  -o-background-size: cover;
+    display: table;
+    width: 100%;
+    height: auto;
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+    background: url(../img/intro-bg2.png) no-repeat bottom center scroll;
+    background-color: black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+.pageContent{
+    background: url(../img/intro-bg-ligth.png) no-repeat bottom center scroll;
+    min-height: 100%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-position: center center;
 }
 .intro .intro-body {
-  display: table-cell;
-  vertical-align: middle;
+    display: table-cell;
+    vertical-align: middle;
 }
 
 @font-face {
@@ -127,8 +135,8 @@ a:hover{
     src:  url('../fonts/ostrich-regular.ttf') format("truetype");
 }
 .intro .intro-body .brand-heading {
-    
-  font-size: 4pc;
+
+    font-size: 4pc;
     color: white;
     font-family: 'Ostrich-Font-Bold';
     font-weight: bold;
@@ -136,25 +144,25 @@ a:hover{
 .exColor{
     display:inline;
     color: rgb(214,73,0);
-    
-    
+
+
 }
 
 .intro .intro-body .intro-text {
-  font-size: 1.5pc;
+    font-size: 1.5pc;
     font-family: 'Ostrich-Font', cursive;
 }
 @media (min-width: 768px) {
-  .intro {
-    height: 100%;
-    padding: 0;
-  }
-  .intro .intro-body .brand-heading {
-    font-size: 100px;
-  }
-  .intro .intro-body .intro-text {
-    font-size: 26px;
-  }
+    .intro {
+        height: 100%;
+        padding: 0;
+    }
+    .intro .intro-body .brand-heading {
+        font-size: 100px;
+    }
+    .intro .intro-body .intro-text {
+        font-size: 26px;
+    }
 }
 
 .topnav {
@@ -222,28 +230,37 @@ a:hover{
     }
 }
 
-
+.alert-movieInfo{
+    background-color: rgba(214,73,0,0.1);
+    
+    color: rgba(91,31,0,0.8);
+    
+}
+.movieInfoText{
+    font-size: 3.8vh;
+    color: rgba(99,34,0,1);
+}
 .network-name {
     text-transform: uppercase;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 2px;
-}
+}   
 
 .content-section-a {
-    min-height: 85vh;
-    padding: 50px 0;
-    background-color: #f8f8f8;
+    min-height: 90vh;
+    padding: 15vh 0;
+    background-color: rgba(255,255,255,0.3);
 }
 
 .content-section-b {
-    min-height:  85vh;
-    padding: 50px 0;
-    border-top: 1px solid #860002;
-    border-bottom: 1px solid #860002;
+    
+    min-height:  90vh;
+    padding: 15vh 0;
+    
 }
 .content-section-c {
-    min-height:  50vh;
+    min-height:  90vh;
     padding: 50px 0;
     border-top: 1px solid #860002;
     border-bottom: 1px solid #860002;
@@ -260,19 +277,32 @@ a:hover{
 }
 
 .banner {
-    padding: 100px 0;
+    padding: 40vh 0;
     color: #f8f8f8;
     background: url(../img/banner-bg.jpg) no-repeat center center;
     background-size: cover;
 }
 
 .bannerSugerencias {
-    padding: 100px 0;
+    padding: 40vh 0;
     color: black;
     background: url(../img/suggestion_1.jpg) no-repeat center center;
     background-size: cover;
 }
+.bannerPromociones {
+    padding: 40vh 0;
+    color: #f8f8f8;
+    background: url(../img/promociones.png) no-repeat center center;
+    background-size: cover;
+}
 
+#searchMovie {
+    position: relative;
+}
+#reservations {
+    position: absolute;
+    bottom: 0;
+}
 .banner h2 {
     margin: 0;
     text-shadow: 2px 2px 3px rgba(0,0,0,0.6);
@@ -340,43 +370,43 @@ p.copyright {
     margin: 15px 0 0;
 }
 #map {
-  width: 140%;
-  height: 400px;
-  margin: 5px;
-  border: inset;
-  border-width: 5px;
-  border-color: #59C9A5;
+    width: 140%;
+    height: 400px;
+    margin: 5px;
+    border: inset;
+    border-width: 5px;
+    border-color: #59C9A5;
 }
 .multi-item-carousel{
-  .carousel-inner{
-    > .item{
-      transition: 500ms ease-in-out left;
+    .carousel-inner{
+        > .item{
+            transition: 500ms ease-in-out left;
+        }
+        .active{
+            &.left{
+                left:-25%;
+            }
+            &.right{
+                left:20%;
+            }
+        }
+        .next{
+            left: 20%;
+        }
+        .prev{
+            left: -20%;
+        }
+        @media all and (transform-3d), (-webkit-transform-3d) {
+            > .item{
+
+            }
+        }
     }
-    .active{
-      &.left{
-        left:-25%;
-      }
-      &.right{
-        left:20%;
-      }
+    .carouse-control{
+        &.left, &.right{
+            background-image: none;
+        }
     }
-    .next{
-      left: 20%;
-    }
-    .prev{
-      left: -20%;
-    }
-    @media all and (transform-3d), (-webkit-transform-3d) {
-      > .item{
-       
-      }
-    }
-  }
-  .carouse-control{
-    &.left, &.right{
-      background-image: none;
-    }
-  }
 }
 
 .carouselImg{
@@ -395,7 +425,7 @@ p.copyright {
 
 .magic{
     cursor: pointer;
-    
+
 } 
 .magic:hover{
     color: #998100;
@@ -421,7 +451,7 @@ p.copyright {
 }
 
 .mediaIcon{
-     height: 100px;
+    height: 100px;
     width : 100px;
     cursor: pointer; 
     cursor: hand;
@@ -449,29 +479,29 @@ p.copyright {
 }
 .editBtn:hover{
     color :  #D64900;
-     cursor: pointer; 
+    cursor: pointer; 
 }
 #wrapper {
-  margin-right: 20%;
+    margin-right: 20%;
 }
 #content {
-  float: left;
-  width: 100%;
+    float: left;
+    width: 100%;
 }
 #sidebar {
-  float: right;
-  width: 80%;
-  margin-right: -100%;
-  background-color: #860002;
+    float: right;
+    width: 80%;
+    margin-right: -100%;
+    background-color: #860002;
 }
 #createSidebar {
-  float: right;
-  width: 60%;
-  margin-right: -70%;
-  background-color: #860002;
+    float: right;
+    width: 60%;
+    margin-right: -70%;
+    background-color: #860002;
 }
 #cleared {
-  clear: both;
+    clear: both;
 }
 .posterContainer {
     width: 100%;
@@ -487,27 +517,27 @@ th{
 }
 
 ul[dnd-list] {
-  min-height: 42px;
-  padding: 0;
+    min-height: 42px;
+    padding: 0;
 }
 
 ul[dnd-list] > li {
-  border-bottom: 1px solid #ddd;
-  display: block;
-  padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    display: block;
+    padding: 10px 15px;
 }
 
 ul[dnd-list] > li.dndDraggingSource {
-  display: none;
+    display: none;
 }
 
 ul[dnd-list] > li.dndPlaceholder {
-  background-color: #ddd;
-  min-height: 42px;
+    background-color: #ddd;
+    min-height: 42px;
 }
 
 .panel .panel-body {
-  padding: 0;
+    padding: 0;
 }
 
 @media only screen and (max-width: 500px) {
@@ -530,4 +560,11 @@ ul[dnd-list] > li.dndPlaceholder {
         font-family: monospace;
         width: 300px;
     }
+}
+
+table{
+    background-color:rgba(255,255,255,0.5);
+}
+table-striped>tbody>tr:nth-of-type(odd){
+   background-color:red;
 }

@@ -8,7 +8,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
-        
+
         <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
         <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
         <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -27,15 +27,15 @@
         <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
         <meta name="theme-color" content="#ffffff">
 
-    <!-- 
-      _____ _   _  _____ _     _    _ _____  ______  _____ 
-     |_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
-       | | |  \| | |    | |   | |  | | |  | | |__  | (___  
-       | | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
-      _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
-     |_____|_| \_|\_____|______\____/|_____/|______|_____/ 
+        <!-- 
+_____ _   _  _____ _     _    _ _____  ______  _____ 
+|_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
+| | |  \| | |    | |   | |  | | |  | | |__  | (___  
+| | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
+_| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
+|_____|_| \_|\_____|______\____/|_____/|______|_____/ 
 
-    -->
+-->
 
 
 
@@ -45,78 +45,78 @@
         <!-- Custom CSS -->
         <link href="css/navbar.css" rel="stylesheet">
         <link href="css/landing-page.css" rel="stylesheet">
-        
+
 
         <!-- Custom Fonts -->
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-        
+
         <script type="text/javascript" src="js/sugerencias.js"></script>
 
         <title>Video Extrem</title>
 
     </head>
-    
+
     <body>
 
         <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-        <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand page-scroll" href="#inicio">
-                <i class="fa fa-play-circle"></i> <span class="light">Video</span> Extreme
-            </a>
-        </div>
-        <label for="drop" class="toggle">Menu</label>
-        <input type="checkbox" id="drop" />
-            <ul class="menu">
-                <li>
-                    <!-- First Tier Drop Down -->
-                    <label for="drop-1" class="toggle">Peliculas</label>
-                    <a href="#">Peliculas</a>
-                    <input type="checkbox" id="drop-1"/>
-                    <ul >
-                        <li><a href="#carousel" onclick ="changeCarousel(1)">Estrenos</a></li>
-                        <li><a href="#carousel" onclick ="changeCarousel(2)">Mas vendidas</a></li>
-                        <li><a href="#carousel" onclick ="changeCarousel(3)">Nominadas al oscar</a></li>
-                        <li><a href="#buscatupelicula">Busca tu pelicula</a></li>
-                    </ul>
-                </li>
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand page-scroll" href="#inicio">
+                        <i class="fa fa-play-circle"></i> <span class="light">Video</span> Extreme
+                    </a>
+                </div>
+                <label for="drop" class="toggle">Menu</label>
+                <input type="checkbox" id="drop" />
+                <ul class="menu">
+                    <li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Peliculas</label>
+                        <a href="#">Peliculas</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul >
+                            <li><a href="#movieCarousselContainer" onclick ="changeCarousel(1)">Estrenos</a></li>
+                            <li><a href="#movieCarousselContainer" onclick ="changeCarousel(2)">Mas vendidas</a></li>
+                            <li><a href="#movieCarousselContainer" onclick ="changeCarousel(3)">Nominadas al oscar</a></li>
+                            <li><a href="#buscatupelicula">Busca tu pelicula</a></li>
+                        </ul>
+                    </li>
 
-                <li><a class="page-scroll" href="#reservaciones">Reservaciones</a></li>
-                <li><a class="page-scroll" href="#promociones">Promociones</a></li>
-                <li><a class="page-scroll" href="#contactenos">Contactenos</a></li>
+                    <li><a class="page-scroll" href="#reservaciones">Reservaciones</a></li>
+                    <li><a class="page-scroll" href="#promociones">Promociones</a></li>
+                    <li><a class="page-scroll" href="#contactenos">Contactenos</a></li>
 
-                <li>
-                    <!-- First Tier Drop Down -->
-                    <label for="drop-2" class="toggle">Acerca de nosotros</label>
-                    <a href="#">Acerca de nosotros</a>
-                    <input type="checkbox" id="drop-2"/>
+                    <li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-2" class="toggle">Acerca de nosotros</label>
+                        <a href="#">Acerca de nosotros</a>
+                        <input type="checkbox" id="drop-2"/>
                         <ul >
                             <li><a href="#quienessomos">Quienes somos?</a></li>
                             <li><a href="#establecimientos">Establecimientos</a></li>
                             <li><a href="#encuentrenos">Encuentrenos en</a></li>
                         </ul>
-                </li>
+                    </li>
 
-            </ul>
-        </div>
+                </ul>
+            </div>
         </nav>
 
 
-    <!--
-      _    _ ______          _____  ______ _____  
-     | |  | |  ____|   /\   |  __ \|  ____|  __ \ 
-     | |__| | |__     /  \  | |  | | |__  | |__) |
-     |  __  |  __|   / /\ \ | |  | |  __| |  _  / 
-     | |  | | |____ / ____ \| |__| | |____| | \ \ 
-     |_|  |_|______/_/    \_\_____/|______|_|  \_\
+        <!--
+_    _ ______          _____  ______ _____  
+| |  | |  ____|   /\   |  __ \|  ____|  __ \ 
+| |__| | |__     /  \  | |  | | |__  | |__) |
+|  __  |  __|   / /\ \ | |  | |  __| |  _  / 
+| |  | | |____ / ____ \| |__| | |____| | \ \ 
+|_|  |_|______/_/    \_\_____/|______|_|  \_\
 
-    -->                                              
-                                              
+-->                                              
 
 
-       <a name="inicio"></a>
+
+        <a name="inicio"></a>
         <header class="intro">
             <div class="intro-body">
                 <div class="container principalImage">
@@ -129,119 +129,128 @@
                             <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name"></span> </a>
                             <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Inicia Sesion</span> </a>
                             <br>
-                            
+
                         </div>
                         <a href="#estrenos" class="btn btn-circle page-scroll">
-                                <i class="fa fa-angle-double-down animated"></i>
-                            </a>
+                            <i class="fa fa-angle-double-down animated"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </header>
 
-    <!-- 
-      _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______ 
-     |  __ \ /\   / ____|  ____|  / ____/ __ \| \ | |__   __|  ____| \ | |__   __|
-     | |__) /  \ | |  __| |__    | |   | |  | |  \| |  | |  | |__  |  \| |  | |   
-     |  ___/ /\ \| | |_ |  __|   | |   | |  | | . ` |  | |  |  __| | . ` |  | |   
-     | |  / ____ \ |__| | |____  | |___| |__| | |\  |  | |  | |____| |\  |  | |   
-     |_| /_/    \_\_____|______|  \_____\____/|_| \_|  |_|  |______|_| \_|  |_|   
+        <!-- 
+_____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______ 
+|  __ \ /\   / ____|  ____|  / ____/ __ \| \ | |__   __|  ____| \ | |__   __|
+| |__) /  \ | |  __| |__    | |   | |  | |  \| |  | |  | |__  |  \| |  | |   
+|  ___/ /\ \| | |_ |  __|   | |   | |  | | . ` |  | |  |  __| | . ` |  | |   
+| |  / ____ \ |__| | |____  | |___| |__| | |\  |  | |  | |____| |\  |  | |   
+|_| /_/    \_\_____|______|  \_____\____/|_| \_|  |_|  |______|_| \_|  |_|   
 
-    -->
+-->
 
 
         <!-- Estrenos -->
+        <div class="pageContent" >
+            <a id="movieCarousselContainer"></a>
 
-        <a name="carousel"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <!--Botones que cambian el contenido de los carousels.-->
-                    <div class="col-lg-12 col-sm-6">
-                        <div class="col-lg-6 col-sm-6">
-                            <hr class="section-heading-spacer">
+            <div class="content-section-a" id="">
+                <div class="container">
+                    <div class="row">
+                        <!--Botones que cambian el contenido de los carousels.-->
+                        <div class="col-lg-12 col-sm-6">
+                            <div class="col-lg-6 col-sm-6">
+                            </div>
+                            <div class="col-lg-2 col-sm-6 ">
+                                <btn class ="btnFilterMovies btn-default btn-lg selected " id="estrenos" onclick ="changeCarousel(1)">Estrenos</btn>
+                            </div>
+                            <div class="col-lg-2 col-sm-6">
+                                <btn class ="btn btn-default btn-lg" id="top" onclick ="changeCarousel(2)" >Top 10</btn>
+                            </div>
+                            <div class="col-lg-2 col-sm-6">
+                                <btn class ="btn btn-default btn-lg" id="otro" onclick ="changeCarousel(3)">Nominadas al Oscar</btn>
+                            </div>
+
+
                         </div>
-                        <div class="col-lg-2 col-sm-6 ">
-                            <btn class ="btnFilterMovies btn-default btn-lg selected " id="estrenos" onclick ="changeCarousel(1)">Estrenos</btn>
+
+                        <!--Estrenos-->
+                        <div class="col-lg-8 col-sm-6" id="estrenosDiv">
+
+                            <h4 class="movieInfoText">Estrenos  </h4>
+
+
+                            <div class="alert alert-movieInfo">
+                                En VideoExtrem encontraras lo ultimo del mundo del entretemiento, ponemos a tu disposicion mas de 20 titulos nuevos cada semana.
+                            </div>
                         </div>
-                        <div class="col-lg-2 col-sm-6">
-                            <btn class ="btn btn-default btn-lg" id="top" onclick ="changeCarousel(2)" >Top 10</btn>
+
+                        <!--Top 10-->
+                        <div class="col-lg-8 col-sm-6" id="topDiv">
+                            <h4 class="movieInfoText">Top 10  </h4>
+
+
+                            <div class="alert alert-movieInfo">
+                                Con el fin de brindarte la mejor informacion ponemos a tu disposicion el top 10 con las peliculas mas vendidas en nuestros diferentes puntos de venta.
+                            </div>
+
                         </div>
-                        <div class="col-lg-2 col-sm-6">
-                            <btn class ="btn btn-default btn-lg" id="otro" onclick ="changeCarousel(3)">Nominadas al Oscar</btn>
+
+                        <!--Otros-->
+                        <div class="col-lg-8 col-sm-6" id="otroDiv">
+                            <h4 class="movieInfoText">Nominadas al oscar  </h4>
+
+
+                            <div class="alert alert-movieInfo">
+                                Porque mantenerte informado es nuestra prioridad, aca podes encontrar cada uno de los titulos nominados a los premios de la academia.
+                            </div>
+
                         </div>
 
+                        <div class="col-lg-12  col-sm-12">
+                            <div class="row">
+                                <div >
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="carousel slide multi-item-carousel" id="theCarousel">
+                                                    <div class="carousel-inner">
+                                                        <div class="item active">
+                                                            <div class="col-xs-3"><a href="#1"><img src="img/moonligth.jpg" alt="Moonligth" class="carouselImg img-responsive"></a></div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="col-xs-3"><a href="#1"><img src="img/lalaland.jpg" alt="La la land" class="carouselImg img-responsive"></a></div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="col-xs-3"><a href="#1"><img src="img/manchester.jpg" class="carouselImg img-responsive"></a></div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="col-xs-3"><a href="#1"><img src="img/fences.jpg" class="carouselImg img-responsive"></a></div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="col-xs-3"><a href="#1"><img src="img/movie 1.jpg" class="carouselImg img-responsive"></a></div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="col-xs-3"><a href="#1"><img src="img/movie2.jpg" class="carouselImg img-responsive"></a></div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="col-xs-3"><a href="#1"><img src="img/movie6.jpg" class="carouselImg img-responsive"></a></div>
+                                                        </div>
+                                                        <div class="item">
+                                                            <div class="col-xs-3"><a href="#1"><img src="img/movie4.jpg" class="carouselImg img-responsive"></a></div>
+                                                        </div>
+                                                        <!-- add  more items here -->
+                                                        <!-- Example item start:  -->
 
-                    </div>
+                                                        <div class="item">
+                                                            <div class="col-xs-3"><a href="#1"><img src="img/movie3.jpg" class="carouselImg img-responsive"></a></div>
+                                                        </div>
 
-                    <!--Estrenos-->
-                    <div class="col-lg-12 col-sm-6" id="estrenosDiv">
-                        <br>
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Estrenos:</h2> 
-
-                        <br>
-                        <p class="lead">En video extrem<!-- <a target="_blank" href="http://join.deathtothestockphoto.com/">Video Extrem</a>  --> encontraras lo ultimo del mundo del entretemiento, ponemos a tu disposicion mas de 20 titulos nuevos cada semana.</p>
-                    </div>
-
-                    <!--Top 10-->
-                    <div class="col-lg-12 col-sm-6" id="topDiv">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Top 10:<br></h2>
-                        <p class="lead">Con el fin de brindarte la mejor informacion ponemos a tu disposicion el top 10 con las peliculas mas vendidas en nuestros diferentes puntos de venta.</p>
-                    </div>
-
-                    <!--Otros-->
-                    <div class="col-lg-5 col-sm-6" id="otroDiv">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Nominadas al oscar<br></h2>
-                        <p class="lead">Porque mantenerte informado es nuestra prioridad, aca podes encontrar cada uno de los titulos nominados a los premios de la academia.</p>
-                    </div>
-
-                    <a name="buscatupelicula"></a>
-                    <div class="col-lg-12  col-sm-12">
-                        <div class="row">
-                            <div >
-                                <div class="container">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="carousel slide multi-item-carousel" id="theCarousel">
-                                                <div class="carousel-inner">
-                                                    <div class="item active">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/moonligth.jpg" alt="Moonligth" class="carouselImg img-responsive"></a></div>
+                                                        <!--  Example item end -->
                                                     </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/lalaland.jpg" alt="La la land" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/manchester.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/fences.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/movie 1.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/movie2.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/movie6.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/movie4.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-                                                    <!-- add  more items here -->
-                                                    <!-- Example item start:  -->
-
-                                                    <div class="item">
-                                                        <div class="col-xs-3"><a href="#1"><img src="img/movie3.jpg" class="carouselImg img-responsive"></a></div>
-                                                    </div>
-
-                                                    <!--  Example item end -->
+                                                    <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                                                    <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
                                                 </div>
-                                                <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
-                                                <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
                                             </div>
                                         </div>
                                     </div>
@@ -251,309 +260,308 @@
                     </div>
                 </div>
             </div>
-        </div>
-        </div>
 
 
-    <!-- OMBD API --->
-    <a name="ombdAPI"></a>
-    <div class="content-section-b">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                    <hr class="section-heading-spacer">
-                    <div class="clearfix"></div>
-                    <h2 class="section-heading"><h2>Busca tu pelicula favorita:</h2> </h2>
+            <!-- OMBD API --->
 
-                    <form class="btmspace-50" method="post" action="#">
-                        <fieldset>
-                            <input class="btmspace-15" name="movie" type="text" value="" placeholder="MovieName">
-                            <button class="searchButton">Buscar</button>
-                        </fieldset>
-                    </form>
+            <a name="buscatupelicula"></a>
+            <div id="searchMovie" class="content-section-b">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                            <hr class="section-heading-spacer">
+                            <div class="clearfix"></div>
+                            <h2 class="section-heading"><h2>Busca tu pelicula favorita:</h2> </h2>
 
-                    <div id="container">
+                            <form class="btmspace-50" method="post" action="#">
+                                <fieldset>
+                                    <input class="btmspace-15" name="movie" type="text" value="" placeholder="MovieName">
+                                    <button class="searchButton">Buscar</button>
+                                </fieldset>
+                            </form>
 
-                        <h2 class="title">Title</h3>
+                            <div id="container">
 
-                        <p class="plot">Plot</p>
-                        <label>Year:</label><span class="year">Year</span>
-                        <span>TODO: IMDB Rating / Votes</span>
-                        <span>TODO: Tomatoes Rating / Votes </span>
+                                <h2 class="title">Title</h3>
 
+                                <p class="plot">Plot</p>
+                                <label>Year:</label><span class="year">Year</span>
+                                <span>TODO: IMDB Rating / Votes</span>
+                                <span>TODO: Tomatoes Rating / Votes </span>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                                    
+                        </div>
+                    </div>
+                    <div id="reservations" class="col-lg-10 col-sm-10" id="estrenosDiv">
+
+                        <div class="alert alert-movieInfo">
+                            Con el sistema de <strong>reserva</strong> online tu eliges cuando y donde deseas retirar tus peliculas favoritas.
+                        </div>
+                         <i class="fa fa-shopping-basket" aria-hidden="true"></i>
                     </div>
 
                 </div>
-                <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <figure id="featuredpost"><img id="moviePoster" src="" alt="">
+
+
+            </div>
+
+
+
+
+            <!-- Promociones -->
+            <a name="promociones"></a>
+            <div class="content-section-b">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <h2>Promociones</h2>
+                            <p>Porque nuestros clientes merecen lo mejor, ponemos a su disposicion nuevas promociones cada semana.</p>
                         </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <!-- Reservaciones -->
-        <a  name="reservaciones"></a>
-        <div class="banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10">
-                        <h2>Reservacion Online</h2>
-                        <p>Con el sistema de reserva online tu eliges cuando y donde deseas retirar tus peliculas favoritas.</p>
+            <!-- Promociones -->
+
+            <!-- Sugerencias -->
+            <a name="sugerencias"></a>
+            <div class="content-section-a" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <h2>Sugerencias</h2>
+                            <p>Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un buzon de sugerencias, en el cual puedes brindarnos tus inquietudes, quejas y consultas.</p>
+                            <button id="suggestionButton" value = "Show" onclick="showHideTextArea()">+</button>
+                            <div id="suggestionTextArea" class="collapse">
+                                <select id="selectLocal" class="select-mobile">
+                                    <option value="local">Seleccion el local</option>
+                                    <option value="moravia">Moravia</option>
+                                    <option value="coronado">Coronado</option>
+                                    <option value="sabanilla">Sabanilla</option>
+                                    <option value="san_jose">San Jose</option>
+                                    <option value="general">General</option>
+                                </select>
+                                <br>
+                                <textarea id="textAreaSuggestion" rows="5" cols="60" placeholder="Sugerencia" class="text-area-mobile"></textarea>
+                                <br>
+                                <br>
+                                <br>
+                                <button id="sendSuggestion" onclick="sendSuggestionInfo()">Enviar</button>
+                            </div>
+                        </div>
                     </div>
-                    <!--                     <div class="col-lg-2">
-<a class="btn btn-default btn-lg">Reservar</a>
+                </div>
+            </div>
+            <!-- Promociones -->
+
+            <!-- Contactenos -->
+            <!--         <a name="contactenos"></a>
+<div class="content-section-a">
+<div class="container">
+<div class="row">
+<div class="col-lg-5 col-sm-6">
+<hr class="section-heading-spacer">
+<div class="clearfix"></div>
+<h2 class="section-heading">Contactenos</h2>
+<p class="lead">Whatsapp </p>
+<p class="lead">Video Club Extrem Moravia </p>
+<p class="lead">Video Club Extrem San Jose </p>
+<p class="lead">Video Club Extrem Coronado </p>
+<p class="lead">Video Club Extrem Sabanilla </p>
+</div>
+<div class="col-lg-5 col-lg-offset-2 col-sm-6">
+<img class="img-responsive" src="img/phones.png" alt="">
+</div>
+</div>
+</div>
 </div> -->
-                </div>
-            </div>
-        </div>
-        <!-- Reservaciones -->
-
-        <!-- Promociones -->
-        <a name="promociones"></a>
-        <div class="banner">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10">
-                        <h2>Promociones</h2>
-                        <p>Porque nuestros clientes merecen lo mejor, ponemos a su disposicion nuevas promociones cada semana.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Promociones -->
-
-        <!-- Sugerencias -->
-        <a name="sugerencias"></a>
-        <div class="bannerSugerencias">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-10">
-                        <h2>Sugerencias</h2>
-                        <p>Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un buzon de sugerencias, en el cual puedes brindarnos tus inquietudes, quejas y consultas.</p>
-                        <button id="suggestionButton" value = "Show" onclick="showHideTextArea()">+</button>
-                        <div id="suggestionTextArea" class="collapse">
-                            <select id="selectLocal" class="select-mobile">
-                                <option value="local">Seleccion el local</option>
-                                <option value="moravia">Moravia</option>
-                                <option value="coronado">Coronado</option>
-                                <option value="sabanilla">Sabanilla</option>
-                                <option value="san_jose">San Jose</option>
-                                <option value="general">General</option>
-                            </select>
-                            <br>
-                            <textarea id="textAreaSuggestion" rows="5" cols="60" placeholder="Sugerencia" class="text-area-mobile"></textarea>
-                            <br>
-                            <br>
-                            <br>
-                            <button id="sendSuggestion" onclick="sendSuggestionInfo()">Enviar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Promociones -->
-
-        <!-- Contactenos -->
-<!--         <a name="contactenos"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Contactenos</h2>
-                        <p class="lead">Whatsapp </p>
-                        <p class="lead">Video Club Extrem Moravia </p>
-                        <p class="lead">Video Club Extrem San Jose </p>
-                        <p class="lead">Video Club Extrem Coronado </p>
-                        <p class="lead">Video Club Extrem Sabanilla </p>
-                    </div>
-                    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                        <img class="img-responsive" src="img/phones.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div> -->
-        <!-- Contactenos -->
-
-        <!-- Acerca de nosotros -->
-
-        <a name="contactenos"></a>
-        <div class="content-section-b">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Contactenos</h2>
-                        <p class="lead">Whatsapp: 8472-8298</p>
-                        <p class="lead">Video Club Extrem Moravia: 2241-4908</p>
-                        <p class="lead">Video Club Extrem San Jose: 2221-4150</p>
-                        <p class="lead">Video Club Extrem Coronado: 2529-2479</p>
-                        <p class="lead">Video Club Extrem Sabanilla: 2273-5331</p>
-                    </div>
-                    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                        <img class="img-responsive" src="img/1.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Quienes somos -->
-        <a name="quienessomos"></a>
-        <div class="content-section-a">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Quienes Somos?</h2>
-                        <p class="lead">Somos una cadena de videos con mas de 13 años de experiencia en temas relacionados al mundo del entretemiento, actualmente contamos con 4 diferentes sedes que se extienden por el GAM, actualmente contamos con un amplio catalogo de mas de 13.000 peliculas, con ingresos semanales de hasta mas de 20 titulos, contamos con peliculas en formato blu-ray, 3D y DVD.</p>
-                    </div>
-                    <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                        <img class="img-responsive" src="img/quienessomos3.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Quienes somos -->
-
-        <!-- Establecimientos -->
-
-     <a name="establecimientos"></a>
-        <div class="content-section-b">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading"><h2>Visitanos:</h2> </h2>
-                        <p class="lead">Contamos con 4 diferentes puntos de venta a lo largo del GAM. </p>
-                        <ul class="list-inline">
-                            <li>
-                                <button class="btn btn-default btn-lg" onclick="createMap(9.962068, -84.050460)"><i class="fa fa-play-circle fa-fw"></i><span>Moravia</span></button>
-                            </li>
-                            <li>
-                                <button class="btn btn-default btn-lg" onclick="createMap(9.976001, -84.009787)"><i class="fa fa-play-circle fa-fw"></i> <span>Coronado</span></button>
-                            </li>
-                            <li>
-                                <button class="btn btn-default btn-lg" onclick="createMap(9.943956, -84.023248)"><i class="fa fa-play-circle   fa-fw"></i><span> Sabanilla</span></button>
-                            </li>
-                            <li>
-                                <button class="btn btn-default btn-lg" onclick="createMap(9.936233, -84.079634)"><i class="fa fa-play-circle   fa-fw"></i><span> San Jose</span></button>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                        <div id="map"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Establecimientos -->
-
-        <!-- Encuentrenos -->
-        <a name="encuentrenos"></a>
-        <div class="content-section-c">
-            <div class="container row-lg-12">
-                <div class="row">
-                    <div class="col-lg-12 col-sm-6">
-                        <hr class="section-heading-spacer">
-                        <div class="clearfix"></div>
-                        <h2 class="section-heading">Encuentrenos en</h2>
-                    </div>
-                </div>
-                
-                <div class="socialMediaLinks">
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="https://www.waze.com">
-                        <img border="0" alt="Waze" src="img/Waze.png" width="100" height="100">
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="https://facebook.com">
-                        <img border="0" alt="Facebook" src="img/Facebook.png" width="100" height="100">
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <a href="https://everardoherrera.com">
-                        <img border="0" alt="Whatsapp" src="img/Whatsapp.png" width="100" height="100">
-                    </div>
-                </div>
-            </div>
-        </div>
-            <!-- Encuentrenos -->
+            <!-- Contactenos -->
 
             <!-- Acerca de nosotros -->
 
-
-
-<!--
-  ______ ____   ____ _______ ______ _____  
- |  ____/ __ \ / __ \__   __|  ____|  __ \ 
- | |__ | |  | | |  | | | |  | |__  | |__) |
- |  __|| |  | | |  | | | |  |  __| |  _  / 
- | |   | |__| | |__| | | |  | |____| | \ \ 
- |_|    \____/ \____/  |_|  |______|_|  \_\
-                                           
--->
-        
-
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ul class="list-inline">
-                            <li class="footer-menu-divider">&sdot;</li>
-                            
-                            <li>
-                                <a href="#inicio">Inicio</a>
-                            </li>
-                            
-                            <li class="footer-menu-divider">&sdot;</li>
-                            
-                            <li>
-                                <a href="#contactenos">Contactenos</a>
-                            </li>
-                            
-                            <li class="footer-menu-divider">&sdot;</li>
-                            
-                            <li>
-                                <a href="#contact">Nuestras redes sociales</a>
-                            </li>
-                                
-                            <li class="footer-menu-divider">&sdot;</li>                                
-                            
-                            <li>
-                                <a href="#sugerencias">Sugerencias</a>
-                            </li>
-                        </ul>
-                            
-                        <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
+            <a name="contactenos"></a>
+            <div class="content-section-b">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-sm-6">
+                            <hr class="section-heading-spacer">
+                            <div class="clearfix"></div>
+                            <h2 class="section-heading">Contactenos</h2>
+                            <p class="lead">Whatsapp: 8472-8298</p>
+                            <p class="lead">Video Club Extrem Moravia: 2241-4908</p>
+                            <p class="lead">Video Club Extrem San Jose: 2221-4150</p>
+                            <p class="lead">Video Club Extrem Coronado: 2529-2479</p>
+                            <p class="lead">Video Club Extrem Sabanilla: 2273-5331</p>
+                        </div>
+                        <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                            <img class="img-responsive" src="img/1.jpg" alt="">
+                        </div>
                     </div>
                 </div>
             </div>
-        </footer>
-    
-    </body>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+            <!-- Quienes somos -->
+            <a name="quienessomos"></a>
+            <div class="content-section-a">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-sm-6">
+                            <hr class="section-heading-spacer">
+                            <div class="clearfix"></div>
+                            <h2 class="section-heading">Quienes Somos?</h2>
+                            <p class="lead">Somos una cadena de videos con mas de 13 años de experiencia en temas relacionados al mundo del entretemiento, actualmente contamos con 4 diferentes sedes que se extienden por el GAM, actualmente contamos con un amplio catalogo de mas de 13.000 peliculas, con ingresos semanales de hasta mas de 20 titulos, contamos con peliculas en formato blu-ray, 3D y DVD.</p>
+                        </div>
+                        <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+                            <img class="img-responsive" src="img/quienessomos3.jpg" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Quienes somos -->
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+            <!-- Establecimientos -->
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+            <a name="establecimientos"></a>
+            <div class="content-section-b">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
+                            <hr class="section-heading-spacer">
+                            <div class="clearfix"></div>
+                            <h2 class="section-heading"><h2>Visitanos:</h2> </h2>
+                            <p class="lead">Contamos con 4 diferentes puntos de venta a lo largo del GAM. </p>
+                            <ul class="list-inline">
+                                <li>
+                                    <button class="btn btn-default btn-lg" onclick="createMap(9.962068, -84.050460)"><i class="fa fa-play-circle fa-fw"></i><span>Moravia</span></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-default btn-lg" onclick="createMap(9.976001, -84.009787)"><i class="fa fa-play-circle fa-fw"></i> <span>Coronado</span></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-default btn-lg" onclick="createMap(9.943956, -84.023248)"><i class="fa fa-play-circle   fa-fw"></i><span> Sabanilla</span></button>
+                                </li>
+                                <li>
+                                    <button class="btn btn-default btn-lg" onclick="createMap(9.936233, -84.079634)"><i class="fa fa-play-circle   fa-fw"></i><span> San Jose</span></button>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-5 col-sm-pull-6  col-sm-6">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    <!-- Google Maps API Key-Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFvXfKy-vn2ilKVHLFrLIuLoE3JQjptfU&sensor=false"></script>
+            <!-- Establecimientos -->
 
-    <!-- Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
+            <!-- Encuentrenos -->
+            <a name="encuentrenos"></a>
+            <div class="content-section-a">
+                <div class="container row-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-6">
+                            <hr class="section-heading-spacer">
+                            <div class="clearfix"></div>
+                            <h2 class="section-heading">Encuentrenos en</h2>
+                        </div>
+                    </div>
 
-    <!--OMBD API --->
-    <script src="js/OmbdAPI.js"></script>
+                    <div class="socialMediaLinks">
+                        <div class="col-lg-4 col-sm-6">
+                            <a href="https://www.waze.com">
+                                <img border="0" alt="Waze" src="img/Waze.png" width="100" height="100">
+                                </div>
+                            <div class="col-lg-4 col-sm-6">
+                                <a href="https://facebook.com">
+                                    <img border="0" alt="Facebook" src="img/Facebook.png" width="100" height="100">
+                                    </div>
+                                <div class="col-lg-4 col-sm-6">
+                                    <a href="https://everardoherrera.com">
+                                        <img border="0" alt="Whatsapp" src="img/Whatsapp.png" width="100" height="100">
+                                        </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Encuentrenos -->
 
-    <!--Carousel Control  --->
-    <script src="js/carousel.js"></script>
+                        <!-- Acerca de nosotros -->
 
-</html>
+
+
+                        <!--
+______ ____   ____ _______ ______ _____  
+|  ____/ __ \ / __ \__   __|  ____|  __ \ 
+| |__ | |  | | |  | | | |  | |__  | |__) |
+|  __|| |  | | |  | | | |  |  __| |  _  / 
+| |   | |__| | |__| | | |  | |____| | \ \ 
+|_|    \____/ \____/  |_|  |______|_|  \_\
+
+-->
+
+
+                        <footer>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <ul class="list-inline">
+                                            <li class="footer-menu-divider">&sdot;</li>
+
+                                            <li>
+                                                <a href="#inicio">Inicio</a>
+                                            </li>
+
+                                            <li class="footer-menu-divider">&sdot;</li>
+
+                                            <li>
+                                                <a href="#contactenos">Contactenos</a>
+                                            </li>
+
+                                            <li class="footer-menu-divider">&sdot;</li>
+
+                                            <li>
+                                                <a href="#contact">Nuestras redes sociales</a>
+                                            </li>
+
+                                            <li class="footer-menu-divider">&sdot;</li>                                
+
+                                            <li>
+                                                <a href="#sugerencias">Sugerencias</a>
+                                            </li>
+                                        </ul>
+
+                                        <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
+                </div>
+
+
+                </body>
+
+            <!-- jQuery -->
+            <script src="js/jquery.js"></script>
+
+            <!-- Bootstrap Core JavaScript -->
+            <script src="js/bootstrap.min.js"></script>
+
+            <!-- Plugin JavaScript -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+            <!-- Google Maps API Key-Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFvXfKy-vn2ilKVHLFrLIuLoE3JQjptfU&sensor=false"></script>
+
+            <!-- Theme JavaScript -->
+            <script src="js/grayscale.js"></script>
+
+            <!--OMBD API --->
+            <script src="js/OmbdAPI.js"></script>
+
+            <!--Carousel Control  --->
+            <script src="js/carousel.js"></script>
+
+            </html>
