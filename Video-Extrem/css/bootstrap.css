@@ -123,6 +123,7 @@ button {
 button,
 select {
   text-transform: none;
+  width: 10px;
 }
 button,
 html input[type="button"],
@@ -1088,13 +1089,12 @@ body {
   color: #333;
   background-color: #fff;
 }
-input,
-button,
 select,
 textarea {
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+  width: 200px;
 }
 a {
   color: #337ab7;
@@ -6755,3 +6755,9 @@ button.close {
   }
 }
 /*# sourceMappingURL=bootstrap.css.map */
+
+@media only screen and (max-width: 500px) {
+    body {
+        background-color: lightblue;
+    }
+}
