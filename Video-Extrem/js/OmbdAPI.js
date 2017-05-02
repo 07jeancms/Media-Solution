@@ -66,7 +66,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists'],);
                                              }, {
             getData: function(params) {
                 // ajax request to api
-                var sUrl = 'http://www.omdbapi.com/?s=Star&page=10'
+                var sUrl = 'http://www.omdbapi.com/?s=Harry'
                 return $.ajax(sUrl,{
                     complete: function(p_oXHR, p_sStatus) {
                         var oData =$.parseJSON(p_oXHR.responseText);
