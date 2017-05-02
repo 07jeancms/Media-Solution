@@ -73,29 +73,30 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                     <li>
                         <!-- First Tier Drop Down -->
                         <label for="drop-1" class="toggle">Peliculas</label>
-                        <a href="#">Peliculas</a>
+                        <a><i class="fa fa-film " aria-hidden="true"></i>&nbsp;Peliculas</a>
                         <input type="checkbox" id="drop-1"/>
                         <ul >
-                            <li><a href="#movieCarousselContainer" onclick ="changeCarousel(1)">Estrenos</a></li>
-                            <li><a href="#movieCarousselContainer" onclick ="changeCarousel(2)">Mas vendidas</a></li>
-                            <li><a href="#movieCarousselContainer" onclick ="changeCarousel(3)">Nominadas al oscar</a></li>
-                            <li><a href="#buscatupelicula">Busca tu pelicula</a></li>
+                            <li><a href="#movieCarousselContainer" onclick ="changeCarousel(1)"><i class="fa fa-search " aria-hidden="true"></i>&nbsp;Estrenos</a></li>
+                            <li><a href="#movieCarousselContainer" onclick ="changeCarousel(2)"><i class="fa fa-search " aria-hidden="true"></i>&nbsp;Mas vendidas</a></li>
+                            <li><a href="#movieCarousselContainer" onclick ="changeCarousel(3)"><i class="fa fa-search " aria-hidden="true"></i>&nbsp;Nominadas al oscar</a></li>
+                            <li><a href="#buscatupelicula"><i class="fa fa-search " aria-hidden="true"></i>&nbsp;Busca tu pelicula</a></li>
                         </ul>
                     </li>
 
-                    <li><a class="page-scroll" href="#reservaciones">Reservaciones</a></li>
-                    <li><a class="page-scroll" href="#promociones">Promociones</a></li>
-                    <li><a class="page-scroll" href="#contactenos">Contactenos</a></li>
+                    <li><a class="page-scroll" href="#reservaciones"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Reservaciones</a></li>
+                    <li><a class="page-scroll" href="#promociones"><i class="fa fa-ticket " aria-hidden="true"></i>&nbsp;Promociones</a></li>
+                    <li><a class="page-scroll" href="#establecimientos"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Establecimientos</a></li>
 
                     <li>
                         <!-- First Tier Drop Down -->
                         <label for="drop-2" class="toggle">Acerca de nosotros</label>
-                        <a href="#">Acerca de nosotros</a>
+                        <a href="#">
+                            <i class="fa fa-users " aria-hidden="true"></i>&nbsp;Acerca de nosotros</a>
                         <input type="checkbox" id="drop-2"/>
                         <ul >
-                            <li><a href="#quienessomos">Quienes somos?</a></li>
-                            <li><a href="#establecimientos">Establecimientos</a></li>
-                            <li><a href="#encuentrenos">Encuentrenos en</a></li>
+                            <li><a href="#quienessomos"><i class="fa fa-id-badge fa-lg" aria-hidden="true"></i>&nbsp;Quienes somos?</a></li>
+                            <li><a href="#encuentrenos"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Sugerencias</a></li>
+
                         </ul>
                     </li>
 
@@ -126,8 +127,8 @@ _    _ ______          _____  ______ _____
                             <h1 class="brand-heading">Video <div class ="exColor">Ex</div>treme</h1>
                             <p class="intro-text">Entretenimiento y calidad al mejor precio </p>
 
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name"></span> </a>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Inicia Sesion</span> </a>
+                            <btn href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw fa-lg"></i> </btn>
+                            <btn href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw "></i><span> Inicia Sesion</span> </btn>
                             <br>
 
                         </div>
@@ -159,49 +160,52 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                     <div class="row">
                         <!--Botones que cambian el contenido de los carousels.-->
                         <div class="col-lg-12 col-sm-6">
+
                             <div class="col-lg-6 col-sm-6">
+                                <h2><i class="fa fa-film fa-lg" aria-hidden="true"></i>&nbsp;Peliculas</h2>
                             </div>
                             <div class="col-lg-2 col-sm-6 ">
-                                <btn class ="btnFilterMovies btn-default btn-lg selected " id="estrenos" onclick ="changeCarousel(1)">Estrenos</btn>
+                                <btn class ="btnFilterMovies btn-default  selected " id="estrenos" onclick ="changeCarousel(1)">Estrenos</btn>
                             </div>
                             <div class="col-lg-2 col-sm-6">
-                                <btn class ="btn btn-default btn-lg" id="top" onclick ="changeCarousel(2)" >Top 10</btn>
+                                <btn class ="btn btn-default " id="top" onclick ="changeCarousel(2)" >Top 10</btn>
                             </div>
                             <div class="col-lg-2 col-sm-6">
-                                <btn class ="btn btn-default btn-lg" id="otro" onclick ="changeCarousel(3)">Nominadas al Oscar</btn>
+                                <btn class ="btn btn-default " id="otro" onclick ="changeCarousel(3)">Nominadas al Oscar</btn>
                             </div>
 
 
                         </div>
 
                         <!--Estrenos-->
-                        <div class="col-lg-8 col-sm-6" id="estrenosDiv">
+                        <div class="col-lg-12 col-sm-12" id="estrenosDiv">
 
-                            <h4 class="movieInfoText">Estrenos  </h4>
+
 
 
                             <div class="alert alert-movieInfo">
+                                <h4 class="movieInfoText">Estrenos  </h4>
                                 En VideoExtrem encontraras lo ultimo del mundo del entretemiento, ponemos a tu disposicion mas de 20 titulos nuevos cada semana.
                             </div>
                         </div>
 
                         <!--Top 10-->
-                        <div class="col-lg-8 col-sm-6" id="topDiv">
-                            <h4 class="movieInfoText">Top 10  </h4>
-
+                        <div class="col-lg-12 col-sm-12" id="topDiv">
 
                             <div class="alert alert-movieInfo">
+                                <h4 class="movieInfoText">Top 10  </h4>
+
+
                                 Con el fin de brindarte la mejor informacion ponemos a tu disposicion el top 10 con las peliculas mas vendidas en nuestros diferentes puntos de venta.
                             </div>
 
                         </div>
 
                         <!--Otros-->
-                        <div class="col-lg-8 col-sm-6" id="otroDiv">
-                            <h4 class="movieInfoText">Nominadas al oscar  </h4>
-
+                        <div class="col-lg-12 col-sm-12" id="otroDiv">
 
                             <div class="alert alert-movieInfo">
+                                <h4 class="movieInfoText">Nominadas al oscar  </h4>
                                 Porque mantenerte informado es nuestra prioridad, aca podes encontrar cada uno de los titulos nominados a los premios de la academia.
                             </div>
 
@@ -265,19 +269,37 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <!-- OMBD API --->
 
             <a name="buscatupelicula"></a>
-            <div id="searchMovie" class="content-section-b">
+            <div id="relativeDiv" class="content-section-b">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-                            <h2 class="section-heading"><h2>Busca tu pelicula favorita:</h2> </h2>
+                        <div class="col-lg-12 col-sm-12">
+                            <h2><i class="fa fa-search fa-lg" aria-hidden="true"></i>&nbsp;Encuentra tu pelicula</h2>
+                        </div>
+                        <div class="col-lg-12  col-sm-12">
+
 
                             <form class="btmspace-50" method="post" action="#">
-                                <fieldset>
-                                    <input class="btmspace-15" name="movie" type="text" value="" placeholder="MovieName">
-                                    <button class="searchButton">Buscar</button>
-                                </fieldset>
+                                <div class="form-group">
+                                    <h5  class="col-md-2 control-label"
+                                        for="inputNombre">Buscar por :</h5>
+                                    <div class="col-md-4">
+                                        <select ng-model="search.searchType" name="searchType" class="form-control">
+                                            <option value="name">Nombre</option>
+                                            <option value="year">Año</option>
+                                            <option value="actor">Actor</option>
+                                            <option value="gendre">Genero</option>
+                                            <option value="language">Idioma</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <input press-enter="searchMovie()"  class="form-control" id="movieName" ng-model="actualMovie.title" />
+                                    </div>
+                                    <div class="col-md-2">
+                                        <btn ng-click="searchMovie()"  ng-show="!loading"  class=" magic fa fa-search" aria-hidden="true"></btn>
+                                        <i ng-show="loading"  class="fa fa-spinner magic fa-spin  fa-fw"></i>
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
                             </form>
 
                             <div id="container">
@@ -292,16 +314,16 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             </div>
 
                         </div>
-                        <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                                    
+                        <div class="col-lg-12 col-sm-pull-12  col-sm-12">
+
                         </div>
                     </div>
-                    <div id="reservations" class="col-lg-10 col-sm-10" id="estrenosDiv">
+                    <div id="bottomAlert" class="col-lg-10 col-sm-10" >
 
-                        <div class="alert alert-movieInfo">
-                            Con el sistema de <strong>reserva</strong> online tu eliges cuando y donde deseas retirar tus peliculas favoritas.
+                        <div id="reservaciones"  class="alert alert-movieInfo">
+                            <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; Con el sistema de <strong>reserva</strong> online tu eliges cuando y donde deseas retirar tus peliculas favoritas.
                         </div>
-                         <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+
                     </div>
 
                 </div>
@@ -314,71 +336,23 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
             <!-- Promociones -->
             <a name="promociones"></a>
-            <div class="content-section-b">
+            <div id="relativeDiv" class="content-section-a">
                 <div class="container">
                     <div class="row">
-                        <div class="col-lg-10">
-                            <h2>Promociones</h2>
-                            <p>Porque nuestros clientes merecen lo mejor, ponemos a su disposicion nuevas promociones cada semana.</p>
+                        <div class="col-lg-12 col-sm-12">
+                            <h2><i class="fa fa-ticket fa-lg" aria-hidden="true"></i>&nbsp;Promociones</h2>
                         </div>
+
+                    </div>
+                    <div id="bottomAlert" class="col-lg-10">
+                        <div class="alert alert-movieInfo">
+                            <i class="fa fa-ticket fa-lg" aria-hidden="true"></i>&nbsp;Porque nuestros clientes merecen lo mejor, ponemos a su disposicion nuevas <strong>promociones</strong> cada semana.
+
+                        </div>
+
                     </div>
                 </div>
             </div>
-            <!-- Promociones -->
-
-            <!-- Sugerencias -->
-            <a name="sugerencias"></a>
-            <div class="content-section-a" >
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-10">
-                            <h2>Sugerencias</h2>
-                            <p>Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un buzon de sugerencias, en el cual puedes brindarnos tus inquietudes, quejas y consultas.</p>
-                            <button id="suggestionButton" value = "Show" onclick="showHideTextArea()">+</button>
-                            <div id="suggestionTextArea" class="collapse">
-                                <select id="selectLocal" class="select-mobile">
-                                    <option value="local">Seleccion el local</option>
-                                    <option value="moravia">Moravia</option>
-                                    <option value="coronado">Coronado</option>
-                                    <option value="sabanilla">Sabanilla</option>
-                                    <option value="san_jose">San Jose</option>
-                                    <option value="general">General</option>
-                                </select>
-                                <br>
-                                <textarea id="textAreaSuggestion" rows="5" cols="60" placeholder="Sugerencia" class="text-area-mobile"></textarea>
-                                <br>
-                                <br>
-                                <br>
-                                <button id="sendSuggestion" onclick="sendSuggestionInfo()">Enviar</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Promociones -->
-
-            <!-- Contactenos -->
-            <!--         <a name="contactenos"></a>
-<div class="content-section-a">
-<div class="container">
-<div class="row">
-<div class="col-lg-5 col-sm-6">
-<hr class="section-heading-spacer">
-<div class="clearfix"></div>
-<h2 class="section-heading">Contactenos</h2>
-<p class="lead">Whatsapp </p>
-<p class="lead">Video Club Extrem Moravia </p>
-<p class="lead">Video Club Extrem San Jose </p>
-<p class="lead">Video Club Extrem Coronado </p>
-<p class="lead">Video Club Extrem Sabanilla </p>
-</div>
-<div class="col-lg-5 col-lg-offset-2 col-sm-6">
-<img class="img-responsive" src="img/phones.png" alt="">
-</div>
-</div>
-</div>
-</div> -->
-            <!-- Contactenos -->
 
             <!-- Acerca de nosotros -->
 
@@ -386,15 +360,14 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <div class="content-section-b">
                 <div class="container">
                     <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <h2><i class="fa fa-film fa-lg" aria-hidden="true"></i>&nbsp;Contacto</h2>
+                        </div>
                         <div class="col-lg-5 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Contactenos</h2>
-                            <p class="lead">Whatsapp: 8472-8298</p>
-                            <p class="lead">Video Club Extrem Moravia: 2241-4908</p>
-                            <p class="lead">Video Club Extrem San Jose: 2221-4150</p>
-                            <p class="lead">Video Club Extrem Coronado: 2529-2479</p>
-                            <p class="lead">Video Club Extrem Sabanilla: 2273-5331</p>
+
+
                         </div>
                         <div class="col-lg-5 col-lg-offset-2 col-sm-6">
                             <img class="img-responsive" src="img/1.jpg" alt="">
@@ -408,10 +381,12 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <div class="content-section-a">
                 <div class="container">
                     <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <h2><i class="fa fa-id-badge fa-lg" aria-hidden="true"></i>&nbsp;Quienes Somos</h2>
+                        </div>
                         <div class="col-lg-5 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Quienes Somos?</h2>
                             <p class="lead">Somos una cadena de videos con mas de 13 años de experiencia en temas relacionados al mundo del entretemiento, actualmente contamos con 4 diferentes sedes que se extienden por el GAM, actualmente contamos con un amplio catalogo de mas de 13.000 peliculas, con ingresos semanales de hasta mas de 20 titulos, contamos con peliculas en formato blu-ray, 3D y DVD.</p>
                         </div>
                         <div class="col-lg-5 col-lg-offset-2 col-sm-6">
@@ -420,52 +395,66 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                     </div>
                 </div>
             </div>
-            <!-- Quienes somos -->
 
             <!-- Establecimientos -->
 
             <a name="establecimientos"></a>
-            <div class="content-section-b">
-                <div class="container">
+            <div id="relativeDiv" class="content-section-b" ng-app="ubicationApp">
+                <div class="container" ng-controller="ubicationController as ubication">
+
                     <div class="row">
-                        <div class="col-lg-5 col-lg-offset-1 col-sm-push-6  col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-                            <h2 class="section-heading"><h2>Visitanos:</h2> </h2>
-                            <p class="lead">Contamos con 4 diferentes puntos de venta a lo largo del GAM. </p>
-                            <ul class="list-inline">
-                                <li>
-                                    <button class="btn btn-default btn-lg" onclick="createMap(9.962068, -84.050460)"><i class="fa fa-play-circle fa-fw"></i><span>Moravia</span></button>
-                                </li>
-                                <li>
-                                    <button class="btn btn-default btn-lg" onclick="createMap(9.976001, -84.009787)"><i class="fa fa-play-circle fa-fw"></i> <span>Coronado</span></button>
-                                </li>
-                                <li>
-                                    <button class="btn btn-default btn-lg" onclick="createMap(9.943956, -84.023248)"><i class="fa fa-play-circle   fa-fw"></i><span> Sabanilla</span></button>
-                                </li>
-                                <li>
-                                    <button class="btn btn-default btn-lg" onclick="createMap(9.936233, -84.079634)"><i class="fa fa-play-circle   fa-fw"></i><span> San Jose</span></button>
-                                </li>
-                            </ul>
+                        <div class="divHeader col-lg-12 col-sm-12">
+
+                            <div class="col-lg-4 col-sm-4">
+                                <h2><i class="fa fa-map-marker" aria-hidden="true" ></i>&nbsp;Establecimientos</h2>
+                            </div>
+                            <div class="col-lg-2 col-sm-2 " ng-repeat="actualUbication in ubications">
+                                <button class="btn btn-default " ng-click="selectUbication(actualUbication)"><i class="fa fa-play-circle fa-fw"></i><span>{{actualUbication.name}}</span></button>
+                            </div>
+
+
+
+
                         </div>
-                        <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                            <div id="map"></div>
+                        <div class="col-lg-12 col-sm-12" >
+                            <div class="col-lg-5 col-sm-6">
+                                <div id="map"></div>
+                            </div>
+                            <div class="col-lg-5 col-sm-6">
+                                <div class="alert alert-textSize alert-info">
+                                    <i class="fa fa-phone " aria-hidden="true"></i>&nbsp; <strong>Video Club Extrem {{actualUbication.name}}</strong> {{actualUbication.telephone}}
+
+                                </div>
+
+                                <div class="alert alert-textSize alert-success">
+                                    <i class="fa fa-mobile " aria-hidden="true"></i>&nbsp; <strong>Whatsapp</strong> {{whatsapp}}
+
+                                </div>
+                            </div>
                         </div>
+                        <div id="bottomAlert" class="col-lg-10">
+                            <div class="alert alert-movieInfo">
+                                <i class="fa fa-compass fa-lg" aria-hidden="true"></i>&nbsp;Contamos con <strong>4 diferentes</strong> puntos de venta a lo largo del GAM.
+
+                            </div>
+
+                        </div>
+
                     </div>
                 </div>
             </div>
-
-            <!-- Establecimientos -->
-
             <!-- Encuentrenos -->
             <a name="encuentrenos"></a>
             <div class="content-section-a">
                 <div class="container row-lg-12">
+                    <div class="col-lg-12 col-sm-12">
+                        <h2><i class="fa fa-film fa-lg" aria-hidden="true"></i>&nbsp;Encuentranos en</h2>
+                    </div>
                     <div class="row">
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Encuentrenos en</h2>
+
                         </div>
                     </div>
 
@@ -485,11 +474,41 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                 </div>
                             </div>
                         </div>
-                        <!-- Encuentrenos -->
+                        <!-- Sugerencias -->
+                        <a name="sugerencias"></a>
+                        <div class="content-section-b " id="relativeDiv">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12 col-sm-12">
+                                        <h2><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Sugerencias</h2>
+                                    </div>
+                                    <div class=" ">
+                                        <div  id="suggestionTextArea" >
+                                            <select id="selectLocal" class="form-control select col-lg-12 col-md-12 col-sm-12">
+                                                <option value="local">Seleccion el local</option>
+                                                <option value="moravia">Moravia</option>
+                                                <option value="coronado">Coronado</option>
+                                                <option value="sabanilla">Sabanilla</option>
+                                                <option value="san_jose">San Jose</option>
+                                                <option value="general">General</option>
+                                            </select>
 
-                        <!-- Acerca de nosotros -->
+                                            <textarea id="textAreaSuggestion" rows="5" cols="60" placeholder="Sugerencia" class="textarea form-control col-lg-12 col-md-12 col-sm-12 suggestionArea"></textarea>
+                                            <button class="btn " id="sendSuggestion" onclick="sendSuggestionInfo()">Enviar</button>
+                                        </div>
 
+                                    </div>
+                                    <div id="bottomAlert" class="col-lg-10">
+                                        <div class="alert alert-movieInfo">
+                                            <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un <strong>buzón de sugerencias</strong>, en el cual puedes brindarnos tus inquietudes, quejas y consultas.
 
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
 
                         <!--
 ______ ____   ____ _______ ______ _____  
@@ -546,6 +565,12 @@ ______ ____   ____ _______ ______ _____
             <!-- jQuery -->
             <script src="js/jquery.js"></script>
 
+            <!--Angular.js  --->
+            <script src="node_modules/angular/angular.min.js"></script>
+
+            <!--Angular.js Resources  --->
+            <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+
             <!-- Bootstrap Core JavaScript -->
             <script src="js/bootstrap.min.js"></script>
 
@@ -561,7 +586,21 @@ ______ ____   ____ _______ ______ _____
             <!--OMBD API --->
             <script src="js/OmbdAPI.js"></script>
 
+
+            <!-- Include Bootstrap-select CSS, JS -->
+            <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+
+
+            <!--Angular Table   --->
+            <script src="js/ng-table.min.js"></script>
+
+            <!--Angular Drag and drop   --->
+            <script src="js/dragAndDropList.js"></script>
+
             <!--Carousel Control  --->
             <script src="js/carousel.js"></script>
+
+            <!--Ubications  --->
+            <script src="js/ubications.js"></script>
 
             </html>
