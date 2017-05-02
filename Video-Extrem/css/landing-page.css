@@ -232,14 +232,22 @@ a:hover{
 
 .alert-movieInfo{
     background-color: rgba(214,73,0,0.1);
-    
+    font-size: 2.2vh;
     color: rgba(91,31,0,0.8);
     
 }
-.movieInfoText{
-    font-size: 3.8vh;
-    color: rgba(99,34,0,1);
+
+.alert-textSize{
+    font-size: 2.2vh;
+    
 }
+.movieInfoText{
+    font-size: 2.7vh;
+    color: rgba(99,34,0,1);
+    
+    margin-bottom: 1vh;
+}
+
 .network-name {
     text-transform: uppercase;
     font-size: 14px;
@@ -248,14 +256,14 @@ a:hover{
 }   
 
 .content-section-a {
-    min-height: 90vh;
+    min-height: 100vh;
     padding: 15vh 0;
     background-color: rgba(255,255,255,0.3);
 }
 
 .content-section-b {
     
-    min-height:  90vh;
+    min-height:  100vh;
     padding: 15vh 0;
     
 }
@@ -296,10 +304,10 @@ a:hover{
     background-size: cover;
 }
 
-#searchMovie {
+#relativeDiv {
     position: relative;
 }
-#reservations {
+#bottomAlert {
     position: absolute;
     bottom: 0;
 }
@@ -370,12 +378,11 @@ p.copyright {
     margin: 15px 0 0;
 }
 #map {
-    width: 140%;
-    height: 400px;
-    margin: 5px;
+    width: 100%;
+    height: 40vh;
     border: inset;
-    border-width: 5px;
-    border-color: #59C9A5;
+    border-width: 1vh;
+    border-color: #f4c242;
 }
 .multi-item-carousel{
     .carousel-inner{
@@ -435,12 +442,27 @@ p.copyright {
     background-color: rgba(134,0,0,0.4);
     color: #FFF;
 }
+.pageContent btn{
+    height: 5vh;
+    width: 21vh;
+    font-size: 2vh;
+}
 
 .btn:hover {
     background-color: rgba(134,0,0,0.9);
     color: #FFF;
 }
 
+.textarea{
+    margin-bottom: 5vh;
+    margin-top:5vh;
+    height: 5vh;
+    
+}
+
+.form-control{ 
+     background-color: rgba(255,255,255,0.4);
+}
 .searchButton{
     color: #860002;
 }
@@ -567,4 +589,10 @@ table{
 }
 table-striped>tbody>tr:nth-of-type(odd){
    background-color:red;
+}
+h2{
+    font-size: 3.7vh;
+}
+.divHeader{
+    margin-bottom: 5vh;
 }
