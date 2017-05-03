@@ -4,7 +4,7 @@ DELIMITER //
 		
 		BEGIN
 		
-			INSERT INTO generos (genero, descripcion) VALUES (pGenero, pDescripcion);
+			INSERT INTO Generos (genero, descripcion) VALUES (pGenero, pDescripcion);
 				
 		END //	
 DELIMITER ;
@@ -18,7 +18,7 @@ DELIMITER //
 		
 		BEGIN
 		
-			INSERT INTO categorias (categoria) VALUES (pCategoria);
+			INSERT INTO Categorias (categoria) VALUES (pCategoria);
 			
 		END //
 DELIMITER ;
@@ -32,7 +32,7 @@ DELIMITER //
 		
 		BEGIN
 		
-			INSERT INTO idiomas (idioma) VALUES (pIdioma);
+			INSERT INTO Idiomas (idioma) VALUES (pIdioma);
 			
 		END //
 DELIMITER ;
@@ -46,7 +46,7 @@ DELIMITER //
 		
 		BEGIN
 		
-			INSERT INTO actores (actor) VALUES (pActor);
+			INSERT INTO Actores (actor) VALUES (pActor);
 			
 		END //
 DELIMITER ;
@@ -60,7 +60,7 @@ DELIMITER //
 		
 		BEGIN
 		
-			INSERT INTO subtitulos (subtitulo) VALUES (pSubtitulo);
+			INSERT INTO Subtitulos (subtitulo) VALUES (pSubtitulo);
 			
 		END //
 DELIMITER ;
@@ -74,7 +74,7 @@ CREATE PROCEDURE addGenreByMovie
 	
 	BEGIN
 	
-		INSERT INTO generosxpelicula (idPelicula, idGenero) VALUES (pIdPelicula, pIdGenero);
+		INSERT INTO GenerosXpelicula (idPelicula, idGenero) VALUES (pIdPelicula, pIdGenero);
 		
 	END //
 DELIMITER ;
@@ -88,7 +88,7 @@ CREATE PROCEDURE addCategoryByMovie
 	
 	BEGIN
 	
-		INSERT INTO categoriasxpelicula (idPelicula, idCategoria) VALUES (pIdPelicula, pIdCategoria);
+		INSERT INTO CategoriasXpelicula (idPelicula, idCategoria) VALUES (pIdPelicula, pIdCategoria);
 		
 	END //
 DELIMITER ;
@@ -102,7 +102,7 @@ CREATE PROCEDURE addLanguageByMovie
 	
 	BEGIN
 	
-		INSERT INTO idiomasxpelicula (idIdioma, idPelicula) VALUES (pIdIdioma, pIdPelicula);
+		INSERT INTO IdiomasXpelicula (idIdioma, idPelicula) VALUES (pIdIdioma, pIdPelicula);
 		
 	END //
 DELIMITER ;
@@ -116,7 +116,7 @@ CREATE PROCEDURE addActorsByMovie
 	
 	BEGIN
 	
-		INSERT INTO actoresxpelicula (idPelicula, idActor) VALUES (pIdPelicula, pIdActor);
+		INSERT INTO ActoresXpelicula (idPelicula, idActor) VALUES (pIdPelicula, pIdActor);
 		
 	END //
 DELIMITER ;
@@ -130,7 +130,7 @@ CREATE PROCEDURE addSubtitlesByMovie
 	
 	BEGIN
 	
-		INSERT INTO subtitulosxpelicula (idPelicula, idSubtitulo) VALUES (pIdPelicula, pIdSubtitulo);
+		INSERT INTO SubtitulosXpelicula (idPelicula, idSubtitulo) VALUES (pIdPelicula, pIdSubtitulo);
 		
 	END //
 DELIMITER ;
@@ -149,7 +149,7 @@ CREATE PROCEDURE addMovie
 		
 		SET _CurrentDateTime = now();
 		
-		INSERT INTO peliculas (ano, pelicula, idActorXpelicula, idGeneroXpelicula, idIdiomaXpelicula, trama, idCategoriaXpelicula, idSubXpelicula, precio, fechaIngreso, 
+		INSERT INTO Peliculas (ano, pelicula, idActorXpelicula, idGeneroXpelicula, idIdiomaXpelicula, trama, idCategoriaXpelicula, idSubXpelicula, precio, fechaIngreso, 
 			linkImagen) 
 		VALUES (pAno, pPelicula, pIdActorXpelicula, pIdGeneroXpelicula, pIdIdiomaXpelicula, pTrama, pIdCategoriaXpelicula, pIdSubXpelicula, pPrecio, _CurrentDateTime, 
 				pLinkImagen);
@@ -165,7 +165,7 @@ CREATE PROCEDURE addSale
 	
 	BEGIN
 	
-		INSERT INTO ventas (fecha, descripcion) VALUES (now(), pDescripcion);
+		INSERT INTO Ventas (fecha, descripcion) VALUES (now(), pDescripcion);
 		
 	END //
 DELIMITER ;
@@ -179,7 +179,7 @@ CREATE PROCEDURE addMoviesBySale
 	
 	BEGIN
 	
-		INSERT INTO peliculasxventa (idPelicula, idVenta) VALUES (pIdPelicula, pIdVenta);
+		INSERT INTO PeliculasXventa (idPelicula, idVenta) VALUES (pIdPelicula, pIdVenta);
 		
 	END //
 DELIMITER ;
@@ -193,7 +193,7 @@ CREATE PROCEDURE addSuggestion
 	
 	BEGIN
 	
-		INSERT INTO sugerencias (sugerencia, idUsuario, fecha) VALUES (pSugerencia, pIdUsuario, now());
+		INSERT INTO Sugerencias (sugerencia, idUsuario, fecha) VALUES (pSugerencia, pIdUsuario, now());
 		
 	END //
 DELIMITER ;
@@ -207,7 +207,7 @@ CREATE PROCEDURE addSuggestionsByUser
 	
 	BEGIN
 	
-		INSERT INTO sugerenciasxusuario (idUsuario, idSugerencia) VALUES (pIdUsuario, pIdSugerencia);
+		INSERT INTO SugerenciasXusuario (idUsuario, idSugerencia) VALUES (pIdUsuario, pIdSugerencia);
 		
 	END //
 DELIMITER ;
@@ -221,7 +221,7 @@ CREATE PROCEDURE addUser
 	
 	BEGIN
 	
-		INSERT INTO usuarios (token, idRolXusuario, fechaIngreso, correo, telefono) VALUES (pToken, pIdRolXusuario, now(), pCorreo, pTelefono);
+		INSERT INTO Usuarios (token, idRolXusuario, fechaIngreso, correo, telefono) VALUES (pToken, pIdRolXusuario, now(), pCorreo, pTelefono);
 		
 	END //
 DELIMITER ;
@@ -235,7 +235,7 @@ CREATE PROCEDURE rolesByUser
 	
 	BEGIN
 	
-		INSERT INTO rolesxusuario (isUsuario, idRol) VALUES (pIdUsuario, pIdRol);
+		INSERT INTO RolesXusuario (isUsuario, idRol) VALUES (pIdUsuario, pIdRol);
 		
 	END //
 DELIMITER ;
@@ -249,7 +249,7 @@ CREATE PROCEDURE addRole
 	
 	BEGIN
 	
-		INSERT INTO roles (rol) VALUES (pRole);
+		INSERT INTO Roles (rol) VALUES (pRole);
 		
 	END //
 DELIMITER ;
@@ -263,7 +263,7 @@ CREATE PROCEDURE addStore
 	
 	BEGIN
 	
-		INSERT INTO locales (local, ubicacion, imagen, telefono, correo) VALUES (pLocal, pUbicacion, pImagen, pTelefono, pCorreo);
+		INSERT INTO Locales (local, ubicacion, imagen, telefono, correo) VALUES (pLocal, pUbicacion, pImagen, pTelefono, pCorreo);
 		
 	END //
 DELIMITER ;
@@ -277,7 +277,7 @@ CREATE PROCEDURE addDiscount
 	
 	BEGIN
 	
-		INSERT INTO promociones (promocion, descripcion, imagen) VALUES (pPromocion, pDescripcion, pImagen);
+		INSERT INTO Promociones (promocion, descripcion, imagen) VALUES (pPromocion, pDescripcion, pImagen);
 		
 	END //
 DELIMITER ;
