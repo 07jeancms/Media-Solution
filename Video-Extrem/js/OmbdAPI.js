@@ -21,7 +21,7 @@ $Form.on('submit', function (p_oEvent) {
 
 
 
-var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists'],);
+var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                          (function() {
     //Press enter on modal 
     app.directive('pressEnter', function () {
@@ -281,15 +281,23 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists'],);
     //                         __/ |                       
     //                        |___/                        
     app.controller("categoriesController", categoriesController);
-    categoriesController.$inject = ["NgTableParams", "$resource"];
+    categoriesController.$inject = ["NgTableParams", "$resource", "$scope", "$http"];
 
-    function categoriesController(NgTableParams, $resource) {
+    function categoriesController(NgTableParams, $resource,  $scope, $http) {
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
 
         this.tableParams = new NgTableParams({}, {
-            getData:function(){
-                return []
+            getData:function(params){
+                $http({
+                    method: 'GET',
+                    url: 'http://www.videoextrem.com/api/test.php',
+                    data: 'parameters'
+                }).then(function success(response) {
+                    console.log(response.data);
+                }, function error(response) {
+                    console.log("Error trying to retrieve categories");
+                });
             }
 
         });
