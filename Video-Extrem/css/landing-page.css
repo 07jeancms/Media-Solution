@@ -234,17 +234,17 @@ a:hover{
     background-color: rgba(214,73,0,0.1);
     font-size: 2.2vh;
     color: rgba(91,31,0,0.8);
-    
+
 }
 
 .alert-textSize{
     font-size: 2.2vh;
-    
+
 }
 .movieInfoText{
     font-size: 2.7vh;
     color: rgba(99,34,0,1);
-    
+
     margin-bottom: 1vh;
 }
 
@@ -262,10 +262,10 @@ a:hover{
 }
 
 .content-section-b {
-    
+
     min-height:  100vh;
     padding: 15vh 0;
-    
+
 }
 .content-section-c {
     min-height:  90vh;
@@ -457,11 +457,11 @@ p.copyright {
     margin-bottom: 5vh;
     margin-top:5vh;
     height: 5vh;
-    
+
 }
 
 .form-control{ 
-     background-color: rgba(255,255,255,0.4);
+    background-color: rgba(255,255,255,0.4);
 }
 .searchButton{
     color: #860002;
@@ -588,7 +588,7 @@ table{
     background-color:rgba(255,255,255,0.5);
 }
 table-striped>tbody>tr:nth-of-type(odd){
-   background-color:red;
+    background-color:red;
 }
 h2{
     font-size: 3.7vh;
@@ -596,3 +596,93 @@ h2{
 .divHeader{
     margin-bottom: 5vh;
 }
+
+.mediaIcon{
+    height: 20vh;
+    width: 20vh;
+}
+
+.mediaIconColor{
+    height: 25vh;
+    width: 25h;
+}
+
+.mediaIconColor:hover ~ .mediaText-whatsapp{
+    font-size: 8vh;
+
+    color: green;
+}
+.mediaIconColor:hover ~ .mediaText-facebook{
+    font-size: 8vh;
+
+    color: darkblue;
+}
+.mediaIconColor:hover ~ .mediaText-waze{
+    font-size: 8vh;
+
+    color: darkslategray;
+}
+.mediaText{ 
+    color: rgba(134,0,0,0.4);
+    padding-top : 5vh;
+    font-size: 6vh;
+}
+
+.mediaDiv{
+    padding-top : 10vh;
+}
+.carousel-fade {
+    .carousel-inner {
+        .item {
+            transition-property: opacity;
+        }
+
+        .item,
+        .active.left,
+        .active.right {
+            opacity: 0;
+        }
+
+        .active,
+        .next.left,
+        .prev.right {
+            opacity: 1;
+        }
+
+        .next,
+        .prev,
+        .active.left,
+        .active.right {
+            left: 0;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+
+    .carousel-control {
+        z-index: 2;
+    }
+}
+
+
+
+html, 
+body, 
+.carousel, 
+.carousel-inner, 
+.carousel-inner .item {
+    height: 100%;
+}
+
+.item:nth-child(1) {
+    background: #74C390;
+}
+
+.item:nth-child(2) {
+    background: #51BCE8;
+}
+
+.item:nth-child(3) {
+    background: #E46653;
+}
+
+

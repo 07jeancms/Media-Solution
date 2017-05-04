@@ -51,7 +51,6 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-
         <script type="text/javascript" src="js/sugerencias.js"></script>
 
         <title>Video Extrem</title>
@@ -95,7 +94,9 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         <input type="checkbox" id="drop-2"/>
                         <ul >
                             <li><a href="#quienessomos"><i class="fa fa-id-badge fa-lg" aria-hidden="true"></i>&nbsp;Quienes somos?</a></li>
-                            <li><a href="#encuentrenos"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Sugerencias</a></li>
+
+                            <li><a href="#encuentrenos"><i class="fa fa-mouse-pointer fa-lg" aria-hidden="true"></i>&nbsp;Encuentranos</a></li>
+                            <li><a href="#sugerencias"><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Sugerencias</a></li>
 
                         </ul>
                     </li>
@@ -152,7 +153,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
 
         <!-- Estrenos -->
-        <div class="pageContent" >
+        <div class="pageContent" ng-app="indexApp">
             <a id="movieCarousselContainer"></a>
 
             <div class="content-section-a" id="">
@@ -337,12 +338,38 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <!-- Promociones -->
             <a name="promociones"></a>
             <div id="relativeDiv" class="content-section-a">
-                <div class="container">
+                <div class="container" >
                     <div class="row">
+
+
+                        <div rn-carousel-indicators ng-if="slides" slides="slides" rn-carousel-index="carouselIndex"></div>
                         <div class="col-lg-12 col-sm-12">
                             <h2><i class="fa fa-ticket fa-lg" aria-hidden="true"></i>&nbsp;Promociones</h2>
                         </div>
 
+
+
+                    </div>
+
+
+                    <div class="container">
+                        <div class="row" ng-controller="disscountsController">
+                            <div class="col-md-12">
+                                <div class="carousel slide multi-item-carousel" id="theCarousel">
+                                    <div class="carousel-inner">
+                                        <div class="item active"  ng-repeat="disscount in images">
+                                            <div class="col-xs-3"><a href="#1"><img src="{{disscount.source}}" alt="Moonligth" class="carouselImg img-responsive"></a></div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <!--  Example item end -->
+                                </div>
+                                <a class="left carousel-control" href="#theCarousel" data-slide="prev"><i class="glyphicon glyphicon-chevron-left"></i></a>
+                                <a class="right carousel-control" href="#theCarousel" data-slide="next"><i class="glyphicon glyphicon-chevron-right"></i></a>
+                            </div>
+                        </div>
                     </div>
                     <div id="bottomAlert" class="col-lg-10">
                         <div class="alert alert-movieInfo">
@@ -354,7 +381,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                 </div>
             </div>
 
-          
+
 
             <!-- Quienes somos -->
             <a name="quienessomos"></a>
@@ -379,7 +406,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <!-- Establecimientos -->
 
             <a name="establecimientos"></a>
-            <div id="relativeDiv" class="content-section-a" ng-app="ubicationApp">
+            <div id="relativeDiv" class="content-section-a" >
                 <div class="container" ng-controller="ubicationController as ubication">
 
                     <div class="row">
@@ -425,10 +452,11 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             </div>
             <!-- Encuentrenos -->
             <a name="encuentrenos"></a>
-            <div class="content-section-b">
-                <div class="container row-lg-12">
+            <div class="content-section-b"  id="relativeDiv" >
+                <div class="container row-lg-12" ng-controller="mediaController as media">
+
                     <div class="col-lg-12 col-sm-12">
-                        <h2><i class="fa fa-film fa-lg" aria-hidden="true"></i>&nbsp;Encuentranos en</h2>
+                        <h2><i class="fa fa-mouse-pointer fa-lg" aria-hidden="true"></i>&nbsp;Encuentranos en</h2>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-sm-6">
@@ -438,59 +466,75 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                         </div>
                     </div>
 
-                    <div class="socialMediaLinks">
-                        <div class="col-lg-4 col-sm-6">
+                    <div class="mediaDiv "  >
+
+                        <div class="col-lg-4 col-md-4 col-sm-4"  >
                             <a href="https://www.waze.com">
-                                <img border="0" alt="Waze" src="img/Waze.png" width="100" height="100">
-                                </div>
-                            <div class="col-lg-4 col-sm-6">
-                                <a href="https://facebook.com">
-                                    <img border="0" alt="Facebook" src="img/Facebook.png" width="100" height="100">
-                                    </div>
-                                <div class="col-lg-4 col-sm-6">
-                                    <a href="https://everardoherrera.com">
-                                        <img border="0" alt="Whatsapp" src="img/Whatsapp.png" width="100" height="100">
-                                        </div>
-                                </div>
-                            </div>
+                                <img border="0" alt="Waze" src="img/Waze.png" ng-mouseover="waze=false"   ng-show="waze" class="mediaIcon">
+                                <img border="0" alt="Waze" src="img/WazeColor.png" class="mediaIconColor"  ng-show="!waze" ng-mouseleave="waze=true" >
+                                <h2 class="mediaText mediaText-waze">Waze</h2></a>
                         </div>
-                        <!-- Sugerencias -->
-                        <a name="sugerencias"></a>
-                        <div class="content-section-a " id="relativeDiv">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 col-sm-12">
-                                        <h2><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Sugerencias</h2>
-                                    </div>
-                                    <div class=" ">
-                                        <div  id="suggestionTextArea" >
-                                            <select id="selectLocal" class="form-control select col-lg-12 col-md-12 col-sm-12">
-                                                <option value="local">Seleccion el local</option>
-                                                <option value="moravia">Moravia</option>
-                                                <option value="coronado">Coronado</option>
-                                                <option value="sabanilla">Sabanilla</option>
-                                                <option value="san_jose">San Jose</option>
-                                                <option value="general">General</option>
-                                            </select>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <a href="https://facebook.com">
+                                <img border="0" alt="Facebook" src="img/Facebook.png" class="mediaIcon" ng-mouseover="facebook=false"   ng-show="facebook" class="mediaIcon">
+                                <img border="0" alt="Facebook" src="img/FacebookColor.png" class="mediaIconColor" ng-show="!facebook" ng-mouseleave="facebook=true" >
+                                <h2 class="mediaText mediaText-facebook">Facebook</h2></a>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <a data-toggle="modal" ng-click="whatsappMessage()" data-target="#messageModal" href="#encuentrenos">
+                                <img border="0" alt="Whatsapp" src="img/Whatsapp.png" class="mediaIcon" ng-mouseover="whatsapp=false"   ng-show="whatsapp" >
+                                <img border="0" alt="Whatsapp" src="img/WhatsappColor.png" class="mediaIconColor" ng-show="!whatsapp" ng-mouseleave="whatsapp=true"  >
+                                <h2 class="mediaText mediaText-whatsapp">Whatsapp</h2></a>
 
-                                            <textarea id="textAreaSuggestion" rows="5" cols="60" placeholder="Sugerencia" class="textarea form-control col-lg-12 col-md-12 col-sm-12 suggestionArea"></textarea>
-                                            <button class="btn " id="sendSuggestion" onclick="sendSuggestionInfo()">Enviar</button>
-                                        </div>
+                        </div>
+                        <div ng-include="'messageModal.html'"></div> 
+                    </div>
+                    <div id="bottomAlert" class="col-lg-10">
+                        <div class="alert alert-movieInfo">
+                            <i class="fa fa-mouse-pointer fa-lg" aria-hidden="true"></i>&nbsp;Encuentranos en las   <strong>redes sociales favoritas</strong>, para que te puedas enterar de todo lo que ofrecemos.
 
-                                    </div>
-                                    <div id="bottomAlert" class="col-lg-10">
-                                        <div class="alert alert-movieInfo">
-                                            <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un <strong>buzón de sugerencias</strong>, en el cual puedes brindarnos tus inquietudes, quejas y consultas.
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                            </div>
                         </div>
 
-                        <!--
+                    </div>
+                </div>
+            </div>
+            <!-- Sugerencias -->
+            <a name="sugerencias"></a>
+            <div class="content-section-a " id="relativeDiv">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <h2><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Sugerencias</h2>
+                        </div>
+                        <div class=" ">
+                            <div  id="suggestionTextArea" >
+                                <select id="selectLocal" class="form-control select col-lg-12 col-md-12 col-sm-12">
+                                    <option value="local">Seleccion el local</option>
+                                    <option value="moravia">Moravia</option>
+                                    <option value="coronado">Coronado</option>
+                                    <option value="sabanilla">Sabanilla</option>
+                                    <option value="san_jose">San Jose</option>
+                                    <option value="general">General</option>
+                                </select>
+
+                                <textarea id="textAreaSuggestion" rows="5" cols="60" placeholder="Sugerencia" class="textarea form-control col-lg-12 col-md-12 col-sm-12 suggestionArea"></textarea>
+                                <button class="btn " id="sendSuggestion" onclick="sendSuggestionInfo()">Enviar</button>
+                            </div>
+
+                        </div>
+                        <div id="bottomAlert" class="col-lg-10">
+                            <div class="alert alert-movieInfo">
+                                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un <strong>buzón de sugerencias</strong>, en el cual puedes brindarnos tus inquietudes, quejas y consultas.
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!--
 ______ ____   ____ _______ ______ _____  
 |  ____/ __ \ / __ \__   __|  ____|  __ \ 
 | |__ | |  | | |  | | | |  | |__  | |__) |
@@ -501,86 +545,87 @@ ______ ____   ____ _______ ______ _____
 -->
 
 
-                        <footer>
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <ul class="list-inline">
-                                            <li class="footer-menu-divider">&sdot;</li>
+            <footer>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="list-inline">
+                                <li class="footer-menu-divider">&sdot;</li>
 
-                                            <li>
-                                                <a href="#inicio">Inicio</a>
-                                            </li>
+                                <li>
+                                    <a href="#inicio">Inicio</a>
+                                </li>
 
-                                            <li class="footer-menu-divider">&sdot;</li>
+                                <li class="footer-menu-divider">&sdot;</li>
 
-                                            <li>
-                                                <a href="#contactenos">Contactenos</a>
-                                            </li>
+                                <li>
+                                    <a href="#contactenos">Contactenos</a>
+                                </li>
 
-                                            <li class="footer-menu-divider">&sdot;</li>
+                                <li class="footer-menu-divider">&sdot;</li>
 
-                                            <li>
-                                                <a href="#contact">Nuestras redes sociales</a>
-                                            </li>
+                                <li>
+                                    <a href="#contact">Nuestras redes sociales</a>
+                                </li>
 
-                                            <li class="footer-menu-divider">&sdot;</li>                                
+                                <li class="footer-menu-divider">&sdot;</li>                                
 
-                                            <li>
-                                                <a href="#sugerencias">Sugerencias</a>
-                                            </li>
-                                        </ul>
+                                <li>
+                                    <a href="#sugerencias">Sugerencias</a>
+                                </li>
+                            </ul>
 
-                                        <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </footer>
+                            <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
+                        </div>
                     </div>
                 </div>
+            </footer>
+        </div>
+        </div>
 
 
-                </body>
+    </body>
 
-            <!-- jQuery -->
-            <script src="js/jquery.js"></script>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 
-            <!--Angular.js  --->
-            <script src="node_modules/angular/angular.min.js"></script>
+<!--Angular.js  --->
+<script src="node_modules/angular/angular.min.js"></script>
 
-            <!--Angular.js Resources  --->
-            <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+<!--Angular.js Resources  --->
+<script src="node_modules/angular-resource/angular-resource.min.js"></script>
 
-            <!-- Bootstrap Core JavaScript -->
-            <script src="js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
-            <!-- Plugin JavaScript -->
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-            <!-- Google Maps API Key-Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFvXfKy-vn2ilKVHLFrLIuLoE3JQjptfU&sensor=false"></script>
+<!-- Google Maps API Key-Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFvXfKy-vn2ilKVHLFrLIuLoE3JQjptfU&sensor=false"></script>
 
-            <!-- Theme JavaScript -->
-            <script src="js/grayscale.js"></script>
+<!-- Theme JavaScript -->
+<script src="js/grayscale.js"></script>
 
-            <!--OMBD API --->
-            <script src="js/OmbdAPI.js"></script>
-
-
-            <!-- Include Bootstrap-select CSS, JS -->
-            <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+<!--OMBD API --->
+<script src="js/OmbdAPI.js"></script>
 
 
-            <!--Angular Table   --->
-            <script src="js/ng-table.min.js"></script>
+<!-- Include Bootstrap-select CSS, JS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 
-            <!--Angular Drag and drop   --->
-            <script src="js/dragAndDropList.js"></script>
 
-            <!--Carousel Control  --->
-            <script src="js/carousel.js"></script>
+<!--Angular Table   --->
+<script src="js/ng-table.min.js"></script>
 
-            <!--Ubications  --->
-            <script src="js/ubications.js"></script>
 
-            </html>
+<!--Carousel Control  --->
+<script src="js/carousel.js"></script>
+
+<!--Angular Touch  --->
+<script src="./node_modules/angular-touch/angular-touch.js"></script>
+
+<!--Main  --->
+<script src="js/main.js"></script>  
+
+</html>
