@@ -17,9 +17,5 @@ class connection{
 		mysql_select_db($this->database, $conection);
 		return mysql_query($sql,$conection);
 	}
-	
-	function printTest(){
-		echo "Que cagada";
-	}
 }
 ?>
