@@ -5,6 +5,7 @@ DELIMITER //
 		BEGIN
 		
 			INSERT INTO Generos (genero, descripcion) VALUES (pGenero, pDescripcion);
+
 				
 		END //	
 DELIMITER ;
@@ -12,6 +13,37 @@ DELIMITER ;
 -- call addGenre("Terror", "Peliculas de Terror");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+	CREATE PROCEDURE deleteGenre
+		(IN pIdGenero BIGINT)
+		
+		BEGIN
+
+			DELETE FROM Generos WHERE idGenero = pIdGenero;
+				
+		END //	
+DELIMITER ;
+
+-- call deleteGenre(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+	CREATE PROCEDURE updateGenre
+		(IN pIdGenero BIGINT, pGenero VARCHAR(100), IN pDescripcion VARCHAR(500))
+		
+		BEGIN
+
+			UPDATE Generos SET genero = pGenero, descripcion = pDescripcion WHERE idGenero = pIdGenero;
+				
+		END //	
+DELIMITER ;
+
+-- call updateGenre(1, "nuevo genero", "nueva descripcion");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 	CREATE PROCEDURE addCategory
 		(IN pCategoria VARCHAR(100))
@@ -26,6 +58,37 @@ DELIMITER ;
 -- call addCategory("Top 10");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+	CREATE PROCEDURE deleteCategory
+		(IN pidCategoria BIGINT)
+		
+		BEGIN
+		
+			DELETE FROM Categorias WHERE idCategoria = pIdCategoria;
+			
+		END //
+DELIMITER ;
+
+-- call deleteCategory("Top 10");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+	CREATE PROCEDURE updateCategory
+		(IN pCategoria VARCHAR(100), pidCategoria BIGINT)
+		
+		BEGIN
+			UPDATE Categorias SET categoria = pCategoria WHERE pIdCategoria = idCategoria;
+			
+		END //
+DELIMITER ;
+
+
+-- call updateCategory("Top 10");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 	CREATE PROCEDURE addLanguage
 		(IN pIdioma VARCHAR(100))
@@ -40,6 +103,37 @@ DELIMITER ;
 -- call addLanguage("English");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+	CREATE PROCEDURE deleteLanguage
+		(IN pIdLanguage BIGINT)
+		
+		BEGIN
+
+			DELETE FROM Idiomas WHERE idIdioma = pIdLanguage;
+				
+		END //	
+DELIMITER ;
+
+-- call deleteLanguage(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+	CREATE PROCEDURE updateLanguage
+		(IN pIdLanguage BIGINT,pIdioma VARCHAR(100)))
+		
+		BEGIN
+
+			UPDATE Idiomas SET idioma = pIdioma WHERE idIdioma = pIdLanguage;
+				
+		END //	
+DELIMITER ;
+
+-- call updateLanguage(1,"idioma a borrar");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 	CREATE PROCEDURE addActor
 		(IN pActor VARCHAR(100))
@@ -54,6 +148,37 @@ DELIMITER ;
 -- call addActor("Vin Diesel");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+	CREATE PROCEDURE deleteActor
+		(IN pIdActor BIGINT)
+		
+		BEGIN
+
+			DELETE FROM Actores WHERE idActor = pIdActor;
+				
+		END //	
+DELIMITER ;
+
+-- call deleteActor(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+	CREATE PROCEDURE updateActor
+		(IN pIdActor BIGINT,pActor VARCHAR(100))
+		
+		BEGIN
+
+			UPDATE Actores SET actor = pActor WHERE idActor = pIdActor;
+				
+		END //	
+DELIMITER ;
+
+-- call updateActor(1,"actor a borrar");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 	CREATE PROCEDURE addSubtitle
 		(IN pSubtitulo VARCHAR(100))
@@ -68,6 +193,37 @@ DELIMITER ;
 -- call addSubtitle("Espanol");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+	CREATE PROCEDURE deleteSubtitle
+		(IN pIdSubtitulo BIGINT)
+		
+		BEGIN
+
+			DELETE FROM Subtitulos WHERE idSubtitulo = pIdSubtitulo;
+				
+		END //	
+DELIMITER ;
+
+-- call deleteSubtitle(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+	CREATE PROCEDURE updateSubtitle
+		(IN pIdSubtitulo BIGINT,pSubtitulo VARCHAR(100))
+		
+		BEGIN
+
+			UPDATE Subtitulos SET subtitulo = pSubtitulo WHERE idSubtitulo = pIdSubtitulo;
+				
+		END //	
+DELIMITER ;
+
+-- call updateSubtitle(1, "subtitulo");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addGenreByMovie
 	(IN pIdPelicula BIGINT, IN pIdGenero BIGINT)
@@ -82,6 +238,38 @@ DELIMITER ;
 -- call addGenreByMovie(1, 1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteGenreByMovie
+	(IN pIdGeneroXPelicula BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM GenerosXpelicula WHERE idGeneroXpelicula = pIdGeneroXPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call deleteGenreByMovie(1, 1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateGenreByMovie
+	(IN pIdGeneroXPelicula BIGINT, pIdGenero BIGINT)
+	
+	BEGIN
+	
+		UPDATE GenerosXpelicula SET idGenero = pIdGenero WHERE idGeneroXpelicula = pIdGeneroXPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call updateGenreByMovie(1, 1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+
 DELIMITER //
 CREATE PROCEDURE addCategoryByMovie
 	(IN pIdPelicula BIGINT, IN pIdCategoria BIGINT)
@@ -96,6 +284,37 @@ DELIMITER ;
 -- call addGenreByMovie(1, 1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteCategoryByMovie
+	(IN pIdCategoriaXPelicula BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM CategoriasXpelicula WHERE idCategoriaXpelicula = pIdCategoriaXPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call deleteCategoryByMovie(1, 1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateCategoryByMovie
+	(IN pIdCategoriaXPelicula BIGINT, pIdCategoria BIGINT)
+	
+	BEGIN
+	
+		UPDATE CategoriasXpelicula SET idCategoria = pIdCategoria WHERE idCategoriaXpelicula = pIdCategoriaXPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call updateCategoryByMovie(1, 1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addLanguageByMovie
 	(IN pIdIdioma BIGINT, IN pIdPelicula BIGINT)
@@ -110,6 +329,37 @@ DELIMITER ;
 -- call addLanguageByMovie(1, 1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteLanguageByMovie
+	(IN pIdIdiomaXPelicula BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM IdiomasXpelicula WHERE idIdiomaXpelicula = pIdIdiomaXPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call deleteLanguageByMovie(1, 1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateLanguageByMovie
+	(IN pIdIdiomaXPelicula BIGINT, pIdIdioma BIGINT)
+	
+	BEGIN
+	
+		UPDATE IdiomasXpelicula SET idIdioma = pIdIdioma WHERE idIdiomaXpelicula = pIdIdiomaXPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call updateLanguageByMovie(1, 1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addActorsByMovie
 	(IN pIdPelicula BIGINT, IN pIdActor BIGINT)
@@ -124,6 +374,37 @@ DELIMITER ;
 -- call addActorsByMovie(1, 1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteActorsByMovie
+	(IN pIdActorXPelicula BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM ActoresXpelicula WHERE idActorXpelicula = pIdActorXPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call deleteActorsByMovie(1, 1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateActorsByMovie
+	(IN pIdActorXPelicula BIGINT, pIdActor BIGINT)
+	
+	BEGIN
+	
+		UPDATE ActoresXpelicula SET idActor = pIdActor WHERE idActorXpelicula = pIdActorXPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call updateActorsByMovie(1, 1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addSubtitlesByMovie
 	(IN pIdPelicula BIGINT, IN pIdSubtitulo BIGINT)
@@ -138,6 +419,37 @@ DELIMITER ;
 -- call addSubtitlesByMovie(1, 1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteSubtitlesByMovie
+	(IN pIdSubtituloXPelicula BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM SubtitulosXpelicula WHERE idSubXpelicula = pIdSubtituloXPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call deleteSubtitlesByMovie(1, 1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateSubtitlesByMovie
+	(IN pIdSubtituloXPelicula BIGINT, pIdSubtitulo BIGINT)
+	
+	BEGIN
+	
+		UPDATE SubtitulosXpelicula SET idSubtitulo = pIdSubtitulo WHERE idSubXpelicula = pIdSubtituloXPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call updateSubtitlesByMovie(1, 1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addMovie
 	(IN pAno INT, IN pPelicula VARCHAR(200), IN pIdActorXpelicula BIGINT, IN pIdGeneroXpelicula BIGINT, IN pIdIdiomaXpelicula BIGINT, IN pTrama VARCHAR(1000),
