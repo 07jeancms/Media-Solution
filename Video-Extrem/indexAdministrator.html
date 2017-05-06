@@ -402,23 +402,22 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Categorias </h2>
                             <div >
                                 <div ng-controller="categoriesController as categories">
-
                                     <table ng-table="categories.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualCategory in $data.Search " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualCategory.idcategories}}</td>
-                                            <td data-title="'Categoria'" filter="{categories: 'number'}" sortable="'Year'">{{actualCategory.categories}}</td>
-                                            <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showCateogry(actualCateogry)" data-toggle="modal" data-target="#showCateogryModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editCateogry(actualCateogry)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteCateogry(actualCateogry)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                        <tr ng-repeat="actualCategory in arrayCategories " >
+                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualCategory.idCategoria}}</td>
+                                            <td data-title="'Categoria'" filter="{categories: 'number'}" sortable="'Year'">{{actualCategory.categoria}}</td>
+                                            <td data-title="'Editar'" >                                             
+                                                <div class="inline col-lg-12">                                 
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showCategory(actualCategory)" data-toggle="modal" data-target="#showCategoryModal" aria-hidden="true"> </i>                                                 
+                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditCategory(actualCategory)" data-toggle="modal" data-target="#editCategoryModal" aria-hidden="true"></i>                   <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteCategory(actualCategory)"aria-hidden="true"></i>
+                                                </div>                                         
+                                            </td>
+                                        </tr>
                                     </table>
-
+                                    <div ng-include="'categorieModal.html'"></div>
                                 </div>
-
-
-                                <div ng-include="'categorieModal.html'"></div> 
                             </div>
                             <!-- Button trigger modal -->
-
-
-
                         </div>
 
                     </div>
