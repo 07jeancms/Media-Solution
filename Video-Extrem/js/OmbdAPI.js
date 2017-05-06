@@ -257,18 +257,34 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
     //                                    
     //  
     app.controller("genreController", genreController);
-    genreController.$inject = ["NgTableParams", "$resource"];
+    genreController.$inject = ["NgTableParams", "$resource", "$scope", "$http"];
 
-    function genreController(NgTableParams, $resource) {
+    function genreController(NgTableParams, $resource, $scope, $http) {
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
 
         this.tableParams = new NgTableParams({}, {
             getData:function(){
-                return []
+            $http.get("http://www.videoextrem.com/api/genres.php?queryType=select")
+                .then(function(response) {
+                    $scope.arrayGeneros = response.data;
+            });
             }
 
         });
+        
+        $scope.deleteGenre = function(pActualGenre){
+           $scope.url = "http://www.videoextrem.com/api/genres.php?queryType=delete";
+           $scope.genreData = {
+	        'idGenero' : pActualGenre.idGenero 
+           }
+           $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+	       $http.post($scope.url, $scope.genreData).
+            then(function(data, status) {
+               alert("El genero " + pActualGenre.genero + " ha sido borrado");
+               location.reload();
+            })
+        }
 
     }
     //     _____      _                        _           
@@ -282,7 +298,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
     app.controller("categoriesController", categoriesController);
     categoriesController.$inject = ["NgTableParams", "$resource", "$scope", "$http"];
 
-    function categoriesController(NgTableParams, $resource,  $scope, $http) {
+    function categoriesController(NgTableParams, $resource, $scope, $http) {
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
 

@@ -368,12 +368,19 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Genero</h2>
                             <div >
                                 <div ng-controller="genreController as genre">
-
                                     <table ng-table="genre.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualGendre in $data.Search " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualGendre.idgenre}}</td>
-                                            <td data-title="'Genero'" filter="{genre: 'number'}" sortable="'Year'">{{actualGendre.genre}}</td>
-                                            <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showGendre(actualGendre)" data-toggle="modal" data-target="#showGendreModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editGendre(actualGendre)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteGendre(actualGendre)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                        <tr ng-repeat="actualGenre in arrayGeneros " >
+                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualGenre.idGenero}}</td>
+                                            <td data-title="'Genero'" filter="{genre: 'number'}" sortable="'Year'">{{actualGenre.genero}}</td>
+                                            <td data-title="'Descripcion'" filter="{description: 'text'}">{{actualGenre.descripcion}}</td>
+                                            <td data-title="'Editar'" >                                             
+                                                <div class="inline col-lg-12">                                                  
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showGendre(actualGendre)" data-toggle="modal" data-target="#showGendreModal" aria-hidden="true"> </i>                                                 
+                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editGendre(actualGendre)"aria-hidden="true">  </i>
+                                                    <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteGenre(actualGenre)"aria-hidden="true"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </table>
 
                                 </div>
