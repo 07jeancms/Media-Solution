@@ -471,6 +471,40 @@ DELIMITER ;
 -- call addMovie(null, "Harry Potter", null,null,null,null,null,null,1000,now(),null);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteMovie
+	(IN pIdPelicula BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM Peliculas WHERE idPelicula = pIdPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call deleteSale(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateMovie
+	(IN pIdPelicula BIGINT, pAno INT, pPelicula VARCHAR(200), pIdActorXpelicula BIGINT, pIdGeneroXpelicula BIGINT, pIdIdiomaXpelicula BIGINT, pTrama VARCHAR(1000),
+		pIdCategoriaXpelicula BIGINT, pIdSubXpelicula BIGINT, pPrecio DECIMAL, pFechaIngreso DATETIME, pLinkImagen VARCHAR(500))
+	
+	BEGIN
+	
+		UPDATE Peliculas SET ano = pAno, pelicula = pPelicula, idActorXpelicula = pIdActorXpelicula, idGeneroXpelicula = pIdGeneroXpelicula, idIdiomaXpelicula = pIdIdiomaXpelicula, trama = pTrama,
+		idCategoriaXpelicula = pIdCategoriaXpelicula, idSubXpelicula = pIdSubXpelicula, precio = pPrecio, fechaIngreso = pFechaIngreso, linkImagen = pLinkImagen WHERE idPelicula = pIdPelicula;
+		
+	END //
+DELIMITER ;
+
+-- call updateSale(1, nueva descripcion);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+
 DELIMITER //
 CREATE PROCEDURE addSale
 	(IN pDescripcion VARCHAR(500))
@@ -485,6 +519,37 @@ DELIMITER ;
 -- call addSale("2 peliculas de Cars");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteSale
+	(IN pIdVenta BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM Ventas WHERE idVenta = pIdVenta;
+		
+	END //
+DELIMITER ;
+
+-- call deleteSale(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateSale
+	(IN pIdVenta BIGINT, pDescripcion VARCHAR(500))
+	
+	BEGIN
+	
+		UPDATE Ventas SET descripcion = pDescripcion WHERE idVenta = pIdVenta;
+		
+	END //
+DELIMITER ;
+
+-- call updateSale(1, nueva descripcion);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addMoviesBySale
 	(IN pIdPelicula BIGINT, IN pIdVenta BIGINT)
@@ -499,6 +564,37 @@ DELIMITER ;
 -- call addMoviesBySale(1, 1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteMoviesBySale
+	(IN pIdPeliculaXventa BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM PeliculasXventa WHERE idPelliculaXventa = pIdPeliculaXventa;
+		
+	END //
+DELIMITER ;
+
+-- call deleteSale(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateMoviesBySale
+	(IN pIdPeliculaXventa BIGINT, IN pPelicula BIGINT)
+	
+	BEGIN
+	
+		UPDATE PeliculasXventa SET pelicula = pPelicula WHERE idPelliculaXventa = pIdPeliculaXventa;
+		
+	END //
+DELIMITER ;
+
+-- call updateSale(1, nueva descripcion);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addSuggestion
 	(IN pSugerencia VARCHAR(1000), IN pIdUsuario BIGINT)
@@ -527,6 +623,7 @@ DELIMITER ;
 -- call addSuggestionsByUser(1, 1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addUser
 	(IN pToken VARCHAR(300), IN pIdRolXusuario BIGINT, IN pCorreo VARCHAR(75), IN pTelefono VARCHAR(50))
@@ -541,6 +638,37 @@ DELIMITER ;
 -- call addUser(null, 1, "jean.cms@hotmail.es", "88888888");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteUser
+	(IN pIdUser BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM Usuarios WHERE idUsuario = pIdUser;
+		
+	END //
+DELIMITER ;
+
+-- call deleteSale(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateUser
+	(IN pIdUsuario BIGINT, pToken VARCHAR(300), IN pIdRolXusuario BIGINT, IN pCorreo VARCHAR(75), IN pTelefono VARCHAR(50))
+	
+	BEGIN
+	
+		UPDATE PeliculasXventa SET pelicula = pPelicula WHERE idUsuario = pIdUsuario;
+		
+	END //
+DELIMITER ;
+
+-- call updateSale(1, nueva descripcion);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE rolesByUser
 	(IN pIdUsuario BIGINT, IN pIdRol BIGINT)
@@ -555,6 +683,37 @@ DELIMITER ;
 -- call rolesByUser(1, 1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteRolesByUser
+	(IN pIdRolXusuario BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM RolesXusuario WHERE idRolXusuario = pIdRolXusuario;
+		
+	END //
+DELIMITER ;
+
+-- call deleteSale(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateRolesByUser
+	(IN pIdRolXusuario BIGINT, IN pIdRol BIGINT)
+	
+	BEGIN
+	
+		UPDATE RolesXusuario SET idRol = pIdRol WHERE idRolXusuario = pIdRolXusuario;
+		
+	END //
+DELIMITER ;
+
+-- call updateSale(1, nueva descripcion);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addRole
 	(IN pRole VARCHAR(75))
@@ -569,6 +728,37 @@ DELIMITER ;
 -- call addRole("Admin");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteRole
+	(IN pIdRol BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM Roles WHERE idRol = pIdRol;
+		
+	END //
+DELIMITER ;
+
+-- call deleteSale(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateRole
+	(IN pIdRol BIGINT, pRole VARCHAR(75))
+	
+	BEGIN
+	
+		UPDATE Roles SET rol = pRole WHERE idRol = pIdRol;
+		
+	END //
+DELIMITER ;
+
+-- call updateSale(1, nueva descripcion);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addStore
 	(IN pLocal VARCHAR(100), IN pUbicacion VARCHAR(500), IN pImagen LONGBLOB, IN pTelefono VARCHAR(50), IN pCorreo VARCHAR(50))
@@ -583,6 +773,37 @@ DELIMITER ;
 -- call addStore("Video Extrem Coro", "Del parque de coronado 100 mts este y 25 mts sur", null, "88888888", "video_extrem@hotmail.com");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteStore
+	(IN pIdLocal BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM Locales WHERE idLocal = pIdLocal;
+		
+	END //
+DELIMITER ;
+
+-- call deleteSale(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateStore
+	(IN pIdLocal BIGINT, pLocal VARCHAR(100), IN pUbicacion VARCHAR(500), IN pImagen LONGBLOB, IN pTelefono VARCHAR(50), IN pCorreo VARCHAR(50))
+	
+	BEGIN
+	
+		UPDATE Locales SET local = pLocal, ubicacion = pUbicacion, imagen = pImagen, telefono = pTelefono, correo = pCorreo WHERE idLocal = pIdLocal;
+		
+	END //
+DELIMITER ;
+
+-- call updateSale(1, nueva descripcion);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addDiscount
 	(IN pPromocion VARCHAR(200), IN pDescripcion VARCHAR(500), IN pImagen LONGBLOB)
@@ -595,5 +816,35 @@ CREATE PROCEDURE addDiscount
 DELIMITER ;
 
 -- call addDiscount("Peliculas de accion 2x1", "Descuento", null);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteDiscount
+	(IN pIdPromocion BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM Promociones WHERE idPromocion = pIdPromocion;
+		
+	END //
+DELIMITER ;
+
+-- call deleteSale(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE updateDiscount
+	(IN pIdLocal BIGINT, pLocal VARCHAR(100), IN pUbicacion VARCHAR(500), IN pImagen LONGBLOB, IN pTelefono VARCHAR(50), IN pCorreo VARCHAR(50))
+	
+	BEGIN
+	
+		UPDATE Locales SET local = pLocal, ubicacion = pUbicacion, imagen = pImagen, telefono = pTelefono, correo = pCorreo WHERE idLocal = pIdLocal;
+		
+	END //
+DELIMITER ;
+
+-- call updateSale(1, nueva descripcion);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
