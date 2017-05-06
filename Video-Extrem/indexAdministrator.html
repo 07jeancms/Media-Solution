@@ -267,23 +267,22 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                 <div ng-controller="languageController as language">
 
                                     <table ng-table="language.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualLanguage in $data.Search " >
+                                        <tr ng-repeat="actualLanguage in arrayLanguages " >
                                             <td data-title="'Id'"  filter="{Id: 'text'}">{{actualLanguage.idIdioma}}</td>
                                             <td data-title="'Idioma'" filter="{Idioma: 'number'}" sortable="'Year'">{{actualLanguage.idioma}}</td>
-                                            <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showLanguage(actualLanguage)" data-toggle="modal" data-target="#showLanguageModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editLanguage(actualLanguage)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteLanguage(actualLanguage)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                            <td data-title="'Editar'" >                                             
+                                                <div class="inline col-lg-12">                                 
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showLanguage(actualLanguage)" data-toggle="modal" data-target="#showLanguageModal" aria-hidden="true"> </i>                                                 
+                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditLanguage(actualLanguage)" data-toggle="modal" data-target="#editLanguageModal" aria-hidden="true"></i>                   <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteLanguage(actualLanguage)"aria-hidden="true"></i>
+                                                </div>                                         
+                                            </td>                                      
+                                        </tr>
                                     </table>
-
-                                </div>
-
-
-                                <div ng-include="'languageModal.html'"></div> 
+                                    <div ng-include="'languageModal.html'"></div>
+                                </div>      
                             </div>
                             <!-- Button trigger modal -->
-
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
