@@ -70,7 +70,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                 return $.ajax(sUrl,{
                     complete: function(p_oXHR, p_sStatus) {
                         var oData =$.parseJSON(p_oXHR.responseText);
-                        console.log(oData.Search);
                         return oData.Search
                     }}).done(function(data) {
                     params.total(data.inlineCount); // recal. page nav controls
@@ -288,20 +287,64 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
         //debugger;
 
         this.tableParams = new NgTableParams({}, {
-            getData:function(params){
-                $http({
-                    method: 'GET',
-                    url: 'http://www.videoextrem.com/api/test.php',
-                    data: 'parameters'
-                }).then(function success(response) {
-                    console.log(response.data);
-                }, function error(response) {
-                    console.log("Error trying to retrieve categories");
-                });
+            getData:function(){
+            $http.get("http://www.videoextrem.com/api/categories.php?queryType=select")
+                .then(function(response) {
+                    $scope.arrayCategories = response.data;
+            });
             }
 
         });
-
+        
+        $scope.deleteCategory = function(pActualCategory){
+           $scope.url = "http://www.videoextrem.com/api/categories.php?queryType=delete";
+           $scope.categoryData = {
+	        'idCategoria' : pActualCategory.idCategoria 
+           }
+           $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+	       $http.post($scope.url, $scope.categoryData).
+            then(function(data, status) {
+               alert("La categoria " + pActualCategory.categoria + " ha sido borrada");
+               location.reload();
+            })
+        }
+        
+        $scope.addCategory = function(){
+            var categoryNameInput = document.getElementById('CategorieName').value;
+            $scope.url = "http://www.videoextrem.com/api/categories.php?queryType=add";
+            $scope.categoryData = {
+	           'categoria' : categoryNameInput 
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.categoryData).
+                then(function(data, status) {
+                    alert("La categoria " + categoryNameInput + " ha sido agregada");
+                    location.reload();
+            })
+        }
+        
+        $scope.setEditCategory = function (pActualCategory) {
+            $scope.actualCategory = pActualCategory;
+        }
+        
+        $scope.editCategory = function () {
+            var categoryNameInput = document.getElementById('updateCategoryName').value;
+            $scope.url = "http://www.videoextrem.com/api/categories.php?queryType=edit";
+            $scope.categoryData = {
+                'idCategoria' : $scope.actualCategory.idCategoria,
+                'categoria' : categoryNameInput 
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.categoryData).
+                then(function(data, status) {
+                    alert("La categoria " + $scope.actualCategory.categoria + " ha sido actualizada a " + categoryNameInput);
+                    location.reload();
+            })
+        }
+        
+        $scope.showCategory = function(pActualCategory){
+            $scope.actualCategory = pActualCategory;
+        }
     }  
 
 
