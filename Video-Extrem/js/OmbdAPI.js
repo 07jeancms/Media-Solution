@@ -325,6 +325,22 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             }
 
         });
+
+        $scope.addGenre = function(){
+            var genreNameInput = document.getElementById('GenreName').value;
+            var genreDescriptionInput = document.getElementById('GenreDescription').value;
+            $scope.url = "http://www.videoextrem.com/api/genres.php?queryType=add";
+            $scope.genreData = {
+	           'genero' : genreNameInput,
+                'descripcion' : genreDescriptionInput
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.genreData)
+                .then(function(data, status) {
+                    alert("El genero " + genreNameInput + " ha sido agregado");
+                    location.reload();
+            })
+        }
         
         $scope.deleteGenre = function(pActualGenre){
            $scope.url = "http://www.videoextrem.com/api/genres.php?queryType=delete";
@@ -337,6 +353,31 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                alert("El genero " + pActualGenre.genero + " ha sido borrado");
                location.reload();
             })
+        }
+        
+        $scope.setEditGenre = function (pActualGenre) {
+            $scope.actualGenre = pActualGenre;
+        }
+        
+        $scope.editGenre = function () {
+            var genreNameInput = document.getElementById('genreNameInput').value;
+            var genreDescriptionInput = document.getElementById('genreDescriptionInput').value;
+            $scope.url = "http://www.videoextrem.com/api/genres.php?queryType=edit";
+            $scope.genreData = {
+                'idGenero' : $scope.actualGenre.idGenero,
+                'genero' : genreNameInput,
+                'descripcion' : genreDescriptionInput
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.genreData).
+                then(function(data, status) {
+                    alert("El genero " + $scope.actualGenre.genero + " ha sido actualizado a " + genreNameInput);
+                    location.reload();
+            })
+        }
+        
+        $scope.showGenre = function(pActualGenre){
+            $scope.actualGenre = pActualGenre;
         }
 
     }

@@ -374,18 +374,15 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                             <td data-title="'Descripcion'" filter="{description: 'text'}">{{actualGenre.descripcion}}</td>
                                             <td data-title="'Editar'" >                                             
                                                 <div class="inline col-lg-12">                                                  
-                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showGendre(actualGendre)" data-toggle="modal" data-target="#showGendreModal" aria-hidden="true"> </i>                                                 
-                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editGendre(actualGendre)"aria-hidden="true">  </i>
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showGenre(actualGenre)" data-toggle="modal" data-target="#showGenreModal" aria-hidden="true"> </i>                                                 
+                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditGenre(actualGenre)" data-toggle="modal" data-target="#editGenreModal" aria-hidden="true">  </i>
                                                     <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteGenre(actualGenre)"aria-hidden="true"></i>
                                                 </div>
                                             </td>
                                         </tr>
                                     </table>
-
-                                </div>
-
-
-                                <div ng-include="'genreModal.html'"></div> 
+                                    <div ng-include="'genreModal.html'"></div>
+                                </div> 
                             </div>
                             <!-- Button trigger modal -->
 
