@@ -274,7 +274,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             getData:function(){
             $http.get("http://www.videoextrem.com/api/actors.php?queryType=select")
                 .then(function(response) {
-                    $scope.arrayActors = response.data;
+                    $scope.arrayActores = response.data;
             });
             }
 
@@ -294,7 +294,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
         }
         
         $scope.addActor = function(){
-            var actorNameInput = document.getElementById('ActorName').value;
+            var actorNameInput = document.getElementById('actorName').value;
             $scope.url = "http://www.videoextrem.com/api/actors.php?queryType=add";
             $scope.actorData = {
                'actor' : actorNameInput 
@@ -326,7 +326,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             })
         }
         
-        $scope.showCategory = function(pActualActor){
+        $scope.showActor = function(pActualActor){
             $scope.actualActor = pActualActor;
         }
 
