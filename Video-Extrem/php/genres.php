@@ -18,6 +18,7 @@
 
         public $genreId = 0;
         public $genreName = "";
+        public $genreDescription = "";
 
         function getGenres() {
             $connection = new connection();
@@ -37,15 +38,15 @@
             $result = $connection->consult($call);
         }
 
-        function addGenre($pGenreName) {
+        function addGenre($pGenreName, $pGenreDescription) {
             $connection = new connection();
-            $call = "call addGenre('$pGenreName');";
+            $call = "call addGenre('$pGenreName', '$pGenreDescription');";
             $result = $connection->consult($call);
         }
         
-        function editGenre($pGenreId, $pGenreName) {
+        function editGenre($pGenreId, $pGenreName, $pGenreDescription) {
             $connection = new connection();
-            $call = "call updateGenre('$pGenreId','$pGenreName');";
+            $call = "call updateGenre('$pGenreId','$pGenreName', '$pGenreDescription');";
             $result = $connection->consult($call);
         }
     }
@@ -55,17 +56,23 @@
     if ($_queryType == "select"){
         $genreClass->getGenres();
     }
+
     if ($_queryType == "delete"){
         $genreClass->genreId = $request->idGenero;
         $genreClass->deleteGenre($genreClass->genreId);
+
     }
+
     if ($_queryType == "add"){
         $genreClass->genreName = $request->genero;
-        $genreClass->addGenre($genreClass->genreName);
+        $genreClass->genreDescription = $request->descripcion;
+        $genreClass->addGenre($genreClass->genreName, $genreClass->genreDescription);
     }
+    
     if ($_queryType == "edit"){
         $genreClass->genreName = $request->genero;
         $genreClass->genreId = $request->idGenero;
-        $genreClass->editGenre($genreClass->genreId, $genreClass->genreName);
+        $genreClass->genreDescription = $request->descripcion;
+        $genreClass->editGenre($genreClass->genreId, $genreClass->genreName, $genreClass->genreDescription);
     }
 ?>

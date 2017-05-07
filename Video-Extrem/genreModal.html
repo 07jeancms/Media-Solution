@@ -1,4 +1,12 @@
-<!-- Modal -->
+<!-- 
+   _____ _____  ______       _______ ______ 
+  / ____|  __ \|  ____|   /\|__   __|  ____|
+ | |    | |__) | |__     /  \  | |  | |__   
+ | |    |  _  /|  __|   / /\ \ | |  |  __|  
+ | |____| | \ \| |____ / ____ \| |  | |____ 
+  \_____|_|  \_\______/_/    \_\_|  |______|
+                                            
+-->
 <div class="modal fade" id="createGenreModal" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -20,10 +28,12 @@
 
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label  class="col-sm-2 control-label"
-                               for="inputNombre">Nombre</label>
+                        <label  class="col-sm-2 control-label" for="inputNombre">Nuevo Genero</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="GenreName" placeholder="Nombre"/>
+                            <input class="form-control" id="GenreName" placeholder="Genero"/>
+                        </div>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="GenreDescription" placeholder="Descripcion"/>
                         </div>
                     </div>
                 </form>   
@@ -35,7 +45,7 @@
                         data-dismiss="modal">
                     Cancelar
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" ng-click="this.addGenre()">
                     Crear Genero
                 </button>
             </div>
@@ -45,3 +55,127 @@
 <button class="btn" data-toggle="modal" data-target="#createGenreModal">
     Agregar Genero 
 </button>
+
+<!-- 
+  ______ _____ _____ _______ 
+ |  ____|  __ \_   _|__   __|
+ | |__  | |  | || |    | |   
+ |  __| | |  | || |    | |   
+ | |____| |__| || |_   | |   
+ |______|_____/_____|  |_|   
+                        
+-->
+
+<div class="modal fade" id="editGenreModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Editar Genero
+                </h4>
+
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" for="inputNombre">Nombre</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="genreNameInput" placeholder={{actualGenre.genero}}>
+                        </div>
+                        <br>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="genreDescriptionInput" placeholder={{actualGenre.descripcion}}>
+                        </div>
+                    </div>
+                </form>   
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="this.editGenre()">
+                    Editar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+   _____ _    _  ______          __
+  / ____| |  | |/ __ \ \        / /
+ | (___ | |__| | |  | \ \  /\  / / 
+  \___ \|  __  | |  | |\ \/  \/ /  
+  ____) | |  | | |__| | \  /\  /   
+ |_____/|_|  |_|\____/   \/  \/    
+                                
+-->
+
+<div class="modal fade" id="showGenreModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Info. Genero
+                </h4>
+
+            </div>
+            <!-- Modal Body -->
+            <div id="wrapper">
+                <div id="content"><div class="modal-body">
+
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                                >ID: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
+                                for="inputNombre">{{actualGenre.idGenero}}</h5>
+
+                        </div>
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                                >Nombre: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
+                                for="inputNombre">{{actualGenre.genero}}</h5>
+                        </div>
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                                >Descripcion: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
+                                for="inputNombre">{{actualGenre.descripcion}}</h5>
+                        </div>
+                        </div>
+                    </form>   
+                    </div></div>
+                <div id="cleared"></div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Cerrar
+                </button>
+            </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
