@@ -157,7 +157,6 @@ var app = angular.module("indexApp", [ "ngResource" ],);
                 source: 'http://lorempixel.com/940/480/nightlife/',
                 description : 'Slide 4'
             },
-            
         
         ];
 

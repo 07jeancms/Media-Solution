@@ -417,10 +417,15 @@ p.copyright {
 }
 
 .carouselImg{
-    height: 300px;
-    width : 250px;
+    height: 30vh;
+    width : 40vh;
 }
-
+.carousel{
+    width : 100vh;
+}
+.carouselDiv{
+    padding-left : 20%;
+}
 .img-responsive{
     max-height: 400px;
     max-width : 400px; 
@@ -603,23 +608,17 @@ h2{
 }
 
 .mediaIconColor{
-    height: 25vh;
-    width: 25h;
+    height: 21vh;
+    width: 21h;
 }
 
 .mediaIconColor:hover ~ .mediaText-whatsapp{
-    font-size: 8vh;
-
     color: green;
 }
 .mediaIconColor:hover ~ .mediaText-facebook{
-    font-size: 8vh;
-
     color: darkblue;
 }
 .mediaIconColor:hover ~ .mediaText-waze{
-    font-size: 8vh;
-
     color: darkslategray;
 }
 .mediaText{ 
@@ -665,24 +664,5 @@ h2{
 
 
 
-html, 
-body, 
-.carousel, 
-.carousel-inner, 
-.carousel-inner .item {
-    height: 100%;
-}
-
-.item:nth-child(1) {
-    background: #74C390;
-}
-
-.item:nth-child(2) {
-    background: #51BCE8;
-}
-
-.item:nth-child(3) {
-    background: #E46653;
-}
 
 
