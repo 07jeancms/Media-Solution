@@ -287,18 +287,71 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
     //                                             
     //           
     app.controller("subtitlesController", subtitlesController);
-    subtitlesController.$inject = ["NgTableParams", "$resource"];
+    subtitlesController.$inject = ["NgTableParams", "$resource", "$scope", "$http"];
 
-    function subtitlesController(NgTableParams, $resource) {
+    function subtitlesController(NgTableParams, $resource, $scope, $http) {
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
 
         this.tableParams = new NgTableParams({}, {
             getData:function(){
-                return []
+                $http.get("http://www.videoextrem.com/api/subtitles.php?queryType=select")
+                    .then(function(response) {
+                        $scope.arraySubtitulos = response.data;
+                });
             }
 
         });
+        
+        $scope.deleteSubtitle = function(pActualSubtitle){
+           $scope.url = "http://www.videoextrem.com/api/subtitles.php?queryType=delete";
+           $scope.subtitleData = {
+	        'idSubtitulo' : pActualSubtitle.idSubtitulo 
+           }
+           $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+	       $http.post($scope.url, $scope.subtitleData)
+               .then(function(data, status) {
+                alert("El subtitulo " + pActualSubtitle.subtitulo + " ha sido borrado");
+                location.reload();
+            })
+        }
+        
+        $scope.addSubtitle = function(){
+            var subtitleNameInput = document.getElementById('SubtitleName').value;
+            $scope.url = "http://www.videoextrem.com/api/subtitles.php?queryType=add";
+            $scope.subtitleData = {
+	           'subtitulo' : subtitleNameInput 
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.subtitleData).
+                then(function(data, status) {
+                    alert("El subtitulo " + subtitleNameInput + " ha sido agregado");
+                    location.reload();
+            })
+        }
+        
+        $scope.setEditSubtitle = function (pActualSubtitle) {
+            $scope.actualSubtitle = pActualSubtitle;
+        }
+        
+        $scope.editSubtitle = function () {
+            var subtitleNameInput = document.getElementById('editSubtitleName').value;
+            $scope.url = "http://www.videoextrem.com/api/subtitles.php?queryType=edit";
+            $scope.subtitleData = {
+                'idSubtitulo' : $scope.actualSubtitle.idSubtitulo,
+                'subtitulo' : subtitleNameInput 
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.subtitleData).
+                then(function(data, status) {
+                    alert("El subtitulo " + $scope.actualSubtitle.subtitulo + " ha sido actualizado a " + subtitleNameInput);
+                    location.reload();
+            })
+        }
+        
+        $scope.showSubtitle = function(pActualSubtitle){
+            $scope.actualSubtitle = pActualSubtitle;
+        }
 
     }
     //     _____                          

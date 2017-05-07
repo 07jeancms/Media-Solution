@@ -333,18 +333,24 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Subtitulos</h2>
                             <div >
                                 <div ng-controller="subtitlesController as subtitles">
-
                                     <table ng-table="subtitles.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualSubtitle in $data.Search " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualSubtitle.idsubtitles}}</td>
-                                            <td data-title="'Subtitulos'" filter="{subtitles: 'number'}" sortable="'Year'">{{actualSubtitle.subtitles}}</td>
-                                            <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSubtitle(actualSubtitle)" data-toggle="modal" data-target="#showSubtitleModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editSubtitle(actualSubtitle)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSubtitle(actualSubtitle)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                        <tr ng-repeat="actualSubtitle in arraySubtitulos " >
+                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualSubtitle.idSubtitulo}}</td>
+                                            <td data-title="'Subtitulo'" filter="{subtitles: 'number'}" sortable="'Year'">{{actualSubtitle.subtitulo}}</td>
+                                            <td data-title="'Editar'" >                                             
+                                            <div class="inline col-lg-12">                                                  
+                                                <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSubtitle(actualSubtitle)" data-toggle="modal" data-target="#showSubtitleModal" aria-hidden="true"> 
+                                                </i>                                                 
+                                                <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditSubtitle(actualSubtitle)" data-toggle="modal" data-target="#editSubtitleModal" aria-hidden="true">  
+                                                </i>                                                 
+                                                <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSubtitle(actualSubtitle)" aria-hidden="true">
+                                                </i>                         
+                                            </div>                                         
+                                            </td>                                      
+                                        </tr>
                                     </table>
-
-                                </div>
-
-
-                                <div ng-include="'subtitleModal.html'"></div> 
+                                    <div ng-include="'subtitleModal.html'"></div>
+                                </div> 
                             </div>
                             <!-- Button trigger modal -->
 
