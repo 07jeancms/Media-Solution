@@ -267,23 +267,22 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                 <div ng-controller="languageController as language">
 
                                     <table ng-table="language.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualLanguage in $data.Search " >
+                                        <tr ng-repeat="actualLanguage in arrayLanguages " >
                                             <td data-title="'Id'"  filter="{Id: 'text'}">{{actualLanguage.idIdioma}}</td>
                                             <td data-title="'Idioma'" filter="{Idioma: 'number'}" sortable="'Year'">{{actualLanguage.idioma}}</td>
-                                            <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showLanguage(actualLanguage)" data-toggle="modal" data-target="#showLanguageModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editLanguage(actualLanguage)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteLanguage(actualLanguage)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                            <td data-title="'Editar'" >                                             
+                                                <div class="inline col-lg-12">                                 
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showLanguage(actualLanguage)" data-toggle="modal" data-target="#showLanguageModal" aria-hidden="true"> </i>                                                 
+                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditLanguage(actualLanguage)" data-toggle="modal" data-target="#editLanguageModal" aria-hidden="true"></i>                   <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteLanguage(actualLanguage)"aria-hidden="true"></i>
+                                                </div>                                         
+                                            </td>                                      
+                                        </tr>
                                     </table>
-
-                                </div>
-
-
-                                <div ng-include="'languageModal.html'"></div> 
+                                    <div ng-include="'languageModal.html'"></div>
+                                </div>      
                             </div>
                             <!-- Button trigger modal -->
-
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -334,18 +333,24 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Subtitulos</h2>
                             <div >
                                 <div ng-controller="subtitlesController as subtitles">
-
                                     <table ng-table="subtitles.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualSubtitle in $data.Search " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualSubtitle.idsubtitles}}</td>
-                                            <td data-title="'Subtitulos'" filter="{subtitles: 'number'}" sortable="'Year'">{{actualSubtitle.subtitles}}</td>
-                                            <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSubtitle(actualSubtitle)" data-toggle="modal" data-target="#showSubtitleModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editSubtitle(actualSubtitle)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSubtitle(actualSubtitle)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                        <tr ng-repeat="actualSubtitle in arraySubtitulos " >
+                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualSubtitle.idSubtitulo}}</td>
+                                            <td data-title="'Subtitulo'" filter="{subtitles: 'number'}" sortable="'Year'">{{actualSubtitle.subtitulo}}</td>
+                                            <td data-title="'Editar'" >                                             
+                                            <div class="inline col-lg-12">                                                  
+                                                <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSubtitle(actualSubtitle)" data-toggle="modal" data-target="#showSubtitleModal" aria-hidden="true"> 
+                                                </i>                                                 
+                                                <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditSubtitle(actualSubtitle)" data-toggle="modal" data-target="#editSubtitleModal" aria-hidden="true">  
+                                                </i>                                                 
+                                                <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSubtitle(actualSubtitle)" aria-hidden="true">
+                                                </i>                         
+                                            </div>                                         
+                                            </td>                                      
+                                        </tr>
                                     </table>
-
-                                </div>
-
-
-                                <div ng-include="'subtitleModal.html'"></div> 
+                                    <div ng-include="'subtitleModal.html'"></div>
+                                </div> 
                             </div>
                             <!-- Button trigger modal -->
 
@@ -368,18 +373,22 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Genero</h2>
                             <div >
                                 <div ng-controller="genreController as genre">
-
                                     <table ng-table="genre.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualGendre in $data.Search " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualGendre.idgenre}}</td>
-                                            <td data-title="'Genero'" filter="{genre: 'number'}" sortable="'Year'">{{actualGendre.genre}}</td>
-                                            <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showGendre(actualGendre)" data-toggle="modal" data-target="#showGendreModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editGendre(actualGendre)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteGendre(actualGendre)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                        <tr ng-repeat="actualGenre in arrayGeneros " >
+                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualGenre.idGenero}}</td>
+                                            <td data-title="'Genero'" filter="{genre: 'number'}" sortable="'Year'">{{actualGenre.genero}}</td>
+                                            <td data-title="'Descripcion'" filter="{description: 'text'}">{{actualGenre.descripcion}}</td>
+                                            <td data-title="'Editar'" >                                             
+                                                <div class="inline col-lg-12">                                                  
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showGenre(actualGenre)" data-toggle="modal" data-target="#showGenreModal" aria-hidden="true"> </i>                                                 
+                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditGenre(actualGenre)" data-toggle="modal" data-target="#editGenreModal" aria-hidden="true">  </i>
+                                                    <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteGenre(actualGenre)"aria-hidden="true"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </table>
-
-                                </div>
-
-
-                                <div ng-include="'genreModal.html'"></div> 
+                                    <div ng-include="'genreModal.html'"></div>
+                                </div> 
                             </div>
                             <!-- Button trigger modal -->
 
@@ -402,23 +411,22 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Categorias </h2>
                             <div >
                                 <div ng-controller="categoriesController as categories">
-
                                     <table ng-table="categories.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualCategory in $data.Search " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualCategory.idcategories}}</td>
-                                            <td data-title="'Categoria'" filter="{categories: 'number'}" sortable="'Year'">{{actualCategory.categories}}</td>
-                                            <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showCateogry(actualCateogry)" data-toggle="modal" data-target="#showCateogryModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editCateogry(actualCateogry)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteCateogry(actualCateogry)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                        <tr ng-repeat="actualCategory in arrayCategories " >
+                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualCategory.idCategoria}}</td>
+                                            <td data-title="'Categoria'" filter="{categories: 'number'}" sortable="'Year'">{{actualCategory.categoria}}</td>
+                                            <td data-title="'Editar'" >                                             
+                                                <div class="inline col-lg-12">                                 
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showCategory(actualCategory)" data-toggle="modal" data-target="#showCategoryModal" aria-hidden="true"> </i>                                                 
+                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditCategory(actualCategory)" data-toggle="modal" data-target="#editCategoryModal" aria-hidden="true"></i>                   <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteCategory(actualCategory)"aria-hidden="true"></i>
+                                                </div>                                         
+                                            </td>
+                                        </tr>
                                     </table>
-
+                                    <div ng-include="'categorieModal.html'"></div>
                                 </div>
-
-
-                                <div ng-include="'categorieModal.html'"></div> 
                             </div>
                             <!-- Button trigger modal -->
-
-
-
                         </div>
 
                     </div>
