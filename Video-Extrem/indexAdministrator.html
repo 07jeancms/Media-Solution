@@ -297,23 +297,24 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <div class="clearfix"></div>
                             <h2 class="section-heading">Actores</h2>
                             <div >
-                                <div ng-controller="actorController as actor">
-
-                                    <table ng-table="actor.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualActor in arrayActors " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}"><h5>{{actualActor.idActor}}</h5></td>
-                                            <td data-title="'Actor'" filter="{Actor: 'number'}" sortable="'Year'"><h5>{{actualActor.actor}}</h5></td>
-                                            <td data-title="'Editar'" >                                                  
-                                                <div class="inline col-lg-12">                                 
-                                                       <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-target="#showActorModal" aria-hidden="true"> 
-                                                       </i>                                                  
-                                                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setActorRol(actualActor)" data-toggle="modal" data-target="#editActorModal" aria-hidden="true"></i>                   
-                                                        <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)"aria-hidden="true"></i>
-                                                </div>
-                                            </td>  
+                                <div ng-controller="actorController as actores">
+                                    <table ng-table="actores.tableParams" class="table table-bordered table-striped table-condensed">
+                                        <tr ng-repeat="actualActor in arrayActores " >
+                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualActor.idActor}}</td>
+                                            <td data-title="'Actor'" filter="{Actor: 'text'}">{{actualActor.actor}}</td>
+                                            <td data-title="'Editar'" >                                             
+                                            <div class="inline col-lg-12">                                                  
+                                                <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-target="#showActorMModal" aria-hidden="true"> 
+                                                </i>                                                 
+                                                <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditActor(actualActor)" data-toggle="modal" data-target="#editActorMModal" aria-hidden="true">  
+                                                </i>                                                 
+                                                <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)" aria-hidden="true">
+                                                </i>                         
+                                            </div>                                         
+                                            </td>                                      
                                         </tr>
                                     </table>
-                                    <div ng-include="'actorModal.html'"></div> 
+                                    <div ng-include="'actorM.html'"></div>
                                 </div>
                             </div>
                             <!-- Button trigger modal -->
@@ -321,7 +322,6 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                     </div>
                 </div>
             </div>
-
 
             <!-- Subtitles -->
             <a name="subtitle"></a>
@@ -354,11 +354,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                 </div> 
                             </div>
                             <!-- Button trigger modal -->
-
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
