@@ -452,23 +452,18 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addMovie
-	(IN pAno INT, IN pPelicula VARCHAR(200), IN pIdActorXpelicula BIGINT, IN pIdGeneroXpelicula BIGINT, IN pIdIdiomaXpelicula BIGINT, IN pTrama VARCHAR(1000),
-		IN pIdCategoriaXpelicula BIGINT, IN pIdSubXpelicula BIGINT, IN pPrecio DECIMAL, IN pFechaIngreso DATETIME, pLinkImagen VARCHAR(500))
+	(IN pAno INT, IN pPelicula VARCHAR(200), IN pTrama VARCHAR(1000), IN pPrecio DECIMAL, IN pFechaIngreso DATETIME, pLinkImagen VARCHAR(500))
 
 	BEGIN
-	
 		DECLARE _CurrentDateTime DATETIME;
-		
 		SET _CurrentDateTime = now();
 		
-		INSERT INTO Peliculas (ano, pelicula, idActorXpelicula, idGeneroXpelicula, idIdiomaXpelicula, trama, idCategoriaXpelicula, idSubXpelicula, precio, fechaIngreso, 
-			linkImagen) 
-		VALUES (pAno, pPelicula, pIdActorXpelicula, pIdGeneroXpelicula, pIdIdiomaXpelicula, pTrama, pIdCategoriaXpelicula, pIdSubXpelicula, pPrecio, _CurrentDateTime, 
-				pLinkImagen);
+		INSERT INTO Peliculas (ano, pelicula, trama, precio, fechaIngreso, linkImagen) 
+		VALUES (pAno, pPelicula, pTrama, pPrecio, _CurrentDateTime, pLinkImagen);
 	END //
 DELIMITER ;
 
--- call addMovie(null, "Harry Potter", null,null,null,null,null,null,1000,now(),null);
+-- call addMovie(2000, "Harry Potter", "Trama", 1000, now(), null);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
