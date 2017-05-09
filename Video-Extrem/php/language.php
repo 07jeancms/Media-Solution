@@ -45,7 +45,7 @@
         
         function editLanguage($pLanguageId, $pLanguageName) {
             $connection = new connection();
-            $call = "call updateLanguage('$pLanguageName','$pLanguageId');";
+            $call = "call updateLanguage('$pLanguageId','$pLanguageName');";
             $result = $connection->consult($call);
         }
     }

@@ -235,7 +235,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
         }
 
         $scope.editLanguage = function () {
-            var categoryNameInput = document.getElementById('updateLanguageName').value;
+            var languageNameInput = document.getElementById('updateLanguageName').value;
             $scope.url = "http://www.videoextrem.com/api/language.php?queryType=edit";
             $scope.languageData = {
                 'idIdioma' : $scope.actualLanguage.idIdioma,
@@ -249,7 +249,8 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             })
         }
 
-        $scope.showCategory = function(pActualLanguage){
+        $scope.showLanguage = function(pActualLanguage){
+
             $scope.actualLanguage = pActualLanguage;
         }
 
