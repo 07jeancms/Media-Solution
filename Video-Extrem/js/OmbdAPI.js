@@ -264,18 +264,71 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
     //                               
     //   
     app.controller("actorController", actorController);
-    actorController.$inject = ["NgTableParams", "$resource"];
+    actorController.$inject = ["NgTableParams", "$resource", "$scope", "$http"];
 
-    function actorController(NgTableParams, $resource) {
+    function actorController(NgTableParams, $resource, $scope, $http) {
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
 
         this.tableParams = new NgTableParams({}, {
             getData:function(){
-                return []
+            $http.get("http://www.videoextrem.com/api/actors.php?queryType=select")
+                .then(function(response) {
+                    $scope.arrayActores = response.data;
+            });
             }
 
         });
+        
+        $scope.deleteActor = function(pActualActor){
+           $scope.url = "http://www.videoextrem.com/api/actors.php?queryType=delete";
+           $scope.actorData = {
+            'idActor' : pActualActor.idActor 
+           }
+           $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+           $http.post($scope.url, $scope.actorData).
+            then(function(data, status) {
+               alert("El Actor " + pActualActor.actor + " ha sido borrado");
+               location.reload();
+            })
+        }
+        
+        $scope.addActor = function(){
+            var actorNameInput = document.getElementById('actorName').value;
+            $scope.url = "http://www.videoextrem.com/api/actors.php?queryType=add";
+            $scope.actorData = {
+               'actor' : actorNameInput 
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.actorData).
+                then(function(data, status) {
+                    alert("El actor " + actorNameInput + " ha sido agregado");
+                    location.reload();
+            })
+        }
+        
+        $scope.setEditActor = function (pActualActor) {
+            $scope.actualActor = pActualActor;
+        }
+        
+        $scope.editActor = function () {
+            var actorNameInput = document.getElementById('updateActorName').value;
+            $scope.url = "http://www.videoextrem.com/api/actors.php?queryType=edit";
+            $scope.actorData = {
+                'idActor' : $scope.actualActor.idActor,
+                'actor' : actorNameInput
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.actorData).
+                then(function(data, status) {
+                    alert("El actor " + $scope.actualActor.actor + " ha sido actualizado a " + actorNameInput);
+                    location.reload();
+            })
+        }
+        
+        $scope.showActor = function(pActualActor){
+            $scope.actualActor = pActualActor;
+        }
 
     }
     //     _____       _     _   _ _   _           
@@ -577,18 +630,73 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
     //                            
     //         
     app.controller("roleController", roleController);
-    roleController.$inject = ["NgTableParams", "$resource"];
+    roleController.$inject = ["NgTableParams", "$resource", "$scope", "$http"];
 
-    function roleController(NgTableParams, $resource) {
+    function roleController(NgTableParams, $resource, $scope, $http) {
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
 
         this.tableParams = new NgTableParams({}, {
             getData:function(){
-                return []
+            $http.get("http://www.videoextrem.com/api/roles.php?queryType=select")
+                .then(function(response) {
+                    $scope.arrayRoles = response.data;
+            });
             }
 
         });
+        
+        $scope.deleteRol = function(pActualRol){
+           $scope.url = "http://www.videoextrem.com/api/roles.php?queryType=delete";
+           $scope.rolData = {
+            'idRol' : pActualRol.idRol 
+           }
+           $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+           $http.post($scope.url, $scope.rolData).
+            then(function(data, status) {
+               alert("El rol " + pActualRol.rol + " ha sido borrado");
+               location.reload();
+            })
+        }
+        
+        $scope.addRol = function(){
+            var rolNameInput = document.getElementById('RoleName').value;
+            $scope.url = "http://www.videoextrem.com/api/roles.php?queryType=add";
+            $scope.rolData = {
+               'rol' : rolNameInput 
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.rolData).
+                then(function(data, status) {
+                    alert("El rol " + rolNameInput + " ha sido agregado");
+                    location.reload();
+            })
+        }
+        
+        $scope.setEditRol = function (pActualRol) {
+            $scope.actualRol = pActualRol;
+        }
+        
+        $scope.editRol = function () {
+            var rolNameInput = document.getElementById('updateRolName').value;
+            console.log(rolNameInput);
+            $scope.url = "http://www.videoextrem.com/api/roles.php?queryType=edit";
+            $scope.rolData = {
+                'idRol' : $scope.actualRol.idRol,
+                'rol' : rolNameInput
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.rolData).
+                then(function(data, status) {
+                    alert("El rol " + $scope.actualRol.rol + " ha sido actualizado a " + rolNameInput);
+                    location.reload();
+            })
+        }
+        
+        $scope.showRol = function(pActualRol){
+            $scope.actualRol = pActualRol;
+        }
+
 
     }
 })();

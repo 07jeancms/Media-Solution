@@ -7,7 +7,8 @@
   \_____|_|  \_\______/_/    \_\_|  |______|
                                             
 -->
-<div class="modal fade" id="createCategorieModal" tabindex="-1" role="dialog" 
+
+<div class="modal fade" id="createActorMModal" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -19,7 +20,7 @@
                     <span class="sr-only">Close</span>
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                    Agregar Categoria
+                    Agregar Actor
                 </h4>
 
             </div>
@@ -29,9 +30,9 @@
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
                         <label  class="col-sm-2 control-label"
-                               for="inputNombre">Nombre</label>
+                               for="inputNombre">Actor</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="CategorieName" placeholder="Nombre de la Categoria"/>
+                            <input class="form-control" id="actorName" placeholder="Nombre"/>
                         </div>
                     </div>
                 </form>   
@@ -43,15 +44,15 @@
                         data-dismiss="modal">
                     Cancelar
                 </button>
-                <button type="button" class="btn btn-primary" ng-click="this.addCategory()">
-                    Crear
+                <button type="button" class="btn btn-primary" ng-click="this.addActor()">
+                    Crear Actor
                 </button>
             </div>
         </div>
     </div>
 </div>
-<button class="btn" data-toggle="modal" data-target="#createCategorieModal">
-    Agregar Categorias 
+<button class="btn" data-toggle="modal" data-target="#createActorMModal">
+    Agregar Actor 
 </button>
 
 <!-- 
@@ -61,10 +62,10 @@
  |  __| | |  | || |    | |   
  | |____| |__| || |_   | |   
  |______|_____/_____|  |_|   
-                                            
+                             
 -->
 
-<div class="modal fade" id="editCategoryModal" tabindex="-1" role="dialog" 
+<div class="modal fade" id="editActorMModal" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -76,7 +77,7 @@
                     <span class="sr-only">Close</span>
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                    Editar Categoria
+                    Editar Actor
                 </h4>
 
             </div>
@@ -85,10 +86,9 @@
 
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label  class="col-sm-2 control-label"
-                               for="inputNombre">Nombre</label>
+                        <label  class="col-sm-2 control-label" for="inputNombre">Actor</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="updateCategoryName" placeholder={{actualCategory.categoria}} value={{actualCategory.categoria}}>
+                            <input class="form-control" id="updateActorName" placeholder="{{actualActor.actor}}" value="{{actualActor.actor}}"/>
                         </div>
                     </div>
                 </form>   
@@ -100,7 +100,7 @@
                         data-dismiss="modal">
                     Cancelar
                 </button>
-                <button type="button" class="btn btn-primary" ng-click="this.editCategory()">
+                <button type="button" class="btn btn-primary" ng-click="this.editActor()">
                     Editar
                 </button>
             </div>
@@ -108,17 +108,17 @@
     </div>
 </div>
 
-<!--
+<!-- 
    _____ _    _  ______          __
   / ____| |  | |/ __ \ \        / /
  | (___ | |__| | |  | \ \  /\  / / 
   \___ \|  __  | |  | |\ \/  \/ /  
   ____) | |  | | |__| | \  /\  /   
  |_____/|_|  |_|\____/   \/  \/    
-                    
+                                   
 -->
 
-<div class="modal fade" id="showCategoryModal" tabindex="-1" role="dialog" 
+<div class="modal fade" id="showActorMModal" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -130,43 +130,41 @@
                     <span class="sr-only">Close</span>
                 </button>
                 <h4 class="modal-title" id="myModalLabel">
-                    Info. Categoria
+                    Info. Actor
                 </h4>
 
             </div>
             <!-- Modal Body -->
             <div id="wrapper">
-                <div id="content"><div class="modal-body">
+                <div id="content">
+                    <div class="modal-body">
 
-                    <form class="form-horizontal" role="form">
-                        <div class="form-group">
-                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
-                                >ID: </h4>
-                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
-                                for="inputNombre">{{actualCategory.idCategoria}}</h5>
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                                    >ID: </h4>
+                                <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
+                                    for="inputNombre">{{actualActor.idActor}}</h5>
 
-                        </div>
-                        <div class="form-group">
-                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
-                                >Nombre: </h4>
-                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
-                                for="inputNombre">{{actualCategory.categoria}}</h5>
-                        </div>
-
-                        </div>
-                    </form>   
-                    </div></div>
+                            </div>
+                            <div class="form-group">
+                                <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4"
+                                    >Nombre: </h4>
+                                <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"
+                                    for="inputNombre">{{actualActor.actor}}</h5>
+                            </div>
+                        </form>   
+                    </div>
+                </div>
                 <div id="cleared"></div>
-            <!-- Modal Footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default"
-                        data-dismiss="modal">
-                    Cerrar
-                </button>
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
             </div>
-            </div>
-
-
         </div>
     </div>
 </div>
