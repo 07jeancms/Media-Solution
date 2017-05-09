@@ -22,7 +22,7 @@ $Form.on('submit', function (p_oEvent) {
 
 
 var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
-                         (function() {
+(function() {
     //Press enter on modal 
     app.directive('pressEnter', function () {
         return function (scope, element, attrs) {
@@ -52,7 +52,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
         $scope.actualMovie = {
-          
+
 
         };
         $scope.actors = [];
@@ -66,7 +66,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                                              }, {
             getData: function(params) {
                 // ajax request to api
-                var sUrl = 'http://www.omdbapi.com/?s=Harry'
+                var sUrl = 'http://www.omdbapi.com/?s=Harry';
                 return $.ajax(sUrl,{
                     complete: function(p_oXHR, p_sStatus) {
                         var oData =$.parseJSON(p_oXHR.responseText);
@@ -125,7 +125,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                     }
                     $scope.loading = false;
                     $scope.$apply();
-                    
+
                     return data
                 }}).done(function(data) {
 
@@ -195,45 +195,45 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
 
         this.tableParams = new NgTableParams({}, {
             getData:function(){
-            $http.get("http://www.videoextrem.com/api/language.php?queryType=select")
-                .then(function(response) {
+                $http.get("http://www.videoextrem.com/api/language.php?queryType=select")
+                    .then(function(response) {
                     $scope.arrayLanguages = response.data;
-            });
+                });
             }
 
         });
-        
+
         $scope.deleteLanguage = function(pActualIdioma){
-           $scope.url = "http://www.videoextrem.com/api/language.php?queryType=delete";
-           $scope.languageData = {
-            'idIdioma' : pActualIdioma.idIdioma 
-           }
-           $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-           $http.post($scope.url, $scope.languageData).
+            $scope.url = "http://www.videoextrem.com/api/language.php?queryType=delete";
+            $scope.languageData = {
+                'idIdioma' : pActualIdioma.idIdioma 
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.languageData).
             then(function(data, status) {
-               alert("El idioma " + pActualIdioma.idioma + " ha sido borrado");
-               location.reload();
+                alert("El idioma " + pActualIdioma.idioma + " ha sido borrado");
+                location.reload();
             })
         }
-        
+
         $scope.addLanguage = function(){
             var languageNameInput = document.getElementById('LanguageName').value;
             $scope.url = "http://www.videoextrem.com/api/language.php?queryType=add";
             $scope.languageData = {
-               'idioma' : languageNameInput 
+                'idioma' : languageNameInput 
             }
             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
             $http.post($scope.url, $scope.languageData).
-                then(function(data, status) {
-                    alert("El idioma " + languageNameInput + " ha sido agregado");
-                    location.reload();
+            then(function(data, status) {
+                alert("El idioma " + languageNameInput + " ha sido agregado");
+                location.reload();
             })
         }
-        
+
         $scope.setEditLanguage = function (pActualLanguage) {
             $scope.actualLanguage = pActualLanguage;
         }
-        
+
         $scope.editLanguage = function () {
             var languageNameInput = document.getElementById('updateLanguageName').value;
             $scope.url = "http://www.videoextrem.com/api/language.php?queryType=edit";
@@ -243,13 +243,14 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             }
             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
             $http.post($scope.url, $scope.languageData).
-                then(function(data, status) {
-                    alert("El idioma " + $scope.actualLanguage.idioma + " ha sido actualizado a " + languageNameInput);
-                    location.reload();
+            then(function(data, status) {
+                alert("El idioma " + $scope.actualLanguage.idioma + " ha sido actualizado a " + languageNameInput);
+                location.reload();
             })
         }
-        
+
         $scope.showLanguage = function(pActualLanguage){
+
             $scope.actualLanguage = pActualLanguage;
         }
 
@@ -350,43 +351,43 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             getData:function(){
                 $http.get("http://www.videoextrem.com/api/subtitles.php?queryType=select")
                     .then(function(response) {
-                        $scope.arraySubtitulos = response.data;
+                    $scope.arraySubtitulos = response.data;
                 });
             }
 
         });
-        
+
         $scope.deleteSubtitle = function(pActualSubtitle){
-           $scope.url = "http://www.videoextrem.com/api/subtitles.php?queryType=delete";
-           $scope.subtitleData = {
-	        'idSubtitulo' : pActualSubtitle.idSubtitulo 
-           }
-           $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-	       $http.post($scope.url, $scope.subtitleData)
-               .then(function(data, status) {
+            $scope.url = "http://www.videoextrem.com/api/subtitles.php?queryType=delete";
+            $scope.subtitleData = {
+                'idSubtitulo' : pActualSubtitle.idSubtitulo 
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.subtitleData)
+                .then(function(data, status) {
                 alert("El subtitulo " + pActualSubtitle.subtitulo + " ha sido borrado");
                 location.reload();
             })
         }
-        
+
         $scope.addSubtitle = function(){
             var subtitleNameInput = document.getElementById('SubtitleName').value;
             $scope.url = "http://www.videoextrem.com/api/subtitles.php?queryType=add";
             $scope.subtitleData = {
-	           'subtitulo' : subtitleNameInput 
+                'subtitulo' : subtitleNameInput 
             }
             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
             $http.post($scope.url, $scope.subtitleData).
-                then(function(data, status) {
-                    alert("El subtitulo " + subtitleNameInput + " ha sido agregado");
-                    location.reload();
+            then(function(data, status) {
+                alert("El subtitulo " + subtitleNameInput + " ha sido agregado");
+                location.reload();
             })
         }
-        
+
         $scope.setEditSubtitle = function (pActualSubtitle) {
             $scope.actualSubtitle = pActualSubtitle;
         }
-        
+
         $scope.editSubtitle = function () {
             var subtitleNameInput = document.getElementById('editSubtitleName').value;
             $scope.url = "http://www.videoextrem.com/api/subtitles.php?queryType=edit";
@@ -396,12 +397,12 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             }
             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
             $http.post($scope.url, $scope.subtitleData).
-                then(function(data, status) {
-                    alert("El subtitulo " + $scope.actualSubtitle.subtitulo + " ha sido actualizado a " + subtitleNameInput);
-                    location.reload();
+            then(function(data, status) {
+                alert("El subtitulo " + $scope.actualSubtitle.subtitulo + " ha sido actualizado a " + subtitleNameInput);
+                location.reload();
             })
         }
-        
+
         $scope.showSubtitle = function(pActualSubtitle){
             $scope.actualSubtitle = pActualSubtitle;
         }
@@ -424,10 +425,10 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
 
         this.tableParams = new NgTableParams({}, {
             getData:function(){
-            $http.get("http://www.videoextrem.com/api/genres.php?queryType=select")
-                .then(function(response) {
+                $http.get("http://www.videoextrem.com/api/genres.php?queryType=select")
+                    .then(function(response) {
                     $scope.arrayGeneros = response.data;
-            });
+                });
             }
 
         });
@@ -437,34 +438,34 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             var genreDescriptionInput = document.getElementById('GenreDescription').value;
             $scope.url = "http://www.videoextrem.com/api/genres.php?queryType=add";
             $scope.genreData = {
-	           'genero' : genreNameInput,
+                'genero' : genreNameInput,
                 'descripcion' : genreDescriptionInput
             }
             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
             $http.post($scope.url, $scope.genreData)
                 .then(function(data, status) {
-                    alert("El genero " + genreNameInput + " ha sido agregado");
-                    location.reload();
+                alert("El genero " + genreNameInput + " ha sido agregado");
+                location.reload();
             })
-        }
-        
+        };
+
         $scope.deleteGenre = function(pActualGenre){
-           $scope.url = "http://www.videoextrem.com/api/genres.php?queryType=delete";
-           $scope.genreData = {
-	        'idGenero' : pActualGenre.idGenero 
-           }
-           $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-	       $http.post($scope.url, $scope.genreData).
+            $scope.url = "http://www.videoextrem.com/api/genres.php?queryType=delete";
+            $scope.genreData = {
+                'idGenero' : pActualGenre.idGenero 
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.genreData).
             then(function(data, status) {
-               alert("El genero " + pActualGenre.genero + " ha sido borrado");
-               location.reload();
+                alert("El genero " + pActualGenre.genero + " ha sido borrado");
+                location.reload();
             })
-        }
-        
+        };
+
         $scope.setEditGenre = function (pActualGenre) {
             $scope.actualGenre = pActualGenre;
-        }
-        
+        };
+
         $scope.editGenre = function () {
             var genreNameInput = document.getElementById('genreNameInput').value;
             var genreDescriptionInput = document.getElementById('genreDescriptionInput').value;
@@ -476,12 +477,12 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             }
             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
             $http.post($scope.url, $scope.genreData).
-                then(function(data, status) {
-                    alert("El genero " + $scope.actualGenre.genero + " ha sido actualizado a " + genreNameInput);
-                    location.reload();
+            then(function(data, status) {
+                alert("El genero " + $scope.actualGenre.genero + " ha sido actualizado a " + genreNameInput);
+                location.reload();
             })
-        }
-        
+        };
+
         $scope.showGenre = function(pActualGenre){
             $scope.actualGenre = pActualGenre;
         }
@@ -501,48 +502,58 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
     function categoriesController(NgTableParams, $resource, $scope, $http) {
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
+        var self = this;
+        self.tableParams = new NgTableParams({
+            page: 1,
+            count: 5
+        },{
+            count : [],
+            getData:function($defer, params){
+                return $http.get("http://www.videoextrem.com/api/categories.php?queryType=select").then(function(response) {
+                    console.log(JSON.stringify(response));
+                    console.log(response.data.length);
 
-        this.tableParams = new NgTableParams({}, {
-            getData:function(){
-            $http.get("http://www.videoextrem.com/api/categories.php?queryType=select")
-                .then(function(response) {
-                    $scope.arrayCategories = response.data;
-            });
+                    self.tableParams.total(response.data.length); // recal. page nav controls
+                    self.tableParams.sorting();
+                    return response.data.slice((self.tableParams.page() - 1) * self.tableParams.count(), self.tableParams.page() * self.tableParams.count());
+                });
             }
 
         });
-        
+
+
+
         $scope.deleteCategory = function(pActualCategory){
-           $scope.url = "http://www.videoextrem.com/api/categories.php?queryType=delete";
-           $scope.languageData = {
-	        'idCategoria' : pActualCategory.idCategoria 
-           }
-           $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-	       $http.post($scope.url, $scope.languageData).
+            $scope.url = "http://www.videoextrem.com/api/categories.php?queryType=delete";
+            $scope.languageData = {
+                'idCategoria' : pActualCategory.idCategoria 
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.languageData).
             then(function(data, status) {
-               alert("La categoria " + pActualCategory.categoria + " ha sido borrada");
-               location.reload();
+                alert("La categoria " + pActualCategory.categoria + " ha sido borrada");
+                location.reload();
             })
         }
-        
+
         $scope.addCategory = function(){
             var categoryNameInput = document.getElementById('CategorieName').value;
             $scope.url = "http://www.videoextrem.com/api/categories.php?queryType=add";
             $scope.languageData = {
-	           'categoria' : categoryNameInput 
+                'categoria' : categoryNameInput 
             }
             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
             $http.post($scope.url, $scope.languageData).
-                then(function(data, status) {
-                    alert("La categoria " + categoryNameInput + " ha sido agregada");
-                    location.reload();
+            then(function(data, status) {
+                alert("La categoria " + categoryNameInput + " ha sido agregada");
+                location.reload();
             })
         }
-        
+
         $scope.setEditCategory = function (pActualCategory) {
             $scope.actualCategory = pActualCategory;
         }
-        
+
         $scope.editCategory = function () {
             var categoryNameInput = document.getElementById('updateCategoryName').value;
             $scope.url = "http://www.videoextrem.com/api/categories.php?queryType=edit";
@@ -552,12 +563,12 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             }
             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
             $http.post($scope.url, $scope.languageData).
-                then(function(data, status) {
-                    alert("La categoria " + $scope.actualCategory.categoria + " ha sido actualizada a " + categoryNameInput);
-                    location.reload();
+            then(function(data, status) {
+                alert("La categoria " + $scope.actualCategory.categoria + " ha sido actualizada a " + categoryNameInput);
+                location.reload();
             })
         }
-        
+
         $scope.showCategory = function(pActualCategory){
             $scope.actualCategory = pActualCategory;
         }
