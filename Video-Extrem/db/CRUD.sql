@@ -241,16 +241,16 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE deleteGenreByMovie
-	(IN pIdGeneroXPelicula BIGINT)
+	(IN pIdPelicula BIGINT)
 	
 	BEGIN
 	
-		DELETE FROM GenerosXpelicula WHERE idGeneroXpelicula = pIdGeneroXPelicula;
+		DELETE FROM GenerosXpelicula WHERE idPelicula = pIdPelicula;
 		
 	END //
 DELIMITER ;
 
--- call deleteGenreByMovie(1, 1);
+-- call deleteGenreByMovie(1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -287,16 +287,16 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE deleteCategoryByMovie
-	(IN pIdCategoriaXPelicula BIGINT)
+	(IN pIdPelicula BIGINT)
 	
 	BEGIN
 	
-		DELETE FROM CategoriasXpelicula WHERE idCategoriaXpelicula = pIdCategoriaXPelicula;
+		DELETE FROM CategoriasXpelicula WHERE idPelicula = pIdPelicula;
 		
 	END //
 DELIMITER ;
 
--- call deleteCategoryByMovie(1, 1);
+-- call deleteCategoryByMovie(1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -332,16 +332,16 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE deleteLanguageByMovie
-	(IN pIdIdiomaXPelicula BIGINT)
+	(IN pIdPelicula BIGINT)
 	
 	BEGIN
 	
-		DELETE FROM IdiomasXpelicula WHERE idIdiomaXpelicula = pIdIdiomaXPelicula;
+		DELETE FROM IdiomasXpelicula WHERE idPelicula = pIdPelicula;
 		
 	END //
 DELIMITER ;
 
--- call deleteLanguageByMovie(1, 1);
+-- call deleteLanguageByMovie(1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -377,16 +377,16 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE deleteActorsByMovie
-	(IN pIdActorXPelicula BIGINT)
+	(IN pIdPelicula BIGINT)
 	
 	BEGIN
 	
-		DELETE FROM ActoresXpelicula WHERE idActorXpelicula = pIdActorXPelicula;
+		DELETE FROM ActoresXpelicula WHERE idPelicula = pIdPelicula;
 		
 	END //
 DELIMITER ;
 
--- call deleteActorsByMovie(1, 1);
+-- call deleteActorsByMovie(1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -422,16 +422,16 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE deleteSubtitlesByMovie
-	(IN pIdSubtituloXPelicula BIGINT)
+	(IN pIdPelicula BIGINT)
 	
 	BEGIN
 	
-		DELETE FROM SubtitulosXpelicula WHERE idSubXpelicula = pIdSubtituloXPelicula;
+		DELETE FROM SubtitulosXpelicula WHERE idPelicula = pIdPelicula;
 		
 	END //
 DELIMITER ;
 
--- call deleteSubtitlesByMovie(1, 1);
+-- call deleteSubtitlesByMovie(1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -463,7 +463,7 @@ CREATE PROCEDURE addMovie
 	END //
 DELIMITER ;
 
--- call addMovie(2000, "Harry Potter", "Trama", 1000, now(), null);
+-- call addMovie(2000, "Harry Potter", "Trama", 1000, now(), "http://bookriotcom.c.presscdn.com/wp-content/uploads/2014/08/HP_hc_old_2.jpg");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -472,7 +472,12 @@ CREATE PROCEDURE deleteMovie
 	(IN pIdPelicula BIGINT)
 	
 	BEGIN
-	
+
+		call deleteGenreByMovie(pIdPelicula);
+		call deleteActorsByMovie(pIdPelicula);
+		call deleteSubtitlesByMovie(pIdPelicula);
+		call deleteCategoryByMovie(pIdPelicula);
+		call deleteLanguageByMovie(pIdPelicula);
 		DELETE FROM Peliculas WHERE idPelicula = pIdPelicula;
 		
 	END //
