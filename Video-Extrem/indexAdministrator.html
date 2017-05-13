@@ -9,8 +9,8 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <!-- 
-_____ _   _  _____ _     _    _ _____  ______  _____ 
+<!-- 
+ _____ _   _  _____ _     _    _ _____  ______  _____ 
 |_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
 | | |  \| | |    | |   | |  | | |  | | |__  | (___  
 | | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
@@ -18,9 +18,6 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
 |_____|_| \_|\_____|______\____/|_____/|______|_____/ 
 
 -->
-
-
-
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -221,12 +218,14 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                 <div >
 
                                     <table ng-table="movie.tableParams" class=" table table-bordered table-striped  table-condensed">
-                                        <tr ng-repeat="actualMovie in $data.Search " >
-                                            <td data-title="'Titulo'"  filter="{Title: 'text'}"><h5>{{actualMovie.Title}}</h5></td>
-                                            <td data-title="'Año'" filter="{Year: 'number'}" sortable="'Year'"><h5>{{actualMovie.Year}}</h5></td>
-                                            <td data-title="'Genero'" filter="{Genero: 'text'}" sortable="'Genero'"><h5></h5></td>
-                                            <td data-title="'Idioma'" filter="{Idioma: 'text'}" sortable="'Idioma'"><h5></h5></td>
-                                            <td data-title="'Precio'" filter="{Precio: 'text'}" sortable="'Precio'"><h5></h5></td>
+                                        <tr ng-repeat="actualMovie in arrayPeliculas ">
+                                            <td data-title="'Titulo'"  filter="{Title: 'text'}"><h5>{{actualMovie.pelicula}}</h5></td>
+                                            <td data-title="'Año'" filter="{Year: 'number'}" sortable="'Year'"><h5>{{actualMovie.ano}}</h5></td>
+                                            <td data-title="'Trama'" filter="{Trama: 'text'}" sortable="'Genero'"><h5>{{actualMovie.trama}}</h5></td>
+                                            <td data-title="'Genero/s'" filter="{Genero: 'text'}" sortable="'Genero'">
+                                                <select id="selectGenres{{actualMovie.idPelicula}}">
+                                                </select></td>
+                                            <td data-title="'Idioma/s'" filter="{Idioma: 'text'}" sortable="'Idioma'"><h5></h5></td>
                                             <td data-title="'Editar'" >
                                                 <div class="inline col-lg-12"> 
                                                     <i class="editBtn fa fa-film col-lg-4" ng-click="this.showMovie(actualMovie)" data-toggle="modal" data-target="#showMovieModal" aria-hidden="true"> </i>
@@ -234,14 +233,9 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                                     <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteMovie(actualMovie)"aria-hidden="true"></i>
                                                 </div>
                                             </td>
-
                                         </tr>
                                     </table>
-
                                 </div>
-
-
-
                                 <div ng-include="'movieModal.html'"></div> 
                             </div>
                             <!-- Button trigger modal -->

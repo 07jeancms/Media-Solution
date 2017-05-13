@@ -46,9 +46,9 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
     //                             
     //   
     app.controller("movieTableController", movieTableController);
-    movieTableController.$inject = ["NgTableParams", "$resource",'$scope'];
+    movieTableController.$inject = ["NgTableParams", "$resource","$scope", "$http"];
 
-    function movieTableController(NgTableParams, $resource, $scope) {
+    function movieTableController(NgTableParams, $resource, $scope, $http) {
         // tip: to debug, open chrome dev tools and uncomment the following line 
         //debugger;
         $scope.actualMovie = {
@@ -57,43 +57,105 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
         };
         $scope.actors = [];
         $scope.loading = false;
-
+        $scope.globalGenresArray = [];
         this.tableParams = new NgTableParams({page: 1, // show first page
                                               count: 3, // count per page
                                               filter: {
                                                   name: '' // initial filter
                                               }
                                              }, {
-            getData: function(params) {
-                // ajax request to api
-                var sUrl = 'http://www.omdbapi.com/?s=Harry';
-                return $.ajax(sUrl,{
-                    complete: function(p_oXHR, p_sStatus) {
-                        var oData =$.parseJSON(p_oXHR.responseText);
-                        return oData.Search
-                    }}).done(function(data) {
-                    params.total(data.inlineCount); // recal. page nav controls
-                    return data.results;
-                });
-            } 
-
+            getData:function(){
+                var selectDropdown;
+                $http.get("http://www.videoextrem.com/api/movies.php?queryType=select")
+                    .then(function(response) {
+                    $scope.arrayPeliculas = response.data;
+                    for(actualMovie = 0; actualMovie < response.data.length; actualMovie++){
+                        var movieElement = response.data[actualMovie];
+                        $scope.populateGeneresByMovie(movieElement);
+                    }
+                    console.log("Hi JC");
+                    console.log($scope.globalGenresArray);
+                   });
+            }
         });
 
+        $scope.populateGeneresByMovie = function(pActualMovie){
+            $scope.url = "http://www.videoextrem.com/api/genresByMovie.php?queryType=select";
+            $scope.movieData = {
+                'idPelicula' : pActualMovie.idPelicula
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.movieData)
+                .then(function(data, status) {
+                var tempGenresArray = [];
+                for(actualGenre = 0; actualGenre < data.data.length; actualGenre++){
+                    tempGenresArray.push(data.data[actualGenre].genero);
+                }
+                $scope.globalGenresArray.push({"idPelicula":pActualMovie.idPelicula, "generos":tempGenresArray});
+                /*
+                selectDropdown = document.getElementById('selectGenres'+pActualMovie.idPelicula);
+                for(actualGenre = 0; actualGenre < data.length; actualGenre++){
+                    var genreElement = data[actualGenre];
+                    populateGenresArray.push(genreElement);
+                    var newOption = document.createElement("option");
+                    newOption.text = 'genero';
+                    newOption.value = genreElement.genero;
+                    selectDropdown.appendChild(newOption);
+                }
+                */
+            })
+        }
+        
         $scope.randomColor = function(){
             var colors = ['#D64900', '#008684', '#860002'];
             var random_color = colors[Math.floor(Math.random() * colors.length)];
             $('#sidebar').css('background-color', random_color);
         }
+        
+        $scope.cleanDropdown = function (comboBox) {
+            while (comboBox.options.length > 0) {                
+                comboBox.remove(0);
+            }        
+        }
+        
         $scope.showMovie = function(selectedMovie){
+            var selectDropdown = document.getElementById('selectGenresShow');
+            $scope.cleanDropdown(selectDropdown);
             $scope.randomColor();
             $scope.actualMovie = selectedMovie;
+            var genres = [];
+            for(actualGenre = 0; actualGenre < $scope.globalGenresArray.length; actualGenre++){
+                if($scope.globalGenresArray[actualGenre].idPelicula == selectedMovie.idPelicula){
+                    //alert($scope.globalGenresArray[actualGenre].generos);
+                    genres = $scope.globalGenresArray[actualGenre].generos;
+                    break;
+                }
+            }
+            for(actualGenre = 0; actualGenre < genres.length; actualGenre++){
+                var genreElement = genres[actualGenre];
+                var newOption = document.createElement("option");
+                newOption.text = genreElement;
+                newOption.value = 'genero'+actualGenre;
+                selectDropdown.appendChild(newOption);
+            }
         }
+        
         $scope.editMovie = function(selectedMovie){
             $scope.actualMovie = selectedMovie;
             alert( $scope.actualMovie.Year)
         }
-        $scope.deleteMovie = function(selectedMovie){
-            alert( "Deleting "+$scope.actualMovie.Title)
+        
+        $scope.deleteMovie = function(pActualMovie){
+           $scope.url = "http://www.videoextrem.com/api/movies.php?queryType=delete";
+           $scope.movieData = {
+            'idPelicula' : pActualMovie.idPelicula
+           }
+           $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+           $http.post($scope.url, $scope.movieData).
+            then(function(data, status) {
+               alert("La pelicula " + pActualMovie.pelicula + " ha sido borrada");
+               location.reload();
+            })
         }
         $scope.searchMovie = function(){
             /*
@@ -104,7 +166,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             return $.ajax(sUrl,{
                 complete: function(p_oXHR, p_sStatus) {
                     var data =$.parseJSON(p_oXHR.responseText);
-
                     console.log(data);
                     $scope.actualMovie.title = data.Title;
                     var released = data.Released;
@@ -139,8 +200,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                 "id" : id
             }
             $scope.actors.push(actualActor);
-        }
-
+        }    
     }
     /***
          *      __  __            _                     _             
@@ -250,7 +310,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
         }
 
         $scope.showLanguage = function(pActualLanguage){
-
             $scope.actualLanguage = pActualLanguage;
         }
 
