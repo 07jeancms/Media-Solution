@@ -59,7 +59,6 @@
     if ($_queryType == "delete"){
         $subtitleClass->subtitleId = $request->idSubtitulo;
         $subtitleClass->deleteSubtitle($subtitleClass->subtitleId);
-
     }
 
     if ($_queryType == "add"){

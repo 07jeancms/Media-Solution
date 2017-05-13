@@ -27,14 +27,25 @@
         function getMovies() {
             $connection = new connection();
             $movies = array();
-            $select = 'SELECT * from Peliculas;';
+            $genres = array();
+            $languages = array();
+            $select = "SELECT Peliculas.idPelicula as 'idPelicula', Peliculas.ano as 'ano', Peliculas.pelicula as 'pelicula', Peliculas.trama as 'trama',
+            Peliculas.precio as 'precio', Peliculas.fechaIngreso as 'fechaIngreso', Peliculas.linkImagen as 'linkImagen' 
+            from Peliculas;";
             $result = $connection->consult($select);
 
             while($row = mysql_fetch_assoc($result)){
                 $movies[] = array("idPelicula"=>$row['idPelicula'], "ano"=>$row['ano'], "pelicula"=>$row['pelicula'], "trama"=>$row['trama'], "precio"=>$row['precio'], 
                                  "fechaIngreso"=>$row['fechaIngreso'], "linkImagen"=>$row['linkImagen']);
             }
-            echo json_encode($movies); 
+            
+            echo json_encode($movies);
+        }
+
+        function deleteMovie($pMovieId) {
+            $connection = new connection();
+            $call = "call deleteMovie('$pMovieId');";
+            $result = $connection->consult($call);
         }
     }
 
@@ -42,5 +53,9 @@
 
     if ($_queryType == "select"){
         $movieClass->getMovies();
+    }
+    if ($_queryType == "delete"){
+        $movieClass->movieId = $request->idPelicula;
+        $movieClass->deleteMovie($movieClass->movieId);
     }
 ?>
