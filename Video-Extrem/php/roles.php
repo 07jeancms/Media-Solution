@@ -22,7 +22,7 @@
         function getRoles() {
             $connection = new connection();
             $roles = array();
-            $select = 'SELECT * from Roles;';
+            $select = 'SELECT * from Roles order by idRol;';
             $result = $connection->consult($select);
 
             while($row = mysql_fetch_assoc($result)){

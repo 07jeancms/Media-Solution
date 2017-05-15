@@ -30,6 +30,23 @@
             }
             echo json_encode($genresArray); 
         }
+        
+        function getAllGenres($pIdMovie) {
+            $connection = new connection();
+            $genresArray = array();
+            $select = "SELECT Generos.genero as 'genero' from Generos 
+                where Generos.genero 
+                NOT IN 
+                (SELECT Generos.genero as 'genero' from GenerosXpelicula
+                    INNER JOIN Generos on (GenerosXpelicula.idGenero = Generos.idGenero and GenerosXpelicula.idPelicula = '".$pIdMovie."')
+                );";
+            $result = $connection->consult($select);
+
+            while($row = mysql_fetch_assoc($result)){
+                $genresArray[] = array("genero"=>$row['genero']);
+            }
+            echo json_encode($genresArray); 
+        }
     }
 
     $genresByMovieClass = new genresByMovie();
@@ -38,4 +55,10 @@
         $genresByMovieClass->movieId = $request->idPelicula;
         $genresByMovieClass->getGenresByMovie($genresByMovieClass->movieId);
     }
+
+    if ($_queryType == "genres"){
+        $genresByMovieClass->movieId = $request->idPelicula;
+        $genresByMovieClass->getAllGenres($genresByMovieClass->movieId);
+    }
+
 ?>

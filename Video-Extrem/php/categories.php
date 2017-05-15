@@ -22,7 +22,7 @@
         function getCategories() {
             $connection = new connection();
             $categories = array();
-            $select = 'SELECT * from Categorias;';
+            $select = 'SELECT * from Categorias order by idCategoria;';
             $result = $connection->consult($select);
 
             while($row = mysql_fetch_assoc($result)){
