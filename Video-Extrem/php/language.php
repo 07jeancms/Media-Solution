@@ -22,7 +22,7 @@
         function getLanguages() {
             $connection = new connection();
             $languages = array();
-            $select = 'SELECT * from Idiomas;';
+            $select = 'SELECT * from Idiomas order by idIdioma;';
             $result = $connection->consult($select);
 
             while($row = mysql_fetch_assoc($result)){

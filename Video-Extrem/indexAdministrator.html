@@ -222,14 +222,12 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                             <td data-title="'Titulo'"  filter="{Title: 'text'}"><h5>{{actualMovie.pelicula}}</h5></td>
                                             <td data-title="'Año'" filter="{Year: 'number'}" sortable="'Year'"><h5>{{actualMovie.ano}}</h5></td>
                                             <td data-title="'Trama'" filter="{Trama: 'text'}" sortable="'Genero'"><h5>{{actualMovie.trama}}</h5></td>
-                                            <td data-title="'Genero/s'" filter="{Genero: 'text'}" sortable="'Genero'">
-                                                <select id="selectGenres{{actualMovie.idPelicula}}">
-                                                </select></td>
-                                            <td data-title="'Idioma/s'" filter="{Idioma: 'text'}" sortable="'Idioma'"><h5></h5></td>
                                             <td data-title="'Editar'" >
                                                 <div class="inline col-lg-12"> 
-                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showMovie(actualMovie)" data-toggle="modal" data-target="#showMovieModal" aria-hidden="true"> </i>
-                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editMovie(actualMovie)"aria-hidden="true">  </i>
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showMovie(actualMovie)" data-toggle="modal" data-target="#showMovieModal" aria-hidden="true">
+                                                    </i>
+                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditMovie(actualMovie)" data-toggle="modal" data-target="#editMovieModal" aria-hidden="true">
+                                                    </i>
                                                     <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteMovie(actualMovie)"aria-hidden="true"></i>
                                                 </div>
                                             </td>
@@ -361,7 +359,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Genero</h2>
+                            <h2 class="section-heading">Generos</h2>
                             <div >
                                 <div ng-controller="genreController as genre">
                                     <table ng-table="genre.tableParams" class="table table-bordered table-striped table-condensed">
