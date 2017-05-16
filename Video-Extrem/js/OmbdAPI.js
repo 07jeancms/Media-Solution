@@ -294,7 +294,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                     break;
                 }
             }
-            for(actualActor = 0; actualActor < languages.length; actualActor++){
+            for(actualActor = 0; actualActor < actors.length; actualActor++){
                 var actorElement = actors[actualActor];
                 var new_button = $scope.createRadioButton(actorElement, actorElement, actorElement, "actor", true);
                 var br = document.createElement("br");
@@ -393,7 +393,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                     }
                 }
                 
-                for(actualLanguage=0; actualLanguage<actualArrayGenres.length; actualLanguage++){
+                for(actualLanguage=0; actualLanguage<actualArrayLanguages.length; actualLanguage++){
                     var newElementLanguage = actualArrayLanguages[actualLanguage];
                     if($scope.movieLanguages.includes(newElementLanguage)){
                     }
@@ -403,8 +403,8 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                 }
             }
             if(pClassName === "actor"){
-                for(actualActor=0; actualActor<$scope.movieLanguages.length; actualActor++){
-                    var oldElementActor = $scope.movieLanguages[actualActor];
+                for(actualActor=0; actualActor<$scope.movieActors.length; actualActor++){
+                    var oldElementActor = $scope.movieActors[actualActor];
                     if(actualArrayActors.includes(oldElementActor)){    
                     }
                     else{
@@ -412,7 +412,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                     }
                 }
                 
-                for(actualActor=0; actualActor<actualArrayGenres.length; actualActor++){
+                for(actualActor=0; actualActor<actualArrayActors.length; actualActor++){
                     var newElementActor = actualArrayActors[actualActor];
                     if($scope.movieActors.includes(newElementActor)){
                     }
