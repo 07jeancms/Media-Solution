@@ -53,8 +53,7 @@
             $result = $connection->consult($call);
         }
         
-        function editMovie($pMovieId, $pMovieName, $pMovieYear, $pMovieDescription, $pMoviePrice, $pMovieLink, $pArrayRemove, $pArrayAdd, 
-                           $pLanguagesArrayRemove, $pLanguagesArrayAdd, $pActorsArrayRemove, $pActorsArrayAdd) {
+        function editMovie($pMovieId, $pMovieName, $pMovieYear, $pMovieDescription, $pMoviePrice, $pMovieLink, $pArrayRemove, $pArrayAdd, $pArrayRemoveLanguages, $pArrayAddLanguages,                      $pArrayRemoveActors, $pArrayAddActors) {
             $connection = new connection();
             $call = "call updateMovie('$pMovieId','$pMovieName', '$pMovieYear', '$pMovieDescription', '$pMoviePrice', '$pMovieLink');";
             $result = $connection->consult($call);
@@ -64,6 +63,22 @@
             }
             foreach ($pArrayAdd as $addElement) {
                 $call = "call addGenreByMovie('$pMovieId','$addElement');";
+                $result = $connection->consult($call);
+            }
+            foreach ($pArrayRemoveLanguages as $removeElementLanguage) {
+                $call = "call deleteLanguageByMovieSpecific('$removeElementLanguage','$pMovieId');";
+                $result = $connection->consult($call);
+            }
+            foreach ($pArrayAddLanguages as $addElementLanguage) {
+                $call = "call addLanguageByMovie('$pMovieId','$addElementLanguage');";
+                $result = $connection->consult($call);
+            }
+            foreach ($pArrayRemoveActors as $removeElementActor) {
+                $call = "call deleteActorByMovieSpecific('$removeElementActor','$pMovieId');";
+                $result = $connection->consult($call);
+            }
+            foreach ($pArrayAddActors as $addElementActor) {
+                $call = "call addActorByMovie('$pMovieId','$addElementActor');";
                 $result = $connection->consult($call);
             }
         }
@@ -87,10 +102,13 @@
         $movieClass->movieLink = $request->linkImagen;
         $movieClass->genresArrayRemove = $request->arrayRemove;
         $movieClass->genresArrayAdd = $request->arrayAdd;
+        $movieClass->languagesArrayRemove = $request->arrayRemoveLanguages;
+        $movieClass->languagesArrayAdd = $request->arrayAddLanguages;
+        $movieClass->actorsArrayRemove = $request->arrayRemoveActors;
+        $movieClass->actorsArrayAdd = $request->arrayAddActors;
     
         $movieClass->editMovie($movieClass->movieId, $movieClass->movieName, $movieClass->movieYear, $movieClass->movieDescription, 
-                               $movieClass->moviePrice, $movieClass->movieLink, $movieClass->genresArrayRemove, $movieClass->genresArrayAdd, 
-                               $movieClass->languagesArrayRemove, $movieClass->languagesArrayAdd, 
-                               $movieClass->actorsArrayRemove, $movieClass->actorsArrayAdd);
+                               $movieClass->moviePrice, $movieClass->movieLink, $movieClass->genresArrayRemove, $movieClass->genresArrayAdd,
+                                $movieClass->languagesArrayRemove, $movieClass->languagesArrayAdd, $movieClass->actorsArrayRemove, $movieClass->actorsArrayAdd);
     }
 ?>

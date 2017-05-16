@@ -254,6 +254,22 @@ CREATE PROCEDURE addLanguageByMovie
 	END //
 DELIMITER ;
 
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addActorByMovie
+	(IN pIdMovie BIGINT, IN pActor VARCHAR(100))
+	
+	BEGIN
+	
+		DECLARE _idActor BIGINT;
+		SET _idActor = (SELECT idActor from Actores where actor = pActor);
+		INSERT INTO ActoresXpelicula (idPelicula, idActor) VALUES (pIdMovie, _idActor);
+		
+	END //
+DELIMITER ;
+
 -- call addLanguageByMovie(1, "Terror");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
