@@ -465,25 +465,27 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Usuarios</h2>
                             <div >
                                 <div ng-controller="userController as user">
-
                                     <table ng-table="user.tableParams" class="table table-bordered table-striped table-condensed">
                                         <tr ng-repeat="actualUser in $data.Search " >
                                             <td data-title="'Id'"  filter="{Id: 'text'}">{{actualUser.iduser}}</td>
                                             <td data-title="'Usuario'" filter="{user: 'number'}" sortable="'Year'">{{actualUser.user}}</td>
-                                            <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showUser(actualUser)" data-toggle="modal" data-target="#showUserModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editUser(actualUser)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteUser(actualUser)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                            <td data-title="'Rol'" filter="{rol: 'text'}">{{actualUser.user}}</td>
+                                            <td data-title="'Editar'" >
+                                                <div class="inline col-lg-12">
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showUser(actualUser)" data-toggle="modal" data-target="#showUserModal" aria-hidden="true"></i>
+                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editUser(actualUser)"aria-hidden="true">
+                                                    </i>
+                                                    <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteUser(actualUser)"aria-hidden="true">
+                                                    </i>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </table>
-
                                 </div>
-
-
                                 <div ng-include="'userModal.html'"></div> 
                             </div>
                             <!-- Button trigger modal -->
-
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -498,7 +500,6 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Roles</h2>
                             <div >
                                 <div ng-controller="roleController as role">
-
                                     <table ng-table="role.tableParams" class="table table-bordered table-striped table-condensed">
                                         <tr ng-repeat="actualRol in arrayRoles " >
                                             <td data-title="'Id'"  filter="{Id: 'text'}">{{actualRol.idRol}}</td>
