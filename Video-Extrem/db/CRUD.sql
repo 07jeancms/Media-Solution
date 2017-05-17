@@ -287,6 +287,22 @@ CREATE PROCEDURE addActorByMovie
 	END //
 DELIMITER ;
 
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addSuggestion
+	(IN pIdMovie BIGINT, IN pActor VARCHAR(100))
+	
+	BEGIN
+	
+		DECLARE _idActor BIGINT;
+		SET _idActor = (SELECT idActor from Actores where actor = pActor);
+		INSERT INTO ActoresXpelicula (idPelicula, idActor) VALUES (pIdMovie, _idActor);
+		
+	END //
+DELIMITER ;
+
 -- call addGenreByMovie(1, "Terror");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------

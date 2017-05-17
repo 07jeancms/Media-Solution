@@ -32,6 +32,17 @@ CREATE TABLE IF NOT EXISTS `video_extrem`.`Peliculas` (
   UNIQUE INDEX `idPelicula_UNIQUE` (`idPelicula` ASC))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `video_extrem`.`Sugerencias`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `video_extrem`.`Sugerencias` (
+  `idSugerencia` BIGINT NOT NULL AUTO_INCREMENT,
+  `sugerencia` VARCHAR(1000) NOT NULL,
+  `idUsuario` BIGINT NOT NULL,
+  `fecha` DATETIME NOT NULL,
+  PRIMARY KEY (`idSugerencia`))
+ENGINE = InnoDB;
+
 
 -- -----------------------------------------------------
 -- Table `video_extrem`.`Generos`
