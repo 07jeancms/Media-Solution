@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,13 +8,13 @@
         <meta name="author" content="">
 
 <!-- 
- _____ _   _  _____ _     _    _ _____  ______  _____ 
-|_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
-| | |  \| | |    | |   | |  | | |  | | |__  | (___  
-| | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
-_| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
-|_____|_| \_|\_____|______\____/|_____/|______|_____/ 
-
+  _____ _   _  _____ _     _    _ _____  ______  _____ 
+ |_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
+   | | |  \| | |    | |   | |  | | |  | | |__  | (___  
+   | | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
+  _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
+ |_____|_| \_|\_____|______\____/|_____/|______|_____/ 
+                                                                                                            
 -->
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -57,7 +55,6 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         <input type="checkbox" id="drop-1"/>
                         <ul >
                             <li><a data-toggle="modal" data-target="#createMovieModal"href="#movie">Agregar</a></li>
-
                             <li><a href="#movie">Buscar </a></li>
                         </ul>
                     </li>
@@ -69,7 +66,6 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         <input type="checkbox" id="drop-1"/>
                         <ul >
                             <li><a data-toggle="modal" data-target="#createLanguageModal"href="#langauage">Agregar</a></li>
-
                             <li><a href="#language">Buscar </a></li>
                         </ul>
                     </li>
@@ -79,8 +75,7 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         <a href="#">Actores</a>
                         <input type="checkbox" id="drop-1"/>
                         <ul  id="navActors">
-                            <li><a data-toggle="modal" data-target="#createActorsModal" href="#actor">Agregar</a></li>
-
+                            <li><a data-toggle="modal" data-target="#createActorMModal" href="#actor">Agregar</a></li>
                             <li><a href="#actor">Buscar </a></li>
                         </ul>
                     </li><li>
@@ -89,8 +84,7 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                     <a href="#">Subtitulos</a>
                     <input type="checkbox" id="drop-1"/>
                     <ul  id="navSubtitles">
-                        <li><a data-toggle="modal" data-target="#createSubtitlesModal" href="#subtitle">Agregar</a></li>
-
+                        <li><a data-toggle="modal" data-target="#createSubtitleModal" href="#subtitle">Agregar</a></li>
                         <li><a href="#subtitle">Buscar </a></li>
                     </ul>
                     </li>
@@ -100,9 +94,8 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         <a href="#">Generos</a>
                         <input type="checkbox" id="drop-1"/>
                         <ul  id="navGendre">
-                            <li><a data-toggle="modal" data-target="#createGendreModal"href="#gendre">Agregar</a></li>
-
-                            <li><a href="#gendre">Buscar </a></li>
+                            <li><a data-toggle="modal" data-target="#createGenreModal"href="#genre">Agregar</a></li>
+                            <li><a href="#genre">Buscar </a></li>
                         </ul>
                     </li><li>
                     <!-- First Tier Drop Down -->
@@ -110,8 +103,7 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                     <a href="#">Categorias</a>
                     <input type="checkbox" id="drop-1"/>
                     <ul  id="navCategories">
-                        <li><a data-toggle="modal" data-target="#createCategoriesModal" href="#category">Agregar</a></li>
-
+                        <li><a data-toggle="modal" data-target="#createCategorieModal" href="#category">Agregar</a></li>
                         <li><a href="#category">Buscar </a></li>
                     </ul>
                     </li><li>
@@ -119,14 +111,11 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                     <label for="drop-1" class="toggle">Sugerencias</label>
                     <a href="#">Sugerencias</a>
                     <input type="checkbox" id="drop-1"/>
-
                     <ul  id="navSuggestions">
                         <li><a data-toggle="modal" data-target="#createSuggestionModal"href="#suggestion">Agregar</a></li>
-
                         <li><a href="#suggestion">Buscar </a></li>
                     </ul>
                     </li>
-
                     <li>
                         <!-- First Tier Drop Down -->
                         <label for="drop-1" class="toggle">Usuarios</label>
@@ -134,7 +123,6 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         <input type="checkbox" id="drop-1"/>
                         <ul  id="navUser">
                             <li><a data-toggle="modal" data-target="#createUserModal" href="#user">Agregar</a></li>
-
                             <li><a href="#user">Buscar </a></li>
                         </ul>
                     </li>
@@ -145,19 +133,13 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         <input type="checkbox" id="drop-1"/>
                         <ul  id="navRole">
                             <li><a data-toggle="modal" data-target="#createRoleModal" href="#role">Agregar</a></li>
-
                             <li><a href="#role">Buscar </a></li>
                         </ul>
                     </li>
-
-
-
                 </ul>
             </div>
         </nav>
-
-
-        <!--
+<!--
 _    _ ______          _____  ______ _____  
 | |  | |  ____|   /\   |  __ \|  ____|  __ \ 
 | |__| | |__     /  \  | |  | | |__  | |__) |
@@ -166,23 +148,17 @@ _    _ ______          _____  ______ _____
 |_|  |_|______/_/    \_\_____/|______|_|  \_\
 
 -->                                              
-
-
-
         <a name="inicio"></a>
         <header class="intro">
             <div class="intro-body">
                 <div class="container principalImage">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-
                             <h1 class="brand-heading">Video <div class ="exColor">Ex</div>treme</h1>
                             <p class="intro-text">Entretenimiento y calidad al mejor precio </p>
-
                             <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name"></span> </a>
                             <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Inicia Sesion</span> </a>
                             <br>
-
                         </div>
                         <a href="#estrenos" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
@@ -192,7 +168,7 @@ _    _ ______          _____  ______ _____
             </div>
         </header>
 
-        <!-- 
+<!-- 
 _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______ 
 |  __ \ /\   / ____|  ____|  / ____/ __ \| \ | |__   __|  ____| \ | |__   __|
 | |__) /  \ | |  __| |__    | |   | |  | |  \| |  | |  | |__  |  \| |  | |   
@@ -201,9 +177,6 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 |_| /_/    \_\_____|______|  \_____\____/|_| \_|  |_|  |______|_| \_|  |_|   
 
 -->
-
-
-
         <div class="pageContent">
             <!-- Peliculas -->
             <a name="movie"></a>
@@ -214,9 +187,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
                             <h2 class="section-heading">Peliculas</h2>
-                            <div >
-                                <div >
-
+                            <div>
+                                <div>
                                     <table ng-table="movie.tableParams" class=" table table-bordered table-striped  table-condensed">
                                         <tr ng-repeat="actualMovie in arrayPeliculas ">
                                             <td data-title="'Titulo'"  filter="{Title: 'text'}"><h5>{{actualMovie.pelicula}}</h5></td>
@@ -237,11 +209,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                 <div ng-include="'movieModal.html'"></div> 
                             </div>
                             <!-- Button trigger modal -->
-
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -257,7 +225,6 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Idiomas</h2>
                             <div >
                                 <div ng-controller="languageController as language">
-
                                     <table ng-table="language.tableParams" class="table table-bordered table-striped table-condensed">
                                         <tr ng-repeat="actualLanguage in arrayLanguages " >
                                             <td data-title="'Id'"  filter="{Id: 'text'}">{{actualLanguage.idIdioma}}</td>
@@ -352,7 +319,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             </div>
 
             <!-- genre -->
-            <a name="gendre"></a>
+            <a name="genre"></a>
             <div class="content-section-a">
                 <div class="container">
                     <div class="row">
@@ -380,11 +347,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                 </div> 
                             </div>
                             <!-- Button trigger modal -->
-
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
@@ -421,6 +384,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                     </div>
                 </div>
             </div>
+            
             <!-- suggestions -->
             <a name="suggestion"></a>
             <div class="content-section-a">
@@ -430,30 +394,28 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
                             <h2 class="section-heading">Sugerencias</h2>
-                            <div >
+                            <div>
                                 <div ng-controller="suggestionsController as suggestions">
-
                                     <table ng-table="suggestions.tableParams" class="table table-bordered table-striped table-condensed">
                                         <tr ng-repeat="actualSuggestion in $data.Search " >
                                             <td data-title="'Id'"  filter="{Id: 'text'}">{{actualSuggestion.idsuggestions}}</td>
                                             <td data-title="'Sugerencia'" filter="{suggestions: 'number'}" sortable="'Year'">{{actualSuggestion.suggestions}}</td>
-                                            <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSuggestion(actualSuggestion)" data-toggle="modal" data-target="#showSuggestionModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editSuggestion(actualSuggestion)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSuggestion(actualSuggestion)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                            <td data-title="'Editar'">
+                                                <div class="inline col-lg-12">
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSuggestion(actualSuggestion)" data-toggle="modal" data-target="#showSuggestionModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editSuggestion(actualSuggestion)"aria-hidden="true">  </i>                                           <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSuggestion(actualSuggestion)"aria-hidden="true"></i>
+                                                </div>
+                                            </td>
+                                        </tr>
                                     </table>
-
                                 </div>
-
-
                                 <div ng-include="'suggestionModal.html'"></div> 
                             </div>
                             <!-- Button trigger modal -->
-
-
-
                         </div>
-
                     </div>
                 </div>
             </div>
+            
             <!-- users -->
             <a name="user"></a>
             <div class="content-section-b">
@@ -489,6 +451,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                     </div>
                 </div>
             </div>
+            
             <!-- role -->
             <a name="role"></a>
             <div class="content-section-a">
@@ -522,12 +485,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             </div>
         </div>
 
-
-
-
-
-
-        <!--
+<!--
 ______ ____   ____ _______ ______ _____  
 |  ____/ __ \ / __ \__   __|  ____|  __ \ 
 | |__ | |  | | |  | | | |  | |__  | |__) |
@@ -536,8 +494,6 @@ ______ ____   ____ _______ ______ _____
 |_|    \____/ \____/  |_|  |______|_|  \_\
 
 -->
-
-
         <footer>
             <div class="container">
                 <div class="row">
@@ -600,17 +556,12 @@ ______ ____   ____ _______ ______ _____
     <!--OMBD API --->
     <script src="js/OmbdAPI.js"></script>
 
-
     <!-- Include Bootstrap-select CSS, JS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
-
 
     <!--Angular Table   --->
     <script src="js/ng-table.min.js"></script>
 
     <!--Angular Drag and drop   --->
     <script src="js/dragAndDropList.js"></script>
-
-
-
 </html>
