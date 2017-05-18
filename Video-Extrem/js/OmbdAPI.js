@@ -90,13 +90,129 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                         $scope.populateLanguagesByMovie(movieElement);
                         $scope.populateActorsByMovie(movieElement);
                     }
-                    console.log("Hi JC");
-                    console.log($scope.globalGenresArray);
-                    console.log($scope.globalLanguagesArray);
-                    console.log($scope.globalActorsArray);
+                    //console.log("Hi JC");
+                    //console.log($scope.globalGenresArray);
+                    //console.log($scope.globalLanguagesArray);
+                    //console.log($scope.globalActorsArray);
                    });
             }
         });
+        //-----------------------------------------------------------------------------------------------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------------------------------------//
+        $scope.setAddMovie = function(){
+            $scope.populateGenresCreate();
+            $scope.populateLanguagesCreate();
+            $scope.populateActorsCreate();
+        }
+        //-----------------------------------------------------------------------------------------------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------------------------------------//
+        $scope.addMovie_aux = function(pClassName){
+            var radios = document.getElementsByTagName('input');
+            var value;                   
+        
+            for (var actualInputElement = 0; actualInputElement < radios.length; actualInputElement++) {
+                if (radios[actualInputElement].type === 'checkbox' && radios[actualInputElement].checked && radios[actualInputElement].className == pClassName) {
+                    value = radios[actualInputElement].value;
+                    if(pClassName === "generoCreate"){
+                        $scope.movieGenres.push(value);
+                    }
+                    if(pClassName === "idiomaCreate"){
+                        $scope.movieLanguages.push(value);
+                    }
+                    if(pClassName === "actorCreate"){
+                        $scope.movieActors.push(value);
+                    }
+                }
+            }
+        }
+        
+        $scope.addMovie = function(){
+            alert("addMovie");
+
+            var movieNameCreateInput = document.getElementById("movieNameInputCreate").value;
+            var yearCreateInput = document.getElementById("movieYearInputCreate").value;
+            var descriptionCreateInput = document.getElementById("movieDescriptionInputCreate").value;
+            var priceCreateInput = document.getElementById("moviePriceInputCreate").value;
+            var linkImageCreateInput = document.getElementById("movieImageInputCreate").value;
+            
+            var actualArrayGenres = [];
+            var actualArrayLanguages = [];
+            var actualArrayActors = []; 
+        
+            $scope.addMovie_aux("generoCreate");
+            $scope.addMovie_aux("idiomaCreate");
+            $scope.addMovie_aux("actorCreate");
+            
+            $scope.url = "http://www.videoextrem.com/api/movies.php?queryType=add";
+            
+            $scope.movieData = {
+                'pelicula' : movieNameCreateInput,
+                'ano': yearCreateInput,
+                'trama': descriptionCreateInput,
+                'precio': priceCreateInput,
+                'linkImagen': linkImageCreateInput,
+                'genresArray': $scope.movieGenres,
+                'languagesArray': $scope.movieLanguages,
+                'actorsArray': $scope.movieActors
+            }
+            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+            $http.post($scope.url, $scope.movieData).
+            then(function(data, status) {
+                alert("La pelicula " + movieNameCreateInput + " ha sido creada");
+                location.reload();
+            })
+        }
+        //-----------------------------------------------------------------------------------------------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------------------------------------//
+        $scope.populateGenresCreate = function(){
+            var radio_genres = document.getElementById("radio_genres_create");
+            radio_genres.innerHTML = '';
+            $http.get("http://www.videoextrem.com/api/genres.php?queryType=select")
+                .then(function(response) {
+                $scope.genresArrayToPopulate = response.data;
+                for(actualGenre=0; actualGenre< $scope.genresArrayToPopulate.length; actualGenre++){
+                    var genreElement = $scope.genresArrayToPopulate[actualGenre].genero;
+                    var new_button = $scope.createRadioButton(genreElement, genreElement, genreElement, "generoCreate", false);
+                    var br = document.createElement("br");
+                    radio_genres.appendChild(new_button);
+                    radio_genres.appendChild(br);
+                }
+            });
+        }
+        //-----------------------------------------------------------------------------------------------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------------------------------------//
+        $scope.populateLanguagesCreate = function(){
+            var radio_languages = document.getElementById("radio_languages_create");
+            radio_languages.innerHTML = '';
+            $http.get("http://www.videoextrem.com/api/language.php?queryType=select")
+                .then(function(response) {
+                $scope.languagesArrayToPopulate = response.data;
+                for(actualLanguage=0; actualLanguage< $scope.languagesArrayToPopulate.length; actualLanguage++){
+                    var languageElement = $scope.languagesArrayToPopulate[actualLanguage].idioma;
+                    var new_button = $scope.createRadioButton(languageElement, languageElement, languageElement, "idiomaCreate", false);
+                    var br = document.createElement("br");
+                    radio_languages.appendChild(new_button);
+                    radio_languages.appendChild(br);
+                }
+            });
+        }
+        //-----------------------------------------------------------------------------------------------------------------------------------//
+        //-----------------------------------------------------------------------------------------------------------------------------------//
+        $scope.populateActorsCreate = function(){
+            var radio_actors = document.getElementById("actors_languages_create");
+            radio_actors.innerHTML = '';
+            $http.get("http://www.videoextrem.com/api/actors.php?queryType=select")
+                .then(function(response) {
+                $scope.actorsArrayToPopulate = response.data;
+                for(actualActor=0; actualActor< $scope.actorsArrayToPopulate.length; actualActor++){
+                    var actorElement = $scope.actorsArrayToPopulate[actualActor].actor;
+                    var new_button = $scope.createRadioButton(actorElement, actorElement, actorElement, "actorCreate", false);
+                    var br = document.createElement("br");
+                    radio_actors.appendChild(new_button);
+                    radio_actors.appendChild(br);
+                }
+            });
+        }
         //-----------------------------------------------------------------------------------------------------------------------------------//
         //-----------------------------------------------------------------------------------------------------------------------------------//
         $scope.populateGeneresByMovie = function(pActualMovie){
@@ -177,12 +293,14 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
         $scope.showMovie = function(selectedMovie){
             var selectDropdown = document.getElementById('selectGenresShow');
             var selectDropdownLanguages = document.getElementById('selectLanguagesShow');
+            var selectDropdownActors = document.getElementById('selectActorsShow');
             $scope.cleanDropdown(selectDropdown);
             $scope.cleanDropdown(selectDropdownLanguages);
             $scope.randomColor();
             $scope.actualMovie = selectedMovie;
             var genres = [];
             var languages = [];
+            var actors = [];
             for(actualGenre = 0; actualGenre < $scope.globalGenresArray.length; actualGenre++){
                 if($scope.globalGenresArray[actualGenre].idPelicula == selectedMovie.idPelicula){
                     genres = $scope.globalGenresArray[actualGenre].generos;
@@ -208,6 +326,19 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
                 newOption.text = languageElement;
                 newOption.value = 'idioma'+actualLanguage;
                 selectDropdownLanguages.appendChild(newOption);
+            }
+            for(actualActor = 0; actualActor < $scope.globalActorsArray.length; actualActor++){
+                if($scope.globalActorsArray[actualActor].idPelicula == selectedMovie.idPelicula){
+                    actors = $scope.globalActorsArray[actualActor].actores;
+                    break;
+                }
+            }
+            for(actualActor = 0; actualActor < actors.length; actualActor++){
+                var actorElement = actors[actualActor];
+                var newOption = document.createElement("option");
+                newOption.text = actorElement;
+                newOption.value = 'actor'+actualActor;
+                selectDropdownActors.appendChild(newOption);
             }
         }
         //-----------------------------------------------------------------------------------------------------------------------------------//
@@ -250,6 +381,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists']);
             var radio_langauges = document.getElementById("radio_languages");
             var radio_genres = document.getElementById("radio_genres");
             var radio_actors = document.getElementById("radio_actors");
+            
             radio_langauges.innerHTML = '';
             radio_genres.innerHTML = '';
             radio_genres.innerHTML = '';

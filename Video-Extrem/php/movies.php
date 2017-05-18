@@ -28,7 +28,10 @@
         public $languagesArrayAdd;
         public $actorsArrayRemove;
         public $actorsArrayAdd;
-
+        public $genresArray;
+        public $languagesArray;
+        public $actorsArray;
+        
         function getMovies() {
             $connection = new connection();
             $movies = array();
@@ -82,6 +85,24 @@
                 $result = $connection->consult($call);
             }
         }
+    
+        function addMovie($pMovieName, $pMovieYear, $pMovieDescription, $pMoviePrice, $pMovieLink, $pGenresArray, $pLanguagesArray, $pActorsArray) {
+            $connection = new connection();
+            $call = "call addMovie('$pMovieYear','$pMovieName', '$pMovieDescription', '$pMoviePrice', '$pMovieLink');";
+            $result = $connection->consult($call);
+            foreach ($pGenresArray as $genreElement) {
+                $call = "call addGenreByMovieNoID('$genreElement');";
+                $result = $connection->consult($call);
+            }
+            foreach ($pLanguagesArray as $languageElement) {
+                $call = "call addLanguageByMovieNoID('$languageElement');";
+                $result = $connection->consult($call);
+            }
+            foreach ($pActorsArray as $actorElement) {
+                $call = "call addActorByMovieNoID('$actorElement');";
+                $result = $connection->consult($call);
+            }
+        }
     }
 
     $movieClass = new movie();
@@ -110,5 +131,19 @@
         $movieClass->editMovie($movieClass->movieId, $movieClass->movieName, $movieClass->movieYear, $movieClass->movieDescription, 
                                $movieClass->moviePrice, $movieClass->movieLink, $movieClass->genresArrayRemove, $movieClass->genresArrayAdd,
                                 $movieClass->languagesArrayRemove, $movieClass->languagesArrayAdd, $movieClass->actorsArrayRemove, $movieClass->actorsArrayAdd);
+    }
+    if ($_queryType == "add"){
+        $movieClass->movieName = $request->pelicula;
+        $movieClass->movieYear = $request->ano;
+        $movieClass->movieDescription = $request->trama;
+        $movieClass->moviePrice = $request->precio;
+        $movieClass->movieLink = $request->linkImagen;
+        $movieClass->genresArray = $request->genresArray;
+        $movieClass->languagesArray = $request->languagesArray;
+        $movieClass->actorsArray = $request->actorsArray;
+    
+        $movieClass->addMovie($movieClass->movieName, $movieClass->movieYear, $movieClass->movieDescription, 
+                              $movieClass->moviePrice, $movieClass->movieLink, $movieClass->genresArray, 
+                              $movieClass->languagesArray, $movieClass->actorsArray);
     }
 ?>

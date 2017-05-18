@@ -258,19 +258,67 @@ DELIMITER ;
 ------------------------------------------------------------------------
 
 DELIMITER //
-CREATE PROCEDURE addActorByMovie
-	(IN pIdMovie BIGINT, IN pActor VARCHAR(100))
+CREATE PROCEDURE addGenreByMovieNoID
+	(IN pGenero VARCHAR(100))
 	
 	BEGIN
 	
-		DECLARE _idActor BIGINT;
-		SET _idActor = (SELECT idActor from Actores where actor = pActor);
-		INSERT INTO ActoresXpelicula (idPelicula, idActor) VALUES (pIdMovie, _idActor);
+		DECLARE _idGenre BIGINT;
+		DECLARE _idMovie BIGINT;
+		
+		SET _idGenre = (SELECT idGenero from Generos where genero = pGenero);
+		SET _idMovie = (select (auto_increment-1) from information_schema.tables where table_name = 'Peliculas' and table_schema = 'video_extrem');
+		
+		INSERT INTO GenerosXpelicula (idPelicula, idGenero) VALUES (_idMovie, _idGenre);
 		
 	END //
 DELIMITER ;
 
--- call addLanguageByMovie(1, "Terror");
+-- call addGenreByMovieNoID("Terror")
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addLanguageByMovieNoID
+	(IN pIdioma VARCHAR(100))
+	
+	BEGIN
+	
+		DECLARE _idLanguage BIGINT;
+		DECLARE _idMovie BIGINT;
+		
+		SET _idLanguage = (SELECT idIdioma from Idiomas where idioma = pIdioma);
+		SET _idMovie = (select (auto_increment-1) from information_schema.tables where table_name = 'Peliculas' and table_schema = 'video_extrem');
+		
+		INSERT INTO IdiomasXpelicula (idIdioma, idPelicula) VALUES (_idLanguage, _idMovie);
+		
+	END //
+DELIMITER ;
+
+-- call addLanguageByMovieNoID("Patua");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addActorByMovieNoID
+	(IN pActor VARCHAR(100))
+	
+	BEGIN
+	
+		DECLARE _idActor BIGINT;
+		DECLARE _idMovie BIGINT;
+		
+		SET _idActor = (SELECT idActor from Actores where actor = pActor);
+		SET _idMovie = (select (auto_increment-1) from information_schema.tables where table_name = 'Peliculas' and table_schema = 'video_extrem');
+		
+		INSERT INTO ActoresXpelicula (idPelicula, idActor) VALUES (_idMovie, _idActor);
+		
+	END //
+DELIMITER ;
+
+-- call addActorByMovieNoID("El Negro de Whatsapp");
+
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -574,7 +622,7 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addMovie
-	(IN pAno INT, IN pPelicula VARCHAR(200), IN pTrama VARCHAR(1000), IN pPrecio DECIMAL, IN pFechaIngreso DATETIME, pLinkImagen VARCHAR(500))
+	(IN pAno INT, IN pPelicula VARCHAR(200), IN pTrama VARCHAR(1000), IN pPrecio DECIMAL, IN  DATETIME, pLinkImagen VARCHAR(500))
 
 	BEGIN
 		DECLARE _CurrentDateTime DATETIME;
