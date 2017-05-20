@@ -22,7 +22,7 @@
         function getSubtitles() {
             $connection = new connection();
             $subtitles = array();
-            $select = 'SELECT * from Subtitulos;';
+            $select = 'SELECT * from Subtitulos order by idSubtitulo;';
             $result = $connection->consult($select);
 
             while($row = mysql_fetch_assoc($result)){

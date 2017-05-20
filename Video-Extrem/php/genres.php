@@ -23,7 +23,7 @@
         function getGenres() {
             $connection = new connection();
             $genres = array();
-            $select = 'SELECT * from Generos;';
+            $select = 'SELECT * from Generos order by idGenero;';
             $result = $connection->consult($select);
 
             while($row = mysql_fetch_assoc($result)){

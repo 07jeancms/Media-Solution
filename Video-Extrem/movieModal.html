@@ -14,8 +14,7 @@
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <button type="button" class="close" 
-                        data-dismiss="modal">
+                <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
                     <span class="sr-only">Close</span>
                 </button>
@@ -26,9 +25,6 @@
             </div>
             <!-- Modal Body -->
             <div>
-
-
-
                 <div id="wrapper">
                     <div id="content">
                         <div class="modal-body pre-scrollable">
@@ -38,7 +34,7 @@
                                     <h5  class="col-md-4 control-label"
                                         for="inputNombre">Nombre</h5>
                                     <div class="col-md-6">
-                                        <input press-enter="searchMovie()"  class="form-control" id="movieName" ng-model="actualMovie.title" placeholder="Nombre de la Pelicula"/>
+                                        <input press-enter="searchMovie()"  class="form-control" id="movieNameInputCreate" ng-model="actualMovie.title" placeholder="Nombre de la Pelicula"/>
                                     </div>
                                     <div class="col-md-2">
                                         <btn ng-click="searchMovie()"  ng-show="!loading"  class=" magic fa fa-magic" aria-hidden="true"></btn>
@@ -50,45 +46,42 @@
                                     <h5  class="col-md-4 control-label"
                                         for="inputYear">Año</h5>
                                     <div class="col-md-8">
-                                        <input ng-model= "actualMovie.year" type="number" min="1900" max="2099" step="1" value="2016" class="form-control" id="movieYear" placeholder="Nombre de la Pelicula"/> 
+                                        <input ng-model= "actualMovie.year" type="number" min="1900" max="2099" step="1" value="2016" class="form-control" id="movieYearInputCreate" placeholder="Año de la Pelicula"/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h5  class="col-md-4 control-label"
-                                        for="inputNombre">Genero</h5>
+                                        for="inputNombre">Genero/s</h5>
                                     <div class="col-md-8">
-                                        <select ng-model="actualMovie.gendre" name="gendre" class="form-control">
-                                            <option value="Comedia">Comedia</option>
-                                            <option value="Sci-Fi">Sci-Fi</option>
-                                            <option value="Drama">Drama</option>
-                                            <option value="Romantica">Romantica</option>
-                                        </select>
+                                        <div class="GenresRadioButtonsCreate" id="radio_genres_create"></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h5   class="col-md-4 control-label"
-                                        for="inputNombre">Idioma</h5>
+                                        for="inputNombre">Idioma/s</h5>
                                     <div class="col-md-8">
-                                        <select ng-model="actualMovie.language" name="gendre" class="form-control">
-                                            <option value="60">Latino</option>
-                                            <option value="69">Ingles</option>
-                                            <option value="79.99">Frances</option>
-                                            <option value="89">Japones</option>
-                                        </select>
+                                        <div class="LanguagesRadioButtonsCreate" id="radio_languages_create"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5   class="col-md-4 control-label"
+                                        for="inputActor">Actor/es</h5>
+                                    <div class="col-md-8">
+                                        <div class="ActorsRadioButtonsCreate" id="actors_languages_create"></div>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h5  class="col-md-4 control-label"
                                         for="inputNombre">Trama</h5>
                                     <div class="col-md-8">
-                                        <textarea ng-model="actualMovie.plot" rows="5"  class="form-control" id="movieName" placeholder="Trama de la Pelicula"></textarea>
+                                        <textarea ng-model="actualMovie.plot" rows="5"  class="form-control" id="movieDescriptionInputCreate" placeholder="Trama de la Pelicula"></textarea>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <h5  class="col-md-4 control-label"
                                         for="inputYear">Precio</h5>
                                     <div class="col-md-8">
-                                        <input type="number"  step="100" value="0" class="form-control" id="movieYear" placeholder="Precio de la Pelicula"/> 
+                                        <input type="number"  step="100" value="0" class="form-control" id="moviePriceInputCreate" placeholder="Precio de la Pelicula"/> 
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -97,39 +90,38 @@
                                     <div class="col-md-8">
                                         <div >
                                             <div ng-controller="actorController as actor">
-
                                                 <table ng-table="actor.tableParams" class="table table-bordered table-striped table-condensed">
                                                     <tr ng-repeat="actualActor in actors " >
-                                                        <td data-title="'Id'"  filter="{Id: 'text'}"><h5>{{actualActor.id}}</h5></td>
-                                                        <td data-title="'Actor'" filter="{Actor: 'number'}" sortable="'Year'"><h5>{{actualActor.Actor}}</h5></td>
-                                                        <td data-title="'Editar'" >                                             <div class="inline col-lg-12">                                                  <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-target="#showActorModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editActor(actualActor)"aria-hidden="true">  </i>                                                 <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)"aria-hidden="true"></i>                                             </div>                                         </td>                                      </tr>
+                                                        <td data-title="'Id'"  filter="{Id: 'text'}"><h5>{{actualActor.idActor}}</h5></td>
+                                                        <td data-title="'Actor'" filter="{Actor: 'number'}" sortable="'Year'"><h5>{{actualActor.actor}}</h5></td>
+                                                        <td data-title="'Editar'" >                                             
+                                                            <div class="inline col-lg-12">
+                                                                <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-
+                                                                   target="#showActorModal" aria-hidden="true">
+                                                                </i>
+                                                                <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editActor(actualActor)"aria-hidden="true">
+                                                                </i>
+                                                                <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)"aria-hidden="true">
+                                                                </i>
+                                                            </div>
+                                                        </td>
+                                                    </tr>
                                                 </table>
-
                                             </div>
-
-
-                                            <div ng-include="'actorModal.html'"></div> 
                                         </div>
                                     </div>
                                 </div>
-
-
-
                             </form>
-
                         </div>
                     </div>
-
-
                     <div id="createSidebar">
                         <div id="moviePoster" class="modal-body posterContainer">
                             <img class="posterImg" src={{actualMovie.poster}}>
-                            <input class="form-control" ng-model="actualMovie.poster" id="movieYear" placeholder="Poster Url"/>
+                            <input class="form-control" ng-model="actualMovie.poster" id="movieImageInputCreate" placeholder="Poster Url"/>
                         </div>
                     </div>
                     <div id="cleared"></div>
                 </div>
-
             </div>
 
             <!-- Modal Footer -->
@@ -138,16 +130,15 @@
                         data-dismiss="modal">
                     Cancelar
                 </button>
-                <button type="button" class="btn btn-primary">
+                <button type="button" class="btn btn-primary" ng-click="this.addMovie()">
                     Crear Pelicula
                 </button>
             </div>
         </div>
     </div>
-
 </div>
 </div>
-<button class="btn" data-toggle="modal" data-target="#createMovieModal">
+<button class="btn" data-toggle="modal" data-target="#createMovieModal" ng-click="this.setAddMovie()">
     Agregar Pelicula 
 </button>
 
@@ -195,13 +186,19 @@ ____) | | | | (_) \ V  V /
                             <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4" for="inputNombre">{{actualMovie.ano}}</h5>
                         </div>
                         <div class="form-group">
-                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Generos: </h4>
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Genero/s: </h4>
                             <select id="selectGenresShow">
                             </select>
                         </div>
                         <div class="form-group">
-                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Idiomas: </h4>
-                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"for="inputNombre">{{Language.Year}}</h5>
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Idioma/s: </h4>
+                            <select id="selectLanguagesShow">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Actor/es: </h4>
+                            <select id="selectActorsShow">
+                            </select>
                         </div>
                         <div class="form-group">
                             <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Trama: </h4>
@@ -237,5 +234,111 @@ ____) | | | | (_) \ V  V /
     </div>
 </div>
 
+<!-- Modal 
+  ______ _____ _____ _______ 
+ |  ____|  __ \_   _|__   __|
+ | |__  | |  | || |    | |   
+ |  __| | |  | || |    | |   
+ | |____| |__| || |_   | |   
+ |______|_____/_____|  |_|   
+                             
+-->
 
-
+<div class="modal fade" id="editMovieModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Editar Pelicula 
+                </h4>
+            </div>
+            <!-- Modal Body -->
+            <div>
+                <div id="wrapper">
+                    <div id="content">
+                        <div class="modal-body pre-scrollable">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label" for="inputNombre">Nombre</h5>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="movieNameEdit" ng-model="actualMovie.pelicula" placeholder={{actualMovie.pelicula}} 
+                                               value={{actualMovie.pelicula}}>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <btn ng-click="searchMovie()"  ng-show="!loading"  class=" magic fa fa-magic" aria-hidden="true"></btn>
+                                        <i ng-show="loading"  class="fa fa-spinner magic fa-spin  fa-fw"></i>
+                                        <span class="sr-only">Loading...</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label" for="inputYear">Año</h5>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="movieYearEdit" placeholder={{actualMovie.ano}} value={{actualMovie.ano}}> 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label" for="inputNombre">Genero/s</h5>
+                                    <div class="col-md-8">
+                                        <div class="genresRadioButtons" id="radio_genres"></div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5   class="col-md-4 control-label" for="inputNombre">Idioma/s</h5>
+                                    <div class="col-md-8">
+                                        <div class="languagesRadioButtons" id="radio_languages"></div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5   class="col-md-4 control-label" for="inputNombre">Actor/es</h5>
+                                    <div class="col-md-8">
+                                        <div class="ActorsRadioButtons" id="radio_actors"></div>
+                                        <hr>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label" for="inputNombre">Trama</h5>
+                                    <div class="col-md-8">
+                                        <textarea class="form-control" id="movieDescriptionEdit" placeholder={{actualMovie.trama}}>{{actualMovie.trama}}</textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label" for="inputYear">Precio</h5>
+                                    <div class="col-md-8">
+                                        <input type="number" class="form-control" id="moviePriceEdit" placeholder={{actualMovie.precio}} value={{actualMovie.precio}}> 
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="createSidebar">
+                        <div id="moviePoster" class="modal-body posterContainer">
+                            <img class="posterImg" src={{actualMovie.linkImagen}}>
+                            <input class="form-control" id="movieLinkInput" placeholder={{actualMovie.linkImagen}} value={{actualMovie.linkImagen}}>
+                        </div>
+                    </div>
+                    <div id="cleared"></div>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="this.editMovie()">
+                    Editar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

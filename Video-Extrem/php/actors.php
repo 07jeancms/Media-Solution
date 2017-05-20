@@ -22,7 +22,7 @@
         function getActors() {
             $connection = new connection();
             $actors = array();
-            $select = 'SELECT * from Actores;';
+            $select = 'SELECT * from Actores order by idActor;';
             $result = $connection->consult($select);
 
             while($row = mysql_fetch_assoc($result)){

@@ -226,16 +226,132 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addGenreByMovie
-	(IN pIdPelicula BIGINT, IN pIdGenero BIGINT)
+	(IN pIdMovie BIGINT, IN pGenre VARCHAR(100))
 	
 	BEGIN
 	
-		INSERT INTO GenerosXpelicula (idPelicula, idGenero) VALUES (pIdPelicula, pIdGenero);
+		DECLARE _idGenero BIGINT;
+		SET _idGenero = (SELECT idGenero from Generos where genero = pGenre);
+		INSERT INTO GenerosXpelicula (idPelicula, idGenero) VALUES (pIdMovie, _idGenero);
 		
 	END //
 DELIMITER ;
 
--- call addGenreByMovie(1, 1);
+-- call addGenreByMovie(1, "Terror");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addLanguageByMovie
+	(IN pIdMovie BIGINT, IN pLanguage VARCHAR(100))
+	
+	BEGIN
+	
+		DECLARE _idIdioma BIGINT;
+		SET _idIdioma = (SELECT idIdioma from Idiomas where idioma = pLanguage);
+		INSERT INTO IdiomasXpelicula (idPelicula, idIdioma) VALUES (pIdMovie, _idIdioma);
+		
+	END //
+DELIMITER ;
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addGenreByMovieNoID
+	(IN pGenero VARCHAR(100))
+	
+	BEGIN
+	
+		DECLARE _idGenre BIGINT;
+		DECLARE _idMovie BIGINT;
+		
+		SET _idGenre = (SELECT idGenero from Generos where genero = pGenero);
+		SET _idMovie = (select (auto_increment-1) from information_schema.tables where table_name = 'Peliculas' and table_schema = 'video_extrem');
+		
+		INSERT INTO GenerosXpelicula (idPelicula, idGenero) VALUES (_idMovie, _idGenre);
+		
+	END //
+DELIMITER ;
+
+-- call addGenreByMovieNoID("Terror")
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addLanguageByMovieNoID
+	(IN pIdioma VARCHAR(100))
+	
+	BEGIN
+	
+		DECLARE _idLanguage BIGINT;
+		DECLARE _idMovie BIGINT;
+		
+		SET _idLanguage = (SELECT idIdioma from Idiomas where idioma = pIdioma);
+		SET _idMovie = (select (auto_increment-1) from information_schema.tables where table_name = 'Peliculas' and table_schema = 'video_extrem');
+		
+		INSERT INTO IdiomasXpelicula (idIdioma, idPelicula) VALUES (_idLanguage, _idMovie);
+		
+	END //
+DELIMITER ;
+
+-- call addLanguageByMovieNoID("Patua");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addActorByMovieNoID
+	(IN pActor VARCHAR(100))
+	
+	BEGIN
+	
+		DECLARE _idActor BIGINT;
+		DECLARE _idMovie BIGINT;
+		
+		SET _idActor = (SELECT idActor from Actores where actor = pActor);
+		SET _idMovie = (select (auto_increment-1) from information_schema.tables where table_name = 'Peliculas' and table_schema = 'video_extrem');
+		
+		INSERT INTO ActoresXpelicula (idPelicula, idActor) VALUES (_idMovie, _idActor);
+		
+	END //
+DELIMITER ;
+
+-- call addActorByMovieNoID("El Negro de Whatsapp");
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addActorByMovie
+	(IN pIdMovie BIGINT, IN pActor VARCHAR(100))
+	
+	BEGIN
+	
+		DECLARE _idActor BIGINT;
+		SET _idActor = (SELECT idActor from Actores where actor = pActor);
+		INSERT INTO ActoresXpelicula (idPelicula, idActor) VALUES (pIdMovie, _idActor);
+		
+	END //
+DELIMITER ;
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addSuggestion
+	(IN pIdMovie BIGINT, IN pActor VARCHAR(100))
+	
+	BEGIN
+	
+		DECLARE _idActor BIGINT;
+		SET _idActor = (SELECT idActor from Actores where actor = pActor);
+		INSERT INTO ActoresXpelicula (idPelicula, idActor) VALUES (pIdMovie, _idActor);
+		
+	END //
+DELIMITER ;
+
+-- call addGenreByMovie(1, "Terror");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -251,6 +367,60 @@ CREATE PROCEDURE deleteGenreByMovie
 DELIMITER ;
 
 -- call deleteGenreByMovie(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteGenreByMovieSpecific
+	(IN pGenre VARCHAR(100), IN pIdMovie BIGINT)
+	
+	BEGIN
+	
+		DECLARE _idGenero BIGINT;
+		SET _idGenero = (SELECT idGenero from Generos where genero = pGenre);
+		
+		DELETE FROM GenerosXpelicula where idGenero = _idGenero and idPelicula = pIdMovie;
+		
+	END //
+DELIMITER ;
+
+-- call deleteGenreByMovieSpecific(5, 8);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteActorByMovieSpecific
+	(IN pActor VARCHAR(100), IN pIdMovie BIGINT)
+	
+	BEGIN
+	
+		DECLARE _idActor BIGINT;
+		SET _idActor = (SELECT idActor from Actores where actor = pActor);
+		
+		DELETE FROM ActoresXpelicula where idActor = _idActor and idPelicula = pIdMovie;
+		
+	END //
+DELIMITER ;
+
+-- call deleteGenreByMovieSpecific(5, 8);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteLanguageByMovieSpecific
+	(IN pLanguage VARCHAR(100), IN pIdMovie BIGINT)
+	
+	BEGIN
+	
+		DECLARE _idIdioma BIGINT;
+		SET _idIdioma = (SELECT idIdioma from Idiomas where idioma = pLanguage);
+		
+		DELETE FROM IdiomasXpelicula where idIdioma = _idIdioma and idPelicula = pIdMovie;
+		
+	END //
+DELIMITER ;
+
+-- call deleteLanguageByMovieSpecific(5, 8);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -452,7 +622,7 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addMovie
-	(IN pAno INT, IN pPelicula VARCHAR(200), IN pTrama VARCHAR(1000), IN pPrecio DECIMAL, IN pFechaIngreso DATETIME, pLinkImagen VARCHAR(500))
+	(IN pAno INT, IN pPelicula VARCHAR(200), IN pTrama VARCHAR(1000), IN pPrecio DECIMAL, IN  DATETIME, pLinkImagen VARCHAR(500))
 
 	BEGIN
 		DECLARE _CurrentDateTime DATETIME;
@@ -463,7 +633,7 @@ CREATE PROCEDURE addMovie
 	END //
 DELIMITER ;
 
--- call addMovie(2000, "Harry Potter", "Trama", 1000, now(), "http://bookriotcom.c.presscdn.com/wp-content/uploads/2014/08/HP_hc_old_2.jpg");
+-- call addMovie(2000, "Lord of the Rings", "This is a movies based on Frodo's adventures", 1000, now(), "http://vignette4.wikia.nocookie.net/lotr/images/3/3a/The_Lord_of_the_Rings_Characters.jpg/revision/latest?cb=20150328111911");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -489,18 +659,27 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE updateMovie
-	(IN pIdPelicula BIGINT, pAno INT, pPelicula VARCHAR(200), pIdActorXpelicula BIGINT, pIdGeneroXpelicula BIGINT, pIdIdiomaXpelicula BIGINT, pTrama VARCHAR(1000),
-		pIdCategoriaXpelicula BIGINT, pIdSubXpelicula BIGINT, pPrecio DECIMAL, pFechaIngreso DATETIME, pLinkImagen VARCHAR(500))
+	(IN pIdPelicula BIGINT, 
+		IN pPelicula VARCHAR(200), 
+		IN pAno INT, 
+		IN pTrama VARCHAR(1000),
+		IN pPrecio DECIMAL,
+		IN pLinkImagen VARCHAR(500))
 	
 	BEGIN
 	
-		UPDATE Peliculas SET ano = pAno, pelicula = pPelicula, idActorXpelicula = pIdActorXpelicula, idGeneroXpelicula = pIdGeneroXpelicula, idIdiomaXpelicula = pIdIdiomaXpelicula, trama = pTrama,
-		idCategoriaXpelicula = pIdCategoriaXpelicula, idSubXpelicula = pIdSubXpelicula, precio = pPrecio, fechaIngreso = pFechaIngreso, linkImagen = pLinkImagen WHERE idPelicula = pIdPelicula;
+		UPDATE Peliculas SET
+			pelicula = pPelicula,
+			ano = pAno,
+			trama = pTrama,
+			precio = pPrecio,
+			linkImagen = pLinkImagen 
+		WHERE idPelicula = pIdPelicula;
 		
 	END //
 DELIMITER ;
 
--- call updateSale(1, nueva descripcion);
+-- call updateMovie(3, "DEADPOOL Updated", "2000", "Trama Updated", "40000", "https://pmcdeadline2.files.wordpress.com/2016/02/deadpool-teaser.jpg");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
