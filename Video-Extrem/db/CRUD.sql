@@ -622,14 +622,14 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addMovie
-	(IN pAno INT, IN pPelicula VARCHAR(200), IN pTrama VARCHAR(1000), IN pPrecio DECIMAL, IN  DATETIME, pLinkImagen VARCHAR(500))
+	(IN pAno INT, IN pPelicula VARCHAR(200), IN pTrama VARCHAR(1000), IN pPrecio DECIMAL, IN  DATETIME, pLinkImagen VARCHAR(500), pCodigo VARCHAR(50))
 
 	BEGIN
 		DECLARE _CurrentDateTime DATETIME;
 		SET _CurrentDateTime = now();
 		
-		INSERT INTO Peliculas (ano, pelicula, trama, precio, fechaIngreso, linkImagen) 
-		VALUES (pAno, pPelicula, pTrama, pPrecio, _CurrentDateTime, pLinkImagen);
+		INSERT INTO Peliculas (ano, pelicula, trama, precio, fechaIngreso, linkImagen, codigo) 
+		VALUES (pAno, pPelicula, pTrama, pPrecio, _CurrentDateTime, pLinkImagen, pCodigo);
 	END //
 DELIMITER ;
 
@@ -664,7 +664,8 @@ CREATE PROCEDURE updateMovie
 		IN pAno INT, 
 		IN pTrama VARCHAR(1000),
 		IN pPrecio DECIMAL,
-		IN pLinkImagen VARCHAR(500))
+		IN pLinkImagen VARCHAR(500),
+		IN pCodigo VARCHAR(500))
 	
 	BEGIN
 	
