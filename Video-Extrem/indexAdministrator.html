@@ -7,14 +7,14 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-<!-- 
-  _____ _   _  _____ _     _    _ _____  ______  _____ 
- |_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
-   | | |  \| | |    | |   | |  | | |  | | |__  | (___  
-   | | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
-  _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
- |_____|_| \_|\_____|______\____/|_____/|______|_____/ 
-                                                                                                            
+        <!-- 
+_____ _   _  _____ _     _    _ _____  ______  _____ 
+|_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
+| | |  \| | |    | |   | |  | | |  | | |__  | (___  
+| | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
+_| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
+|_____|_| \_|\_____|______\____/|_____/|______|_____/ 
+
 -->
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -139,7 +139,7 @@
                 </ul>
             </div>
         </nav>
-<!--
+        <!--
 _    _ ______          _____  ______ _____  
 | |  | |  ____|   /\   |  __ \|  ____|  __ \ 
 | |__| | |__     /  \  | |  | | |__  | |__) |
@@ -168,7 +168,7 @@ _    _ ______          _____  ______ _____
             </div>
         </header>
 
-<!-- 
+        <!-- 
 _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______ 
 |  __ \ /\   / ____|  ____|  / ____/ __ \| \ | |__   __|  ____| \ | |__   __|
 | |__) /  \ | |  __| |__    | |   | |  | |  \| |  | |  | |__  |  \| |  | |   
@@ -180,7 +180,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
         <div class="pageContent">
             <!-- Peliculas -->
             <a name="movie"></a>
-            <div class="content-section-a" ng-controller="movieTableController as movie">
+            <div class="content-section-a adminDiv"  id="movie" ng-controller="movieTableController as movie">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-sm-6">
@@ -189,21 +189,56 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Peliculas</h2>
                             <div>
                                 <div>
-                                    <table ng-table="movie.tableParams" class=" table table-bordered table-striped  table-condensed">
-                                        <tr ng-repeat="actualMovie in arrayPeliculas ">
-                                            <td data-title="'Titulo'"  filter="{Title: 'text'}"><h5>{{actualMovie.pelicula}}</h5></td>
-                                            <td data-title="'Año'" filter="{Year: 'number'}" sortable="'Year'"><h5>{{actualMovie.ano}}</h5></td>
-                                            <td data-title="'Trama'" filter="{Trama: 'text'}" sortable="'Genero'"><h5>{{actualMovie.trama}}</h5></td>
-                                            <td data-title="'Editar'" >
-                                                <div class="inline col-lg-12"> 
-                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showMovie(actualMovie)" data-toggle="modal" data-target="#showMovieModal" aria-hidden="true">
-                                                    </i>
-                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditMovie(actualMovie)" data-toggle="modal" data-target="#editMovieModal" aria-hidden="true">
-                                                    </i>
-                                                    <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteMovie(actualMovie)"aria-hidden="true"></i>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                    <table st-table="moviesCollection.movies" st-safe-src="movieData.movies"  class="table table-striped" >
+
+                                        <thead>
+                                            <tr>
+                                                <th st-sort="pelicula">Titulo</th>
+                                                <th st-sort="ano">Año</th>
+                                                <th st-sort="trama">Trama</th>
+                                                <th> Editar</th>
+                                            </tr>
+                                            <tr>
+                                                <th>
+                                                    <input st-search="pelicula"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                                                </th>
+                                                <th>
+                                                    <input st-search="ano"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                                                </th>
+                                                <th>
+                                                    <input st-search="trama"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                                                </th>
+                                                <th >
+                                                    <div class="input-group margin-bottom-sm">
+                                                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                                                        <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                                                    </div>
+
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr ng-repeat="actualMovie in moviesCollection.movies">
+                                                <td data-title="'pelicula'"  filter="{pelicula: 'text'}">{{actualMovie.pelicula}}</td>
+                                                <td data-title="'ano'" filter="{ano: 'number'}" sortable="'ano'">{{actualMovie.ano}}</td>
+                                                <td data-title="'trama'" filter="{trama: 'text'}" sortable="'trama'">{{actualMovie.trama}}</td>
+                                                <td data-title="'Editar'" >                                             
+                                                    <div class="inline col-lg-12">                                 
+                                                        <i class="editBtn fa fa-film col-lg-4"  ng-click="this.showMovie(actualMovie)" data-toggle="modal" data-target="#showMovieModal" aria-hidden="true"> </i>                                                  
+                                                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditMovie(actualMovie)" data-toggle="modal" data-target="#editMovieModal" aria-hidden="true">
+                                                        </i>
+                                                        <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteMovie(actualMovie)"aria-hidden="true"></i>
+                                                    </div>                                         
+                                                </td>     
+                                            </tr>
+                                        </tbody>
+                                        <tfoot>
+                                            <tr>
+                                                <td colspan="5" class="text-center">
+                                                    <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
+                                                </td>
+                                            </tr>
+                                        </tfoot>
                                     </table>
                                 </div>
                                 <div ng-include="'movieModal.html'"></div> 
@@ -214,9 +249,11 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                 </div>
             </div>
 
+
+
             <!-- Idiomas -->
             <a name="language"></a>
-            <div class="content-section-b">
+            <div class="content-section-b adminDiv" id="language">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-sm-6">
@@ -231,7 +268,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                             <td data-title="'Idioma'" filter="{Idioma: 'number'}" sortable="'Year'">{{actualLanguage.idioma}}</td>
                                             <td data-title="'Editar'" >                                             
                                                 <div class="inline col-lg-12">                                 
-                                                   <i class="editBtn fa fa-film col-lg-4" ng-click="this.showLanguage(actualLanguage)" data-toggle="modal" data-target="#showLanguageModal" aria-hidden="true"> </i>                                                  
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showLanguage(actualLanguage)" data-toggle="modal" data-target="#showLanguageModal" aria-hidden="true"> </i>                                                  
                                                     <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditLanguage(actualLanguage)" data-toggle="modal" data-target="#editLanguageModal" aria-hidden="true"></i>                   <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteLanguage(actualLanguage)"aria-hidden="true"></i>
                                                 </div>                                         
                                             </td>                                      
@@ -248,7 +285,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
             <!-- Actores -->
             <a name="actor"></a>
-            <div class="content-section-a">
+            <div class="content-section-a adminDiv" id="actor">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-sm-6">
@@ -262,14 +299,14 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                             <td data-title="'Id'"  filter="{Id: 'text'}">{{actualActor.idActor}}</td>
                                             <td data-title="'Actor'" filter="{Actor: 'text'}">{{actualActor.actor}}</td>
                                             <td data-title="'Editar'" >                                             
-                                            <div class="inline col-lg-12">                                                  
-                                                <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-target="#showActorMModal" aria-hidden="true"> 
-                                                </i>                                                 
-                                                <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditActor(actualActor)" data-toggle="modal" data-target="#editActorMModal" aria-hidden="true">  
-                                                </i>                                                 
-                                                <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)" aria-hidden="true">
-                                                </i>                         
-                                            </div>                                         
+                                                <div class="inline col-lg-12">                                                  
+                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-target="#showActorMModal" aria-hidden="true"> 
+                                                    </i>                                                 
+                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditActor(actualActor)" data-toggle="modal" data-target="#editActorMModal" aria-hidden="true">  
+                                                    </i>                                                 
+                                                    <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)" aria-hidden="true">
+                                                    </i>                         
+                                                </div>                                         
                                             </td>                                      
                                         </tr>
                                     </table>
@@ -284,7 +321,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
             <!-- Subtitles -->
             <a name="subtitle"></a>
-            <div class="content-section-b">
+            <div class="content-section-b adminDiv" id="subtitle">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-sm-6">
@@ -320,7 +357,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
             <!-- genre -->
             <a name="genre"></a>
-            <div class="content-section-a">
+            <div class="content-section-a adminDiv" id="genre">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-sm-6">
@@ -354,7 +391,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
             <!-- categories -->
             <a name="category"></a>
-            <div class="content-section-b">
+            <div class="content-section-b adminDiv" id="category">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-sm-6">
@@ -384,10 +421,10 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                     </div>
                 </div>
             </div>
-            
+
             <!-- suggestions -->
             <a name="suggestion"></a>
-            <div class="content-section-a">
+            <div class="content-section-a adminDiv" id="suggestion">
                 <div class="container">
                     <div class="actualCategory">
                         <div class="col-lg-12 col-sm-6">
@@ -415,10 +452,10 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                     </div>
                 </div>
             </div>
-            
+
             <!-- users -->
             <a name="user"></a>
-            <div class="content-section-b">
+            <div class="content-section-b adminDiv" id="user">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12 col-sm-6">
@@ -451,41 +488,77 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                     </div>
                 </div>
             </div>
-            
+
             <!-- role -->
             <a name="role"></a>
-            <div class="content-section-a">
+            <div class="content-section-a adminDiv" id="role">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" ng-controller="roleController">
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
                             <h2 class="section-heading">Roles</h2>
                             <div >
-                                <div ng-controller="roleController as role">
-                                    <table ng-table="role.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualRol in arrayRoles " >
+                                <table st-table="rolesCollection.roles" st-safe-src="rolesData.roles"  class="table table-striped" >
+
+                                    <thead>
+                                        <tr>
+                                            <th st-sort="idRol">Id</th>
+                                            <th st-sort="rol">Rol</th>
+                                            <th> Editar</th>
+                                        </tr>
+                                        <tr>
+                                            <th>
+                                                <input st-search="idRol"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                                            </th>
+                                            <th>
+                                                <input st-search="rol"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                                            </th>
+                                            <th >
+                                                <div class="input-group margin-bottom-sm">
+                                                    <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                                                    <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                                                </div>
+
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr ng-repeat="actualRol in rolesCollection.roles">
                                             <td data-title="'Id'"  filter="{Id: 'text'}">{{actualRol.idRol}}</td>
                                             <td data-title="'Rol'" filter="{role: 'number'}" sortable="'Year'">{{actualRol.rol}}</td>
                                             <td data-title="'Editar'" >                                             
                                                 <div class="inline col-lg-12">                                 
-                                                   <i class="editBtn fa fa-film col-lg-4" ng-click="this.showRol(actualRol)" data-toggle="modal" data-target="#showRolModal" aria-hidden="true"> </i>                                                  
-                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditRol(actualRol)" data-toggle="modal" data-target="#editRolModal" aria-hidden="true"></i>                   <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteRol(actualRol)"aria-hidden="true"></i>
+                                                    <i class="editBtn fa fa-film col-lg-4"  ng-click="this.showRol(actualRol)" data-toggle="modal" data-target="#showRolModal" aria-hidden="true"> </i>                                                  
+                                                    <i class="editBtn fa fa-pencil col-lg-4"  ng-click="this.setEditRol(actualRol)" data-toggle="modal" data-target="#editRolModal" aria-hidden="true"></i>                   
+                                                    <i class="editBtn fa fa-trash col-lg-4"  data-target="#messageModal"  ng-click="this.deleteRol(actualRol)"aria-hidden="true"></i>
                                                 </div>                                         
-                                            </td>                                        
-                                            </tr>
-                                    </table>
-                                    <div ng-include="'roleModal.html'"></div> 
-                                </div>
+                                            </td>     
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="5" class="text-center">
+                                                <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
+                                            </td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
                             </div>
                             <!-- Button trigger modal -->
+                            <div ng-include="'roleModal.html'"></div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
+
+
+
         </div>
 
-<!--
+        <!--
 ______ ____   ____ _______ ______ _____  
 |  ____/ __ \ / __ \__   __|  ____|  __ \ 
 | |__ | |  | | |  | | | |  | |__  | |__) |
@@ -529,7 +602,7 @@ ______ ____   ____ _______ ______ _____
                 </div>
             </div>
         </footer>
-
+        <div ng-include="'messageModal.html'"></div> 
     </body>
 
     <!-- jQuery -->
@@ -555,12 +628,27 @@ ______ ____   ____ _______ ______ _____
 
     <!--OMBD API --->
     <script src="js/OmbdAPI.js"></script>
+    <!--Administrator Controllers --->
+    <script src="js/AdministratorControllers/roleController.js"></script>
+    <script src="js/AdministratorControllers/userController.js"></script>
+    <script src="js/AdministratorControllers/movieController.js"></script>
+    <script src="js/AdministratorControllers/actorController.js"></script>
+    <script src="js/AdministratorControllers/categoriesController.js"></script>
+    <script src="js/AdministratorControllers/genresController.js"></script>
+    <script src="js/AdministratorControllers/languageController.js"></script>
+    <script src="js/AdministratorControllers/subtitlesController.js"></script>
+    <script src="js/AdministratorControllers/suggestionController.js"></script>
+    
+
 
     <!-- Include Bootstrap-select CSS, JS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 
     <!--Angular Table   --->
     <script src="js/ng-table.min.js"></script>
+
+    <!--Smart Table   --->
+    <script src="node_modules/angular-smart-table/dist/smart-table.js"></script>
 
     <!--Angular Drag and drop   --->
     <script src="js/dragAndDropList.js"></script>
