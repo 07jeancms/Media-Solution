@@ -19,7 +19,8 @@ DELIMITER //
 		(IN pIdGenero BIGINT)
 		
 		BEGIN
-
+		
+			DELETE FROM GenerosXpelicula WHERE idGenero = pIdGenero;
 			DELETE FROM Generos WHERE idGenero = pIdGenero;
 				
 		END //	
@@ -64,7 +65,8 @@ DELIMITER //
 		(IN pidCategoria BIGINT)
 		
 		BEGIN
-		
+			
+			DELETE FROM CategoriasXpelicula WHERE idCategoria = pIdCategoria; 
 			DELETE FROM Categorias WHERE idCategoria = pIdCategoria;
 			
 		END //
@@ -110,6 +112,7 @@ DELIMITER //
 		
 		BEGIN
 
+			DELETE FROM IdiomasXpelicula WHERE idIdioma = pIdLanguage;
 			DELETE FROM Idiomas WHERE idIdioma = pIdLanguage;
 				
 		END //	
@@ -155,6 +158,7 @@ DELIMITER //
 		
 		BEGIN
 
+			DELETE FROM ActoresXpelicula WHERE idActor = pIdActor;
 			DELETE FROM Actores WHERE idActor = pIdActor;
 				
 		END //	
@@ -200,6 +204,7 @@ DELIMITER //
 		
 		BEGIN
 
+			DELETE FROM SubtitulosXpelicula WHERE idSubtitulo = pIdSubtitulo;
 			DELETE FROM Subtitulos WHERE idSubtitulo = pIdSubtitulo;
 				
 		END //	
@@ -335,23 +340,6 @@ CREATE PROCEDURE addActorByMovie
 	END //
 DELIMITER ;
 
-------------------------------------------------------------------------
-------------------------------------------------------------------------
-
-DELIMITER //
-CREATE PROCEDURE addSuggestion
-	(IN pIdMovie BIGINT, IN pActor VARCHAR(100))
-	
-	BEGIN
-	
-		DECLARE _idActor BIGINT;
-		SET _idActor = (SELECT idActor from Actores where actor = pActor);
-		INSERT INTO ActoresXpelicula (idPelicula, idActor) VALUES (pIdMovie, _idActor);
-		
-	END //
-DELIMITER ;
-
--- call addGenreByMovie(1, "Terror");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -786,9 +774,25 @@ CREATE PROCEDURE addSuggestion
 	END //
 DELIMITER ;
 
--- call addSuggestion("Seria util si se habilita un espacio para ingresar el nombre de la persona que va a recoger la pelicula", 1);
+-- call addSuggestion("Seria util si se habilita un espacio para ingresar el nombre de la persona que va a recoger la pelicula", 9);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteSuggestion
+	(IN pIdSuggestion BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM Sugerencias WHERE idSugerencia = pIdSuggestion;
+		
+	END //
+DELIMITER ;
+
+-- call deleteSuggestion(1);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
 DELIMITER //
 CREATE PROCEDURE addSuggestionsByUser
 	(IN pIdUsuario BIGINT, IN pIdSugerencia BIGINT)
@@ -806,16 +810,55 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addUser
-	(IN pToken VARCHAR(300), IN pIdRolXusuario BIGINT, IN pCorreo VARCHAR(75), IN pTelefono VARCHAR(50))
+	(IN pToken VARCHAR(300),IN pUserName VARCHAR(50), IN pCorreo VARCHAR(30), IN pTelefono VARCHAR(15), IN pPassword VARCHAR(45))
 	
 	BEGIN
 	
-		INSERT INTO Usuarios (token, idRolXusuario, fechaIngreso, correo, telefono) VALUES (pToken, pIdRolXusuario, now(), pCorreo, pTelefono);
+		INSERT INTO Usuarios (token, fechaIngreso, userName, correo, telefono, password) VALUES (pToken, now(), pUserName, pCorreo, pTelefono, SHA1(pPassword));
 		
 	END //
 DELIMITER ;
 
--- call addUser(null, 1, "jean.cms@hotmail.es", "88888888");
+-- call addUser(null, '07jeancms', "jean.cms@hotmail.es", "88888888", "123");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addRoleByUserNoRoleID
+	(IN pRole VARCHAR(75))
+	
+	BEGIN
+	
+		DECLARE _idUser BIGINT;
+		DECLARE _idRole BIGINT;
+		
+		SET _idUser = (select (auto_increment-1) from information_schema.tables where table_name = 'Usuarios' and table_schema = 'video_extrem');
+		SET _idRole = (select idRol from Roles where rol = pRole);
+		
+		INSERT INTO RolesXusuario (idUsuario, idRol) VALUES (_idUser, _idRole);
+		
+	END //
+DELIMITER ;
+
+-- call addRoleByUserNoRoleID(1, 'Administrador');
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addRoleByUser
+	(IN pUserId BIGINT, IN pRole VARCHAR(75))
+	
+	BEGIN
+	
+		DECLARE _idRole BIGINT;
+		
+		SET _idRole = (select idRol from Roles where rol = pRole);
+		
+		INSERT INTO RolesXusuario (idUsuario, idRol) VALUES (pUserId, _idRole);
+		
+	END //
+DELIMITER ;
+
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -825,6 +868,7 @@ CREATE PROCEDURE deleteUser
 	
 	BEGIN
 	
+		DELETE FROM RolesXusuario WHERE idUsuario = pIdUser;
 		DELETE FROM Usuarios WHERE idUsuario = pIdUser;
 		
 	END //
@@ -836,16 +880,18 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE updateUser
-	(IN pIdUsuario BIGINT, pToken VARCHAR(300), IN pIdRolXusuario BIGINT, IN pCorreo VARCHAR(75), IN pTelefono VARCHAR(50))
+	(IN pIdUsuario BIGINT, IN pUserName VARCHAR(50), IN pEmail VARCHAR(75), IN pPhone VARCHAR(15), IN pPassword VARCHAR(45))
 	
 	BEGIN
 	
-		UPDATE PeliculasXventa SET pelicula = pPelicula WHERE idUsuario = pIdUsuario;
-		
+		UPDATE Usuarios SET userName = pUserName, 
+							correo = pEmail,
+							telefono = pPhone,
+							password = SHA1(pPassword)
+							WHERE idUsuario = pIdUsuario;
+							
 	END //
 DELIMITER ;
-
--- call updateSale(1, nueva descripcion);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -865,17 +911,20 @@ DELIMITER ;
 ------------------------------------------------------------------------
 
 DELIMITER //
-CREATE PROCEDURE deleteRolesByUser
-	(IN pIdRolXusuario BIGINT)
+CREATE PROCEDURE deleteRoleByUser
+	(IN pUserId BIGINT, IN pRole VARCHAR(75))
 	
 	BEGIN
 	
-		DELETE FROM RolesXusuario WHERE idRolXusuario = pIdRolXusuario;
+		DECLARE _idRole BIGINT;
+		
+		SET _idRole = (select idRol from Roles where rol = pRole);
+	
+		DELETE FROM RolesXusuario WHERE idUsuario = pUserId and idRol = _idRole;
 		
 	END //
 DELIMITER ;
 
--- call deleteSale(1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -1023,6 +1072,27 @@ CREATE PROCEDURE updateDiscount
 		UPDATE Locales SET local = pLocal, ubicacion = pUbicacion, imagen = pImagen, telefono = pTelefono, correo = pCorreo WHERE idLocal = pIdLocal;
 		
 	END //
+DELIMITER ;
+
+-- call updateSale(1, nueva descripcion);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+
+create procedure validateAuthentication
+	(IN pUserName VARCHAR(50), IN pPassword VARCHAR(45))
+	
+	BEGIN
+
+	IF EXISTS (select * from Usuarios where( userName = pUserName AND password = SHA1(pPassword))) THEN
+		SELECT 1;
+	ELSE 
+		SELECT -1;
+	END IF;
+
+	END //
+
 DELIMITER ;
 
 -- call updateSale(1, nueva descripcion);

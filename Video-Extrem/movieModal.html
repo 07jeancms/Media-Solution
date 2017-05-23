@@ -84,33 +84,6 @@
                                         <input type="number"  step="100" value="0" class="form-control" id="moviePriceInputCreate" placeholder="Precio de la Pelicula"/> 
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <h5  class="col-md-4 control-label"
-                                        for="inputYear">Actores</h5>
-                                    <div class="col-md-8">
-                                        <div >
-                                            <div ng-controller="actorController as actor">
-                                                <table ng-table="actor.tableParams" class="table table-bordered table-striped table-condensed">
-                                                    <tr ng-repeat="actualActor in actors " >
-                                                        <td data-title="'Id'"  filter="{Id: 'text'}"><h5>{{actualActor.idActor}}</h5></td>
-                                                        <td data-title="'Actor'" filter="{Actor: 'number'}" sortable="'Year'"><h5>{{actualActor.actor}}</h5></td>
-                                                        <td data-title="'Editar'" >                                             
-                                                            <div class="inline col-lg-12">
-                                                                <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-
-                                                                   target="#showActorModal" aria-hidden="true">
-                                                                </i>
-                                                                <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editActor(actualActor)"aria-hidden="true">
-                                                                </i>
-                                                                <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)"aria-hidden="true">
-                                                                </i>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </form>
                         </div>
                     </div>
@@ -143,7 +116,7 @@
 </button>
 
 
-<!-- Modal 
+<!-- 
  ______                   
 /  ____| |                  
 | (___ | |__   _____      __
@@ -152,6 +125,7 @@ ____) | | | | (_) \ V  V /
 |_____/|_| |_|\___/ \_/\_/  
 
 -->
+
 
 <div class="modal fade" id="showMovieModal" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">

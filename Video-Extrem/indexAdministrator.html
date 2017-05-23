@@ -434,12 +434,13 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <div>
                                 <div ng-controller="suggestionsController as suggestions">
                                     <table ng-table="suggestions.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualSuggestion in $data.Search " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualSuggestion.idsuggestions}}</td>
-                                            <td data-title="'Sugerencia'" filter="{suggestions: 'number'}" sortable="'Year'">{{actualSuggestion.suggestions}}</td>
+                                        <tr ng-repeat="actualSuggestion in arraySuggestions" >
+                                            <td data-title="'Enviada por:'">{{actualSuggestion.userName}}</td>
+                                            <td data-title="'Sugerencia'">{{actualSuggestion.sugerencia}}</td>
+                                            <td data-title="'Fecha de Publicación'">{{actualSuggestion.fecha}}</td>
                                             <td data-title="'Editar'">
                                                 <div class="inline col-lg-12">
-                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSuggestion(actualSuggestion)" data-toggle="modal" data-target="#showSuggestionModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editSuggestion(actualSuggestion)"aria-hidden="true">  </i>                                           <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSuggestion(actualSuggestion)"aria-hidden="true"></i>
+                                                    <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSuggestion(actualSuggestion)"aria-hidden="true"></i>
                                                 </div>
                                             </td>
                                         </tr>
@@ -465,14 +466,15 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <div >
                                 <div ng-controller="userController as user">
                                     <table ng-table="user.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualUser in $data.Search " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualUser.iduser}}</td>
-                                            <td data-title="'Usuario'" filter="{user: 'number'}" sortable="'Year'">{{actualUser.user}}</td>
-                                            <td data-title="'Rol'" filter="{rol: 'text'}">{{actualUser.user}}</td>
+                                        <tr ng-repeat="actualUser in arrayUsers" >
+                                            <td data-title="'Usuario'" filter="{userName: 'text'}">{{actualUser.userName}}</td>
+                                            <td data-title="'Correo'" filter="{correo: 'text'}">{{actualUser.correo}}</td>
+                                            <td data-title="'Telefono'" filter="{telefono: 'text'}">{{actualUser.telefono}}</td>
+                                            <td data-title="'Rol/es'" filter="{roles: 'text'}">Place Holder</td>
                                             <td data-title="'Editar'" >
                                                 <div class="inline col-lg-12">
                                                     <i class="editBtn fa fa-film col-lg-4" ng-click="this.showUser(actualUser)" data-toggle="modal" data-target="#showUserModal" aria-hidden="true"></i>
-                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editUser(actualUser)"aria-hidden="true">
+                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditUser(actualUser)" data-toggle="modal" data-target="#editUserModal" aria-hidden="true">
                                                     </i>
                                                     <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteUser(actualUser)"aria-hidden="true">
                                                     </i>
@@ -480,8 +482,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                             </td>
                                         </tr>
                                     </table>
+                                    <div ng-include="'userModal.html'"></div>
                                 </div>
-                                <div ng-include="'userModal.html'"></div> 
                             </div>
                             <!-- Button trigger modal -->
                         </div>

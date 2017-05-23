@@ -267,16 +267,14 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `video_extrem`.`Usuarios` (
   `idUsuario` BIGINT NOT NULL AUTO_INCREMENT,
   `token` VARCHAR(200) NULL,
-  `idRolXusuario` BIGINT NOT NULL,
   `fechaIngreso` DATETIME NOT NULL,
+  `userName` VARCHAR(50) NOT NULL,
   `correo` VARCHAR(30) NOT NULL,
   `telefono` VARCHAR(15) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`idUsuario`),
-  UNIQUE INDEX `token_UNIQUE` (`token` ASC),
-  UNIQUE INDEX `correo_UNIQUE` (`correo` ASC),
-  UNIQUE INDEX `telefono_UNIQUE` (`telefono` ASC))
+  UNIQUE INDEX `correo_UNIQUE` (`correo` ASC))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `video_extrem`.`Roles`
