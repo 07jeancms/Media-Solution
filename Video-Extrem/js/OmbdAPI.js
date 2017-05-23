@@ -317,7 +317,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
 
 
 
-
 })();
 //Esta funcion es para que el marco del poster de la pelicula cambie cada vez que se da visualizar.
 

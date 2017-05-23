@@ -314,8 +314,10 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Sugerencias</h2>
                             <div>
                                 <div ng-controller="suggestionsController as suggestions">
+
                                     <div ng-include="'adminSuggestionTable.html'"></div> 
                                     <div ng-include="'suggestionModal.html'"></div> 
+
                                 </div>
                                 
                             </div>
@@ -334,9 +336,11 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
                             <h2 class="section-heading">Usuarios</h2>
+
                             <div ng-controller="userController" >
                                <div ng-include="'adminUserTable.html'"></div> 
                                 <div ng-include="'userModal.html'"></div> 
+
                             </div>
                             <!-- Button trigger modal -->
                         </div>

@@ -1,12 +1,20 @@
-<!-- Modal -->
+<!-- 
+   _____ _____  ______       _______ ______ 
+  / ____|  __ \|  ____|   /\|__   __|  ____|
+ | |    | |__) | |__     /  \  | |  | |__   
+ | |    |  _  /|  __|   / /\ \ | |  |  __|  
+ | |____| | \ \| |____ / ____ \| |  | |____ 
+  \_____|_|  \_\______/_/    \_\_|  |______|
+                                            
+-->
+
 <div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" 
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <!-- Modal Header -->
             <div class="modal-header">
-                <button type="button" class="close" 
-                        data-dismiss="modal">
+                <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
                     <span class="sr-only">Close</span>
                 </button>
@@ -18,32 +26,34 @@
             <div class="modal-body">
                 <form class="form-horizontal" role="form">
                     <div class="form-group">
-                        <label  class="col-sm-2 control-label"
-                               for="inputNombre">Usuario</label>
+                        <label  class="col-sm-2 control-label" for="inputNombre">Usuario</label>
                         {{actualUser}}
                         <div class="col-sm-10">
                             <input class="form-control" id="userName" value="actualUser.userName" placeholder="Usuario"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label  class="col-sm-2 control-label"
-                               for="inputYear">Password</label>
+                        <label  class="col-sm-2 control-label" for="inputNombre">E-mail</label>
                         <div class="col-sm-10">
-                            <input type="password" class="form-control" id="passwordInput" value="actualUser.password" placeholder="Rol"/> 
+                            <input type="email" class="form-control" id="emailInputCreate" placeholder="E-mail"/>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label  class="col-sm-2 control-label"
-                               for="inputYear">Rol</label>
+                        <label  class="col-sm-2 control-label" for="inputYear">Contraseña</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="rolInput" placeholder="Rol"/> 
+                            <input type="password" class="form-control" id="passwordInputCreate" placeholder="Contrasena"/> 
                         </div>
                     </div>
                     <div class="form-group">
-                        <label  class="col-sm-2 control-label"
-                               for="inputYear">Telefono</label>
+                        <label  class="col-sm-2 control-label" for="inputYear">Roles</label>
+                            <div class="col-md-8">
+                                <div class="RolesRadioButtonsCreate" id="radio_roles_create"></div>
+                            </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" for="inputYear">Telefono</label>
                         <div class="col-sm-10">
-                            <input class="form-control" id="phoneInput" placeholder="Rol"/> 
+                            <input type="number" class="form-control" id="phoneInputCreate" placeholder="Telefono"> 
                         </div>
                     </div>
                 </form>   
@@ -54,13 +64,176 @@
                         data-dismiss="modal">
                     Cancelar
                 </button>
-                <button type="button" class="btn btn-primary">
-                    Crear Usuarios
+                <button type="button" class="btn btn-primary" ng-click="this.isValidUser()">
+                    Crear Usuario
                 </button>
             </div>
         </div>
     </div>
 </div>
-<button class="btn" data-toggle="modal" data-target="#createUserModal">
-    Agregar Usuarios 
+<button class="btn" data-toggle="modal" data-target="#createUserModal" ng-click="this.setAddUser()">
+    Agregar Usuario 
 </button>
+
+<!-- 
+ ______                   
+/  ____| |                  
+| (___ | |__   _____      __
+\___ \| '_ \ / _ \ \ /\ / /
+____) | | | | (_) \ V  V / 
+|_____/|_| |_|\___/ \_/\_/  
+
+-->
+
+<div class="modal fade" id="showUserModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content col-lg-12 ">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    {{actualUser.userName}} 
+                </h4>
+
+            </div>
+            <!-- Modal Body -->
+            <div id="wrapper">
+                <div id="content"><div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">ID: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4" for="inputNombre">{{actualUser.idUsuario}}</h5>
+                        </div>
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Usuario: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4" for="inputNombre">{{actualUser.userName}}</h5>
+                        </div>
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Fecha de Ingreso: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4" for="inputNombre">{{actualUser.fechaIngreso}}</h5>
+                        </div>
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Rol/es: </h4>
+                            <select id="selectRolesShow">
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Correo: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"for="inputNombre">{{actualUser.correo}}</h5>
+                        </div>
+                        <div class="form-group">
+                            <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Telefono: </h4>
+                            <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4"for="inputNombre">{{actualUser.telefono}}</h5>
+                        </div>
+                    </form>   
+                    </div>
+                </div>
+                <div id="cleared">
+                </div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Cancelar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal 
+  ______ _____ _____ _______ 
+ |  ____|  __ \_   _|__   __|
+ | |__  | |  | || |    | |   
+ |  __| | |  | || |    | |   
+ | |____| |__| || |_   | |   
+ |______|_____/_____|  |_|   
+                             
+-->
+
+<div class="modal fade" id="editUserModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Editar Usuario 
+                </h4>
+            </div>
+            <!-- Modal Body -->
+            <div>
+                <div id="wrapper">
+                    <div id="content">
+                        <div class="modal-body pre-scrollable">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label" for="inputNombre">Usuario</h5>
+                                    <div class="col-md-6">
+                                        <input class="form-control" id="userNameEdit" ng-model="actualUser.userName" placeholder={{actualUser.userName}} 
+                                               value={{actualUser.userName}}>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label" for="inputNombre">Rol/s</h5>
+                                    <div class="col-md-8">
+                                        <div class="rolesRadioButtons" id="radio_roles"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label" for="inputNombre">Correo</h5>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="userEmailEdit" placeholder={{actualUser.correo}} value={{actualUser.correo}}>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label" for="inputYear">Telefono</h5>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="userPhoneEdit" placeholder={{actualUser.telefono}} value={{actualUser.telefono}}> 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label" for="inputYear">Nueva Contraseña</h5>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="userNewPassword"> 
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <h5  class="col-md-4 control-label" for="inputYear">Confirmar contraseña</h5>
+                                    <div class="col-md-8">
+                                        <input class="form-control" id="userNewPasswordConfirm">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div id="cleared"></div>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="this.editUser()">
+                    Editar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
