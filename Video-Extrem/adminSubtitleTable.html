@@ -1,0 +1,50 @@
+<div>
+    <table st-table="subtitlesCollection.subtitles" st-safe-src="subtitleDataSet.subtitles"  class="table table-striped" >
+
+        <thead>
+            <tr>
+                <th st-sort="idSubtitulo">Id</th>
+                <th st-sort="subtitulo">Subtitulo</th>
+                <th> Editar</th>
+            </tr>
+            <tr>
+                <th>
+                    <input st-search="idSubtitulo"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th>
+                    <input st-search="subtitulo"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th >
+                    <div class="input-group margin-bottom-sm">
+                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                        <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                    </div>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="actualSubtitle in subtitlesCollection.subtitles">
+                <td data-title="'Id'"  filter="{Id: 'text'}">{{actualSubtitle.idSubtitulo}}</td>
+                <td data-title="'Subtitulo'" filter="{subtitles: 'number'}" sortable="'Year'">{{actualSubtitle.subtitulo}}</td>
+                <td data-title="'Editar'" >                                             
+                    <div class="inline col-lg-12">                                                  
+                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSubtitle(actualSubtitle)" data-toggle="modal" data-target="#showSubtitleModal" aria-hidden="true"> 
+                        </i>                                                 
+                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditSubtitle(actualSubtitle)" data-toggle="modal" data-target="#editSubtitleModal" aria-hidden="true">  
+                        </i>                                                 
+                        <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSubtitle(actualSubtitle)" aria-hidden="true">
+                        </i>                         
+                    </div>                                         
+                </td>                                     
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

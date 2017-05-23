@@ -27,14 +27,14 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
 
     app.factory("dataManager" ,[ "$http", function ($http) {
         var divs={}
-        var waitTime = 1000;
+        var waitTime = 500;
         //Data
         var roleData = {roles : []};
         var movieData = {movies : []};
         var languageData = {languages : []};
         var actorData = {actors : []};
         var subtitleData = {subtitles : []};
-        var genreData = {genres : []};
+        var  genreData = {genres : []};
         var categoryData = {categories : []};
         var suggestionData = {suggestions : []};
         var userData = {users : []};
@@ -71,27 +71,29 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                 }
 
                 divs[offSetTop] = properties;
-                console.log(JSON.stringify(divs));
             }
         }
-        //el evento $(window).scroll detecta el div en el cual estamos ubicados.
-        $(window).scroll(function() {
+
+        function isInDiv(){
             var actualWindowScreen = $(this).scrollTop();
             actualWindowScreen = Math.floor(actualWindowScreen / 100) * 100;
-            console.log(actualWindowScreen);
             if (canBeLoaded(actualWindowScreen)) {
                 console.log(divs[actualWindowScreen].id);
                 manageData(divs[actualWindowScreen],  actualWindowScreen);
             }
+        }
+        //el evento $(window).scroll detecta el div en el cual estamos ubicados.
+        $(window).scroll(function() {
 
+            isInDiv();
         })
+
         /*Esta funcion se llama una vez que el evento $(window).scroll detecte que estamos en el div indicado.
         Esta funcion espera una cantidad definida para saber si el usuario si esta esperando datos en donde esta ubicado, o solo esta de paso por el scroll.
         */
         function manageData(actualTable, actualWindowScreen){
             var actualTableId = actualTable.id;
             var pageSizePorcentage = $('#' + actualTableId).outerHeight(true) * 0.2;
-            alert(actualTableId);
             setTimeout(function() {
                 var newActualWindowScreen = $(this).scrollTop();
                 if (actualWindowScreen >= newActualWindowScreen - pageSizePorcentage && actualWindowScreen <= newActualWindowScreen + pageSizePorcentage) {
@@ -122,7 +124,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                             console.log("subtitle getted");
                             break;
                         case "genre":
-                            getSubtitleData();
+                            getGenreData();
                             actualTable.loaded = true;
                             console.log("genre getted");
                             break;
@@ -200,38 +202,40 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
         function getCategoryData(){
             $http.get("http://www.videoextrem.com/api/categories.php?queryType=select")
                 .then(function(response) {
-                roleData.roles =response.data;
+                categoryData.categories =response.data;
                 console.log(roleData.roles);
             });
 
         }
         //Falta de implementar
         function getSuggestionData(){
-            $http.get("http://www.videoextrem.com/api/roles.php?queryType=select")
+            $http.get("http://www.videoextrem.com/api/suggestions.php?queryType=select")
                 .then(function(response) {
-                roleData.roles =response.data;
-                console.log(roleData.roles);
+                suggestionData.suggestions =response.data;
+                console.log(suggestionData.suggestions);
             });
 
         }
         //falta de implementar
         function getUserData(){
-            $http.get("http://www.videoextrem.com/api/roles.php?queryType=select")
+            $http.get("http://www.videoextrem.com/api/users.php?queryType=select")
                 .then(function(response) {
-                roleData.roles =response.data;
-                console.log(roleData.roles);
+                userData.users =response.data;
+                console.log(userData.users);
             });
 
         }
         //Se ejectua el getData para cargar la informacion de los divs
         getData();
+        //Y se ejecuta una vez el isInDiv() para que cargue los datos de la parte de la pagina de donde inicia
+        isInDiv()
         return {
             roleData: roleData,
             movieData : movieData,
+            genreData : genreData,
             languageData : languageData,
             actorData : actorData,
             subtitleData : subtitleData,
-            genreData : genreData,
             categoryData : categoryData,
             suggestionData : suggestionData,
             userData : userData
@@ -273,7 +277,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
         return message;
 
     });
-    
+
     /***
          *      __  __            _                     _             
          *     |  \/  |          (_)          /\       | |            
@@ -311,7 +315,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
 
 
 
-   
+
 
 
 })();

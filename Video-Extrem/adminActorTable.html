@@ -1,0 +1,50 @@
+<div>
+    <table st-table="actorsCollection.actors" st-safe-src="actorDataSet.actors"  class="table table-striped" >
+
+        <thead>
+            <tr>
+                <th st-sort="idActor">Id</th>
+                <th st-sort="actor">Actor</th>
+                <th> Editar</th>
+            </tr>
+            <tr>
+                <th>
+                    <input st-search="idActor"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th>
+                    <input st-search="actor"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th >
+                    <div class="input-group margin-bottom-sm">
+                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                        <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                    </div>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="actualActor in actorsCollection.actors">
+                <td data-title="'Id'"  filter="{Id: 'text'}">{{actualActor.idActor}}</td>
+                <td data-title="'Actor'" filter="{Actor: 'text'}">{{actualActor.actor}}</td>
+                <td data-title="'Editar'" >                                             
+                    <div class="inline col-lg-12">                                                  
+                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-target="#showActorMModal" aria-hidden="true"> 
+                        </i>                                                 
+                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditActor(actualActor)" data-toggle="modal" data-target="#editActorMModal" aria-hidden="true">  
+                        </i>                                                 
+                        <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)" aria-hidden="true">
+                        </i>                         
+                    </div>                                         
+                </td>                                   
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

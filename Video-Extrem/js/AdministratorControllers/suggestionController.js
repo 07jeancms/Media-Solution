@@ -8,17 +8,13 @@
 //                 |___/ |___/                                 
 
 app.controller("suggestionsController", suggestionsController);
-suggestionsController.$inject = ["NgTableParams", "$resource"];
+suggestionsController.$inject = ['$scope', "$http","dataManager","messageService"];;
 
-function suggestionsController(NgTableParams, $resource) {
-    // tip: to debug, open chrome dev tools and uncomment the following line 
-    //debugger;
+function suggestionsController( $scope, $http,dataManager,messageService) {
+    $scope.languageDataSet = dataManager.languageData;
+    $scope.languagesCollection  = {languages : []};
+    $scope.itemsByPage=5;
+    $scope.actualLanguage = {};
 
-    this.tableParams = new NgTableParams({}, {
-        getData:function(){
-            return []
-        }
-
-    });
 
 }  

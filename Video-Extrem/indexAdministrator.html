@@ -188,59 +188,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <div class="clearfix"></div>
                             <h2 class="section-heading">Peliculas</h2>
                             <div>
-                                <div>
-                                    <table st-table="moviesCollection.movies" st-safe-src="movieData.movies"  class="table table-striped" >
-
-                                        <thead>
-                                            <tr>
-                                                <th st-sort="pelicula">Titulo</th>
-                                                <th st-sort="ano">Año</th>
-                                                <th st-sort="trama">Trama</th>
-                                                <th> Editar</th>
-                                            </tr>
-                                            <tr>
-                                                <th>
-                                                    <input st-search="pelicula"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
-                                                </th>
-                                                <th>
-                                                    <input st-search="ano"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
-                                                </th>
-                                                <th>
-                                                    <input st-search="trama"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
-                                                </th>
-                                                <th >
-                                                    <div class="input-group margin-bottom-sm">
-                                                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
-                                                        <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
-                                                    </div>
-
-                                                </th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <tr ng-repeat="actualMovie in moviesCollection.movies">
-                                                <td data-title="'pelicula'"  filter="{pelicula: 'text'}">{{actualMovie.pelicula}}</td>
-                                                <td data-title="'ano'" filter="{ano: 'number'}" sortable="'ano'">{{actualMovie.ano}}</td>
-                                                <td data-title="'trama'" filter="{trama: 'text'}" sortable="'trama'">{{actualMovie.trama}}</td>
-                                                <td data-title="'Editar'" >                                             
-                                                    <div class="inline col-lg-12">                                 
-                                                        <i class="editBtn fa fa-film col-lg-4"  ng-click="this.showMovie(actualMovie)" data-toggle="modal" data-target="#showMovieModal" aria-hidden="true"> </i>                                                  
-                                                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditMovie(actualMovie)" data-toggle="modal" data-target="#editMovieModal" aria-hidden="true">
-                                                        </i>
-                                                        <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteMovie(actualMovie)"aria-hidden="true"></i>
-                                                    </div>                                         
-                                                </td>     
-                                            </tr>
-                                        </tbody>
-                                        <tfoot>
-                                            <tr>
-                                                <td colspan="5" class="text-center">
-                                                    <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
-                                                </td>
-                                            </tr>
-                                        </tfoot>
-                                    </table>
-                                </div>
+                                <div ng-include="'adminMovieTable.html'"></div> 
                                 <div ng-include="'movieModal.html'"></div> 
                             </div>
                             <!-- Button trigger modal -->
@@ -262,18 +210,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Idiomas</h2>
                             <div >
                                 <div ng-controller="languageController as language">
-                                    <table ng-table="language.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualLanguage in arrayLanguages " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualLanguage.idIdioma}}</td>
-                                            <td data-title="'Idioma'" filter="{Idioma: 'number'}" sortable="'Year'">{{actualLanguage.idioma}}</td>
-                                            <td data-title="'Editar'" >                                             
-                                                <div class="inline col-lg-12">                                 
-                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showLanguage(actualLanguage)" data-toggle="modal" data-target="#showLanguageModal" aria-hidden="true"> </i>                                                  
-                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditLanguage(actualLanguage)" data-toggle="modal" data-target="#editLanguageModal" aria-hidden="true"></i>                   <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteLanguage(actualLanguage)"aria-hidden="true"></i>
-                                                </div>                                         
-                                            </td>                                      
-                                        </tr>
-                                    </table>
+                                    <div ng-include="'adminLanguageTable.html'"></div>
                                     <div ng-include="'languageModal.html'"></div>
                                 </div>      
                             </div>
@@ -294,22 +231,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Actores</h2>
                             <div >
                                 <div ng-controller="actorController as actores">
-                                    <table ng-table="actores.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualActor in arrayActores " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualActor.idActor}}</td>
-                                            <td data-title="'Actor'" filter="{Actor: 'text'}">{{actualActor.actor}}</td>
-                                            <td data-title="'Editar'" >                                             
-                                                <div class="inline col-lg-12">                                                  
-                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-target="#showActorMModal" aria-hidden="true"> 
-                                                    </i>                                                 
-                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditActor(actualActor)" data-toggle="modal" data-target="#editActorMModal" aria-hidden="true">  
-                                                    </i>                                                 
-                                                    <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)" aria-hidden="true">
-                                                    </i>                         
-                                                </div>                                         
-                                            </td>                                      
-                                        </tr>
-                                    </table>
+                                    <div ng-include="'adminActorTable.html'"></div>
                                     <div ng-include="'actorM.html'"></div>
                                 </div>
                             </div>
@@ -330,22 +252,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Subtitulos</h2>
                             <div >
                                 <div ng-controller="subtitlesController as subtitles">
-                                    <table ng-table="subtitles.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualSubtitle in arraySubtitulos " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualSubtitle.idSubtitulo}}</td>
-                                            <td data-title="'Subtitulo'" filter="{subtitles: 'number'}" sortable="'Year'">{{actualSubtitle.subtitulo}}</td>
-                                            <td data-title="'Editar'" >                                             
-                                                <div class="inline col-lg-12">                                                  
-                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSubtitle(actualSubtitle)" data-toggle="modal" data-target="#showSubtitleModal" aria-hidden="true"> 
-                                                    </i>                                                 
-                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditSubtitle(actualSubtitle)" data-toggle="modal" data-target="#editSubtitleModal" aria-hidden="true">  
-                                                    </i>                                                 
-                                                    <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSubtitle(actualSubtitle)" aria-hidden="true">
-                                                    </i>                         
-                                                </div>                                         
-                                            </td>                                      
-                                        </tr>
-                                    </table>
+                                    <div ng-include="'adminSubtitleTable.html'"></div>
                                     <div ng-include="'subtitleModal.html'"></div>
                                 </div> 
                             </div>
@@ -364,27 +271,12 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
                             <h2 class="section-heading">Generos</h2>
-                            <div >
-                                <div ng-controller="genreController as genre">
-                                    <table ng-table="genre.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualGenre in arrayGeneros " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualGenre.idGenero}}</td>
-                                            <td data-title="'Genero'" filter="{genre: 'number'}" sortable="'Year'">{{actualGenre.genero}}</td>
-                                            <td data-title="'Descripcion'" filter="{description: 'text'}">{{actualGenre.descripcion}}</td>
-                                            <td data-title="'Editar'" >                                             
-                                                <div class="inline col-lg-12">                                                  
-                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showGenre(actualGenre)" data-toggle="modal" data-target="#showGenreModal" aria-hidden="true"> </i>                                                 
-                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditGenre(actualGenre)" data-toggle="modal" data-target="#editGenreModal" aria-hidden="true">  </i>
-                                                    <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteGenre(actualGenre)"aria-hidden="true"></i>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                    <div ng-include="'genreModal.html'"></div>
-                                </div> 
-                            </div>
-                            <!-- Button trigger modal -->
+                            <div ng-controller="genreController">
+                                <div ng-include="'adminGenreTable.html'"></div>
+                                <div ng-include="'genreModal.html'"></div>
+                            </div> 
                         </div>
+                        <!-- Button trigger modal -->
                     </div>
                 </div>
             </div>
@@ -400,18 +292,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Categorias </h2>
                             <div >
                                 <div ng-controller="categoriesController as categories">
-                                    <table ng-table="categories.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualCategory in $data " >
-                                            <td data-title="'Id'"  filter="{Id: 'number'}">{{actualCategory.idCategoria}}</td>
-                                            <td data-title="'Categoria'" filter="{Categoria: 'text'}" sortable="'Categoria'">{{actualCategory.categoria}}</td>
-                                            <td data-title="'Editar'" >                                             
-                                                <div class="inline col-lg-12">                                 
-                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showCategory(actualCategory)" data-toggle="modal" data-target="#showCategoryModal" aria-hidden="true"> </i>                                                 
-                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditCategory(actualCategory)" data-toggle="modal" data-target="#editCategoryModal" aria-hidden="true"></i>                   <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteCategory(actualCategory)"aria-hidden="true"></i>
-                                                </div>                                         
-                                            </td>
-                                        </tr>
-                                    </table>
+                                   <div ng-include="'adminCategoriesTable.html'"></div>
                                     <div ng-include="'categorieModal.html'"></div>
                                 </div>
                             </div>
@@ -433,19 +314,10 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Sugerencias</h2>
                             <div>
                                 <div ng-controller="suggestionsController as suggestions">
-                                    <table ng-table="suggestions.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualSuggestion in $data.Search " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualSuggestion.idsuggestions}}</td>
-                                            <td data-title="'Sugerencia'" filter="{suggestions: 'number'}" sortable="'Year'">{{actualSuggestion.suggestions}}</td>
-                                            <td data-title="'Editar'">
-                                                <div class="inline col-lg-12">
-                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSuggestion(actualSuggestion)" data-toggle="modal" data-target="#showSuggestionModal" aria-hidden="true"> </i>                                                 <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editSuggestion(actualSuggestion)"aria-hidden="true">  </i>                                           <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSuggestion(actualSuggestion)"aria-hidden="true"></i>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
+                                    <div ng-include="'adminSuggestionTable.html'"></div> 
+                                    <div ng-include="'suggestionModal.html'"></div> 
                                 </div>
-                                <div ng-include="'suggestionModal.html'"></div> 
+                                
                             </div>
                             <!-- Button trigger modal -->
                         </div>
@@ -462,25 +334,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
                             <h2 class="section-heading">Usuarios</h2>
-                            <div >
-                                <div ng-controller="userController as user">
-                                    <table ng-table="user.tableParams" class="table table-bordered table-striped table-condensed">
-                                        <tr ng-repeat="actualUser in $data.Search " >
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualUser.iduser}}</td>
-                                            <td data-title="'Usuario'" filter="{user: 'number'}" sortable="'Year'">{{actualUser.user}}</td>
-                                            <td data-title="'Rol'" filter="{rol: 'text'}">{{actualUser.user}}</td>
-                                            <td data-title="'Editar'" >
-                                                <div class="inline col-lg-12">
-                                                    <i class="editBtn fa fa-film col-lg-4" ng-click="this.showUser(actualUser)" data-toggle="modal" data-target="#showUserModal" aria-hidden="true"></i>
-                                                    <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editUser(actualUser)"aria-hidden="true">
-                                                    </i>
-                                                    <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteUser(actualUser)"aria-hidden="true">
-                                                    </i>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </div>
+                            <div ng-controller="userController" >
+                               <div ng-include="'adminUserTable.html'"></div> 
                                 <div ng-include="'userModal.html'"></div> 
                             </div>
                             <!-- Button trigger modal -->
@@ -629,16 +484,17 @@ ______ ____   ____ _______ ______ _____
     <!--OMBD API --->
     <script src="js/OmbdAPI.js"></script>
     <!--Administrator Controllers --->
+    
+    <script src="js/AdministratorControllers/genresController.js"></script>
     <script src="js/AdministratorControllers/roleController.js"></script>
     <script src="js/AdministratorControllers/userController.js"></script>
     <script src="js/AdministratorControllers/movieController.js"></script>
     <script src="js/AdministratorControllers/actorController.js"></script>
     <script src="js/AdministratorControllers/categoriesController.js"></script>
-    <script src="js/AdministratorControllers/genresController.js"></script>
     <script src="js/AdministratorControllers/languageController.js"></script>
     <script src="js/AdministratorControllers/subtitlesController.js"></script>
     <script src="js/AdministratorControllers/suggestionController.js"></script>
-    
+
 
 
     <!-- Include Bootstrap-select CSS, JS -->

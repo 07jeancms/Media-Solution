@@ -1,0 +1,46 @@
+<div>
+    <table st-table="languagesCollection.languages" st-safe-src="languageDataSet.languages"  class="table table-striped" >
+
+        <thead>
+            <tr>
+                <th st-sort="idIdioma">Id</th>
+                <th st-sort="idioma">Idioma</th>
+                <th> Editar</th>
+            </tr>
+            <tr>
+                <th>
+                    <input st-search="idIdioma"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th>
+                    <input st-search="idioma"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th >
+                    <div class="input-group margin-bottom-sm">
+                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                        <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                    </div>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="actualLanguage in languagesCollection.languages">
+                <td data-title="'Id'"  filter="{Id: 'text'}">{{actualLanguage.idIdioma}}</td>
+                <td data-title="'Idioma'" filter="{Idioma: 'number'}" sortable="'Year'">{{actualLanguage.idioma}}</td>
+                <td data-title="'Editar'" >                                             
+                    <div class="inline col-lg-12">                                 
+                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showLanguage(actualLanguage)" data-toggle="modal" data-target="#showLanguageModal" aria-hidden="true"> </i>                                                  
+                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditLanguage(actualLanguage)" data-toggle="modal" data-target="#editLanguageModal" aria-hidden="true"></i>                   <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteLanguage(actualLanguage)"aria-hidden="true"></i>
+                    </div>                                         
+                </td>                     
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
