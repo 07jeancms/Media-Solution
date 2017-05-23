@@ -11,10 +11,24 @@ app.controller("suggestionsController", suggestionsController);
 suggestionsController.$inject = ['$scope', "$http","dataManager","messageService"];;
 
 function suggestionsController( $scope, $http,dataManager,messageService) {
-    $scope.languageDataSet = dataManager.languageData;
-    $scope.languagesCollection  = {languages : []};
+    $scope.suggestionDataSet = dataManager.suggestionData;
+    $scope.suggestionsCollection  = {suggestions : []};
     $scope.itemsByPage=5;
-    $scope.actualLanguage = {};
+    $scope.actualSuggestions = {};
+    
+    $scope.deleteSuggestion = function(pActualSuggestion){
+             $scope.actualSuggestion = pActualSuggestion;    
+             $scope.url = "http://www.videoextrem.com/api/suggestions.php?queryType=delete";
+             $scope.suggestionData = {
+                 'suggestionId' : pActualSuggestion.idSugerencia 
+             }
+             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+             $http.post($scope.url, $scope.suggestionData)
+                 .then(function(data, status) {
+                 alert("La sugerencia ha sido eliminada");
+                 location.reload();
+             })        
+         }
 
 
 }  
