@@ -88,7 +88,7 @@
     
         function addMovie($pMovieName, $pMovieYear, $pMovieDescription, $pMoviePrice, $pMovieLink, $pGenresArray, $pLanguagesArray, $pActorsArray) {
             $connection = new connection();
-            $call = "call addMovie('$pMovieYear','$pMovieName', '$pMovieDescription', '$pMoviePrice', '$pMovieLink');";
+            $call = "call addMovie('$pMovieYear','$pMovieName', '$pMovieDescription', '$pMoviePrice', '$pMovieLink', '');";
             $result = $connection->consult($call);
             foreach ($pGenresArray as $genreElement) {
                 $call = "call addGenreByMovieNoID('$genreElement');";
