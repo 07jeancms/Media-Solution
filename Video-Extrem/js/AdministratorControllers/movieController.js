@@ -39,14 +39,13 @@ function movieTableController( $scope, $http,dataManager,messageService) {
     $scope.moviesCollection  = {movies : []};
     $scope.itemsByPage=5;
 
-    $scope.$watch('movieData', function() {
-        for(actualMovie = 0; actualMovie < dataManager.movieData.length; actualMovie++){
-            var movieElement = dataManager.movieData[actualMovie];
+    $scope.$watch('movieData.movies', function() {
+        for(actualMovie = 0; actualMovie < dataManager.movieData.movies.length; actualMovie++){
+            var movieElement = dataManager.movieData.movies[actualMovie];
             $scope.populateGeneresByMovie(movieElement);
             $scope.populateLanguagesByMovie(movieElement);
             $scope.populateActorsByMovie(movieElement);
         }
-
     });
 
   
@@ -80,8 +79,6 @@ function movieTableController( $scope, $http,dataManager,messageService) {
     }
 
     $scope.addMovie = function(){
-        
-
         var movieNameCreateInput = document.getElementById("movieNameInputCreate").value;
         var yearCreateInput = document.getElementById("movieYearInputCreate").value;
         var descriptionCreateInput = document.getElementById("movieDescriptionInputCreate").value;
@@ -112,7 +109,7 @@ function movieTableController( $scope, $http,dataManager,messageService) {
         console.log(JSON.stringify(movieData));
         $http.post(url, movieData).
         then(function(data, status) {
-            alert("La pelicula " + data + " ha sido creada");
+            alert("La pelicula " + movieNameCreateInput + " ha sido creada");
             location.reload();
         })
     }
@@ -170,6 +167,7 @@ function movieTableController( $scope, $http,dataManager,messageService) {
     //-----------------------------------------------------------------------------------------------------------------------------------//
     //-----------------------------------------------------------------------------------------------------------------------------------//
     $scope.populateGeneresByMovie = function(pActualMovie){
+        console.log("populateGeneresByMovie");
         var url = "http://www.videoextrem.com/api/genresByMovie.php?queryType=select";
         var movieData = {
             'idPelicula' : pActualMovie.idPelicula
@@ -245,6 +243,11 @@ function movieTableController( $scope, $http,dataManager,messageService) {
     //-----------------------------------------------------------------------------------------------------------------------------------//
     //-----------------------------------------------------------------------------------------------------------------------------------//
     $scope.showMovie = function(selectedMovie){
+        console.log("Que bronca");
+        console.log($scope.globalGenresArray);
+        console.log($scope.globalLanguagesArray);
+        console.log($scope.globalGenresArray);
+        console.log("Fin bronca");
         var selectDropdown = document.getElementById('selectGenresShow');
         var selectDropdownLanguages = document.getElementById('selectLanguagesShow');
         var selectDropdownActors = document.getElementById('selectActorsShow');
