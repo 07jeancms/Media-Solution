@@ -1,0 +1,53 @@
+
+<div>
+    <table st-table="genresCollection.genres" st-safe-src="genreDataSet.genres"  class="table table-striped" >
+
+        <thead>
+            <tr>
+                <th st-sort="idGenero">Id</th>
+                <th st-sort="genero">Genero</th>
+                <th st-sort="descripcion">Descripcion</th>
+                <th> Editar</th>
+            </tr>
+            <tr>
+                <th>
+                    <input st-search="idGenero"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th>
+                    <input st-search="genero"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th>
+                    <input st-search="descripcion"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th >
+                    <div class="input-group margin-bottom-sm">
+                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                        <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                    </div>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="actualGenre in genresCollection.genres">
+                <td data-title="'Id'"  filter="{Id: 'text'}">{{actualGenre.idGenero}}</td>
+                <td data-title="'Genero'" filter="{genre: 'number'}" >{{actualGenre.genero}}</td>
+                <td data-title="'Descripcion'">{{actualGenre.descripcion}}</td>
+                <td data-title="'Editar'" >                                             
+                    <div class="inline col-lg-12">                                                  
+                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showGenre(actualGenre)" data-toggle="modal" data-target="#showGenreModal" aria-hidden="true"> </i>                                                 
+                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditGenre(actualGenre)" data-toggle="modal" data-target="#editGenreModal" aria-hidden="true">  </i>
+                        <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteGenre(actualGenre)"aria-hidden="true"></i>
+                    </div>
+                </td>                       
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

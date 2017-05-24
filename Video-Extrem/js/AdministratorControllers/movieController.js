@@ -40,7 +40,6 @@ function movieTableController( $scope, $http,dataManager,messageService) {
     $scope.itemsByPage=5;
 
     $scope.$watch('movieData', function() {
-        alert('Movie Data'+JSON.stringify($scope.movieData));
         for(actualMovie = 0; actualMovie < dataManager.movieData.length; actualMovie++){
             var movieElement = dataManager.movieData[actualMovie];
             $scope.populateGeneresByMovie(movieElement);
@@ -114,7 +113,7 @@ function movieTableController( $scope, $http,dataManager,messageService) {
         $http.post(url, movieData).
         then(function(data, status) {
             alert("La pelicula " + data + " ha sido creada");
-            //location.reload();
+            location.reload();
         })
     }
     //-----------------------------------------------------------------------------------------------------------------------------------//

@@ -1,0 +1,47 @@
+<div>
+    <table st-table="categoriesCollection.categories" st-safe-src="categoryDataSet.categories"  class="table table-striped" >
+
+        <thead>
+            <tr>
+                <th st-sort="idCategoria">Id</th>
+                <th st-sort="categoria">Categoria</th>
+                <th> Editar</th>
+            </tr>
+            <tr>
+                <th>
+                    <input st-search="idCategoria"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th>
+                    <input st-search="categoria"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th >
+                    <div class="input-group margin-bottom-sm">
+                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                        <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                    </div>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="actualCategory in categoriesCollection.categories">
+                <td data-title="'Id'"  filter="{Id: 'number'}">{{actualCategory.idCategoria}}</td>
+                <td data-title="'Categoria'" filter="{Categoria: 'text'}" sortable="'Categoria'">{{actualCategory.categoria}}</td>
+                <td data-title="'Editar'" >                                             
+                    <div class="inline col-lg-12">                                 
+                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showCategory(actualCategory)" data-toggle="modal" data-target="#showCategoryModal" aria-hidden="true"> </i>                                                 
+                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditCategory(actualCategory)" data-toggle="modal" data-target="#editCategoryModal" aria-hidden="true"></i>                   <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteCategory(actualCategory)"aria-hidden="true"></i>
+                    </div>                                         
+                </td>                         
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+

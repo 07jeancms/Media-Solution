@@ -13,7 +13,7 @@ userController.$inject = ['$scope', "$http","dataManager","messageService"];
 
 function userController ( $scope, $http,dataManager,messageService) {
 
-    $scope.userData = dataManager.userData;
+    $scope.userDataSet = dataManager.userData;
     $scope.usersCollection  = {users : []};
     $scope.itemsByPage=5;
     $scope.actualUser = {};

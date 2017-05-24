@@ -8,17 +8,27 @@
 //                 |___/ |___/                                 
 
 app.controller("suggestionsController", suggestionsController);
-suggestionsController.$inject = ["NgTableParams", "$resource"];
+suggestionsController.$inject = ['$scope', "$http","dataManager","messageService"];;
 
-function suggestionsController(NgTableParams, $resource) {
-    // tip: to debug, open chrome dev tools and uncomment the following line 
-    //debugger;
+function suggestionsController( $scope, $http,dataManager,messageService) {
+    $scope.suggestionDataSet = dataManager.suggestionData;
+    $scope.suggestionsCollection  = {suggestions : []};
+    $scope.itemsByPage=5;
+    $scope.actualSuggestions = {};
+    
+    $scope.deleteSuggestion = function(pActualSuggestion){
+             $scope.actualSuggestion = pActualSuggestion;    
+             $scope.url = "http://www.videoextrem.com/api/suggestions.php?queryType=delete";
+             $scope.suggestionData = {
+                 'suggestionId' : pActualSuggestion.idSugerencia 
+             }
+             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+             $http.post($scope.url, $scope.suggestionData)
+                 .then(function(data, status) {
+                 alert("La sugerencia ha sido eliminada");
+                 location.reload();
+             })        
+         }
 
-    this.tableParams = new NgTableParams({}, {
-        getData:function(){
-            return []
-        }
-
-    });
 
 }  
