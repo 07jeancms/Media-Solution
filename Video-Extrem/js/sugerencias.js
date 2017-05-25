@@ -4,7 +4,6 @@ function showHideTextArea() {
     suggestionButton = document.getElementById('suggestionButton');
     if (loadSuggestion == true){
         document.getElementById('suggestionTextArea').style.display = "block";
-        suggestionButton.textContent = "-";
         loadSuggestion = false;
     }
     else{

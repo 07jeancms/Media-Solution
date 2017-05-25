@@ -332,6 +332,28 @@ CREATE TABLE IF NOT EXISTS `video_extrem`.`SugerenciasXusuario` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `video_extrem`.`SugerenciasXlocal`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `video_extrem`.`SugerenciasXlocal` (
+  `idSugerenciasXlocal` BIGINT NOT NULL AUTO_INCREMENT,
+  `idSugerencia` BIGINT NOT NULL,
+  `idLocal` BIGINT NOT NULL,
+  PRIMARY KEY (`idSugerenciasXlocal`),
+  INDEX `fk_SugerenciasXlocal_Sugerencias1_idx` (`idSugerencia` ASC),
+  INDEX `fk_SugerenciasXlocal_Locales1_idx` (`idLocal` ASC),
+  CONSTRAINT `fk_SugerenciasXlocal_Sugerencias1`
+    FOREIGN KEY (`idSugerencia`)
+    REFERENCES `video_extrem`.`Sugerencias` (`idSugerencia`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_SugerenciasXlocal_Locales1`
+    FOREIGN KEY (`idLocal`)
+    REFERENCES `video_extrem`.`Locales` (`idLocal`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
 
 -- -----------------------------------------------------
 -- Table `video_extrem`.`Locales`

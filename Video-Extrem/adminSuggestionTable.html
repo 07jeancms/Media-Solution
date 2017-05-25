@@ -4,7 +4,8 @@
 
         <thead>
             <tr>
-                <th st-sort="userName">Enviada por:</th>
+                <th st-sort="local">Local</th>
+                <th st-sort="userName">Enviada por</th>
                 <th st-sort="sugerencia">Sugerencia</th>
                 <th st-sort="fecha">Fecha de Publicación</th>
                 <th> Editar</th>
@@ -30,7 +31,8 @@
         </thead>
         <tbody>
             <tr ng-repeat="actualSuggestion in suggestionsCollection.suggestions">
-                <td data-title="'Enviada por:'">{{actualSuggestion.userName}}</td>
+                <td data-title="'Local'">{{actualSuggestion.local}}</td>
+                <td data-title="'Enviada por'">{{actualSuggestion.userName}}</td>
                 <td data-title="'Sugerencia'">{{actualSuggestion.sugerencia}}</td>
                 <td data-title="'Fecha de Publicación'">{{actualSuggestion.fecha}}</td>
                 <td data-title="'Editar'">
