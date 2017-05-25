@@ -21,18 +21,21 @@
         public $userName = "";
         public $date = "";
         public $suggestion = "";
+        public $store = "";
 
         function getSuggestions() {
             $connection = new connection();
             $suggestions = array();
             $select = "SELECT Usuarios.idUsuario as 'idUsuario', Sugerencias.idSugerencia as 'idSugerencia', Sugerencias.sugerencia as 'sugerencia', Sugerencias.fecha as 'fecha',
-                        Usuarios.userName as 'userName'
+                        Usuarios.userName as 'userName', Locales.local as 'local'
                         from Sugerencias 
-                        INNER JOIN Usuarios on (Sugerencias.idUsuario = Usuarios.idUsuario);";
+                        INNER JOIN Usuarios on (Sugerencias.idUsuario = Usuarios.idUsuario)
+                        INNER JOIN SugerenciasXlocal on (Sugerencias.idSugerencia = SugerenciasXlocal.idSugerencia)
+                        INNER JOIN Locales on (SugerenciasXlocal.idLocal = Locales.idLocal);";
             $result = $connection->consult($select);
 
             while($row = mysql_fetch_assoc($result)){
-                $suggestions[] = array("idUsuario"=>$row['idUsuario'], "idSugerencia"=>$row['idSugerencia'], "sugerencia"=>$row['sugerencia'], "fecha"=>$row['fecha'], "userName"=>$row['userName']);
+                $suggestions[] = array("idUsuario"=>$row['idUsuario'], "idSugerencia"=>$row['idSugerencia'], "sugerencia"=>$row['sugerencia'], "fecha"=>$row['fecha'], "userName"=>$row['userName'], "local"=>$row['local']);
             }
             echo json_encode($suggestions); 
         }
@@ -43,9 +46,16 @@
             $result = $connection->consult($call);
         }
 
-        function addSuggestion($pSuggestion, $pIdUsuario) {
+        function addSuggestion($pUserId, $pSuggestion, $pStore) {
             $connection = new connection();
-            $call = "call addSuggestion('$pSuggestion', '$pIdUsuario');";
+            
+            $call = "call addSuggestion('$pSuggestion', '$pUserId');";
+            $result = $connection->consult($call);
+
+            $call = "call addSuggestionByStore('$pStore');";
+            $result = $connection->consult($call);
+            
+            $call = "call addSuggestionsByUser('$pUserId');";
             $result = $connection->consult($call);
         }
     }
@@ -62,6 +72,7 @@
     if ($_queryType == "add"){
         $suggestionClass->userId = $request->userId;
         $suggestionClass->suggestion = $request->suggestion;
-        $suggestionClass->addSuggestion($suggestionClass->userId, $suggestionClass->suggestion);
+        $suggestionClass->store = $request->store;
+        $suggestionClass->addSuggestion($suggestionClass->userId, $suggestionClass->suggestion, $suggestionClass->store);
     }
 ?>

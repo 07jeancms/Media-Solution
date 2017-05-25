@@ -7,14 +7,14 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <!-- 
-_____ _   _  _____ _     _    _ _____  ______  _____ 
-|_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
-| | |  \| | |    | |   | |  | | |  | | |__  | (___  
-| | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
-_| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
-|_____|_| \_|\_____|______\____/|_____/|______|_____/ 
-
+<!-- 
+  _____ _   _  _____ _     _    _ _____  ______  _____ 
+ |_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
+   | | |  \| | |    | |   | |  | | |  | | |__  | (___  
+   | | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
+  _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
+ |_____|_| \_|\_____|______\____/|_____/|______|_____/ 
+                                                                                                             
 -->
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -148,13 +148,13 @@ _    _ ______          _____  ______ _____
 |_|  |_|______/_/    \_\_____/|______|_|  \_\
 
 -->                                              
-        <a name="inicio"></a>
+        <a name="inicioAdministrator"></a>
         <header class="intro">
             <div class="intro-body">
                 <div class="container principalImage">
                     <div class="row">
                         <div class="col-md-8 col-md-offset-2">
-                            <h1 class="brand-heading">Video <div class ="exColor">Ex</div>treme</h1>
+                            <h1 class="brand-heading">Video <div class ="exColor">Ex</div>trem</h1>
                             <p class="intro-text">Entretenimiento y calidad al mejor precio </p>
                             <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name"></span> </a>
                             <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Inicia Sesion</span> </a>
@@ -314,12 +314,9 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Sugerencias</h2>
                             <div>
                                 <div ng-controller="suggestionsController as suggestions">
-
                                     <div ng-include="'adminSuggestionTable.html'"></div> 
                                     <div ng-include="'suggestionModal.html'"></div> 
-
                                 </div>
-                                
                             </div>
                             <!-- Button trigger modal -->
                         </div>
@@ -340,8 +337,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <div ng-controller="userController" >
                                <div ng-include="'adminUserTable.html'"></div> 
                                 <div ng-include="'userModal.html'"></div> 
-
                             </div>
+                            
                             <!-- Button trigger modal -->
                         </div>
                     </div>
@@ -487,6 +484,7 @@ ______ ____   ____ _______ ______ _____
 
     <!--OMBD API --->
     <script src="js/OmbdAPI.js"></script>
+    
     <!--Administrator Controllers --->
     
     <script src="js/AdministratorControllers/genresController.js"></script>
@@ -498,8 +496,6 @@ ______ ____   ____ _______ ______ _____
     <script src="js/AdministratorControllers/languageController.js"></script>
     <script src="js/AdministratorControllers/subtitlesController.js"></script>
     <script src="js/AdministratorControllers/suggestionController.js"></script>
-
-
 
     <!-- Include Bootstrap-select CSS, JS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>

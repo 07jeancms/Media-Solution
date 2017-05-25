@@ -143,12 +143,22 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                             actualTable.loaded = true;
                             console.log("user getted");
                             break;
+                        case "discounts":
+                            showTestMessage("discounts");
+                            break;
+                        case "suggestionIndex":
+                            showTestMessage("suggestionIndex");
+                            break;
                         default:
                             break;
                     }
                 }
             }, waitTime);
 
+        }
+        
+        function showTestMessage(pMessage){
+            console.log("NG-APP working on " + pMessage);
         }
 
         function getRolesData(){

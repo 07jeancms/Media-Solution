@@ -779,11 +779,34 @@ DELIMITER ;
 ------------------------------------------------------------------------
 
 DELIMITER //
+CREATE PROCEDURE addSuggestionByStore
+	(IN pStore VARCHAR(100))
+	
+	BEGIN
+		
+		DECLARE _idSuggestion BIGINT;
+		DECLARE _idStore BIGINT;
+		
+		SET _idSuggestion = (select (auto_increment-1) from information_schema.tables where table_name = 'Sugerencias' and table_schema = 'video_extrem');
+		SET _idStore = (SELECT idLocal from Locales where local = pStore);
+	
+		INSERT INTO SugerenciasXlocal (idSugerencia, idLocal) VALUES (_idSuggestion, _idStore);
+		
+	END //
+DELIMITER ;
+
+-- call addSuggestionByStore("Coronado");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
 CREATE PROCEDURE deleteSuggestion
 	(IN pIdSuggestion BIGINT)
 	
 	BEGIN
-	
+		
+		DELETE FROM SugerenciasXusuario WHERE idSugerencia = pIdSuggestion;
+		DELETE FROM SugerenciasXlocal WHERE idSugerencia = pIdSuggestion;
 		DELETE FROM Sugerencias WHERE idSugerencia = pIdSuggestion;
 		
 	END //
@@ -795,11 +818,15 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addSuggestionsByUser
-	(IN pIdUsuario BIGINT, IN pIdSugerencia BIGINT)
+	(IN pIdUsuario BIGINT)
 	
 	BEGIN
+		
+		DECLARE _idSuggestion BIGINT;
+		
+		SET _idSuggestion = (select (auto_increment-1) from information_schema.tables where table_name = 'Sugerencias' and table_schema = 'video_extrem');
 	
-		INSERT INTO SugerenciasXusuario (idUsuario, idSugerencia) VALUES (pIdUsuario, pIdSugerencia);
+		INSERT INTO SugerenciasXusuario (idUsuario, idSugerencia) VALUES (pIdUsuario, _idSuggestion);
 		
 	END //
 DELIMITER ;
@@ -1096,5 +1123,22 @@ create procedure validateAuthentication
 DELIMITER ;
 
 -- call updateSale(1, nueva descripcion);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+
+create procedure inserTest
+	(IN pTest VARCHAR(45), IN pNum1 INT, IN pNum2 INT, IN pNum3 INT)
+	
+	BEGIN
+	
+		INSERT INTO Test (test, num, num2, num3) VALUES (pTest, pNum1, pNum2, pNum3);
+
+	END //
+
+DELIMITER ;
+
+-- call inserTest("test", 1,2,3);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
