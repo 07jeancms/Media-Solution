@@ -38,13 +38,13 @@
             $genres = array();
             $languages = array();
             $select = "SELECT Peliculas.idPelicula as 'idPelicula', Peliculas.ano as 'ano', Peliculas.pelicula as 'pelicula', Peliculas.trama as 'trama',
-            Peliculas.precio as 'precio', Peliculas.fechaIngreso as 'fechaIngreso', Peliculas.linkImagen as 'linkImagen' 
+            Peliculas.precio as 'precio', Peliculas.fechaIngreso as 'fechaIngreso', Peliculas.linkImagen as 'linkImagen', Peliculas.codigo as 'codigo' 
             from Peliculas order by idPelicula;";
             $result = $connection->consult($select);
 
             while($row = mysql_fetch_assoc($result)){
                 $movies[] = array("idPelicula"=>$row['idPelicula'], "ano"=>$row['ano'], "pelicula"=>$row['pelicula'], "trama"=>$row['trama'], "precio"=>$row['precio'], 
-                                 "fechaIngreso"=>$row['fechaIngreso'], "linkImagen"=>$row['linkImagen']);
+                                 "fechaIngreso"=>$row['fechaIngreso'], "linkImagen"=>$row['linkImagen'], "codigo"=>$row['codigo']);
             }
             
             echo json_encode($movies);
@@ -88,7 +88,7 @@
     
         function addMovie($pMovieName, $pMovieYear, $pMovieDescription, $pMoviePrice, $pMovieLink, $pGenresArray, $pLanguagesArray, $pActorsArray) {
             $connection = new connection();
-            $call = "call addMovie('$pMovieYear','$pMovieName', '$pMovieDescription', '$pMoviePrice', '$pMovieLink');";
+            $call = "call addMovie('$pMovieYear','$pMovieName', '$pMovieDescription', '$pMoviePrice', '$pMovieLink', '');";
             $result = $connection->consult($call);
             foreach ($pGenresArray as $genreElement) {
                 $call = "call addGenreByMovieNoID('$genreElement');";
