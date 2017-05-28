@@ -48,6 +48,8 @@ function suggestionsController( $scope, $http,dataManager,messageService) {
                 $http.post(url, suggestionData)
                 .then(function(data, status) {
                     alert("Su sugerencia ha sido enviada. Muchas gracias por su opinión");
+                        document.getElementById("selectLocal").value = 'local';
+                        document.getElementById("textAreaSuggestion").value = '';
                 })
             }
             else{
