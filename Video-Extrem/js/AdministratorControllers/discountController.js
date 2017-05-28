@@ -1,0 +1,118 @@
+//    _____ _____  _____  _____ ____  _    _ _   _ _______ 
+//   |  __ \_   _|/ ____|/ ____/ __ \| |  | | \ | |__   __|
+//   | |  | || | | (___ | |   | |  | | |  | |  \| |  | |   
+//   | |  | || |  \___ \| |   | |  | | |  | | . ` |  | |   
+//   | |__| || |_ ____) | |___| |__| | |__| | |\  |  | |   
+//   |_____/_____|_____/ \_____\____/ \____/|_| \_|  |_|   
+//                                                          
+app.controller("discountController", discountController);
+discountController.$inject =['$scope', "$http","dataManager","messageService"];
+
+function discountController($scope, $http, dataManager, messageService) {
+    $scope.discountDataSet = dataManager.discountData;
+    $scope.discountsCollection  = {discounts : []};
+    $scope.itemsByPage=5;
+    $scope.actualDiscounts = {};
+
+    $scope.deleteActor = function(pActualActor){
+        $scope.url = "http://www.videoextrem.com/api/actors.php?queryType=delete";
+        $scope.actorData = {
+            'idActor' : pActualActor.idActor 
+        }
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+        $http.post($scope.url, $scope.actorData).
+        then(function(data, status) {
+            alert("El Actor " + pActualActor.actor + " ha sido borrado");
+            location.reload();
+        })
+    }
+
+    $scope.addAddImage = function(){
+        var actorNameInput = document.getElementById('actorName').value;
+        $scope.url = "http://www.videoextrem.com/api/actors.php?queryType=add";
+        $scope.actorData = {
+            'actor' : actorNameInput 
+        }
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+        $http.post($scope.url, $scope.actorData).
+        then(function(data, status) {
+            alert("El actor " + actorNameInput + " ha sido agregado");
+            location.reload();
+        })
+    }
+
+    $scope.showDiscount = function(pActualDiscount){
+        $scope.actualDiscount = pActualDiscount;
+    }
+    
+    $scope.createRadioButton = function(name, value, text, pClassName, pIsChecked){
+        var label = document.createElement("label");
+        var radio = document.createElement("input");
+        radio.id = pClassName+value;
+        radio.className = pClassName;
+        radio.type = "checkbox";
+        radio.name = text;
+        radio.checked = pIsChecked;
+        var reply_click = function(){
+            $scope.globalRadioId = this.id;
+            $scope.changeRadioValue();
+        };
+        radio.value = value;
+        label.appendChild(radio);
+        label.appendChild(document.createTextNode(text));
+        return label;
+    }
+    
+    $scope.populateRadioCarouselNames = function(){
+        var radio_carousels = document.getElementById("radio_carousels");
+        
+        radio_carousels.innerHTML = '';
+        $http.get("http://www.videoextrem.com/api/discounts.php?queryType=carouselNames")
+            .then(function(response) {
+            for(actualCarousel=0; actualCarousel< response.data.length; actualCarousel++){
+                var radioElement = response.data[actualCarousel].nombre;
+                var new_button = $scope.createRadioButton(radioElement, radioElement, radioElement, "carouselCreate", false);
+                var br = document.createElement("br");
+                radio_carousels.appendChild(new_button);
+                radio_carousels.appendChild(br);
+            }
+        });
+    }
+    
+    $scope.readRadioButtons = function(pClassName){
+        var radios = document.getElementsByTagName('input');
+        var value;
+
+        var arrayCarousels = [];
+
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].type === 'checkbox' && radios[i].checked && radios[i].className == pClassName) {
+                value = radios[i].value;
+                if(pClassName === "carouselCreate"){
+                    arrayCarousels.push(value);
+                }
+            }
+        }
+        return arrayCarousels;
+    }
+    
+    $scope.initAddDiscount = function(){
+        var url_input = document.getElementById("inputCreateLink").value;
+        var status_dropdown = document.getElementById("selectCreateStatus").value;
+        var radioArray = $scope.readRadioButtons("carouselCreate");
+        
+        var url = "http://www.videoextrem.com/api/discounts.php?queryType=add";
+        var discountData = {
+            'url' : url_input,
+            'status' : status_dropdown,
+            'carouselTypes' : radioArray
+        };
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+        console.log("Discount Data"+JSON.stringify(discountData));
+        $http.post(url, discountData)
+            .then(function(data, status) {
+            alert("La imagen: " + url_input + " ha sido agregada")
+        })
+    }
+    
+}
