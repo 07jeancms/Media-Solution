@@ -31,6 +31,7 @@ function carouselsController($scope, $http, dataManager, messageService) {
             carouselDiv = document.getElementById('oscarCarousel');
             carouselIndicator = document.getElementById('carouselIndicatorOscar');
         }
+        
         if(pIdCarousel === 4){
             carouselDiv = document.getElementById('discountCarousel');
             carouselIndicator = document.getElementById('carouselIndicator');
