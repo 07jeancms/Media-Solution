@@ -1202,7 +1202,7 @@ create procedure deleteDiscount
 	(IN pIdDiscount BIGINT)
 	
 	BEGIN
-		
+	
 		DELETE FROM Promociones WHERE idPromocion = pIdDiscount;
 		
 	END //
@@ -1245,12 +1245,16 @@ DELIMITER ;
 
 DELIMITER //
 
-create procedure deleteDiscountXcarousel
-	(IN pIdDiscount BIGINT)
+create procedure deleteDiscountXcarouselByCarouselName
+	(IN pIdDiscount BIGINT, IN pCarouselName VARCHAR(45))
 	
 	BEGIN
+	
+		DECLARE _idCarouselType BIGINT;
 		
-		DELETE FROM PromocionesXcarrusel WHERE idPromocion = pIdDiscount;
+		SET _idCarouselType = (select idTipoCarrusel from TipoCarrusel where nombre = pCarouselName);
+		
+		DELETE FROM PromocionesXcarrusel WHERE idTipoCarrusel = _idCarouselType and idPromocion = pIdDiscount;
 		
 	END //
 	

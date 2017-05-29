@@ -21,6 +21,7 @@
         public $status = 0;
         public $idCarousel = 0;
         public $arrayCarousels = [];
+        public $carouselName = "";
 
         function getActiveDiscountsByCarousel($pIdCarousel) {
             $connection = new connection();
@@ -56,7 +57,7 @@
         function getAllDiscounts() {
             $connection = new connection();
             $discounts = array();
-            $select = "SELECT Promociones.link as 'link', Promociones.estado as 'estado', TipoCarrusel.tipo as 'tipo', TipoCarrusel.nombre as 'nombre'
+            $select = "SELECT Promociones.idPromocion as 'idPromocion', Promociones.link as 'link', Promociones.estado as 'estado', TipoCarrusel.tipo as 'tipo', TipoCarrusel.nombre as 'nombre'
                 from Promociones
                 INNER JOIN PromocionesXcarrusel on (Promociones.idPromocion = PromocionesXcarrusel.idPromocion)
                 INNER JOIN TipoCarrusel on (PromocionesXcarrusel.idTipoCarrusel = TipoCarrusel.idTipoCarrusel);";
@@ -70,7 +71,7 @@
                 else{
                     $actualStatus = "desactivado";
                 }
-                $discounts[] = array("link"=>$row['link'], "estado"=>$actualStatus, "tipo"=>$row['tipo'], "nombre"=>$row['nombre']);
+                $discounts[] = array("idPromocion"=>$row['idPromocion'], "link"=>$row['link'], "estado"=>$actualStatus, "tipo"=>$row['tipo'], "nombre"=>$row['nombre']);
             }
             echo json_encode($discounts); 
         }
@@ -87,9 +88,13 @@
             echo json_encode($discounts); 
         }
         
-        function deleteGenre($pGenreId) {
+        function deleteDiscount($pIdDiscount, $pCarouselName) {
             $connection = new connection();
-            $call = "call deleteGenre('$pGenreId');";
+            
+            $call = "call deleteDiscountXcarouselByCarouselName('$pIdDiscount', '$pCarouselName');";
+            $result = $connection->consult($call);            
+            
+            $call = "call deleteDiscount('$pIdDiscount');";
             $result = $connection->consult($call);
         }
 
@@ -103,9 +108,9 @@
             }
         }
         
-        function editGenre($pGenreId, $pGenreName, $pGenreDescription) {
+        function editDiscount($pIdDiscount, $pLink, $pStatus) {
             $connection = new connection();
-            $call = "call updateGenre('$pGenreId','$pGenreName', '$pGenreDescription');";
+            $call = "call updateDiscount('$pIdDiscount','$pLink', '$pStatus');";
             $result = $connection->consult($call);
         }
     }
@@ -131,8 +136,9 @@
     }
 
     if ($_queryType == "delete"){
-        $genreClass->genreId = $request->idGenero;
-        $genreClass->deleteGenre($genreClass->genreId);
+        $discountsClass->idDiscount = $request->idDiscount;
+        $discountsClass->carouselName = $request->carouselName;
+        $discountsClass->deleteDiscount($discountsClass->idDiscount, $discountsClass->carouselName);
 
     }
 
@@ -144,9 +150,9 @@
     }
     
     if ($_queryType == "edit"){
-        $genreClass->genreName = $request->genero;
-        $genreClass->genreId = $request->idGenero;
-        $genreClass->genreDescription = $request->descripcion;
-        $genreClass->editGenre($genreClass->genreId, $genreClass->genreName, $genreClass->genreDescription);
+        $discountsClass->idDiscount = $request->idDiscount;
+        $discountsClass->link = $request->link;
+        $discountsClass->status = $request->status;
+        $discountsClass->editDiscount($discountsClass->idDiscount, $discountsClass->link, $discountsClass->status);
     }
 ?>

@@ -111,8 +111,52 @@ function discountController($scope, $http, dataManager, messageService) {
         console.log("Discount Data"+JSON.stringify(discountData));
         $http.post(url, discountData)
             .then(function(data, status) {
-            alert("La imagen: " + url_input + " ha sido agregada")
+            alert("La imagen: " + url_input + " ha sido agregada");
+            location.reload();
         })
     }
     
+    $scope.deleteDiscount = function(pActualDiscount){
+        var url = "http://www.videoextrem.com/api/discounts.php?queryType=delete";
+        var discountData = {
+            'idDiscount' : pActualDiscount.idPromocion,
+            'carouselName' : pActualDiscount.nombre
+        };
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+        console.log(JSON.stringify(discountData));
+        $http.post(url,discountData).
+        then(function(data, status) {
+            alert("La imagen: " + pActualDiscount.link + " ha sido eliminada");
+            location.reload();
+        })
+    }
+    
+    $scope.setEditDiscount = function(pActualDiscount){
+        $scope.actualDiscount = pActualDiscount;
+        var dropdownStatus = document.getElementById("selectEditStatus");
+        if(pActualDiscount.estado === "activado"){
+            dropdownStatus.value = 1;
+        }
+        if(pActualDiscount.estado === "desactivado"){
+            dropdownStatus.value = 0;
+        }
+    }
+    
+    $scope.editDiscount = function(pActualDiscount){
+        var url = "http://www.videoextrem.com/api/discounts.php?queryType=edit";
+        var linkInput = document.getElementById('inputEditLink').value;
+        var dropdownStatus = document.getElementById("selectEditStatus").value;
+        var discountData = {
+            'idDiscount' : pActualDiscount.idPromocion,
+            'link' : linkInput,
+            'status' : dropdownStatus
+        };
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+        console.log(JSON.stringify(discountData));
+        $http.post(url,discountData).
+        then(function(data, status) {
+            alert("La imagen: " + pActualDiscount.link + " ha sido Editada");
+            location.reload();
+        })
+    }
 }
