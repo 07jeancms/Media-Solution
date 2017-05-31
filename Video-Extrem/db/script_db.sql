@@ -386,13 +386,22 @@ ENGINE = InnoDB;
 -- Table `video_extrem`.`Promociones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `video_extrem`.`Promociones` (
-  `idPromociones` INT NOT NULL AUTO_INCREMENT,
-  `promocion` VARCHAR(200) NULL,
-  `descripcion` VARCHAR(500) NULL,
-  `imagen` LONGBLOB NULL,
-  PRIMARY KEY (`idPromociones`))
+  `idPromocion` BIGINT NOT NULL AUTO_INCREMENT,
+  `link` VARCHAR(500) NOT NULL,
+  `estado` INT NOT NULL,
+  PRIMARY KEY (`idPromocion`))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `video_extrem`.`TipoCarrusel`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `video_extrem`.`TipoCarrusel` (
+  `idTipoCarrusel` BIGINT NOT NULL AUTO_INCREMENT,
+  `tipo` INT NOT NULL,
+  `nombre` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idTipoCarrusel`),
+  UNIQUE INDEX `tipo_UNIQUE` (`tipo` ASC))
+ENGINE = InnoDB;
 
 -- -----------------------------------------------------
 -- Table `video_extrem`.`Reservaciones`
@@ -403,7 +412,6 @@ CREATE TABLE IF NOT EXISTS `video_extrem`.`Reservaciones` (
   `fecha` DATETIME NOT NULL,
   PRIMARY KEY (`idReservacion`))
 ENGINE = InnoDB;
-
 
 -- -----------------------------------------------------
 -- Table `video_extrem`.`ReservacionMaestra`
@@ -437,12 +445,28 @@ CREATE TABLE IF NOT EXISTS `video_extrem`.`ReservacionMaestra` (
   CONSTRAINT `fk_ReservacionesMaestra_Usuarios1`
     FOREIGN KEY (`idUsuario`)
     REFERENCES `video_extrem`.`Usuarios` (`idUsuario`)
+
+-- -----------------------------------------------------
+-- Table `video_extrem`.`PromocionesXcarrusel`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `video_extrem`.`PromocionesXcarrusel` (
+  `idPromocionesXcarrusel` BIGINT NOT NULL AUTO_INCREMENT,
+  `idPromocion` BIGINT NOT NULL,
+  `idTipoCarrusel` BIGINT NOT NULL,
+  INDEX `fk_PromocionesXcarrusel_Promociones1_idx` (`idPromocion` ASC),
+  INDEX `fk_PromocionesXcarrusel_TipoCarrusel1_idx` (`idTipoCarrusel` ASC),
+  PRIMARY KEY (`idPromocionesXcarrusel`),
+  CONSTRAINT `fk_PromocionesXcarrusel_Promociones1`
+    FOREIGN KEY (`idPromocion`)
+    REFERENCES `video_extrem`.`Promociones` (`idPromocion`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_PromocionesXcarrusel_TipoCarrusel1`
+    FOREIGN KEY (`idTipoCarrusel`)
+    REFERENCES `video_extrem`.`TipoCarrusel` (`idTipoCarrusel`)
 ENGINE = InnoDB;
-
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+

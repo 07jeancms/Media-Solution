@@ -1157,10 +1157,33 @@ CREATE PROCEDURE addBooking
 DELIMITER ;
 
 -- call addBooking("test");
+
+--    _____ _____  _____  _____ ____  _    _ _   _ _______ 
+--   |  __ \_   _|/ ____|/ ____/ __ \| |  | | \ | |__   __|
+--   | |  | || | | (___ | |   | |  | | |  | |  \| |  | |   
+--   | |  | || |  \___ \| |   | |  | | |  | | . ` |  | |   
+--   | |__| || |_ ____) | |___| |__| | |__| | |\  |  | |   
+--   |_____/_____|_____/ \_____\____/ \____/|_| \_|  |_|   
+--                                                                                                             
+
+DELIMITER //
+
+create procedure createDiscount
+	(IN pLink VARCHAR(500), IN pStatus INT)
+	
+	BEGIN
+		
+		INSERT INTO Promociones (link, estado) VALUES (pLink, pStatus);
+		
+	END //
+	
+DELIMITER ;
+
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
 DELIMITER //
+
 CREATE PROCEDURE addBookingMaster
 	(IN pidLocal INT, IN pidReservacion INT, IN pidPelicula INT, IN pidUsuario INT)
 
@@ -1171,6 +1194,32 @@ CREATE PROCEDURE addBookingMaster
 DELIMITER ;
 
 -- call addBookingMaster(2,1,28,9);
+
+create procedure readActiveDiscounts
+	()
+	
+	BEGIN
+		
+		SELECT * FROM Promociones WHERE estado = 1;
+		
+	END //
+	
+DELIMITER ;
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+
+create procedure updateDiscount
+	(IN pIdDiscount BIGINT, IN pLink VARCHAR(500), IN pStatus INT)
+	
+	BEGIN
+		
+		UPDATE Promociones SET link = pLink, estado = pStatus WHERE idPromocion = pIdDiscount;
+		
+	END //
+	
+DELIMITER ;
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -1186,10 +1235,54 @@ CREATE PROCEDURE deleteMasterReservation
 DELIMITER ;
 
 -- call deleteMasterReservation(14);
+
+create procedure deleteDiscount
+	(IN pIdDiscount BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM Promociones WHERE idPromocion = pIdDiscount;
+		
+	END //
+	
+DELIMITER ;
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+
+--    _____ _____  _____  _____ ____  _    _ _   _ _______ ______     _______          _____   ____  _    _  _____ ______ _      
+--   |  __ \_   _|/ ____|/ ____/ __ \| |  | | \ | |__   __|  _ \ \   / / ____|   /\   |  __ \ / __ \| |  | |/ ____|  ____| |     
+--   | |  | || | | (___ | |   | |  | | |  | |  \| |  | |  | |_) \ \_/ / |       /  \  | |__) | |  | | |  | | (___ | |__  | |     
+--   | |  | || |  \___ \| |   | |  | | |  | | . ` |  | |  |  _ < \   /| |      / /\ \ |  _  /| |  | | |  | |\___ \|  __| | |     
+--   | |__| || |_ ____) | |___| |__| | |__| | |\  |  | |  | |_) | | | | |____ / ____ \| | \ \| |__| | |__| |____) | |____| |____ 
+--   |_____/_____|_____/ \_____\____/ \____/|_| \_|  |_|  |____/  |_|  \_____/_/    \_\_|  \_\\____/ \____/|_____/|______|______|
+--                                                   ______       ______                                                         
+--                                                  |______|     |______|                                                        
+
+DELIMITER //
+
+create procedure createDiscountByCarousel
+	(IN pCarouselName VARCHAR(45))
+	
+	BEGIN
+		
+		DECLARE _idPromocion BIGINT;
+		DECLARE _idTipoCarrusel BIGINT;
+		
+		SET _idPromocion = (SELECT (auto_increment-1) from information_schema.tables where table_name = 'Promociones' and table_schema = 'video_extrem');
+		SET _idTipoCarrusel = (SELECT idTipoCarrusel from TipoCarrusel where nombre = pCarouselName);
+		
+		INSERT INTO PromocionesXcarrusel (idPromocion, idTipoCarrusel) VALUES (_idPromocion, _idTipoCarrusel);
+		
+	END //
+	
+DELIMITER ;
+
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
 DELIMITER //
+
 CREATE PROCEDURE deleteReservation
 	(IN pIdReservation BIGINT)
 	
@@ -1203,3 +1296,57 @@ DELIMITER ;
 -- call deleteReservation(14);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+create procedure deleteDiscountXcarouselByCarouselName
+	(IN pIdDiscount BIGINT, IN pCarouselName VARCHAR(45))
+	
+	BEGIN
+	
+		DECLARE _idCarouselType BIGINT;
+		
+		SET _idCarouselType = (select idTipoCarrusel from TipoCarrusel where nombre = pCarouselName);
+		
+		DELETE FROM PromocionesXcarrusel WHERE idTipoCarrusel = _idCarouselType and idPromocion = pIdDiscount;
+		
+	END //
+	
+DELIMITER ;
+
+
+--     _____          _____   ____  _    _  _____ ______ _     _________     _______  ______ 
+--    / ____|   /\   |  __ \ / __ \| |  | |/ ____|  ____| |   |__   __\ \   / /  __ \|  ____|
+--   | |       /  \  | |__) | |  | | |  | | (___ | |__  | |      | |   \ \_/ /| |__) | |__   
+--   | |      / /\ \ |  _  /| |  | | |  | |\___ \|  __| | |      | |    \   / |  ___/|  __|  
+--   | |____ / ____ \| | \ \| |__| | |__| |____) | |____| |____  | |     | |  | |    | |____ 
+--    \_____/_/    \_\_|  \_\\____/ \____/|_____/|______|______| |_|     |_|  |_|    |______|
+--                                                           ______                          
+--                                                          |______|                         
+
+DELIMITER //
+
+create procedure createCarouselType
+	(IN pType INT, IN pName VARCHAR(45))
+	
+	BEGIN
+		
+		INSERT INTO TipoCarrusel (tipo, nombre) VALUES (pType, pName);
+		
+	END //
+	
+DELIMITER ;
+
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+
+create procedure deleteCarouselType
+	(IN pIdCarousel BIGINT)
+	
+	BEGIN
+		
+		DELETE FROM TipoCarrusel WHERE idTipoCarrusel = pIdCarousel;
+		
+	END //
+	
+DELIMITER ;

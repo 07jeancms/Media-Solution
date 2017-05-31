@@ -34,9 +34,10 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
         var languageData = {languages : []};
         var actorData = {actors : []};
         var subtitleData = {subtitles : []};
-        var  genreData = {genres : []};
+        var genreData = {genres : []};
         var categoryData = {categories : []};
         var suggestionData = {suggestions : []};
+        var discountData = {discounts : []};
         var userData = {users : []};
         var bookingMasterData = {booking : []};
         //Esta función determina si se debe de cargar los datos.
@@ -145,7 +146,9 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                             console.log("user getted");
                             break;
                         case "discounts":
-                            showTestMessage("discounts");
+                            getDiscountsData();
+                            actualTable.loaded = true;
+                            console.log("discounts getted");
                             break;
                         case "suggestionIndex":
                             showTestMessage("suggestionIndex");
@@ -166,7 +169,14 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
         function showTestMessage(pMessage){
             console.log("NG-APP working on " + pMessage);
         }
+        function getDiscountsData(){
+            $http.get("http://www.videoextrem.com/api/discounts.php?queryType=select")
+                .then(function(response) {
+                discountData.discounts = response.data;
+                console.log(discountData.discounts);
+            });
 
+        }
         function getRolesData(){
             $http.get("http://www.videoextrem.com/api/roles.php?queryType=select")
                 .then(function(response) {
@@ -264,7 +274,8 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             categoryData : categoryData,
             suggestionData : suggestionData,
             userData : userData,
-            bookingMasterData : bookingMasterData
+            bookingMasterData : bookingMasterData,
+            discountData : discountData
         };
 
 

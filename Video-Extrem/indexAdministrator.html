@@ -429,13 +429,29 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <!-- Button trigger modal -->
                             <div ng-include="'roleModal.html'"></div>
                         </div>
-
-
                     </div>
                 </div>
             </div>
 
 
+            <!-- discounts -->
+            <a name="discount"></a>
+            <div class="content-section-b adminDiv" id="discounts">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-6">
+                            <hr class="section-heading-spacer">
+                            <div class="clearfix"></div>
+                            <h2 class="section-heading">Carruseles</h2>
+                            <div ng-controller="discountController" >
+                               <div ng-include="'adminDiscountTable.html'"></div> 
+                               <div ng-include="'discountModal.html'"></div> 
+                            </div>
+                            <!-- Button trigger modal -->
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         </div>
 
@@ -522,6 +538,7 @@ ______ ____   ____ _______ ______ _____
     <script src="js/AdministratorControllers/subtitlesController.js"></script>
     <script src="js/AdministratorControllers/suggestionController.js"></script>
     <script src="js/IndexControllers/bookingMovieController.js"></script>
+    <script src="js/AdministratorControllers/discountController.js"></script>
 
     <!-- Include Bootstrap-select CSS, JS -->
     <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>

@@ -1,0 +1,48 @@
+
+<div>
+    <table st-table="discountsCollection.discounts" st-safe-src="discountDataSet.discounts" class="table table-striped" >
+        <thead>
+            <tr>
+                <th st-sort="link">Link</th>
+                <th st-sort="status">Estado</th>
+                <th st-sort="status">Tipo</th>
+                <th> Editar</th>
+            </tr>
+            <tr>
+                <th>
+                    <input st-search="link"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th>
+                    <input st-search="estado"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th >
+                    <div class="input-group margin-bottom-sm">
+                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                        <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                    </div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="actualDiscount in discountsCollection.discounts">
+                <td data-title="'Link'">{{actualDiscount.link}}</td>
+                <td data-title="'Estado'">{{actualDiscount.estado}}</td>
+                <td data-title="'Estado'">{{actualDiscount.nombre}}</td>
+                <td data-title="'Editar'">
+                    <div class="inline col-lg-12">
+                        <i class="editBtn fa fa-film col-lg-4"  ng-click="this.showDiscount(actualDiscount)" data-toggle="modal" data-target="#showDiscountModal" 
+                           aria-hidden="true"></i>
+                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditDiscount(actualDiscount)" data-toggle="modal" data-target="#editDiscountModal" aria-hidden="true">  </i>
+                        <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteDiscount(actualDiscount)"aria-hidden="true"></i>
+                </td>     
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
