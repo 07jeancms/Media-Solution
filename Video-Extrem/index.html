@@ -61,8 +61,6 @@
                             <li><a href="#buscatupelicula"><i class="fa fa-search " aria-hidden="true"></i>&nbsp;Busca tu pelicula</a></li>
                         </ul>
                     </li>
-
-                    <li><a class="page-scroll" href="#reservaciones"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp;Reservaciones</a></li>
                     <li><a class="page-scroll" href="#promociones"><i class="fa fa-ticket " aria-hidden="true"></i>&nbsp;Promociones</a></li>
                     <li><a class="page-scroll" href="#establecimientos"><i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;Establecimientos</a></li>
 
@@ -80,9 +78,9 @@
                         </ul>
                     </li>
                     <li>
+                    <li><a data-toggle="modal" data-target="#createBookingModal" href="#movie"><i class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></i>&nbsp;Carrito</a></li>
+                    
                     <li><a class="page-scroll"   data-toggle="modal" data-target="#loginModal"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Log-in</a></li>
-
-
                     </li>
 
                 </ul>
@@ -135,9 +133,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 -->
     <!-- Estrenos -->
     <div class="pageContent" ng-app="indexApp">
-        <div ng-include="'loginModal.html'"></div> 
+        <div ng-include="'loginModal.html'"></div>  
         <a id="movieCarousselContainer"></a>
-
         <div class="content-section-a" id="">
             <div class="container">
                 <div class="row">
@@ -245,74 +242,30 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             </div>
         </div>
 
-
-        <!-- OMBD API --->
-
+        <!-- Buscar tu pelicula -->
         <a name="buscatupelicula"></a>
-        <div id="relativeDiv" class="content-section-b">
+        <div class="content-section-a" id="bookingMovies">
             <div class="container">
                 <div class="row">
+                    <div class="col-lg-12 col-sm-6">
+                        <hr class="section-heading-spacer">
+                        <div class="clearfix"></div>
                     <div class="col-lg-12 col-sm-12">
                         <h2><i class="fa fa-search fa-lg" aria-hidden="true"></i>&nbsp;Encuentra tu pelicula</h2>
                     </div>
-                    <div class="col-lg-12  col-sm-12">
-
-
-                        <form class="btmspace-50" method="post" action="#">
-                            <div class="form-group">
-                                <h5  class="col-md-2 control-label"
-                                    for="inputNombre">Buscar por :</h5>
-                                <div class="col-md-4">
-                                    <select ng-model="search.searchType" name="searchType" class="form-control">
-                                        <option value="name">Nombre</option>
-                                        <option value="year">Año</option>
-                                        <option value="actor">Actor</option>
-                                        <option value="gendre">Genero</option>
-                                        <option value="language">Idioma</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-4">
-                                    <input press-enter="searchMovie()"  class="form-control" id="movieName" ng-model="actualMovie.title" />
-                                </div>
-                                <div class="col-md-2">
-                                    <btn ng-click="searchMovie()"  ng-show="!loading"  class=" magic fa fa-search" aria-hidden="true"></btn>
-                                    <i ng-show="loading"  class="fa fa-spinner magic fa-spin  fa-fw"></i>
-                                    <span class="sr-only">Loading...</span>
-                                </div>
+                    </div>
+                        <div>
+                            <div ng-controller="bookingController as booking">
+                                <div ng-include="'bookingMoviesTable.html'"></div>
+                                <div ng-include="'bookingModal.html'"></div> 
                             </div>
-                        </form>
-
-                        <div id="container">
-
-                            <h2 class="title">Title</h3>
-
-                            <p class="plot">Plot</p>
-                            <label>Year:</label><span class="year">Year</span>
-                            <span>TODO: IMDB Rating / Votes</span>
-                            <span>TODO: Tomatoes Rating / Votes </span>
-
                         </div>
-
-                    </div>
-                    <div class="col-lg-12 col-sm-pull-12  col-sm-12">
-
+                        <!-- Button trigger modal -->
                     </div>
                 </div>
-                <div id="bottomAlert" class="col-lg-10 col-sm-10" >
-
-                    <div id="reservaciones"  class="alert alert-movieInfo">
-                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; Con el sistema de <strong>reserva</strong> online tu eliges cuando y donde deseas retirar tus peliculas favoritas.
-                    </div>
-
-                </div>
-
             </div>
-
-
         </div>
 
-        <a name="discounts"></a>
-        <!-- Promociones -->
         <div class="content-section-a adminDiv" id="discounts">
             <div class="container" >
                 <div class="row">
@@ -588,12 +541,14 @@ ______ ____   ____ _______ ______ _____
 
     <!--Administrator Controllers --->
     <script src="js/AdministratorControllers/suggestionController.js"></script>
+    <script src="js/AdministratorControllers/actorController.js"></script>
 
     <!--Index Controllers --->
     
     <script src="js/IndexControllers/discountsController.js"></script>
     <script src="js/IndexControllers/ubicationController.js"></script>
     <script src="js/IndexControllers/mediaController.js"></script>
+    <script src="js/IndexControllers/bookingMovieController.js"></script>
 
 
 

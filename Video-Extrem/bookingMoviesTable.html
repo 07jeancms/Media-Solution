@@ -1,0 +1,36 @@
+<div>
+    <table st-table="" st-safe-src=""  class="table table-striped" >
+        <div class="col-lg-12  col-sm-12">
+            <form class="btmspace-50" method="post" action="#">
+                <div class="form-group">
+                    <h5  class="col-md-2 control-label"
+                        for="inputNombre">Escribe el titulo:</h5>
+                    <div class="col-md-4">
+                        <input press-enter="this.getBookingMovie()"  class="form-control" id="movieName" ng-model="actualMovie.title" />
+                    </div>
+                    <div class="col-md-2">
+                        <btn ng-click="this.getBookingMovie()"  ng-show="!loading"  class=" magic fa fa-search" aria-hidden="true"></btn>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <thead>
+            <tr>
+                <th st-sort="Pelicula">Pelicula</th>
+                <th> Agregar al carrito</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="actualBooking in moviesSelected">
+                <td data-title="'Id'"  filter="{Id: 'text'}">{{actualBooking.pelicula}}</td>
+                <td data-title="'Editar'" >                                             
+                    <div class="inline col-lg-12">
+                    <i class="editBtn glyphicon glyphicon-shopping-cart"  ng-click="this.addBookingMovie(actualBooking)" aria-hidden="true"></i>                         
+                    </div>                                         
+                </td>                                   
+            </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
+</div>

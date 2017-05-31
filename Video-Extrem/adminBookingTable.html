@@ -1,0 +1,57 @@
+<div>
+    <table st-table="bookingCollection.booking" st-safe-src="bookingDataSet.booking"  class="table table-striped" >
+
+        <thead>
+            <tr>
+                <th st-sort="userName">Usuario</th>
+                <th st-sort="pelicula">Pelicula</th>
+                <th st-sort="local">Local</th>
+                <th st-sort="descripcion">Descripcion</th>
+                
+                <th>Eliminar</th>
+            </tr>
+            <tr>
+                <th>
+                    <input st-search="userName"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th>
+                    <input st-search="pelicula"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th>
+                    <input st-search="local"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                 <th>
+                    <input st-search="descripcion"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                <th >
+                    <div class="input-group margin-bottom-sm">
+                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                        <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                    </div>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="actualBooking in bookingCollection.booking">
+                <td data-title="'user'"  filter="{user: 'text'}">{{actualBooking.userName}}</td>
+                <td data-title="'movie'" filter="{movie: 'text'}" >{{actualBooking.pelicula}}</td>
+                <td data-title="'store'" filter="{store: 'text'}">{{actualBooking.local}}</td>
+                <td data-title="'description'" filter="{description: 'text'}">{{actualBooking.descripcion}}</td>
+                <td data-title="'Editar'" >
+                    <div class="inline col-lg-12">
+                        <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteBookingMaster(actualBooking)" aria-hidden="true">
+                        </i>
+                    </div>
+                </td>         
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="5" class="text-center">
+                    <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</div>

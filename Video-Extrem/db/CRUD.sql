@@ -1142,3 +1142,64 @@ DELIMITER ;
 -- call inserTest("test", 1,2,3);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addBooking
+	(IN pDescripcion VARCHAR(400))
+
+	BEGIN
+		DECLARE _CurrentDateTime DATETIME;
+		SET _CurrentDateTime = now();
+		
+		INSERT INTO Reservaciones(descripcion, fecha) 
+		VALUES (pDescripcion, _CurrentDateTime);
+	END //
+DELIMITER ;
+
+-- call addBooking("test");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE addBookingMaster
+	(IN pidLocal INT, IN pidReservacion INT, IN pidPelicula INT, IN pidUsuario INT)
+
+	BEGIN		
+		INSERT INTO ReservacionMaestra(idLocal, idReservacion, idPelicula, idUsuario) 
+		VALUES (pidLocal, pidReservacion, pidPelicula, pidUsuario);
+	END //
+DELIMITER ;
+
+-- call addBookingMaster(2,1,28,9);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteMasterReservation
+	(IN pIdMasterReservation BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM ReservacionMaestra WHERE idReservacionMaestra = pIdMasterReservation;
+		
+	END //
+DELIMITER ;
+
+-- call deleteMasterReservation(14);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
+CREATE PROCEDURE deleteReservation
+	(IN pIdReservation BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM Reservaciones WHERE idReservacion = pIdReservation;
+		
+	END //
+DELIMITER ;
+
+-- call deleteReservation(14);
+------------------------------------------------------------------------
+------------------------------------------------------------------------

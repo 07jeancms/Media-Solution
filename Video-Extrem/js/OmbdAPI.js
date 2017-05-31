@@ -38,6 +38,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
         var categoryData = {categories : []};
         var suggestionData = {suggestions : []};
         var userData = {users : []};
+        var bookingMasterData = {booking : []};
         //Esta función determina si se debe de cargar los datos.
         function canBeLoaded(divKey){
             if (divs[divKey] != null){
@@ -149,6 +150,11 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                         case "suggestionIndex":
                             showTestMessage("suggestionIndex");
                             break;
+                        case "booking":
+                            getBookingMasterData();
+                            actualTable.loaded = true;
+                            console.log("bookingMaster getted");
+                            break;
                         default:
                             break;
                     }
@@ -235,6 +241,15 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             });
 
         }
+
+        function getBookingMasterData(){
+            $http.get("http://www.videoextrem.com/api/bookingMovie.php?queryType=getBookingMaster")
+                .then(function(response) {
+                bookingMasterData.booking =response.data;
+                console.log(bookingMasterData.booking);
+            });
+
+        }
         //Se ejectua el getData para cargar la informacion de los divs
         getData();
         //Y se ejecuta una vez el isInDiv() para que cargue los datos de la parte de la pagina de donde inicia
@@ -248,7 +263,8 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             subtitleData : subtitleData,
             categoryData : categoryData,
             suggestionData : suggestionData,
-            userData : userData
+            userData : userData,
+            bookingMasterData : bookingMasterData
         };
 
 
