@@ -1,0 +1,75 @@
+<!-- Modal 
+ _____                _        
+/ ____|              | |       
+| |     _ __ ___  __ _| |_ ___  
+| |    | '__/ _ \/ _` | __/ _ \ 
+| |____| | |  __/ (_| | ||  __/ 
+\_____|_|  \___|\__,_|\__\___| 
+
+-->
+
+<div class="modal fade " id="createBookingModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Mis reservaciones
+                </h4>
+
+            </div>
+            <!-- Modal Body -->
+            <div>
+                <table st-table="" st-safe-src=""  class="table table-striped" >
+                    <div class="col-lg-12  col-sm-12">
+                    <thead>
+                        <tr>
+                            <th st-sort="Pelicula">Pelicula</th>
+                            <th>Eliminar del Carrito</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="actualBooking in moviesToBook">
+                            <td data-title="'pelicula'"  filter="{pelicula: 'text'}">{{actualBooking.pelicula}}</td>
+                            <td data-title="'Editar'" >                                             
+                                <div class="inline col-lg-12">
+                                <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteBookingMovie(actualBooking)" aria-hidden="true"></i>                         
+                                </div>                                         
+                            </td>                                   
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                    </tfoot>
+                </table>
+            </div>
+
+            <div class="form-group">
+                <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Local a retirar:</h4>
+                <select id="selectCreateBookingMovie">
+                </select>
+            </div>
+
+            <div class="form-group">
+                <textarea id="textAreaDescripcion" rows="5" cols="60" placeholder="Descripcion" class="textarea form-control col-lg-12 col-md-12 col-sm-12 suggestionArea"></textarea>
+            </div>
+
+
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="this.addBooking(moviesToBook)">
+                    Reservar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -403,7 +403,48 @@ CREATE TABLE IF NOT EXISTS `video_extrem`.`TipoCarrusel` (
   UNIQUE INDEX `tipo_UNIQUE` (`tipo` ASC))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `video_extrem`.`Reservaciones`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `video_extrem`.`Reservaciones` (
+  `idReservacion` BIGINT NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(200) NULL,
+  `fecha` DATETIME NOT NULL,
+  PRIMARY KEY (`idReservacion`))
+ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `video_extrem`.`ReservacionMaestra`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `video_extrem`.`ReservacionMaestra` (
+  `idReservacionMaestra` BIGINT NOT NULL AUTO_INCREMENT,
+  `idLocal` BIGINT NOT NULL,
+  `idReservacion` BIGINT NOT NULL,
+  `idPelicula` BIGINT NOT NULL,
+  `idUsuario` BIGINT NOT NULL,
+  PRIMARY KEY (`idReservacionMaestra`),
+  INDEX `fk_ReservacionesMaestra_Locales1_idx` (`idLocal` ASC),
+  INDEX `fk_ReservacionesMaestra_Reservaciones1_idx` (`idReservacion` ASC),
+  INDEX `fk_ReservacionesMaestra_Peliculas1_idx` (`idPelicula` ASC),
+  INDEX `fk_ReservacionesMaestra_Usuarios1_idx` (`idUsuario` ASC),
+  CONSTRAINT `fk_ReservacionesMaestra_Locales1`
+    FOREIGN KEY (`idLocal`)
+    REFERENCES `video_extrem`.`Locales` (`idLocal`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ReservacionesMaestra_Reservaciones1`
+    FOREIGN KEY (`idReservacion`)
+    REFERENCES `video_extrem`.`Reservaciones` (`idReservacion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ReservacionesMaestra_Peliculas1`
+    FOREIGN KEY (`idPelicula`)
+    REFERENCES `video_extrem`.`Peliculas` (`idPelicula`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_ReservacionesMaestra_Usuarios1`
+    FOREIGN KEY (`idUsuario`)
+    REFERENCES `video_extrem`.`Usuarios` (`idUsuario`)
 
 -- -----------------------------------------------------
 -- Table `video_extrem`.`PromocionesXcarrusel`
@@ -423,7 +464,9 @@ CREATE TABLE IF NOT EXISTS `video_extrem`.`PromocionesXcarrusel` (
   CONSTRAINT `fk_PromocionesXcarrusel_TipoCarrusel1`
     FOREIGN KEY (`idTipoCarrusel`)
     REFERENCES `video_extrem`.`TipoCarrusel` (`idTipoCarrusel`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
