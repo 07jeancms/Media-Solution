@@ -1143,6 +1143,21 @@ DELIMITER ;
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
+DELIMITER //
+CREATE PROCEDURE addBooking
+	(IN pDescripcion VARCHAR(400))
+
+	BEGIN
+		DECLARE _CurrentDateTime DATETIME;
+		SET _CurrentDateTime = now();
+		
+		INSERT INTO Reservaciones(descripcion, fecha) 
+		VALUES (pDescripcion, _CurrentDateTime);
+	END //
+DELIMITER ;
+
+-- call addBooking("test");
+
 --    _____ _____  _____  _____ ____  _    _ _   _ _______ 
 --   |  __ \_   _|/ ____|/ ____/ __ \| |  | | \ | |__   __|
 --   | |  | || | | (___ | |   | |  | | |  | |  \| |  | |   
@@ -1163,10 +1178,22 @@ create procedure createDiscount
 	END //
 	
 DELIMITER ;
+
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
 DELIMITER //
+
+CREATE PROCEDURE addBookingMaster
+	(IN pidLocal INT, IN pidReservacion INT, IN pidPelicula INT, IN pidUsuario INT)
+
+	BEGIN		
+		INSERT INTO ReservacionMaestra(idLocal, idReservacion, idPelicula, idUsuario) 
+		VALUES (pidLocal, pidReservacion, pidPelicula, pidUsuario);
+	END //
+DELIMITER ;
+
+-- call addBookingMaster(2,1,28,9);
 
 create procedure readActiveDiscounts
 	()
@@ -1197,6 +1224,17 @@ DELIMITER ;
 ------------------------------------------------------------------------
 
 DELIMITER //
+CREATE PROCEDURE deleteMasterReservation
+	(IN pIdMasterReservation BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM ReservacionMaestra WHERE idReservacionMaestra = pIdMasterReservation;
+		
+	END //
+DELIMITER ;
+
+-- call deleteMasterReservation(14);
 
 create procedure deleteDiscount
 	(IN pIdDiscount BIGINT)
@@ -1244,6 +1282,20 @@ DELIMITER ;
 ------------------------------------------------------------------------
 
 DELIMITER //
+
+CREATE PROCEDURE deleteReservation
+	(IN pIdReservation BIGINT)
+	
+	BEGIN
+	
+		DELETE FROM Reservaciones WHERE idReservacion = pIdReservation;
+		
+	END //
+DELIMITER ;
+
+-- call deleteReservation(14);
+------------------------------------------------------------------------
+------------------------------------------------------------------------
 
 create procedure deleteDiscountXcarouselByCarouselName
 	(IN pIdDiscount BIGINT, IN pCarouselName VARCHAR(45))

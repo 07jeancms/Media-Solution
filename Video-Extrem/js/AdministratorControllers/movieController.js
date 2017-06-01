@@ -58,6 +58,23 @@ function movieTableController( $scope, $http,dataManager,messageService) {
     }
     //-----------------------------------------------------------------------------------------------------------------------------------//
     //-----------------------------------------------------------------------------------------------------------------------------------//
+
+    $scope.generateBackup = function(){
+        var backupName = document.getElementById('backupName').value;
+        var url = "http://www.videoextrem.com/api/generate_backup_movies_csv_file.php?queryType=getBackup";
+        $scope.backupData = {
+            'file' : backupName
+        };
+
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+        $http.post(url, $scope.backupData).
+        then(function(data, status) {
+            alert("El archivo " + backupName + " ha sido creado correctamente");
+            //location.reload();
+        })
+
+    }
+
     $scope.addMovie_aux = function(pClassName){
         var radios = document.getElementsByTagName('input');
         var value;                   

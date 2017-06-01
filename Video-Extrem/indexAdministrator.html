@@ -115,7 +115,7 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                     <a href="#">Sugerencias</a>
                     <input type="checkbox" id="drop-1"/>
                     <ul  id="navSuggestions">
-                        <li><a data-toggle="modal" data-target="#createSuggestionModal"href="#suggestion">Agregar</a></li>
+                        <li><a data-toggle="modal" data-target="#createSuggestionModal" href="#suggestion">Agregar</a></li>
                         <li><a href="#suggestion">Buscar </a></li>
                     </ul>
                     </li>
@@ -139,7 +139,11 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                             <li><a href="#role">Buscar </a></li>
                         </ul>
                     </li>
+                    <li>
+                        <a data-toggle="modal" data-target="#createBackupModal">Respaldos</a>
+                    </li>
                 </ul>
+                
             </div>
         </nav>
         <!--
@@ -192,7 +196,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Peliculas</h2>
                             <div>
                                 <div ng-include="'adminMovieTable.html'"></div> 
-                                <div ng-include="'movieModal.html'"></div> 
+                                <div ng-include="'movieModal.html'"></div>
+                                <div ng-include="'backupMoviesModal.html'"></div>  
                             </div>
                           
 
@@ -344,6 +349,26 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                 <div ng-include="'userModal.html'"></div> 
                             </div>
 
+                            <!-- Button trigger modal -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+                        <!-- users -->
+            <a name="booking"></a>
+            <div class="content-section-b adminDiv" id="booking">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-6">
+                            <hr class="section-heading-spacer">
+                            <div class="clearfix"></div>
+                            <h2 class="section-heading">Reservaciones</h2>
+
+                            <div ng-controller="bookingController" >
+                               <div ng-include="'adminBookingTable.html'"></div> 
+                            </div>
+                            
                             <!-- Button trigger modal -->
                         </div>
                     </div>
@@ -517,6 +542,7 @@ ______ ____   ____ _______ ______ _____
     <script src="js/AdministratorControllers/languageController.js"></script>
     <script src="js/AdministratorControllers/subtitlesController.js"></script>
     <script src="js/AdministratorControllers/suggestionController.js"></script>
+    <script src="js/IndexControllers/bookingMovieController.js"></script>
     <script src="js/AdministratorControllers/discountController.js"></script>
 
     <!-- Include Bootstrap-select CSS, JS -->
