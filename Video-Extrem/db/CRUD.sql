@@ -626,6 +626,26 @@ DELIMITER ;
 ------------------------------------------------------------------------
 
 DELIMITER //
+CREATE PROCEDURE addNewMovie
+	(IN pAno INT, IN pPelicula VARCHAR(200), IN pTrama VARCHAR(1000), IN pPrecio DECIMAL, pLinkImagen VARCHAR(500))
+
+	BEGIN
+		DECLARE _CurrentDateTime DATETIME;
+		DECLARE _Code VARCHAR(50);
+		
+		SET _CurrentDateTime = now();
+		SET _Code = (select (codigo + 1) from Peliculas order by CAST(codigo AS SIGNED) DESC LIMIT 1);
+		
+		INSERT INTO Peliculas (ano, pelicula, trama, precio, fechaIngreso, linkImagen, codigo) 
+		VALUES (pAno, pPelicula, pTrama, pPrecio, _CurrentDateTime, pLinkImagen, _Code);
+	END //
+DELIMITER ;
+
+-- call addMovie(2000, "Lord of the Rings", "This is a movies based on Frodo's adventures", 1000, now(), "http://vignette4.wikia.nocookie.net/lotr/images/3/3a/The_Lord_of_the_Rings_Characters.jpg/revision/latest?cb=20150328111911");
+------------------------------------------------------------------------
+------------------------------------------------------------------------
+
+DELIMITER //
 CREATE PROCEDURE deleteMovie
 	(IN pIdPelicula BIGINT)
 	
@@ -652,8 +672,7 @@ CREATE PROCEDURE updateMovie
 		IN pAno INT, 
 		IN pTrama VARCHAR(1000),
 		IN pPrecio DECIMAL,
-		IN pLinkImagen VARCHAR(500),
-		IN pCodigo VARCHAR(500))
+		IN pLinkImagen VARCHAR(500))
 	
 	BEGIN
 	

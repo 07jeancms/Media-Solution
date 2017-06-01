@@ -56,7 +56,7 @@
             $result = $connection->consult($call);
         }
         
-        function editMovie($pMovieId, $pMovieName, $pMovieYear, $pMovieDescription, $pMoviePrice, $pMovieLink, $pArrayRemove, $pArrayAdd, $pArrayRemoveLanguages, $pArrayAddLanguages,                      $pArrayRemoveActors, $pArrayAddActors) {
+        function editMovie($pMovieId, $pMovieName, $pMovieYear, $pMovieDescription, $pMoviePrice, $pMovieLink, $pArrayRemove, $pArrayAdd, $pArrayRemoveLanguages, $pArrayAddLanguages, $pArrayRemoveActors, $pArrayAddActors) {
             $connection = new connection();
             $call = "call updateMovie('$pMovieId','$pMovieName', '$pMovieYear', '$pMovieDescription', '$pMoviePrice', '$pMovieLink');";
             $result = $connection->consult($call);
@@ -88,7 +88,7 @@
     
         function addMovie($pMovieName, $pMovieYear, $pMovieDescription, $pMoviePrice, $pMovieLink, $pGenresArray, $pLanguagesArray, $pActorsArray) {
             $connection = new connection();
-            $call = "call addMovie('$pMovieYear','$pMovieName', '$pMovieDescription', '$pMoviePrice', '$pMovieLink', '');";
+            $call = "call addNewMovie('$pMovieYear','$pMovieName', '$pMovieDescription', '$pMoviePrice', '$pMovieLink');";
             $result = $connection->consult($call);
             foreach ($pGenresArray as $genreElement) {
                 $call = "call addGenreByMovieNoID('$genreElement');";

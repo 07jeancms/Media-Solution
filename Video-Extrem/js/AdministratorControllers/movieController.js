@@ -260,14 +260,15 @@ function movieTableController( $scope, $http,dataManager,messageService) {
     //-----------------------------------------------------------------------------------------------------------------------------------//
     //-----------------------------------------------------------------------------------------------------------------------------------//
     $scope.showMovie = function(selectedMovie){
-        console.log("Que bronca");
         console.log($scope.globalGenresArray);
         console.log($scope.globalLanguagesArray);
         console.log($scope.globalGenresArray);
-        console.log("Fin bronca");
         var selectDropdown = document.getElementById('selectGenresShow');
         var selectDropdownLanguages = document.getElementById('selectLanguagesShow');
         var selectDropdownActors = document.getElementById('selectActorsShow');
+        selectDropdown.innerHTML = '';
+        selectDropdownLanguages.innerHTML = '';
+        selectDropdownActors.innerHTML = '';
         $scope.cleanDropdown(selectDropdown);
         $scope.cleanDropdown(selectDropdownLanguages);
         $scope.randomColor();
@@ -442,6 +443,7 @@ function movieTableController( $scope, $http,dataManager,messageService) {
             'arrayAddActors': $scope.actorsArrayAdd,
             'arrayRemoveActors': $scope.actorsArrayRemove
         }
+        console.log(JSON.stringify(movieData));
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url,movieData).
         then(function(data, status) {

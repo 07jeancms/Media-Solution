@@ -36,12 +36,12 @@
             <tr ng-repeat="actualUser in usersCollection.users">
                 <td data-title="'Id'"  filter="{Id: 'text'}">{{actualUser.idUsuario}}</td>
                 <td data-title="'Usuario'" filter="{user: 'number'}" sortable="'Year'">{{actualUser.userName}}</td>
-                <td data-title="'Rol'" filter="{rol: 'text'}">{{actualUser.correo}}</td>
-                <td data-title="'Rol'" filter="{rol: 'text'}">{{actualUser.telefono }}</td>
+                <td data-title="'Correo'" filter="{rol: 'text'}">{{actualUser.correo}}</td>
+                <td data-title="'Teléfono'" filter="{rol: 'text'}">{{actualUser.telefono }}</td>
                 <td data-title="'Editar'" >
                     <div class="inline col-lg-12">
                         <i class="editBtn fa fa-film col-lg-4" ng-click="this.showUser(actualUser)" data-toggle="modal" data-target="#showUserModal" aria-hidden="true"></i>
-                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.editUser(actualUser)"aria-hidden="true">
+                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditUser(actualUser)" data-toggle="modal" data-target="#editUserModal" aria-hidden="true">
                         </i>
                         <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteUser(actualUser)"aria-hidden="true">
                         </i>
