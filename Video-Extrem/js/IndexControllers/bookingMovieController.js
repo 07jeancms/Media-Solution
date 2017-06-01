@@ -13,6 +13,8 @@ function bookingController($scope, $http,dataManager,messageService) {
 
     $scope.storesCounter = 0;
 
+    $scope.chartCounter = 0;
+
     $scope.getBookingMovie = function(){
         $scope.moviesSelected = [];
         var movieNameInput = document.getElementById('movieName').value;
@@ -39,6 +41,9 @@ function bookingController($scope, $http,dataManager,messageService) {
         var selectDropdown = document.getElementById('selectCreateBookingMovie');
         selectDropdown.innerHTML = '';
         if (index === -1) {
+            $scope.chartCounter += 1;
+            var counter_cart = document.getElementById('pruebita');
+            counter_cart.innerHTML = " Carrito " + $scope.chartCounter;
             $scope.storesCounter += 1;
             $scope.moviesToBook.push(pBookingMovie);
             if ($scope.storesCounter !== 0) {
@@ -61,6 +66,15 @@ function bookingController($scope, $http,dataManager,messageService) {
     $scope.deleteBookingMovie = function(pBookingMovie){
         var index = $scope.moviesToBook.indexOf(pBookingMovie);
         if (index > -1) {
+            $scope.chartCounter -= 1
+            if ($scope.chartCounter > 0){
+                var counter_cart = document.getElementById('pruebita');    
+                counter_cart.innerHTML = " Carrito " + $scope.chartCounter;
+            }
+            if ($scope.chartCounter == 0){
+                var counter_cart = document.getElementById('pruebita');    
+                counter_cart.innerHTML = " Carrito";
+            }
             $scope.moviesToBook.splice(index, 1);
         }
     }
@@ -68,6 +82,9 @@ function bookingController($scope, $http,dataManager,messageService) {
     $scope.addBooking = function(pBookingMovieList){
         var selectDropdown = document.getElementById('selectCreateBookingMovie').value;
         var description = document.getElementById('textAreaDescripcion').value;
+        $scope.chartCounter = 0;
+        var counter_cart = document.getElementById('pruebita');    
+        counter_cart.innerHTML = " Carrito " + $scope.chartCounter;
         console.log(selectDropdown);
         var x;
         for (x in pBookingMovieList) {
