@@ -7,14 +7,14 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-<!-- 
-  _____ _   _  _____ _     _    _ _____  ______  _____ 
- |_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
-   | | |  \| | |    | |   | |  | | |  | | |__  | (___  
-   | | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
-  _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
- |_____|_| \_|\_____|______\____/|_____/|______|_____/ 
-                                                                                                             
+        <!-- 
+_____ _   _  _____ _     _    _ _____  ______  _____ 
+|_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
+| | |  \| | |    | |   | |  | | |  | | |__  | (___  
+| | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
+_| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
+|_____|_| \_|\_____|______\____/|_____/|______|_____/ 
+
 -->
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -30,6 +30,9 @@
 
         <!-- Include Bootstrap-select CSS, JS -->
         <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
+
+        <!--Magic Check-Box-->
+        <link rel="stylesheet" href="node_modules/magic-check/css/magic-check.css">
 
         <title>Video Extrem</title>
 
@@ -191,6 +194,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                                 <div ng-include="'adminMovieTable.html'"></div> 
                                 <div ng-include="'movieModal.html'"></div> 
                             </div>
+                          
+
                             <!-- Button trigger modal -->
                         </div>
                     </div>
@@ -292,7 +297,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Categorias </h2>
                             <div >
                                 <div ng-controller="categoriesController as categories">
-                                   <div ng-include="'adminCategoriesTable.html'"></div>
+                                    <div ng-include="'adminCategoriesTable.html'"></div>
                                     <div ng-include="'categorieModal.html'"></div>
                                 </div>
                             </div>
@@ -335,10 +340,10 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <h2 class="section-heading">Usuarios</h2>
 
                             <div ng-controller="userController" >
-                               <div ng-include="'adminUserTable.html'"></div> 
+                                <div ng-include="'adminUserTable.html'"></div> 
                                 <div ng-include="'userModal.html'"></div> 
                             </div>
-                            
+
                             <!-- Button trigger modal -->
                         </div>
                     </div>
@@ -419,8 +424,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                             <div class="clearfix"></div>
                             <h2 class="section-heading">Carruseles</h2>
                             <div ng-controller="discountController" >
-                               <div ng-include="'adminDiscountTable.html'"></div> 
-                               <div ng-include="'discountModal.html'"></div> 
+                                <div ng-include="'adminDiscountTable.html'"></div> 
+                                <div ng-include="'discountModal.html'"></div> 
                             </div>
                             <!-- Button trigger modal -->
                         </div>
@@ -500,9 +505,9 @@ ______ ____   ____ _______ ______ _____
 
     <!--OMBD API --->
     <script src="js/OmbdAPI.js"></script>
-    
+
     <!--Administrator Controllers --->
-    
+
     <script src="js/AdministratorControllers/genresController.js"></script>
     <script src="js/AdministratorControllers/roleController.js"></script>
     <script src="js/AdministratorControllers/userController.js"></script>
