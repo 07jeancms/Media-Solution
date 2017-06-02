@@ -123,7 +123,6 @@ function movieTableController( $scope, $http,dataManager,messageService) {
             'actorsArray': $scope.movieActors
         };
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        console.log(JSON.stringify(movieData));
         $http.post(url, movieData).
         then(function(data, status) {
             alert("La pelicula " + movieNameCreateInput + " ha sido creada");
@@ -184,7 +183,6 @@ function movieTableController( $scope, $http,dataManager,messageService) {
     //-----------------------------------------------------------------------------------------------------------------------------------//
     //-----------------------------------------------------------------------------------------------------------------------------------//
     $scope.populateGeneresByMovie = function(pActualMovie){
-        console.log("populateGeneresByMovie");
         var url = "http://www.videoextrem.com/api/genresByMovie.php?queryType=select";
         var movieData = {
             'idPelicula' : pActualMovie.idPelicula
@@ -260,9 +258,6 @@ function movieTableController( $scope, $http,dataManager,messageService) {
     //-----------------------------------------------------------------------------------------------------------------------------------//
     //-----------------------------------------------------------------------------------------------------------------------------------//
     $scope.showMovie = function(selectedMovie){
-        console.log($scope.globalGenresArray);
-        console.log($scope.globalLanguagesArray);
-        console.log($scope.globalGenresArray);
         var selectDropdown = document.getElementById('selectGenresShow');
         var selectDropdownLanguages = document.getElementById('selectLanguagesShow');
         var selectDropdownActors = document.getElementById('selectActorsShow');
@@ -443,7 +438,6 @@ function movieTableController( $scope, $http,dataManager,messageService) {
             'arrayAddActors': $scope.actorsArrayAdd,
             'arrayRemoveActors': $scope.actorsArrayRemove
         }
-        console.log(JSON.stringify(movieData));
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url,movieData).
         then(function(data, status) {
@@ -541,7 +535,6 @@ function movieTableController( $scope, $http,dataManager,messageService) {
             'idPelicula' : pActualMovie.idPelicula
         }
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        console.log("Movie Data"+JSON.stringify(movieData));
         $http.post(url,movieData)
             .then(function(data, status) {
             for(actualGenre = 0; actualGenre < data.data.length; actualGenre++){
@@ -561,7 +554,6 @@ function movieTableController( $scope, $http,dataManager,messageService) {
             'idPelicula' : pActualMovie.idPelicula
         }
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        console.log("Movie Data"+JSON.stringify(movieData));
         $http.post(url,movieData)
             .then(function(data, status) {
             for(actualLanguage = 0; actualLanguage < data.data.length; actualLanguage++){
@@ -630,11 +622,9 @@ function movieTableController( $scope, $http,dataManager,messageService) {
         return $.ajax(sUrl,{
             complete: function(p_oXHR, p_sStatus) {
                 var data =$.parseJSON(p_oXHR.responseText);
-                console.log(data);
                 $scope.actualMovie.title = data.Title;
                 var released = data.Released;
                 var year = released.substring(released.length-4, released.length);
-                console.log(year);
                 $scope.actualMovie.year = parseInt(year);
                 $scope.actualMovie.genre = data.Genre;
                 $scope.actualMovie.actors = data.Actors;
@@ -642,10 +632,7 @@ function movieTableController( $scope, $http,dataManager,messageService) {
                 $scope.actualMovie.poster = data.Poster;
                 $scope.actualMovie.plot = data.Plot;
                 var actors = data.Actors.split(",");
-                console.log(actors);
                 for (actualActorIndex in actors){
-
-                    console.log(actualActorIndex, actors[actualActorIndex]);
                     $scope.addActor(actors[actualActorIndex],actualActorIndex);
                 }
                 $scope.loading = false;

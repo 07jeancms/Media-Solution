@@ -67,7 +67,6 @@ function roleController ( $scope, $http,dataManager,messageService) {
 
     $scope.editRol = function () {
         var rolNameInput = document.getElementById('updateRolName').value;
-        console.log(rolNameInput);
         $scope.url = "http://www.videoextrem.com/api/roles.php?queryType=edit";
         $scope.rolData = {
             'idRol' : $scope.actualRol.idRol,
