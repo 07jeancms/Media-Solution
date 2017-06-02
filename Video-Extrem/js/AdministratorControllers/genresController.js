@@ -15,6 +15,22 @@ function genreController($scope, $http,dataManager,messageService) {
     $scope.genresCollection  = {genres : []};
     $scope.itemsByPage=5;
     $scope.actualGenre = {};
+    $scope.actualDiv = dataManager.actualDiv;
+    $scope.actualClass = "";
+    
+    
+
+    $scope.$watch('actualDiv["genre"].time', function() {
+            var actualTime = $scope.actualDiv["genre"].time;
+            console.log("Actual Div Genres "+actualTime);
+            if(actualTime<=3){
+                $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
+            }
+            else{
+                $scope.actualClass = "iconComplete"
+            }
+        
+    });
     $scope.addGenre = function(){
         var genreNameInput = document.getElementById('GenreName').value;
         var genreDescriptionInput = document.getElementById('GenreDescription').value;

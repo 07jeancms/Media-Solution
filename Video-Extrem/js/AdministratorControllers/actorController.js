@@ -15,6 +15,23 @@ function actorController($scope, $http,dataManager,messageService) {
     $scope.itemsByPage=5;
     $scope.actualActor = {};
 
+   $scope.actualDiv = dataManager.actualDiv;
+    $scope.actualClass = "";
+    
+    
+
+    $scope.$watch('actualDiv["actor"].time', function() {
+            var actualTime = $scope.actualDiv["actor"].time;
+            console.log("Actual Div actor "+actualTime);
+            if(actualTime<=3){
+                $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
+            }
+            else{
+                $scope.actualClass = "iconComplete"
+            }
+        
+    });
+
     $scope.deleteActor = function(pActualActor){
         $scope.url = "http://www.videoextrem.com/api/actors.php?queryType=delete";
         $scope.actorData = {

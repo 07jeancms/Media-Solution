@@ -27,7 +27,8 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
 
     app.factory("dataManager" ,[ "$http", function ($http) {
         var divs={}
-        var waitTime = 500;
+        var waitTime = 1000;
+        var timeSections =3;
         //Data
         var roleData = {roles : []};
         var movieData = {movies : []};
@@ -40,7 +41,12 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
         var discountData = {discounts : []};
         var userData = {users : []};
         var bookingMasterData = {booking : []};
+<<<<<<< Updated upstream
         var storeData = {stores : []};
+=======
+        //Flags
+        var actualDiv = {}
+>>>>>>> Stashed changes
         //Esta función determina si se debe de cargar los datos.
         function canBeLoaded(divKey){
             if (divs[divKey] != null){
@@ -73,7 +79,13 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                     "loaded": false
                 }
 
+
                 divs[offSetTop] = properties;
+                actualDivProperties = {
+                    "id" : id,
+                    "time" : 1
+                }
+                actualDiv[id] = actualDivProperties;
             }
         }
 
@@ -81,12 +93,31 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             var actualWindowScreen = $(this).scrollTop();
             actualWindowScreen = Math.floor(actualWindowScreen / 100) * 100;
             if (canBeLoaded(actualWindowScreen)) {
+<<<<<<< Updated upstream
                 manageData(divs[actualWindowScreen],  actualWindowScreen);
+=======
+                //Loading actual div
+                var actualId = divs[actualWindowScreen].id;
+                actualDivProperties = {
+                    "id" : actualId,
+                    "time" : 1
+                }
+                actualDiv[actualId] = actualDivProperties;
+                for (var actualTime = 0 ; actualTime < timeSections; actualTime++) {
+                    (function(ind) {
+                        setTimeout(function(){
+
+                            manageData(divs[actualWindowScreen],  actualWindowScreen);
+                            actualDiv[actualId].time = actualDiv[actualId].time +1;
+                        }, waitTime * ind);
+                    })(actualTime);
+                }
+
+>>>>>>> Stashed changes
             }
         }
         //el evento $(window).scroll detecta el div en el cual estamos ubicados.
         $(window).scroll(function() {
-
             isInDiv();
         })
 
@@ -96,13 +127,18 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
         function manageData(actualTable, actualWindowScreen){
             var actualTableId = actualTable.id;
             var pageSizePorcentage = $('#' + actualTableId).outerHeight(true) * 0.2;
-            setTimeout(function() {
-                var newActualWindowScreen = $(this).scrollTop();
-                if (actualWindowScreen >= newActualWindowScreen - pageSizePorcentage && actualWindowScreen <= newActualWindowScreen + pageSizePorcentage) {
-                    switch(actualTableId){
-                        case "role":
+            var newActualWindowScreen = $(this).scrollTop();actualDiv [divs[actualWindowScreen].id];
+            var actualTime = actualDiv[actualTableId].time;
+            if (actualWindowScreen >= newActualWindowScreen - pageSizePorcentage && actualWindowScreen <= newActualWindowScreen + pageSizePorcentage) {
+                switch(actualTableId){
+                    case "role":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
                             getRolesData();
                             actualTable.loaded = true;
+<<<<<<< Updated upstream
                             break;
                         case "movie":
                             getMovieData();
@@ -141,11 +177,118 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                             actualTable.loaded = true;
                             break;
                         case "suggestionIndex":
+=======
+                            console.log("Role getted");
+                        }
+                        break;
+                    case "movie":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
+                            getMovieData();
+                            actualTable.loaded = true;
+                            console.log("Movie getted");
+                        }
+
+                        break;
+                    case "language":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
+                            getLanguageData();
+                            actualTable.loaded = true;
+                            console.log("language getted");
+                        }
+                        break;
+                    case "actor":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
+                            getActorData();
+                            actualTable.loaded = true;
+                            console.log("Actor getted");
+                        }
+                        break;
+                    case "subtitle":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
+                            getSubtitleData();
+                            actualTable.loaded = true;
+                            console.log("subtitle getted");
+                        }
+                        break;
+                    case "genre":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
+                            getGenreData();
+                            actualTable.loaded = true;
+                            console.log("genre getted");
+                        }
+                        break;
+                    case "category":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
+                            getCategoryData();
+                            actualTable.loaded = true;
+                            console.log("Category getted");
+                        }
+                        break;
+                    case "suggestion":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
+                            getSuggestionData();
+                            actualTable.loaded = true;
+                            console.log("suggestion getted");
+                        }
+                        break;
+                    case "user":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
+                            getUserData();
+                            actualTable.loaded = true;
+                            console.log("user getted");
+                        }
+                        break;
+                    case "discounts":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
+                            getDiscountsData();
+                            actualTable.loaded = true;
+                            console.log("discounts getted");
+                        }
+                        break;
+                    case "suggestionIndex":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
+>>>>>>> Stashed changes
                             showTestMessage("suggestionIndex");
-                            break;
-                        case "booking":
+                        }
+                        break;
+                    case "booking":
+                        if(actualTime < timeSections){
+                            console.log("Counting "+actualTableId+"  "+actualTime)
+                        }
+                        else{
                             getBookingMasterData();
                             actualTable.loaded = true;
+<<<<<<< Updated upstream
                             break;
                         case "local":
                             getStoreData();
@@ -154,11 +297,23 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                         default:
                             break;
                     }
+=======
+                            console.log("bookingMaster getted");
+                        }
+                        break;
+                    default:
+                        break;
+>>>>>>> Stashed changes
                 }
-            }, waitTime);
+            }
+            else{
+                actualDiv[actualTableId].time = 0;
+            }
+
+
 
         }
-        
+
         function showTestMessage(pMessage){
             console.log("NG-APP working on " + pMessage);
         }
@@ -265,7 +420,11 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             userData : userData,
             bookingMasterData : bookingMasterData,
             discountData : discountData,
+<<<<<<< Updated upstream
             storeData : storeData
+=======
+            actualDiv : actualDiv
+>>>>>>> Stashed changes
         };
 
 

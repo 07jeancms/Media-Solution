@@ -678,5 +678,46 @@ td{
      font-size:2.5vh;
 }
 
+.createMovieSection{
+    height: 15vh;
+}
+
+/*
+ *  STYLE 2
+ */
+
+.redScrollBar::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: #F5F5F5;
+}
+
+.redScrollBar::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #F5F5F5;
+}
+
+.redScrollBar::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: #D62929;
+}
 
 
+
+
+.iconWaiting1{
+   color: rgba(214,73,0,0.3);
+}
+.iconWaiting2{
+    color: rgba(255,193,37,0.7);
+}
+.iconWaiting3{
+    color: rgba(134,0,0,1);
+}
+.iconComplete{
+    color: black;
+}

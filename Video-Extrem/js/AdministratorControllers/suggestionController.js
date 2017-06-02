@@ -15,7 +15,24 @@ function suggestionsController( $scope, $http,dataManager,messageService) {
     $scope.suggestionsCollection  = {suggestions : []};
     $scope.itemsByPage=5;
     $scope.actualSuggestions = {};
+
+    $scope.actualDiv = dataManager.actualDiv;
+    $scope.actualClass = "";
     
+    
+
+    $scope.$watch('actualDiv["suggestion"].time', function() {
+            var actualTime = $scope.actualDiv["suggestion"].time;
+            console.log("Actual Div suggestion "+actualTime);
+            if(actualTime<=3){
+                $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
+            }
+            else{
+                $scope.actualClass = "iconComplete"
+            }
+        
+    });
+
     $scope.deleteSuggestion = function(pActualSuggestion){
         $scope.actualSuggestion = pActualSuggestion;    
         $scope.url = "http://www.videoextrem.com/api/suggestions.php?queryType=delete";
@@ -29,7 +46,7 @@ function suggestionsController( $scope, $http,dataManager,messageService) {
             location.reload();
         })        
     }
-    
+
     $scope.addSuggestion = function(){
         var dropdownStoreValue = document.getElementById("selectLocal").value;
         var suggestionBody = document.getElementById("textAreaSuggestion").value;
@@ -45,10 +62,10 @@ function suggestionsController( $scope, $http,dataManager,messageService) {
                 };
                 $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
                 $http.post(url, suggestionData)
-                .then(function(data, status) {
+                    .then(function(data, status) {
                     alert("Su sugerencia ha sido enviada. Muchas gracias por su opinión");
-                        document.getElementById("selectLocal").value = 'local';
-                        document.getElementById("textAreaSuggestion").value = '';
+                    document.getElementById("selectLocal").value = 'local';
+                    document.getElementById("textAreaSuggestion").value = '';
                 })
             }
             else{

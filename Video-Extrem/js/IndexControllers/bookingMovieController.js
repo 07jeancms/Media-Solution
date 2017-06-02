@@ -14,6 +14,23 @@ function bookingController($scope, $http,dataManager,messageService) {
     $scope.storesCounter = 0;
 
     $scope.chartCounter = 0;
+    
+    $scope.actualDiv = dataManager.actualDiv;
+    $scope.actualClass = "";
+    
+    
+
+    $scope.$watch('actualDiv["booking"].time', function() {
+            var actualTime = $scope.actualDiv["booking"].time;
+            console.log("Actual Div Booking "+actualTime);
+            if(actualTime<=3){
+                $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
+            }
+            else{
+                $scope.actualClass = "iconComplete"
+            }
+        
+    });
 
     $scope.getBookingMovie = function(){
         $scope.moviesSelected = [];
