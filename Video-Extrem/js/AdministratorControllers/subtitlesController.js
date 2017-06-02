@@ -16,7 +16,24 @@ function subtitlesController($scope, $http,dataManager,messageService) {
     $scope.subtitlesCollection  = {subtitles : []};
     $scope.itemsByPage=5;
     $scope.actualSubtitle = {};
+
+    $scope.actualDiv = dataManager.actualDiv;
+    $scope.actualClass = "";
     
+    
+
+    $scope.$watch('actualDiv["subtitle"].time', function() {
+            var actualTime = $scope.actualDiv["subtitle"].time;
+            console.log("Actual Div Subtitles "+actualTime);
+            if(actualTime<=3){
+                $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
+            }
+            else{
+                $scope.actualClass = "iconComplete"
+            }
+        
+    });
+
     $scope.deleteSubtitle = function(pActualSubtitle){
         $scope.url = "http://www.videoextrem.com/api/subtitles.php?queryType=delete";
         $scope.subtitleData = {

@@ -18,6 +18,22 @@ function languageController ( $scope, $http,dataManager,messageService) {
     $scope.actualLanguage = {};
 
     
+    $scope.actualDiv = dataManager.actualDiv;
+    $scope.actualClass = "";
+    
+    
+
+    $scope.$watch('actualDiv["language"].time', function() {
+            var actualTime = $scope.actualDiv["language"].time;
+            console.log("Actual Div language "+actualTime);
+            if(actualTime<=3){
+                $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
+            }
+            else{
+                $scope.actualClass = "iconComplete"
+            }
+        
+    });
 
     $scope.deleteLanguage = function(pActualIdioma){
         $scope.url = "http://www.videoextrem.com/api/language.php?queryType=delete";

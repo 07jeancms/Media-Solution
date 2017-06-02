@@ -69,6 +69,13 @@
             }
         }
         
+         function authenticateUser( $pUserName $pPassword) {
+            $connection = new connection();
+            $call = "call validateAuthentication( '$pUserName','$pPassword');";
+            $result = $connection->consult($call);
+            
+        }
+        
     }
 
     $userClass = new user();
@@ -100,5 +107,12 @@
     
         $userClass->editUser($userClass->userId, $userClass->userName, $userClass->email, $userClass->phone, $userClass->password, 
                                $userClass->arrayRolesAdd, $userClass->arrayRolesRemove);
+    }
+
+    if ($_queryType == "auth"){
+        $userClass->userName = $request->userName;
+        $userClass->password = $request->password;
+    
+        $userClass->authenticateUser( $userClass->userName,$userClass->password);
     }
 ?>

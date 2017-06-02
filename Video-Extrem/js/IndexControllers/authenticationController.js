@@ -1,4 +1,3 @@
-
 //    _    _                   
 //   | |  | |                  
 //   | |  | |___  ___ _ __ ___ 
@@ -8,15 +7,15 @@
 //                             
 //     
 
-app.controller("userController", userController);
-userController.$inject = ['$scope', "$http","dataManager","messageService"];
+app.controller("userAuthenticationController", userAuthenticationController);
+userAuthenticationController.$inject = ['$scope', "$http","dataManager","messageService"];
 
-function userController ( $scope, $http,dataManager,messageService) {
+function userAuthenticationController ( $scope, $http,dataManager,messageService) {
 
     $scope.userDataSet = dataManager.userData;
     $scope.usersCollection  = {users : []};
     $scope.itemsByPage=5;
-    $scope.actualUser = {};
+    $scope.actualUser = {"username":"","password":""};
     $scope.roles = dataManager.roleData;
 
 
@@ -25,23 +24,9 @@ function userController ( $scope, $http,dataManager,messageService) {
     $scope.globalRolesArrayAdd = [];
     $scope.globalRolesArrayRemove = [];
 
-    $scope.actualDiv = dataManager.actualDiv;
-    $scope.actualClass = "";
-    
-    
 
-    $scope.$watch('actualDiv["user"].time', function() {
-            var actualTime = $scope.actualDiv["user"].time;
-            console.log("Actual Div user "+actualTime);
-            if(actualTime<=3){
-                $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
-            }
-            else{
-                $scope.actualClass = "iconComplete"
-            }
-        
-    });
-    
+
+
     $scope.readRadioButtonValues = function(pClassName, pEventType){
         $scope.gobalCreateArrayRoles = [];
         $scope.globalRolesArrayRemove = [];
@@ -183,18 +168,6 @@ function userController ( $scope, $http,dataManager,messageService) {
         return true;
     }
 
-    $scope.deleteUser = function(pActualUser){
-        $scope.url = "http://www.videoextrem.com/api/users.php?queryType=delete";
-        $scope.userData = {
-            'idUser' : pActualUser.idUsuario 
-        }
-        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        $http.post($scope.url, $scope.userData).
-        then(function(data, status) {
-            alert("El usuario " + pActualUser.userName + " ha sido borrado");
-            location.reload();
-        })
-    }
 
     $scope.populateDropDownRoles = function(){
         var selectDropdown = document.getElementById("selectRolesShow");
@@ -287,45 +260,46 @@ function userController ( $scope, $http,dataManager,messageService) {
         })
     }
 
-    $scope.editUser = function(){
-        var userInput = document.getElementById("userNameEdit").value;
-        var emailInput = document.getElementById("userEmailEdit").value;
-        var phoneInput = document.getElementById("userPhoneEdit").value;
-        var passwordInput = document.getElementById("userNewPassword").value;
-        var confirmPasswordInput = document.getElementById("userNewPasswordConfirm").value;
+    $scope.authenticateUser = function(pUserName, pPassword){
 
-        $scope.readRadioButtonValues("rol", "edit");
-        $scope.url = "http://www.videoextrem.com/api/users.php?queryType=edit"
+        $scope.url = "http://www.videoextrem.com/api/authentication.php?queryType=tokenAuthentication";
+        $scope.userData = {
+            'userName': pUserName,
+            'userPassword': pPassword
+        };
+        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+        $http.post($scope.url, $scope.userData)
+            .then(function(data, status) {
+            alert(JSON.stringify(data.data[0].result));
+            if(data.data[0].result == 1){
+                alert("Autenticacion","El usuario "  + pUserName + " ha sido autenticado");
+                var userName = pUserName;
+                sessionStorage["currentUser"]=userName;
+                var encrypted = CryptoJS.AES.encrypt("true", userName);
+                sessionStorage["userToken"]=encrypted;
+                alert("Las credenciales coinciden. El usuario se ha conectado. ");
 
-        if((passwordInput === confirmPasswordInput) && (passwordInput !== "") && (confirmPasswordInput !== "")){
-            $scope.userData = {
-                'userId' : $scope.actualUser.idUsuario,
-                'userName' : userInput,
-                'email': emailInput,
-                'phone': phoneInput,
-                'password': passwordInput,
-                'arrayRolesAdd': $scope.globalRolesArrayAdd,
-                'arrayRolesRemove': $scope.globalRolesArrayRemove
             }
-            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-            $http.post($scope.url, $scope.userData).
-            then(function(data, status) {
-                alert("El usuario "  + $scope.actualUser.userName + " ha sido actualizado");
-                location.reload();
-            })
-        }
-        else{
-            alert("Contraseñas no coinciden o nulas");
-        }
+            else{
+                alert("El usuario "  + pUserName + " no se ha podido autenticar");
+                $scope.logout();
+            }
+
+
+        })
+
+
     }
 
-    $scope.setEditUser = function(pActualUser){
-        $scope.actualUser = pActualUser;
-        var radio_roles = document.getElementById("radio_roles");
-        radio_roles.innerHTML = '';
-        $scope.populateSelectedRoles();
-        $scope.populateRemainingRoles();
+    $scope.logout= function(){
+        sessionStorage.removeItem("currentUser");
+        sessionStorage.removeItem("userToken");
+        alert("El usuario ha sido desconectado. ");
     }
+
+
+
+
 
 
 }

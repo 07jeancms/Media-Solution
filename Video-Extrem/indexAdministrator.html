@@ -143,7 +143,7 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         <a data-toggle="modal" data-target="#createBackupModal">Respaldos</a>
                     </li>
                 </ul>
-                
+
             </div>
         </nav>
         <!--
@@ -187,19 +187,23 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
         <div class="pageContent">
             <!-- Peliculas -->
             <a name="movie"></a>
-            <div class="content-section-a adminDiv"  id="movie" ng-controller="movieTableController as movie">
+            <div class="content-section-a adminDiv"  id="movie" >
                 <div class="container">
-                    <div class="row">
+                    <div class="row" ng-controller="movieTableController as movie">
+                        <div class="col-lg-6 col-sm-6">
+                            <h2><i class="fa fa-film fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Peliculas</h2>
+                        </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Peliculas</h2>
+
+
                             <div>
                                 <div ng-include="'adminMovieTable.html'"></div> 
                                 <div ng-include="'movieModal.html'"></div>
                                 <div ng-include="'backupMoviesModal.html'"></div>  
                             </div>
-                          
+
 
                             <!-- Button trigger modal -->
                         </div>
@@ -213,13 +217,17 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <a name="language"></a>
             <div class="content-section-b adminDiv" id="language">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" ng-controller="languageController as language">
+                        <div class="col-lg-6 col-sm-6">
+                            <h2><i class="fa fa-language fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Idiomas</h2>
+                            
+                        </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Idiomas</h2>
+
                             <div >
-                                <div ng-controller="languageController as language">
+                                <div >
                                     <div ng-include="'adminLanguageTable.html'"></div>
                                     <div ng-include="'languageModal.html'"></div>
                                 </div>      
@@ -234,13 +242,16 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <a name="actor"></a>
             <div class="content-section-a adminDiv" id="actor">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" ng-controller="actorController as actores">
+                        <div class="col-lg-6 col-sm-6">
+                            <h2><i class="fa fa-male fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Actores</h2>
+                            
+                        </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Actores</h2>
                             <div >
-                                <div ng-controller="actorController as actores">
+                                <div >
                                     <div ng-include="'adminActorTable.html'"></div>
                                     <div ng-include="'actorM.html'"></div>
                                 </div>
@@ -255,13 +266,17 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <a name="subtitle"></a>
             <div class="content-section-b adminDiv" id="subtitle">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" ng-controller="subtitlesController as subtitles">
+                         <div class="col-lg-6 col-sm-6">
+                            <h2><i class="fa fa-font fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Subtitulos</h2>
+                             
+                        </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Subtitulos</h2>
+                           
                             <div >
-                                <div ng-controller="subtitlesController as subtitles">
+                                <div >
                                     <div ng-include="'adminSubtitleTable.html'"></div>
                                     <div ng-include="'subtitleModal.html'"></div>
                                 </div> 
@@ -276,12 +291,15 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <a name="genre"></a>
             <div class="content-section-a adminDiv" id="genre">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" ng-controller="genreController">
+                        <div class="col-lg-6 col-sm-6">
+                            <h2><i class="fa fa-certificate fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Generos</h2>
+                            
+                        </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Generos</h2>
-                            <div ng-controller="genreController">
+                            <div >
                                 <div ng-include="'adminGenreTable.html'"></div>
                                 <div ng-include="'genreModal.html'"></div>
                             </div> 
@@ -295,13 +313,15 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <a name="category"></a>
             <div class="content-section-b adminDiv" id="category">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" ng-controller="categoriesController as categories">
+                        <div class="col-lg-6 col-sm-6">
+                            <h2><i class="fa  fa-th-list fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Categorias</h2>
+                        </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Categorias </h2>
                             <div >
-                                <div ng-controller="categoriesController as categories">
+                                <div >
                                     <div ng-include="'adminCategoriesTable.html'"></div>
                                     <div ng-include="'categorieModal.html'"></div>
                                 </div>
@@ -317,13 +337,16 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <a name="suggestion"></a>
             <div class="content-section-a adminDiv" id="suggestion">
                 <div class="container">
-                    <div class="actualCategory">
+                    <div class="actualCategory"  ng-controller="suggestionsController as suggestions">
+                        <div class="col-lg-6 col-sm-6">
+                            <h2><i class="fa  fa-pencil fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Sugerencias</h2>
+                            
+                        </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Sugerencias</h2>
                             <div>
-                                <div ng-controller="suggestionsController as suggestions">
+                                <div>
                                     <div ng-include="'adminSuggestionTable.html'"></div> 
                                     <div ng-include="'suggestionModal.html'"></div> 
                                 </div>
@@ -338,13 +361,18 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <a name="user"></a>
             <div class="content-section-b adminDiv" id="user">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" ng-controller="userController">
+                         <div class="col-lg-6 col-sm-6">
+                            <h2><i class="fa fa-user-circle-o fa-lg"  ng-class="actualClass" aria-hidden="true">
+                                </i>&nbsp;Usuarios</h2>
+                             
+                        </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Usuarios</h2>
+                            
 
-                            <div ng-controller="userController" >
+                            <div  >
                                 <div ng-include="'adminUserTable.html'"></div> 
                                 <div ng-include="'userModal.html'"></div> 
                             </div>
@@ -359,16 +387,19 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <a name="booking"></a>
             <div class="content-section-b adminDiv" id="booking">
                 <div class="container">
-                    <div class="row">
+                    <div class="row" ng-controller="bookingController">
+                        <div class="col-lg-6 col-sm-6">
+                            <h2><i class="fa  fa-shopping-basket fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Reservaciones</h2>
+                            
+                        </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Reservaciones</h2>
 
-                            <div ng-controller="bookingController" >
-                               <div ng-include="'adminBookingTable.html'"></div> 
+                            <div  >
+                                <div ng-include="'adminBookingTable.html'"></div> 
                             </div>
-                            
+
                             <!-- Button trigger modal -->
                         </div>
                     </div>
@@ -380,10 +411,11 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <div class="content-section-a adminDiv" id="role">
                 <div class="container">
                     <div class="row" ng-controller="roleController">
+                         <h2><i class="fa  fa-id-card-o fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Roles</h2>
+                        
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Roles</h2>
                             <div >
                                 <table st-table="rolesCollection.roles" st-safe-src="rolesData.roles"  class="table table-striped" >
 
@@ -443,12 +475,17 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <a name="discount"></a>
             <div class="content-section-b adminDiv" id="discounts">
                 <div class="container">
-                    <div class="row">
+                    <div class="row"  ng-controller="discountController">
+                        <div class="col-lg-6 col-sm-6">
+                            <h2><i class="fa  fa-money fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Carousel</h2>
+                            {{actualClass}}
+                            
+                            
+                        </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Carruseles</h2>
-                            <div ng-controller="discountController" >
+                            <div >
                                 <div ng-include="'adminDiscountTable.html'"></div> 
                                 <div ng-include="'discountModal.html'"></div> 
                             </div>

@@ -36,8 +36,11 @@ function movieTableController( $scope, $http,dataManager,messageService) {
     $scope.actorsArrayAdd = [];
 
     $scope.movieData = dataManager.movieData;
+
     $scope.moviesCollection  = {movies : []};
     $scope.itemsByPage=5;
+
+
 
     $scope.$watch('movieData.movies', function() {
         for(actualMovie = 0; actualMovie < dataManager.movieData.movies.length; actualMovie++){
@@ -47,8 +50,25 @@ function movieTableController( $scope, $http,dataManager,messageService) {
             $scope.populateActorsByMovie(movieElement);
         }
     });
+    
+    $scope.actualDiv = dataManager.actualDiv;
+    $scope.actualClass = "";
+    
+    
 
-  
+    $scope.$watch('actualDiv["movie"].time', function() {
+            var actualTime = $scope.actualDiv["movie"].time;
+            console.log("Actual Div Movie "+actualTime);
+            if(actualTime<4){
+                $scope.actualClass = "iconWaiting"+actualTime%3+" fa-spinner fa-spin";
+            }
+            else{
+                $scope.actualClass = "iconComplete"
+            }
+        
+    });
+
+
     //-----------------------------------------------------------------------------------------------------------------------------------//
     //-----------------------------------------------------------------------------------------------------------------------------------//
     $scope.setAddMovie = function(){
@@ -359,7 +379,7 @@ function movieTableController( $scope, $http,dataManager,messageService) {
         var genres = [];
         var languages = [];
         var actors = [];
-        
+
         for(actualGenre = 0; actualGenre < $scope.globalGenresArray.length; actualGenre++){
             if($scope.globalGenresArray[actualGenre].idPelicula == selectedMovie.idPelicula){
                 genres = $scope.globalGenresArray[actualGenre].generos;
@@ -381,7 +401,7 @@ function movieTableController( $scope, $http,dataManager,messageService) {
                 break;
             }
         }
-        
+
         for(actualLanguage = 0; actualLanguage < languages.length; actualLanguage++){
             var languageElement = languages[actualLanguage];
             var new_button = $scope.createRadioButton(languageElement, languageElement, languageElement, "idioma", true);
@@ -403,11 +423,11 @@ function movieTableController( $scope, $http,dataManager,messageService) {
             radio_actors.appendChild(new_button);
             radio_actors.appendChild(br);
         }
-        
+
         $scope.populateRemainingGenres($scope.actualMovie);   
         $scope.populateRemainingLanguages($scope.actualMovie);
         $scope.populateRemainingActors($scope.actualMovie);
-        
+
     }
     //-----------------------------------------------------------------------------------------------------------------------------------//
     //-----------------------------------------------------------------------------------------------------------------------------------//       
