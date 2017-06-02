@@ -23,7 +23,6 @@ function suggestionsController( $scope, $http,dataManager,messageService) {
 
     $scope.$watch('actualDiv["suggestion"].time', function() {
             var actualTime = $scope.actualDiv["suggestion"].time;
-            console.log("Actual Div suggestion "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }

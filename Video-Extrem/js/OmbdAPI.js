@@ -130,109 +130,98 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                 switch(actualTableId){
                     case "role":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             getRolesData();
                             actualTable.loaded = true;
-
-                            console.log("Role getted");
                         }
                         break;
                     case "movie":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             getMovieData();
                             actualTable.loaded = true;
-                            console.log("Movie getted");
                         }
 
                         break;
                     case "language":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             getLanguageData();
                             actualTable.loaded = true;
-                            console.log("language getted");
                         }
                         break;
                     case "actor":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             getActorData();
                             actualTable.loaded = true;
-                            console.log("Actor getted");
                         }
                         break;
                     case "subtitle":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             getSubtitleData();
                             actualTable.loaded = true;
-                            console.log("subtitle getted");
                         }
                         break;
                     case "genre":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             getGenreData();
                             actualTable.loaded = true;
-                            console.log("genre getted");
                         }
                         break;
                     case "category":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             getCategoryData();
                             actualTable.loaded = true;
-                            console.log("Category getted");
                         }
                         break;
                     case "suggestion":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             getSuggestionData();
                             actualTable.loaded = true;
-                            console.log("suggestion getted");
                         }
                         break;
                     case "user":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             getUserData();
                             actualTable.loaded = true;
-                            console.log("user getted");
                         }
                         break;
                     case "discounts":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             getDiscountsData();
                             actualTable.loaded = true;
-                            console.log("discounts getted");
                         }
                         break;
                     case "suggestionIndex":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             showTestMessage("suggestionIndex");
@@ -240,11 +229,10 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                         break;
                     case "booking":
                         if(actualTime < timeSections){
-                            console.log("Counting "+actualTableId+"  "+actualTime)
+                            //console.log("Counting "+actualTableId+"  "+actualTime);
                         }
                         else{
                             getBookingMasterData();
-                            actualTable.loaded = true;
                         }
                         break;
                     case "local":

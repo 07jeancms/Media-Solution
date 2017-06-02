@@ -25,7 +25,6 @@ function languageController ( $scope, $http,dataManager,messageService) {
 
     $scope.$watch('actualDiv["language"].time', function() {
             var actualTime = $scope.actualDiv["language"].time;
-            console.log("Actual Div language "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }
