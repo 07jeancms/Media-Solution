@@ -22,7 +22,6 @@ function bookingController($scope, $http,dataManager,messageService) {
 
     $scope.$watch('actualDiv["booking"].time', function() {
             var actualTime = $scope.actualDiv["booking"].time;
-            console.log("Actual Div Booking "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }

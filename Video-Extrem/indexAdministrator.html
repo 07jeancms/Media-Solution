@@ -7,15 +7,17 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <!-- 
-_____ _   _  _____ _     _    _ _____  ______  _____ 
-|_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
-| | |  \| | |    | |   | |  | | |  | | |__  | (___  
-| | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
-_| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
-|_____|_| \_|\_____|______\____/|_____/|______|_____/ 
+<!-- 
 
+  _____ _   _  _____ _     _    _ _____  ______  _____ 
+ |_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
+   | | |  \| | |    | |   | |  | | |  | | |__  | (___  
+   | | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
+  _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
+ |_____|_| \_|\_____|______\____/|_____/|______|_____/ 
+                                                       
 -->
+        
         <!-- Bootstrap Core CSS -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
 
@@ -115,7 +117,6 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                     <a href="#">Sugerencias</a>
                     <input type="checkbox" id="drop-1"/>
                     <ul  id="navSuggestions">
-                        <li><a data-toggle="modal" data-target="#createSuggestionModal" href="#suggestion">Agregar</a></li>
                         <li><a href="#suggestion">Buscar </a></li>
                     </ul>
                     </li>
@@ -131,6 +132,15 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                     </li>
                     <li>
                         <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Reservaciones</label>
+                        <a href="#">Reservaciones</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul  id="navUser">
+                            <li><a href="#Reservaciones">Buscar </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <!-- First Tier Drop Down -->
                         <label for="drop-1" class="toggle">Roles</label>
                         <a href="#">Roles</a>
                         <input type="checkbox" id="drop-1"/>
@@ -140,13 +150,33 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         </ul>
                     </li>
                     <li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Carruseles</label>
+                        <a href="#">Carruseles</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul  id="navRole">
+                            <li><a data-toggle="modal" data-target="#createDiscountModal" href="#role">Agregar</a></li>
+                            <li><a href="#discount">Buscar </a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <!-- First Tier Drop Down -->
+                        <label for="drop-1" class="toggle">Locales</label>
+                        <a href="#">Locales</a>
+                        <input type="checkbox" id="drop-1"/>
+                        <ul  id="navRole">
+                            <li><a data-toggle="modal" data-target="#createStoreModal" href="#role">Agregar</a></li>
+                            <li><a href="#discount">Buscar </a></li>
+                        </ul>
+                    </li>
+                    <li>
                         <a onclick="window.open('http://www.videoextrem.com/api/generate_backup_movies_csv_file.php?queryType=getBackup')">Respaldos</a>
                     </li>
                 </ul>
 
             </div>
         </nav>
-        <!--
+<!--
 _    _ ______          _____  ______ _____  
 | |  | |  ____|   /\   |  __ \|  ____|  __ \ 
 | |__| | |__     /  \  | |  | | |__  | |__) |
@@ -163,11 +193,9 @@ _    _ ______          _____  ______ _____
                         <div class="col-md-8 col-md-offset-2">
                             <h1 class="brand-heading">Video <div class ="exColor">Ex</div>trem</h1>
                             <p class="intro-text">Entretenimiento y calidad al mejor precio </p>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw"></i> <span class="network-name"></span> </a>
-                            <a href="https://twitter.com/SBootstrap" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw"></i> <span class="network-name">Inicia Sesion</span> </a>
                             <br>
                         </div>
-                        <a href="#estrenos" class="btn btn-circle page-scroll">
+                        <a href="#movie" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
                     </div>
@@ -175,8 +203,8 @@ _    _ ______          _____  ______ _____
             </div>
         </header>
 
-        <!-- 
-_____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______ 
+<!-- 
+ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______ 
 |  __ \ /\   / ____|  ____|  / ____/ __ \| \ | |__   __|  ____| \ | |__   __|
 | |__) /  \ | |  __| |__    | |   | |  | |  \| |  | |  | |__  |  \| |  | |   
 |  ___/ /\ \| | |_ |  __|   | |   | |  | | . ` |  | |  |  __| | . ` |  | |   
@@ -387,7 +415,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <a name="booking"></a>
             <div class="content-section-b adminDiv" id="booking">
                 <div class="container">
-                    <div class="row" ng-controller="bookingController">
+                    <div class="row" ng-controller="bookingController as booking">
                         <div class="col-lg-6 col-sm-6">
                             <h2><i class="fa  fa-shopping-basket fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Reservaciones</h2>
                             
@@ -477,10 +505,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                 <div class="container">
                     <div class="row"  ng-controller="discountController">
                         <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa  fa-money fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Carousel</h2>
+                            <h2><i class="fa  fa-picture-o fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Carruseles</h2>
                             {{actualClass}}
-                            
-                            
                         </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
@@ -495,20 +521,21 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
                 </div>
             </div>
             
-            <!-- Locales -->
+            <!-- stores -->
             <a name="local"></a>
             <div class="content-section-a adminDiv" id="local">
                 <div class="container">
-                    <div class="row">
+                    <div class="row"  ng-controller="storeController as stores">
+                        <div class="col-lg-6 col-sm-6">
+                            <h2><i class="fa  fa-home fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Locales</h2>
+                            {{actualClass}}
+                        </div>
                         <div class="col-lg-12 col-sm-6">
                             <hr class="section-heading-spacer">
                             <div class="clearfix"></div>
-                            <h2 class="section-heading">Locales</h2>
                             <div >
-                                <div ng-controller="storeController as stores">
-                                    <div ng-include="'adminStoreTable.html'"></div>
-                                    <div ng-include="'storeModal.html'"></div>
-                                </div>
+                                <div ng-include="'adminStoreTable.html'"></div> 
+                                <div ng-include="'storeModal.html'"></div> 
                             </div>
                             <!-- Button trigger modal -->
                         </div>
@@ -518,8 +545,8 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
         </div>
 
-        <!--
-______ ____   ____ _______ ______ _____  
+<!--
+ ______ ____   ____ _______ ______ _____  
 |  ____/ __ \ / __ \__   __|  ____|  __ \ 
 | |__ | |  | | |  | | | |  | |__  | |__) |
 |  __|| |  | | |  | | | |  |  __| |  _  / 

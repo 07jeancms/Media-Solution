@@ -32,7 +32,6 @@ function userController ( $scope, $http,dataManager,messageService) {
 
     $scope.$watch('actualDiv["user"].time', function() {
             var actualTime = $scope.actualDiv["user"].time;
-            console.log("Actual Div user "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }

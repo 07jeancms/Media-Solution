@@ -58,7 +58,6 @@ function movieTableController( $scope, $http,dataManager,messageService) {
 
     $scope.$watch('actualDiv["movie"].time', function() {
             var actualTime = $scope.actualDiv["movie"].time;
-            console.log("Actual Div Movie "+actualTime);
             if(actualTime<4){
                 $scope.actualClass = "iconWaiting"+actualTime%3+" fa-spinner fa-spin";
             }

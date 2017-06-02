@@ -20,7 +20,6 @@ function carouselsController($scope, $http, dataManager, messageService) {
 
     $scope.$watch('actualDiv["discounts"].time', function() {
         var actualTime = $scope.actualDiv["discounts"].time;
-        console.log("Actual Div discount "+actualTime);
         if(actualTime<=3){
             $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
         }

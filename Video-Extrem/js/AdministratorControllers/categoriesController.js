@@ -23,7 +23,6 @@ function categoriesController($scope, $http,dataManager,messageService) {
 
     $scope.$watch('actualDiv["category"].time', function() {
             var actualTime = $scope.actualDiv["category"].time;
-            console.log("Actual Div categories "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }

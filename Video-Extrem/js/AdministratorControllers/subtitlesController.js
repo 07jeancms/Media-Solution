@@ -24,7 +24,6 @@ function subtitlesController($scope, $http,dataManager,messageService) {
 
     $scope.$watch('actualDiv["subtitle"].time', function() {
             var actualTime = $scope.actualDiv["subtitle"].time;
-            console.log("Actual Div Subtitles "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }

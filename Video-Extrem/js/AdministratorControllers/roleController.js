@@ -22,7 +22,6 @@ function roleController ( $scope, $http,dataManager,messageService) {
 
     $scope.$watch('actualDiv["role"].time', function() {
             var actualTime = $scope.actualDiv["role"].time;
-            console.log("Actual Div role "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }

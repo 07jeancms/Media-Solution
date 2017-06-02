@@ -22,7 +22,6 @@ function actorController($scope, $http,dataManager,messageService) {
 
     $scope.$watch('actualDiv["actor"].time', function() {
             var actualTime = $scope.actualDiv["actor"].time;
-            console.log("Actual Div actor "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }
