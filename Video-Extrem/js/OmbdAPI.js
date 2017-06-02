@@ -40,6 +40,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
         var discountData = {discounts : []};
         var userData = {users : []};
         var bookingMasterData = {booking : []};
+        var storeData = {stores : []};
         //Esta función determina si se debe de cargar los datos.
         function canBeLoaded(divKey){
             if (divs[divKey] != null){
@@ -158,6 +159,11 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                             actualTable.loaded = true;
                             console.log("bookingMaster getted");
                             break;
+                        case "local":
+                            getStoreData();
+                            actualTable.loaded = true;
+                            console.log("Store getted");
+                            break;
                         default:
                             break;
                     }
@@ -168,6 +174,14 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
         
         function showTestMessage(pMessage){
             console.log("NG-APP working on " + pMessage);
+        }
+        function getStoreData(){
+            $http.get("http://www.videoextrem.com/api/stores.php?queryType=select")
+                .then(function(response) {
+                storeData.stores = response.data;
+                console.log(storeData.stores);
+            });
+
         }
         function getDiscountsData(){
             $http.get("http://www.videoextrem.com/api/discounts.php?queryType=select")
@@ -275,7 +289,8 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             suggestionData : suggestionData,
             userData : userData,
             bookingMasterData : bookingMasterData,
-            discountData : discountData
+            discountData : discountData,
+            storeData : storeData
         };
 
 

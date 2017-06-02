@@ -1,0 +1,232 @@
+<!-- 
+   _____ _____  ______       _______ ______ 
+  / ____|  __ \|  ____|   /\|__   __|  ____|
+ | |    | |__) | |__     /  \  | |  | |__   
+ | |    |  _  /|  __|   / /\ \ | |  |  __|  
+ | |____| | \ \| |____ / ____ \| |  | |____ 
+  \_____|_|  \_\______/_/    \_\_|  |______|
+                                            
+-->
+
+<div class="modal fade" id="createStoreModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Agregar Local
+                </h4>
+
+            </div>
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" for="inputNombre">Local</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="createStoreLocal" placeholder="Nombre">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" for="inputNombre">Ubicación</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="createStoreLocation" placeholder="Ubicación">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" for="inputNombre">Foto</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="createStoreLink" placeholder="Imagen">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" for="inputNombre">Teléfono</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="createStorePhone" placeholder="Telefono">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label  class="col-sm-2 control-label" for="inputNombre">Correo</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="createStoreEmail" placeholder="Correo">
+                        </div>
+                    </div>
+                </form>   
+            </div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="this.addStore()">
+                    Crear
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="btn" data-toggle="modal" data-target="#createStoreModal">
+    Agregar Local 
+</button>
+
+<!-- 
+  ______ _____ _____ _______ 
+ |  ____|  __ \_   _|__   __|
+ | |__  | |  | || |    | |   
+ |  __| | |  | || |    | |   
+ | |____| |__| || |_   | |   
+ |______|_____/_____|  |_|   
+                             
+-->
+
+<div class="modal fade" id="editStoreModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Editar Local
+                </h4>
+
+            </div>
+            <!-- Modal Body -->
+            <div id="wrapper">
+                <div id="content">
+                    <div class="modal-body pre-scrollable">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label" for="inputNombre">Local</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="editStoreLocal" placeholder="Nombre" value={{actualStore.local}}>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label" for="inputNombre">Ubicación</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="editStoreLocation" placeholder="Ubicación" value={{actualStore.ubicacion}}>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label" for="inputNombre">Teléfono</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="editStorePhone" placeholder="Telefono" value={{actualStore.telefono}}>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label  class="col-sm-2 control-label" for="inputNombre">Correo</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" id="editStoreEmail" placeholder="Correo" value={{actualStore.correo}}>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div id="createSidebar">
+                <div id="moviePoster" class="modal-body posterContainer">
+                    <img class="posterImg" src={{actualStore.link}}>
+                    <input class="form-control" id="editStoreStoreLink" placeholder={{actualStore.link}} value={{actualStore.link}}>
+                </div>
+            </div>
+            <div id="cleared"></div>
+
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    Cancelar
+                </button>
+                <button type="button" class="btn btn-primary" ng-click="this.editStore(actualStore)">
+                    Editar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 
+   _____ _    _  ______          __
+  / ____| |  | |/ __ \ \        / /
+ | (___ | |__| | |  | \ \  /\  / / 
+  \___ \|  __  | |  | |\ \/  \/ /  
+  ____) | |  | | |__| | \  /\  /   
+ |_____/|_|  |_|\____/   \/  \/    
+                                   
+-->
+
+<div class="modal fade" id="showStoreModal" tabindex="-1" role="dialog" 
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <button type="button" class="close" 
+                        data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">
+                    Info. Local
+                </h4>
+
+            </div>
+            <!-- Modal Body -->
+            <div id="wrapper">
+                <div id="content">
+                    <div class="modal-body">
+
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">ID: </h4>
+                                <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4" for="inputNombre">{{actualStore.idLocal}}</h5>
+                            </div>
+                            <div class="form-group">
+                                <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Local: </h4>
+                                <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4" for="inputNombre">{{actualStore.local}}</h5>
+                            </div>
+                            <div class="form-group">
+                                <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Ubicación: </h4>
+                                <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4" for="inputNombre">{{actualStore.ubicacion}}</h5>
+                            </div>
+                            <div class="form-group">
+                                <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Teléfono: </h4>
+                                <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4" for="inputNombre">{{actualStore.telefono}}</h5>
+                            </div>
+                            <div class="form-group">
+                                <h4  class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Correo: </h4>
+                                <h5  class="col-lg-8 col-md-8 col-sm-4 col-xs-4" for="inputNombre">{{actualStore.correo}}</h5>
+                            </div>
+                        </form>   
+                    </div>
+                </div>
+                <div id="sidebar">
+                    <div id="imagePoster" class="modal-body posterContainer">
+                        <img class="posterImg" src={{actualStore.link}}>
+                    </div>
+                </div>
+                <div id="cleared">
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default"
+                            data-dismiss="modal">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

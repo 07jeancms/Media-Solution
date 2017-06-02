@@ -1036,16 +1036,16 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addStore
-	(IN pLocal VARCHAR(100), IN pUbicacion VARCHAR(500), IN pImagen LONGBLOB, IN pTelefono VARCHAR(50), IN pCorreo VARCHAR(50))
+	(IN pLocal VARCHAR(100), IN pUbicacion VARCHAR(500), IN pImagen VARCHAR(500), IN pTelefono VARCHAR(50), IN pCorreo VARCHAR(50))
 	
 	BEGIN
 	
-		INSERT INTO Locales (local, ubicacion, imagen, telefono, correo) VALUES (pLocal, pUbicacion, pImagen, pTelefono, pCorreo);
+		INSERT INTO Locales (local, ubicacion, link, telefono, correo) VALUES (pLocal, pUbicacion, pImagen, pTelefono, pCorreo);
 		
 	END //
 DELIMITER ;
 
--- call addStore("Video Extrem Coro", "Del parque de coronado 100 mts este y 25 mts sur", null, "88888888", "video_extrem@hotmail.com");
+-- call addStore("Video Extrem Coro", "Del parque de coronado 100 mts este y 25 mts sur", "www.", "88888888", "video_extrem@hotmail.com");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
@@ -1055,22 +1055,23 @@ CREATE PROCEDURE deleteStore
 	
 	BEGIN
 	
+		DELETE FROM SugerenciasXlocal WHERE idLocal = pIdLocal;
 		DELETE FROM Locales WHERE idLocal = pIdLocal;
 		
 	END //
 DELIMITER ;
 
--- call deleteSale(1);
+-- call deleteStore(1);
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
 
 DELIMITER //
 CREATE PROCEDURE updateStore
-	(IN pIdLocal BIGINT, pLocal VARCHAR(100), IN pUbicacion VARCHAR(500), IN pImagen LONGBLOB, IN pTelefono VARCHAR(50), IN pCorreo VARCHAR(50))
+	(IN pIdLocal BIGINT, pLocal VARCHAR(100), IN pUbicacion VARCHAR(500), IN pImagen VARCHAR(500), IN pTelefono VARCHAR(50), IN pCorreo VARCHAR(50))
 	
 	BEGIN
 	
-		UPDATE Locales SET local = pLocal, ubicacion = pUbicacion, imagen = pImagen, telefono = pTelefono, correo = pCorreo WHERE idLocal = pIdLocal;
+		UPDATE Locales SET local = pLocal, ubicacion = pUbicacion, link = pImagen, telefono = pTelefono, correo = pCorreo WHERE idLocal = pIdLocal;
 		
 	END //
 DELIMITER ;
