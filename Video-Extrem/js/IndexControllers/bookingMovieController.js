@@ -98,11 +98,11 @@ function bookingController($scope, $http,dataManager,messageService) {
             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
             $http.post($scope.url, $scope.bookingMovieData).
             then(function(data, status) {
-                alert("La reservacion se completo de manera exitosa");
-                location.reload();
-            })
 
+            })
         }
+        alert("Su reserva se ha procesado");
+        location.reload();
     }
     $scope.deleteBookingMaster = function(pActualBookingMasterData){
         $scope.url = "http://www.videoextrem.com/api/bookingMovie.php?queryType=delete";

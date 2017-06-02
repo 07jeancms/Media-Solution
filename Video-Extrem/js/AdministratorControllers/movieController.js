@@ -70,7 +70,6 @@ function movieTableController( $scope, $http,dataManager,messageService) {
         $http.post(url, $scope.backupData).
         then(function(data, status) {
             alert("El archivo " + backupName + " ha sido creado correctamente");
-            //location.reload();
         })
 
     }
