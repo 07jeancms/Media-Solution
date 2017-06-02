@@ -41,12 +41,11 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
         var discountData = {discounts : []};
         var userData = {users : []};
         var bookingMasterData = {booking : []};
-<<<<<<< Updated upstream
+
         var storeData = {stores : []};
-=======
+
         //Flags
         var actualDiv = {}
->>>>>>> Stashed changes
         //Esta función determina si se debe de cargar los datos.
         function canBeLoaded(divKey){
             if (divs[divKey] != null){
@@ -93,9 +92,9 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             var actualWindowScreen = $(this).scrollTop();
             actualWindowScreen = Math.floor(actualWindowScreen / 100) * 100;
             if (canBeLoaded(actualWindowScreen)) {
-<<<<<<< Updated upstream
-                manageData(divs[actualWindowScreen],  actualWindowScreen);
-=======
+
+
+
                 //Loading actual div
                 var actualId = divs[actualWindowScreen].id;
                 actualDivProperties = {
@@ -112,8 +111,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                         }, waitTime * ind);
                     })(actualTime);
                 }
-
->>>>>>> Stashed changes
             }
         }
         //el evento $(window).scroll detecta el div en el cual estamos ubicados.
@@ -138,46 +135,7 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                         else{
                             getRolesData();
                             actualTable.loaded = true;
-<<<<<<< Updated upstream
-                            break;
-                        case "movie":
-                            getMovieData();
-                            actualTable.loaded = true;
-                            break;
-                        case "language":
-                            getLanguageData();
-                            actualTable.loaded = true;
-                            break;
-                        case "actor":
-                            getActorData();
-                            actualTable.loaded = true;
-                            break;
-                        case "subtitle":
-                            getSubtitleData();
-                            actualTable.loaded = true;
-                            break;
-                        case "genre":
-                            getGenreData();
-                            actualTable.loaded = true;
-                            break;
-                        case "category":
-                            getCategoryData();
-                            actualTable.loaded = true;
-                            break;
-                        case "suggestion":
-                            getSuggestionData();
-                            actualTable.loaded = true;
-                            break;
-                        case "user":
-                            getUserData();
-                            actualTable.loaded = true;
-                            break;
-                        case "discounts":
-                            getDiscountsData();
-                            actualTable.loaded = true;
-                            break;
-                        case "suggestionIndex":
-=======
+
                             console.log("Role getted");
                         }
                         break;
@@ -277,7 +235,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                             console.log("Counting "+actualTableId+"  "+actualTime)
                         }
                         else{
->>>>>>> Stashed changes
                             showTestMessage("suggestionIndex");
                         }
                         break;
@@ -288,24 +245,18 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                         else{
                             getBookingMasterData();
                             actualTable.loaded = true;
-<<<<<<< Updated upstream
-                            break;
-                        case "local":
-                            getStoreData();
-                            actualTable.loaded = true;
-                            break;
-                        default:
-                            break;
-                    }
-=======
-                            console.log("bookingMaster getted");
                         }
+                        break;
+                    case "local":
+                        getStoreData();
+                        actualTable.loaded = true;
                         break;
                     default:
                         break;
->>>>>>> Stashed changes
                 }
+
             }
+
             else{
                 actualDiv[actualTableId].time = 0;
             }
@@ -420,11 +371,8 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             userData : userData,
             bookingMasterData : bookingMasterData,
             discountData : discountData,
-<<<<<<< Updated upstream
-            storeData : storeData
-=======
+            storeData : storeData,
             actualDiv : actualDiv
->>>>>>> Stashed changes
         };
 
 
