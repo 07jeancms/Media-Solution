@@ -41,7 +41,6 @@ function carouselsController($scope, $http, dataManager, messageService) {
             'idCarousel' : pIdCarousel
         };
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        console.log(JSON.stringify(discountData));
         $http.post(url, discountData).
         then(function(data, status) {
             for(actualDiscount=0; actualDiscount<data.data.length; actualDiscount++){

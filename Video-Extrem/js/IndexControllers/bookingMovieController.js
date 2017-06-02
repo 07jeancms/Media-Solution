@@ -85,10 +85,8 @@ function bookingController($scope, $http,dataManager,messageService) {
         $scope.chartCounter = 0;
         var counter_cart = document.getElementById('pruebita');    
         counter_cart.innerHTML = " Carrito " + $scope.chartCounter;
-        console.log(selectDropdown);
         var x;
         for (x in pBookingMovieList) {
-            console.log(pBookingMovieList[x].pelicula);
             $scope.url = "http://www.videoextrem.com/api/bookingMovie.php?queryType=booking";
             $scope.bookingMovieData = {
                 'pdescription' : description,

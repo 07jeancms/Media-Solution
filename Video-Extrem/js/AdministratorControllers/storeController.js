@@ -17,7 +17,26 @@ function storeController($scope, $http,dataManager,messageService) {
     $scope.storesCollection  = {stores : []};
     $scope.itemsByPage=5;
     $scope.actualStore = {};
+    $scope.ubications = [];
+    
+    $scope.init = function(){
+        $scope.populateLocations();
+    }
 
+    $scope.populateLocations = function(){
+        $scope.ubications = [];
+        $http.get("http://www.videoextrem.com/api/stores.php?queryType=select")
+            .then(function(response) {
+            for(actualStore=0; actualStore<response.data.length; actualStore++){
+                $scope.ubications.push(response.data[actualStore]);
+            }
+        });
+    }
+    
+    $scope.selectUbication = function(pStore){
+        $scope.actualUbication = pStore; 
+    }
+    
     $scope.deleteStore = function(pActualStore){
         var url = "http://www.videoextrem.com/api/stores.php?queryType=delete";
         var storeData = {
@@ -70,7 +89,6 @@ function storeController($scope, $http,dataManager,messageService) {
                                 'phone' : phoneInput,
                                 'email' : emailInput
                             };
-                            console.log(JSON.stringify(storeData));
                             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
                             $http.post(url,storeData).
                             then(function(data, status) {
@@ -135,7 +153,6 @@ function storeController($scope, $http,dataManager,messageService) {
             'phone' : newPhone,
             'email' : newEmail
         };
-        console.log(JSON.stringify(storeData));
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url,storeData).
         then(function(data, status) {

@@ -81,7 +81,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             var actualWindowScreen = $(this).scrollTop();
             actualWindowScreen = Math.floor(actualWindowScreen / 100) * 100;
             if (canBeLoaded(actualWindowScreen)) {
-                console.log(divs[actualWindowScreen].id);
                 manageData(divs[actualWindowScreen],  actualWindowScreen);
             }
         }
@@ -104,52 +103,42 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                         case "role":
                             getRolesData();
                             actualTable.loaded = true;
-                            console.log("Role getted");
                             break;
                         case "movie":
                             getMovieData();
                             actualTable.loaded = true;
-                            console.log("Movie getted");
                             break;
                         case "language":
                             getLanguageData();
                             actualTable.loaded = true;
-                            console.log("language getted");
                             break;
                         case "actor":
                             getActorData();
                             actualTable.loaded = true;
-                            console.log("Actor getted");
                             break;
                         case "subtitle":
                             getSubtitleData();
                             actualTable.loaded = true;
-                            console.log("subtitle getted");
                             break;
                         case "genre":
                             getGenreData();
                             actualTable.loaded = true;
-                            console.log("genre getted");
                             break;
                         case "category":
                             getCategoryData();
                             actualTable.loaded = true;
-                            console.log("Category getted");
                             break;
                         case "suggestion":
                             getSuggestionData();
                             actualTable.loaded = true;
-                            console.log("suggestion getted");
                             break;
                         case "user":
                             getUserData();
                             actualTable.loaded = true;
-                            console.log("user getted");
                             break;
                         case "discounts":
                             getDiscountsData();
                             actualTable.loaded = true;
-                            console.log("discounts getted");
                             break;
                         case "suggestionIndex":
                             showTestMessage("suggestionIndex");
@@ -157,12 +146,10 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
                         case "booking":
                             getBookingMasterData();
                             actualTable.loaded = true;
-                            console.log("bookingMaster getted");
                             break;
                         case "local":
                             getStoreData();
                             actualTable.loaded = true;
-                            console.log("Store getted");
                             break;
                         default:
                             break;
@@ -179,7 +166,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/stores.php?queryType=select")
                 .then(function(response) {
                 storeData.stores = response.data;
-                console.log(storeData.stores);
             });
 
         }
@@ -187,7 +173,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/discounts.php?queryType=select")
                 .then(function(response) {
                 discountData.discounts = response.data;
-                console.log(discountData.discounts);
             });
 
         }
@@ -195,7 +180,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/roles.php?queryType=select")
                 .then(function(response) {
                 roleData.roles =response.data;
-                console.log(roleData.roles);
             });
 
         }
@@ -203,7 +187,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/movies.php?queryType=select")
                 .then(function(response) {
                 movieData.movies =response.data;
-                console.log(movieData.movies);
             });
 
         }
@@ -211,7 +194,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/language.php?queryType=select")
                 .then(function(response) {
                 languageData.languages =response.data;
-                console.log(roleData.roles);
             });
 
         }
@@ -219,7 +201,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/actors.php?queryType=select")
                 .then(function(response) {
                 actorData.actors =response.data;
-                console.log(actorData.actors);
             });
 
         }
@@ -227,7 +208,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/subtitles.php?queryType=select")
                 .then(function(response) {
                 subtitleData.subtitles =response.data;
-                console.log(subtitleData.subtitles);
             });
 
         }
@@ -235,7 +215,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/genres.php?queryType=select")
                 .then(function(response) {
                 genreData.genres =response.data;
-                console.log(genreData.genres);
             });
 
         }
@@ -243,7 +222,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/categories.php?queryType=select")
                 .then(function(response) {
                 categoryData.categories =response.data;
-                console.log(roleData.roles);
             });
 
         }
@@ -252,7 +230,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/suggestions.php?queryType=select")
                 .then(function(response) {
                 suggestionData.suggestions =response.data;
-                console.log(suggestionData.suggestions);
             });
 
         }
@@ -261,7 +238,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/users.php?queryType=select")
                 .then(function(response) {
                 userData.users =response.data;
-                console.log(userData.users);
             });
 
         }
@@ -270,7 +246,6 @@ var app = angular.module("crudApp", ["ngTable", "ngResource",'dndLists','smart-t
             $http.get("http://www.videoextrem.com/api/bookingMovie.php?queryType=getBookingMaster")
                 .then(function(response) {
                 bookingMasterData.booking =response.data;
-                console.log(bookingMasterData.booking);
             });
 
         }
