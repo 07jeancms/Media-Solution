@@ -4,9 +4,10 @@
         <thead>
             <tr>
                 <th st-sort="userName">Usuario</th>
-                <th st-sort="pelicula">Pelicula</th>
+                <th st-sort="pelicula">Peliculas</th>
                 <th st-sort="local">Local</th>
                 <th st-sort="descripcion">Descripcion</th>
+                <th st-sort="fecha">Fecha</th>
                 
                 <th>Eliminar</th>
             </tr>
@@ -15,13 +16,16 @@
                     <input st-search="userName"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
                 </th>
                 <th>
-                    <input st-search="pelicula"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                    <input st-search="peliculas"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
                 </th>
                 <th>
                     <input st-search="local"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
                 </th>
                  <th>
                     <input st-search="descripcion"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
+                </th>
+                 <th>
+                    <input st-search="fecha"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
                 </th>
                 <th >
                     <div class="input-group margin-bottom-sm">
@@ -35,9 +39,10 @@
         <tbody>
             <tr ng-repeat="actualBooking in bookingCollection.booking">
                 <td data-title="'user'"  filter="{user: 'text'}">{{actualBooking.userName}}</td>
-                <td data-title="'movie'" filter="{movie: 'text'}" >{{actualBooking.pelicula}}</td>
+                <td data-title="'movie'" filter="{movie: 'text'}" >{{actualBooking.peliculas}}</td>
                 <td data-title="'store'" filter="{store: 'text'}">{{actualBooking.local}}</td>
                 <td data-title="'description'" filter="{description: 'text'}">{{actualBooking.descripcion}}</td>
+                <td data-title="'fecha'" filter="{fecha: 'datetime'}">{{actualBooking.fecha}}</td>
                 <td data-title="'Editar'" >
                     <div class="inline col-lg-12">
                         <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteBookingMaster(actualBooking)" aria-hidden="true">

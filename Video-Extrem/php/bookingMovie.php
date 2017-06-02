@@ -83,16 +83,18 @@
         function getBooking(){
             $connection = new connection();
             $select_master_reservation = "SELECT ReservacionMaestra.idReservacionMaestra as 'idReservacionMaestra', 
-            Usuarios.userName as 'userName', Peliculas.pelicula as 'pelicula', Locales.local as 'local', 
-            Reservaciones.descripcion as 'descripcion' FROM ReservacionMaestra INNER JOIN Reservaciones 
-            ON Reservaciones.idReservacion = ReservacionMaestra.idReservacion INNER JOIN Peliculas 
-            ON Peliculas.idPelicula = ReservacionMaestra.idPelicula INNER JOIN Locales 
-            ON Locales.idLocal = ReservacionMaestra.idLocal INNER JOIN Usuarios 
-            ON Usuarios.idUsuario = ReservacionMaestra.idUsuario;";
+                Usuarios.userName as 'userName', GROUP_CONCAT(Peliculas.pelicula) as 'peliculas', Locales.local as 'local', 
+                Reservaciones.descripcion as 'descripcion', Reservaciones.fecha as 'fecha'
+                FROM ReservacionMaestra INNER JOIN Reservaciones 
+                ON Reservaciones.idReservacion = ReservacionMaestra.idReservacion INNER JOIN Peliculas 
+                ON Peliculas.idPelicula = ReservacionMaestra.idPelicula INNER JOIN Locales 
+                ON Locales.idLocal = ReservacionMaestra.idLocal INNER JOIN Usuarios 
+                ON Usuarios.idUsuario = ReservacionMaestra.idUsuario
+                GROUP BY Reservaciones.idReservacion;";
             $result_master_reservation = $connection->consult($select_master_reservation);
             $booking = array();
             while($row = mysql_fetch_assoc($result_master_reservation)){
-                $booking[] = array("idReservacionMaestra"=>$row['idReservacionMaestra'],"userName"=>$row['userName'], "pelicula"=>$row['pelicula'], "local"=>$row['local'], "descripcion"=>$row['descripcion']);
+                $booking[] = array("idReservacionMaestra"=>$row['idReservacionMaestra'],"userName"=>$row['userName'], "peliculas"=>$row['peliculas'], "local"=>$row['local'], "descripcion"=>$row['descripcion'], "fecha"=>$row['fecha']);
             }
             echo json_encode($booking);
         

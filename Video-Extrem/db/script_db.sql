@@ -355,14 +355,13 @@ CREATE TABLE IF NOT EXISTS `video_extrem`.`SugerenciasXlocal` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
 -- Table `video_extrem`.`Locales`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `video_extrem`.`Locales` (
   `idLocal` BIGINT NOT NULL AUTO_INCREMENT,
   `local` VARCHAR(100) NOT NULL,
   `ubicacion` VARCHAR(500) NOT NULL,
-  `imagen` LONGBLOB NULL,
+  `link` VARCHAR(500) NULL,
   `telefono` VARCHAR(50) NULL,
   `correo` VARCHAR(50) NULL,
   PRIMARY KEY (`idLocal`))

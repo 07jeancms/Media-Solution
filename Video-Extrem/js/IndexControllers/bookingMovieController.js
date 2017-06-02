@@ -85,10 +85,8 @@ function bookingController($scope, $http,dataManager,messageService) {
         $scope.chartCounter = 0;
         var counter_cart = document.getElementById('pruebita');    
         counter_cart.innerHTML = " Carrito " + $scope.chartCounter;
-        console.log(selectDropdown);
         var x;
         for (x in pBookingMovieList) {
-            console.log(pBookingMovieList[x].pelicula);
             $scope.url = "http://www.videoextrem.com/api/bookingMovie.php?queryType=booking";
             $scope.bookingMovieData = {
                 'pdescription' : description,
@@ -100,11 +98,11 @@ function bookingController($scope, $http,dataManager,messageService) {
             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
             $http.post($scope.url, $scope.bookingMovieData).
             then(function(data, status) {
-                alert("La reservacion se completo de manera exitosa");
-                location.reload();
-            })
 
+            })
         }
+        alert("Su reserva se ha procesado");
+        location.reload();
     }
     $scope.deleteBookingMaster = function(pActualBookingMasterData){
         $scope.url = "http://www.videoextrem.com/api/bookingMovie.php?queryType=delete";

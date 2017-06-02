@@ -108,7 +108,6 @@ function discountController($scope, $http, dataManager, messageService) {
             'carouselTypes' : radioArray
         };
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        console.log("Discount Data"+JSON.stringify(discountData));
         $http.post(url, discountData)
             .then(function(data, status) {
             alert("La imagen: " + url_input + " ha sido agregada");
@@ -123,7 +122,6 @@ function discountController($scope, $http, dataManager, messageService) {
             'carouselName' : pActualDiscount.nombre
         };
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        console.log(JSON.stringify(discountData));
         $http.post(url,discountData).
         then(function(data, status) {
             alert("La imagen: " + pActualDiscount.link + " ha sido eliminada");
@@ -152,7 +150,6 @@ function discountController($scope, $http, dataManager, messageService) {
             'status' : dropdownStatus
         };
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        console.log(JSON.stringify(discountData));
         $http.post(url,discountData).
         then(function(data, status) {
             alert("La imagen: " + pActualDiscount.link + " ha sido Editada");

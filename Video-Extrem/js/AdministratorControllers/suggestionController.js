@@ -44,7 +44,6 @@ function suggestionsController( $scope, $http,dataManager,messageService) {
                     'suggestion': suggestionBody
                 };
                 $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-                console.log(JSON.stringify(suggestionData));
                 $http.post(url, suggestionData)
                 .then(function(data, status) {
                     alert("Su sugerencia ha sido enviada. Muchas gracias por su opinión");
