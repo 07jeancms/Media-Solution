@@ -58,10 +58,8 @@
     $backupClass = new backup();
 
     if ($_queryType == "getBackup"){
-        //$a1= array("idPelicula"=>"idPelicula","ano"=>"ano", "pelicula"=>"pelicula", "trama"=>"trama", "precio"=>"precio","fechaIngreso"=>"fechaIngreso","linkImagen"=>"linkImagen","codigo"=>"codigo");
         $tmp = $backupClass->getMovies();
-        $backupClass->fileName = $request->file;
-	    $backupClass->array_to_csv_download($tmp, $backupClass->fileName + ".csv");
+	    $backupClass->array_to_csv_download($tmp, "Respaldo_Peliculas_VideoExtrem.csv");
     }
     // "http://www.videoextrem.com/api/generate_backup_movies_csv_file.php?queryType=getBackup"
 ?>
