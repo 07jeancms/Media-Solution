@@ -421,19 +421,8 @@ p.copyright {
 
 
 .carousel{
-    width : 100vh;
+    width : 120vh;
     height: 50vh;
-}
-.carouselDiv{
-    padding-left : 20%;
-}
-.img-responsive{
-    max-height: 400px;
-    max-width : 400px;
-    margin: 5px;
-    border: inset;
-    border-width: 5px;
-    border-color: #59C9A5;
 }
 
 .carousel-inner > .item > img  {
@@ -458,6 +447,13 @@ p.copyright {
     height: 5vh;
     width: 21vh;
     font-size: 2vh;
+}
+
+
+
+.containerCarousel{
+  height: 100%;
+  width: 100%;
 }
 
 .btn:hover {
@@ -724,4 +720,8 @@ td{
 }
 .iconComplete{
     color: black;
+}
+
+.selectMovieBtn{
+  width: 10%;
 }

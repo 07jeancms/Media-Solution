@@ -80,6 +80,7 @@
           <li><a data-toggle="modal" data-target="#createBookingModal" href="#movie"><i class="fa fa-shopping-cart" id="pruebita" aria-hidden="true">&nbsp;Carrito</i></a></li>
 
           <li><a class="page-scroll" data-toggle="modal" data-target="#loginModal" ng-if="!checkIfConnected()"><i class="fa fa-sign-in" aria-hidden="true"></i>&nbsp;Log-in</a></li>
+
           <li><a class="page-scroll" data-toggle="modal" data-target="#showActualUserModal" ng-if="checkIfConnected()"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;{{actualUser.userName}}</a>
 
           </li>
@@ -110,25 +111,31 @@
             <h1 class="brand-heading">Video <div class ="exColor">Ex</div>trem</h1>
             <p ng-if="!checkIfConnected()" class="intro-text">Entretenimiento y calidad al mejor precio </p>
 
+
+
             <div ng-if="!checkIfConnected()">
-              <button href="" class="btn btn-default btn-lg"><i class="fa fa-facebook fa-fw fa-lg"></i> </button>
               <button data-toggle="modal" data-target="#loginModal" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw "></i><span> Inicia Sesion</span> </button>
               <br>
             </div>
             <div ng-if="checkIfConnected()">
               <h3 class="intro-text">Bienvenido,  <div class ="exColor">{{actualUser.userName}}</div></h3>
+              <a href="./indexAdministrator.html" class="btn btn-default btn-lg"><i class="fa fa-user fa-fw "></i><span>Pagina Administrativa</span> </a>
+
               <button ng-click="logout()" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw "></i><span> Cerrar Sesión</span> </button>
               <br>
             </div>
 
 
-            </div>
-            <a href="#estrenos" class="btn btn-circle page-scroll">
+
+
+
+          </div>
+          <a href="#estrenos" class="btn btn-circle page-scroll">
                          <i class="fa fa-angle-double-down animated"></i>
                      </a>
-          </div>
         </div>
       </div>
+    </div>
   </header>
 
   <!--
@@ -141,6 +148,7 @@
 
  -->
   <!-- Estrenos -->
+
   <div class="pageContent" ng-app="indexApp">
     <a id="movieCarousselContainer"></a>
     <div class="content-section-a" id="">
@@ -149,17 +157,18 @@
           <!--Botones que cambian el contenido de los carousels.-->
           <div class="col-lg-12 col-sm-6">
 
-            <div class="col-lg-6 col-sm-6">
+            <div class="col-lg-4 col-md-4 col-sm-4">
+
               <h2><i class="fa fa-film fa-lg" aria-hidden="true"></i>&nbsp;Peliculas</h2>
             </div>
-            <div class="col-lg-2 col-sm-6 ">
-              <btn class="btnFilterMovies btn-default  selected " id="estrenos" onclick="changeCarousel(1)">Estrenos</btn>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <btn class="btnFilterMovies btn  selected selectMovieBtn" id="estrenos" onclick="changeCarousel(1)">Estrenos</btn>
             </div>
-            <div class="col-lg-2 col-sm-6">
-              <btn class="btn btn-default " id="top" onclick="changeCarousel(2)">Top 10</btn>
+            <div class="col-lg-3 col-md-3 col-sm-3">
+              <btn class="btn btn selectMovieBtn" id="top" onclick="changeCarousel(2)">Top 10</btn>
             </div>
-            <div class="col-lg-2 col-sm-6">
-              <btn class="btn btn-default " id="otro" onclick="changeCarousel(3)">Nominadas al Oscar</btn>
+            <div class="col-lg-2 col-md-2 col-sm-2">
+              <btn class="btn btn selectMovieBtn" id="otro" onclick="changeCarousel(3)">Nominadas al Oscar</btn>
             </div>
           </div>
 
@@ -171,7 +180,7 @@
             </div>
 
             <!-- Carrusel -->
-            <div class="content-section-a adminDiv" id="premieres">
+            <div class="" id="premieres">
               <div class="containerCarousel" ng-controller="carouselsController as carousel" data-ng-init="init(1)">
                 <div id="myCarouselPremieres" class="carousel slide" data-ride="carousel">
                   <!-- Indicators -->
@@ -209,7 +218,7 @@
             </div>
 
             <!-- Carrusel -->
-            <div class="content-section-a adminDiv" id="top">
+            <div class="" id="top">
               <div class="containerCarousel" ng-controller="carouselsController as carousel" data-ng-init="init(2)">
                 <div id="myCarouselTop" class="carousel slide" data-ride="carousel">
                   <!-- Indicators -->
@@ -248,7 +257,7 @@
             </div>
 
             <!-- Carrusel -->
-            <div class="content-section-a adminDiv" id="oscar">
+            <div class="" id="oscar">
               <div class="containerCarousel" ng-controller="carouselsController as carousel" data-ng-init="init(3)">
                 <div id="myCarouselOscar" class="carousel slide" data-ride="carousel">
                   <!-- Indicators -->
@@ -283,7 +292,7 @@
 
     <!-- Buscar tu pelicula -->
     <a name="buscatupelicula"></a>
-    <div class="content-section-a" id="bookingMovies">
+    <div class="content-section-b" id="bookingMovies">
       <div class="container">
         <div class="row">
           <div class="col-lg-12 col-sm-6">
@@ -303,186 +312,185 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="content-section-a adminDiv" id="discounts">
-    <div class="containerCarousel" ng-controller="carouselsController as carousel" data-ng-init="init(4)">
-      <h2>Promociones</h2>
-      <div id="myCarousel" class="carousel slide" data-ride="carousel">
-        <!-- Indicators -->
-        <ol class="carousel-indicators" id="carouselIndicator">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        </ol>
+    <div class="content-section-a adminDiv" id="discounts">
+      <div class="containerCarousel" ng-controller="carouselsController as carousel" data-ng-init="init(4)">
+        <h2>Promociones</h2>
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+          <!-- Indicators -->
+          <ol class="carousel-indicators" id="carouselIndicator">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+          </ol>
 
-        <!-- Wrapper for slides -->
-        <div class="carousel-inner" id="discountCarousel">
-          <div class="item active">
-            <img src="http://www.videoextrem.com/img/promociones/promociones-cover.jpg" alt="promociones-cover" style="width:80%;">
+          <!-- Wrapper for slides -->
+          <div class="carousel-inner" id="discountCarousel">
+            <div class="item active">
+              <img src="http://www.videoextrem.com/img/promociones/promociones-cover.jpg" alt="promociones-cover" style="width:80%;">
+            </div>
           </div>
-        </div>
 
-        <!-- Left and right controls -->
-        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+          <!-- Left and right controls -->
+          <a class="left carousel-control" href="#myCarousel" data-slide="prev">
                      <span class="glyphicon glyphicon-chevron-left"></span>
                      <span class="sr-only">Previous</span>
                  </a>
 
-        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+          <a class="right carousel-control" href="#myCarousel" data-slide="next">
                      <span class="glyphicon glyphicon-chevron-right"></span>
                      <span class="sr-only">Next</span>
                  </a>
 
-      </div>
-    </div>
-  </div>
-
-
-  <!-- Quienes somos -->
-  <a name="quienessomos"></a>
-  <div class="content-section-b">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-sm-12">
-          <h2><i class="fa fa-id-badge fa-lg" aria-hidden="true"></i>&nbsp;Quienes Somos</h2>
-        </div>
-        <div class="col-lg-5 col-sm-6">
-          <hr class="section-heading-spacer">
-          <div class="clearfix"></div>
-          <p class="lead">Somos una cadena de videos con mas de 13 años de experiencia en temas relacionados al mundo del entretemiento, actualmente contamos con 4 diferentes sedes que se extienden por el GAM, actualmente contamos con un amplio catalogo de mas de 13.000
-            peliculas, con ingresos semanales de hasta mas de 20 titulos, contamos con peliculas en formato blu-ray, 3D y DVD.</p>
-        </div>
-        <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-          <img class="img-responsive" src="img/quienessomos3.jpg" alt="">
         </div>
       </div>
     </div>
-  </div>
 
 
-  <!-- Establecimientos -->
-  <a name="establecimientos"></a>
-  <div id="relativeDiv" class="content-section-a">
-    <div class="container" ng-controller="storeController as store" data-ng-init="init()">
-
-      <div class="row">
-        <div class="divHeader col-lg-12 col-sm-12">
-          <div class="col-lg-4 col-sm-4">
-            <h2><i class="fa fa-map-marker" aria-hidden="true" ></i>&nbsp;Establecimientos</h2>
+    <!-- Quienes somos -->
+    <a name="quienessomos"></a>
+    <div class="content-section-b">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12">
+            <h2><i class="fa fa-id-badge fa-lg" aria-hidden="true"></i>&nbsp;Quienes Somos</h2>
           </div>
-          <div class="col-lg-2 col-sm-2 " ng-repeat="actualUbication in ubications">
-            <button class="btn btn-default " ng-click="this.selectUbication(actualUbication)"><i class="fa fa-play-circle fa-fw"></i><span>{{actualUbication.local}}</span></button>
+          <div class="col-lg-5 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <p class="lead">Somos una cadena de videos con mas de 13 años de experiencia en temas relacionados al mundo del entretemiento, actualmente contamos con 4 diferentes sedes que se extienden por el GAM, actualmente contamos con un amplio catalogo de mas de 13.000
+              peliculas, con ingresos semanales de hasta mas de 20 titulos, contamos con peliculas en formato blu-ray, 3D y DVD.</p>
+          </div>
+          <div class="col-lg-5 col-lg-offset-2 col-sm-6">
+            <img class="img-responsive" src="img/quienessomos3.jpg" alt="">
           </div>
         </div>
-        <div class="col-lg-12 col-sm-12">
-          <div class="col-lg-5 col-sm-6">
-            <div id="map"></div>
+      </div>
+    </div>
+
+
+    <!-- Establecimientos -->
+    <a name="establecimientos"></a>
+    <div id="relativeDiv" class="content-section-a">
+      <div class="container" ng-controller="storeController as store" data-ng-init="init()">
+
+        <div class="row">
+          <div class="divHeader col-lg-12 col-sm-12">
+            <div class="col-lg-4 col-sm-4">
+              <h2><i class="fa fa-map-marker" aria-hidden="true" ></i>&nbsp;Establecimientos</h2>
+            </div>
+            <div class="col-lg-2 col-sm-2 " ng-repeat="actualUbication in ubications">
+              <button class="btn btn-default " ng-click="this.selectUbication(actualUbication)"><i class="fa fa-play-circle fa-fw"></i><span>{{actualUbication.local}}</span></button>
+            </div>
           </div>
-          <div class="col-lg-5 col-sm-6">
-            <div class="alert alert-textSize alert-info">
-              <i class="fa fa-phone " aria-hidden="true"></i>&nbsp; <strong>Video Club Extrem {{actualUbication.local}}</strong> {{actualUbication.telefono}}
+          <div class="col-lg-12 col-sm-12">
+            <div class="col-lg-5 col-sm-6">
+              <div id="map"></div>
+            </div>
+            <div class="col-lg-5 col-sm-6">
+              <div class="alert alert-textSize alert-info">
+                <i class="fa fa-phone " aria-hidden="true"></i>&nbsp; <strong>Video Club Extrem {{actualUbication.local}}</strong> {{actualUbication.telefono}}
+
+              </div>
+
+              <div class="alert alert-textSize alert-success">
+                <i class="fa fa-mobile " aria-hidden="true"></i>&nbsp; <strong>Whatsapp</strong> 8472-8298
+
+              </div>
+            </div>
+          </div>
+          <div id="bottomAlert" class="col-lg-10">
+            <div class="alert alert-movieInfo">
+              <i class="fa fa-compass fa-lg" aria-hidden="true"></i>&nbsp;Contamos con <strong>4 diferentes</strong> puntos de venta a lo largo del GAM.
 
             </div>
 
-            <div class="alert alert-textSize alert-success">
-              <i class="fa fa-mobile " aria-hidden="true"></i>&nbsp; <strong>Whatsapp</strong> 8472-8298
-
-            </div>
-          </div>
-        </div>
-        <div id="bottomAlert" class="col-lg-10">
-          <div class="alert alert-movieInfo">
-            <i class="fa fa-compass fa-lg" aria-hidden="true"></i>&nbsp;Contamos con <strong>4 diferentes</strong> puntos de venta a lo largo del GAM.
-
           </div>
 
         </div>
-
       </div>
     </div>
-  </div>
-  <!-- Encuentrenos -->
-  <a name="encuentrenos"></a>
-  <div class="content-section-b" id="relativeDiv">
-    <div class="container row-lg-12" ng-controller="mediaController as media">
+    <!-- Encuentrenos -->
+    <a name="encuentrenos"></a>
+    <div class="content-section-b" id="relativeDiv">
+      <div class="container row-lg-12" ng-controller="mediaController as media">
 
-      <div class="col-lg-12 col-sm-12">
-        <h2><i class="fa fa-mouse-pointer fa-lg" aria-hidden="true"></i>&nbsp;Encuentranos en</h2>
-      </div>
-      <div class="row">
-        <div class="col-lg-12 col-sm-6">
-          <hr class="section-heading-spacer">
-          <div class="clearfix"></div>
-
+        <div class="col-lg-12 col-sm-12">
+          <h2><i class="fa fa-mouse-pointer fa-lg" aria-hidden="true"></i>&nbsp;Encuentranos en</h2>
         </div>
-      </div>
+        <div class="row">
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
 
-      <div class="mediaDiv ">
+          </div>
+        </div>
 
-        <div class="col-lg-4 col-md-4 col-sm-4">
-          <a href="https://www.waze.com">
+        <div class="mediaDiv ">
+
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <a href="https://www.waze.com">
                          <img border="0" alt="Waze" src="img/Waze.png" ng-mouseover="waze=false"   ng-show="waze" class="mediaIcon">
                          <img border="0" alt="Waze" src="img/WazeColor.png" class="mediaIconColor"  ng-show="!waze" ng-mouseleave="waze=true" >
                          <h2 class="mediaText mediaText-waze">Waze</h2></a>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4">
-          <a href="https://facebook.com">
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            <a href="https://facebook.com">
                          <img border="0" alt="Facebook" src="img/Facebook.png" class="mediaIcon" ng-mouseover="facebook=false"   ng-show="facebook" class="mediaIcon">
                          <img border="0" alt="Facebook" src="img/FacebookColor.png" class="mediaIconColor" ng-show="!facebook" ng-mouseleave="facebook=true" >
                          <h2 class="mediaText mediaText-facebook">Facebook</h2></a>
-        </div>
-        <div class="col-lg-4 col-md-4 col-sm-4">
-          {{whatsapp}}
-          <a data-toggle="modal" ng-click="whatsappMessage()" data-target="#messageModal" href="#encuentrenos">
+          </div>
+          <div class="col-lg-4 col-md-4 col-sm-4">
+            {{whatsapp}}
+            <a data-toggle="modal" ng-click="whatsappMessage()" data-target="#messageModal" href="#encuentrenos">
                          <img border="0" alt="Whatsapp" src="img/Whatsapp.png" class="mediaIcon" ng-mouseover="whatsapp=false"   ng-show="whatsapp" >
                          <img border="0" alt="Whatsapp" src="img/WhatsappColor.png" class="mediaIconColor" ng-show="!whatsapp" ng-mouseleave="whatsapp=true"  >
                          <h2 class="mediaText mediaText-whatsapp">Whatsapp</h2></a>
 
-        </div>
-
-      </div>
-      <div id="bottomAlert" class="col-lg-10">
-        <div class="alert alert-movieInfo">
-          <i class="fa fa-mouse-pointer fa-lg" aria-hidden="true"></i>&nbsp;Encuentranos en las <strong>redes sociales favoritas</strong>, para que te puedas enterar de todo lo que ofrecemos.
+          </div>
 
         </div>
+        <div id="bottomAlert" class="col-lg-10">
+          <div class="alert alert-movieInfo">
+            <i class="fa fa-mouse-pointer fa-lg" aria-hidden="true"></i>&nbsp;Encuentranos en las <strong>redes sociales favoritas</strong>, para que te puedas enterar de todo lo que ofrecemos.
 
+          </div>
+
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Sugerencias -->
-  <a name="suggestions"></a>
-  <div class="content-section-a adminDiv" id="suggestionIndex">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12 col-sm-12">
-          <h2><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Sugerencias</h2>
-        </div>
-        <div class="suggestionsIndex" ng-controller="suggestionsController as suggestions">
-          <div id="suggestionTextArea">
-            <select id="selectLocal" class="form-control select col-lg-12 col-md-12 col-sm-12">
+    <!-- Sugerencias -->
+    <a name="suggestions"></a>
+    <div class="content-section-a adminDiv" id="suggestionIndex">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 col-sm-12">
+            <h2><i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Sugerencias</h2>
+          </div>
+          <div class="suggestionsIndex" ng-controller="suggestionsController as suggestions">
+            <div id="suggestionTextArea">
+              <select id="selectLocal" class="form-control select col-lg-12 col-md-12 col-sm-12">
                              <option value="local">Seleccion el local</option>
                              <option value="moravia">Moravia</option>
                              <option value="coronado">Coronado</option>
                              <option value="sabanilla">Sabanilla</option>
                              <option value="sanjose">San Jose</option>
                          </select>
-            <textarea id="textAreaSuggestion" rows="5" cols="60" placeholder="Sugerencia" class="textarea form-control col-lg-12 col-md-12 col-sm-12 suggestionArea"></textarea>
-            <button class="btn " ng-click="this.addSuggestion()">Enviar</button>
-          </div>
+              <textarea id="textAreaSuggestion" rows="5" cols="60" placeholder="Sugerencia" class="textarea form-control col-lg-12 col-md-12 col-sm-12 suggestionArea"></textarea>
+              <button class="btn " ng-click="this.addSuggestion()">Enviar</button>
+            </div>
 
-        </div>
-        <div id="bottomAlert" class="col-lg-10">
-          <div class="alert alert-movieInfo">
-            <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un <strong>buzón de sugerencias</strong>, en el cual puedes brindarnos
-            tus inquietudes, quejas y consultas.
+          </div>
+          <div id="bottomAlert" class="col-lg-10">
+            <div class="alert alert-movieInfo">
+              <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i>&nbsp;Porque lo mas importante para nuestro crecimiento es complacer a nuestros clientes, ponemos a su disposicion un <strong>buzón de sugerencias</strong>, en el cual puedes
+              brindarnos tus inquietudes, quejas y consultas.
+            </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
 
-  <!--
+    <!--
  ______ ____   ____ _______ ______ _____
  |  ____/ __ \ / __ \__   __|  ____|  __ \
  | |__ | |  | | |  | | | |  | |__  | |__) |
@@ -493,41 +501,41 @@
  -->
 
 
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <ul class="list-inline">
-            <li class="footer-menu-divider">&sdot;</li>
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <ul class="list-inline">
+              <li class="footer-menu-divider">&sdot;</li>
 
-            <li>
-              <a href="#inicio">Inicio</a>
-            </li>
+              <li>
+                <a href="#inicio">Inicio</a>
+              </li>
 
-            <li class="footer-menu-divider">&sdot;</li>
+              <li class="footer-menu-divider">&sdot;</li>
 
-            <li>
-              <a href="#contactenos">Contactenos</a>
-            </li>
+              <li>
+                <a href="#contactenos">Contactenos</a>
+              </li>
 
-            <li class="footer-menu-divider">&sdot;</li>
+              <li class="footer-menu-divider">&sdot;</li>
 
-            <li>
-              <a href="#contact">Nuestras redes sociales</a>
-            </li>
+              <li>
+                <a href="#contact">Nuestras redes sociales</a>
+              </li>
 
-            <li class="footer-menu-divider">&sdot;</li>
+              <li class="footer-menu-divider">&sdot;</li>
 
-            <li>
-              <a href="#sugerencias">Sugerencias</a>
-            </li>
-          </ul>
+              <li>
+                <a href="#sugerencias">Sugerencias</a>
+              </li>
+            </ul>
 
-          <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
+            <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
+          </div>
         </div>
       </div>
-    </div>
-  </footer>
+    </footer>
   </div>
   </div>
   <div ng-include="'messageModal.html'"></div>
@@ -563,6 +571,8 @@
 <script src="js/AdministratorControllers/suggestionController.js"></script>
 <script src="js/AdministratorControllers/actorController.js"></script>
 
+<!--Facebook login--->
+<script src="js/fblogin.js"></script>
 
 <!--Index Controllers -->
 
