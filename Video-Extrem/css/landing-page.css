@@ -130,11 +130,11 @@ a:hover{
 }
 
 @font-face {
-    font-family: Ostrich-Font-Bold;  
+    font-family: Ostrich-Font-Bold;
     src:  url('../fonts/OstrichSans-Bold.otf') format("truetype");
 }
 @font-face {
-    font-family: Ostrich-Font;  
+    font-family: Ostrich-Font;
     src:  url('../fonts/ostrich-regular.ttf') format("truetype");
 }
 .intro .intro-body .brand-heading {
@@ -169,7 +169,7 @@ a:hover{
 }
 
 .topnav {
-    font-size: 14px; 
+    font-size: 14px;
 }
 
 .lead {
@@ -256,7 +256,7 @@ a:hover{
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 2px;
-}   
+}
 
 .content-section-a {
     min-height: 100vh;
@@ -419,33 +419,37 @@ p.copyright {
     }
 }
 
-.carouselImg{
-    height: 30vh;
-    width : 40vh;
-}
+
 .carousel{
     width : 100vh;
+    height: 50vh;
 }
 .carouselDiv{
     padding-left : 20%;
 }
 .img-responsive{
     max-height: 400px;
-    max-width : 400px; 
+    max-width : 400px;
     margin: 5px;
     border: inset;
     border-width: 5px;
     border-color: #59C9A5;
 }
 
+.carousel-inner > .item > img  {
+  height: 50vh;
+  width : 80vh;
+  margin: 0 auto;
+}
+
 .magic{
     cursor: pointer;
 
-} 
+}
 .magic:hover{
     color: #998100;
     cursor: pointer;
-} 
+}
 .btn{
     background-color: rgba(134,0,0,0.4);
     color: #FFF;
@@ -468,7 +472,7 @@ p.copyright {
 
 }
 
-.form-control{ 
+.form-control{
     background-color: rgba(255,255,255,0.4);
 }
 .searchButton{
@@ -483,7 +487,7 @@ p.copyright {
 .mediaIcon{
     height: 100px;
     width : 100px;
-    cursor: pointer; 
+    cursor: pointer;
     cursor: hand;
 }
 .principalImage{
@@ -510,7 +514,7 @@ p.copyright {
 }
 .editBtn:hover{
     color :  #D64900;
-    cursor: pointer; 
+    cursor: pointer;
 }
 #wrapper {
     margin-right: 20%;
@@ -627,7 +631,7 @@ h2{
 .mediaIconColor:hover ~ .mediaText-waze{
     color: darkslategray;
 }
-.mediaText{ 
+.mediaText{
     color: rgba(134,0,0,0.4);
     padding-top : 5vh;
     font-size: 6vh;
@@ -674,7 +678,7 @@ li.page-item{
 }
 
 td{
-    
+
      font-size:2.5vh;
 }
 
