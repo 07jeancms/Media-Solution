@@ -69,7 +69,7 @@
             }
         }
         
-         function authenticateUser( $pUserName $pPassword) {
+         function authenticateUser($pUserName, $pPassword) {
             $connection = new connection();
             $call = "call validateAuthentication( '$pUserName','$pPassword');";
             $result = $connection->consult($call);
