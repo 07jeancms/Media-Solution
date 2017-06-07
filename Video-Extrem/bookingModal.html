@@ -1,14 +1,14 @@
-<!-- Modal 
- _____                _        
-/ ____|              | |       
-| |     _ __ ___  __ _| |_ ___  
-| |    | '__/ _ \/ _` | __/ _ \ 
-| |____| | |  __/ (_| | ||  __/ 
-\_____|_|  \___|\__,_|\__\___| 
+<!-- Modal
+ _____                _
+/ ____|              | |
+| |     _ __ ___  __ _| |_ ___
+| |    | '__/ _ \/ _` | __/ _ \
+| |____| | |  __/ (_| | ||  __/
+\_____|_|  \___|\__,_|\__\___|
 
 -->
 
-<div class="modal fade " id="createBookingModal" tabindex="-1" role="dialog" 
+<div class="modal fade " id="createBookingModal" tabindex="-1" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -36,11 +36,11 @@
                     <tbody>
                         <tr ng-repeat="actualBooking in moviesToBook">
                             <td data-title="'pelicula'"  filter="{pelicula: 'text'}">{{actualBooking.pelicula}}</td>
-                            <td data-title="'Editar'" >                                             
+                            <td data-title="'Editar'" >
                                 <div class="inline col-lg-12">
-                                <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteBookingMovie(actualBooking)" aria-hidden="true"></i>                         
-                                </div>                                         
-                            </td>                                   
+                                <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteBookingMovie(actualBooking)" aria-hidden="true"></i>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                     <tfoot>
@@ -66,7 +66,7 @@
                         data-dismiss="modal">
                     Cancelar
                 </button>
-                <button type="button" class="btn btn-primary" ng-click="this.addBooking(moviesToBook)">
+                <button type="button" class="btn btn-primary" ng-click="this.addBooking(moviesToBook,getUserId())">
                     Reservar
                 </button>
             </div>

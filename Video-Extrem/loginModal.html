@@ -1,53 +1,181 @@
 <!-- Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" 
-     aria-labelledby="myModalLabel" aria-hidden="true" ng-controller="userAuthenticationController">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <!-- Modal Header -->
-            <div class="modal-header">
-                <button type="button" class="close" 
-                        data-dismiss="modal">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content" ng-show="!registrarse">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
                     <span aria-hidden="true">&times;</span>
                     <span class="sr-only">Close</span>
                 </button>
-                <h4 class="modal-title" id="myModalLabel">
+        <h4 class="modal-title" id="myModalLabel">
                     Ingresar
                 </h4>
 
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST">
+
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <input id="user" type="text" class="form-control" name="user" ng-model="userData.userName" placeholder="User">
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <input id="password" type="password" class="form-control" ng-model="userData.userPassword" name="password" placeholder="Password">
+          </div>
+
+          <div class="form-group">
+            <!-- Button -->
+            <div class="col-sm-12 controls">
+
             </div>
-            <!-- Modal Body -->
-            <div class="modal-body">
-                {{actualUser}}
-                <form name="form" id="form" class="form-horizontal" enctype="multipart/form-data" method="POST">
+          </div>
 
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                        <input id="user" type="text" class="form-control" name="user" ng-model="actualUser.username" placeholder="User">                                        
-                    </div>
+        </form>
+      </div>
 
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                        <input id="password" type="password" class="form-control" ng-model="actualUser.password" name="password" placeholder="Password">
-                    </div>                                                                  
-
-                    <div class="form-group">
-                        <!-- Button -->
-                        <div class="col-sm-12 controls">
-
-                        </div>
-                    </div>
-
-                </form>     
-            </div>
-
-            <!-- Modal Footer -->
-            <div class="modal-footer ">
-                <div class="col-lg-12 col-md-12 col-sm-12">
-                    <button href="https://twitter.com/SBootstrap" class="btn btn-default col-lg-1 col-md-1 col-sm-1"><i class="fa fa-facebook fa-fw fa-lg"></i> </button>
-                    <button data-toggle="modal" data-target="#messageModal" ng-click="authenticateUser(actualUser.username,actualUser.password)" class="btn btn-default col-lg-3 col-md-3 col-sm-3 "><i class="fa fa-sign-in fa-fw "></i><span>Inicia Sesion</span> </button> 
-                    <button  class="btn btn-default col-lg-3 col-md-3 col-sm-3" data-dismiss="modal">Regresar</button>
-                </div>
-            </div>
+      <!-- Modal Footer -->
+      <div class="modal-footer ">
+        <div class="col-lg-12 col-md-12 col-sm-12">
+          {{registrarse}}
+          <button data-toggle="modal" data-target="#messageModal" ng-click="authenticateUser()" class="btn btn-default col-lg-3 col-md-3 col-sm-3 "><i class="fa fa-sign-in fa-fw "></i><span>Inicia Sesion</span> </button>
+          <button class="btn btn-default col-lg-3 col-md-3 col-sm-3" ng-click="registrarse = true ">Registrarse</button>
+          <button class="btn btn-default col-lg-3 col-md-3 col-sm-3" data-dismiss="modal">Regresar</button>
         </div>
+      </div>
     </div>
+    <div class="modal-content" ng-show="registrarse">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+        <h4 class="modal-title" id="myModalLabel">
+                        Agregar Usuario
+                    </h4>
+      </div>
+      <!-- Modal Body -->
+      <div class="modal-body">
+        <form class="form-horizontal" role="form">
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputNombre">Usuario</label>
+            <div class="col-sm-10">
+              <input class="form-control" id="userNameInputCreate" placeholder="Usuario" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputNombre">E-mail</label>
+            <div class="col-sm-10">
+              <input type="email" class="form-control" id="emailInputCreate" placeholder="E-mail" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputYear">Contraseña</label>
+            <div class="col-sm-10">
+              <input type="password" class="form-control" id="passwordInputCreate" placeholder="Contrasena" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputYear">Roles</label>
+            <div class="col-md-8">
+              <div class="RolesRadioButtonsCreate" id="radio_roles_create"></div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="inputYear">Telefono</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control" id="phoneInputCreate" placeholder="Telefono">
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+                        Cancelar
+                    </button>
+        <button type="button" class="btn btn-primary" ng-click="isValidUser()">
+                        Crear Usuario
+                    </button>
+        <button type="button" class="btn btn-primary" ng-click="registrarse = false">
+                                Iniciar Sesión
+                            </button>
+        <fb:login-button autologoutlink="true" onlogin="checkLoginState();" scope="public_profile,email"></fb:login-button>
+        </fb:login-button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--
+   _____ _____  ______       _______ ______
+  / ____|  __ \|  ____|   /\|__   __|  ____|
+ | |    | |__) | |__     /  \  | |  | |__
+ | |    |  _  /|  __|   / /\ \ | |  |  __|
+ | |____| | \ \| |____ / ____ \| |  | |____
+  \_____|_|  \_\______/_/    \_\_|  |______|
+
+-->
+
+<div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-hide="registrarse">
+  <div class="modal-dialog">
+
+  </div>
+</div>
+<!--
+ ______
+/  ____| |
+| (___ | |__   _____      __
+\___ \| '_ \ / _ \ \ /\ / /
+____) | | | | (_) \ V  V /
+|_____/|_| |_|\___/ \_/\_/
+
+-->
+
+<div class="modal fade" id="showActualUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content col-lg-12 ">
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+        <h4 class="modal-title" id="myModalLabel">
+                    {{actualUser.userName}}
+                </h4>
+
+      </div>
+      <!-- Modal Body -->
+      <div id="wrapper">
+        <div id="content">
+          <div class="modal-body">
+            <form class="form-horizontal" role="form">
+              <div class="form-group">
+                <h4 class="col-lg-4 col-md-4 col-sm-4 col-xs-4">ID: </h4>
+                <h5 class="col-lg-8 col-md-8 col-sm-4 col-xs-4" for="inputNombre">{{getUserId()}}</h5>
+              </div>
+              <div class="form-group">
+                <h4 class="col-lg-4 col-md-4 col-sm-4 col-xs-4">Usuario: </h4>
+                <h5 class="col-lg-8 col-md-8 col-sm-4 col-xs-4" for="inputNombre">{{actualUser.userName}}</h5>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div id="cleared">
+        </div>
+      </div>
+      <!-- Modal Footer -->
+      <div class="modal-footer">
+        <button data-toggle="modal" data-target="#messageModal" ng-click="logout()" class="btn btn-default col-lg-3 col-md-3 col-sm-3 "><i class="fa fa-sign-out fa-fw "></i><span>Cerrar Sesión</span> </button>
+
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+                    Cancelar
+                </button>
+      </div>
+    </div>
+  </div>
 </div>
