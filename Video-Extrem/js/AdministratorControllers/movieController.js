@@ -138,7 +138,8 @@ function movieTableController( $scope, $http,dataManager,messageService) {
             'linkImagen': linkImageCreateInput,
             'genresArray': $scope.movieGenres,
             'languagesArray': $scope.movieLanguages,
-            'actorsArray': $scope.movieActors
+            'actorsArray': $scope.movieActors,
+            'movieType' : 1
         };
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url, movieData).
