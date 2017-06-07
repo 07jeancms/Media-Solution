@@ -124,6 +124,8 @@ function movieTableController( $scope, $http,dataManager,messageService) {
         var actualArrayLanguages = [];
         var actualArrayActors = []; 
 
+        var e = document.getElementById("movieTypeHtml");
+        var selected_type = e.options[e.selectedIndex].value;
         $scope.addMovie_aux("generoCreate");
         $scope.addMovie_aux("idiomaCreate");
         $scope.addMovie_aux("actorCreate");
@@ -139,7 +141,7 @@ function movieTableController( $scope, $http,dataManager,messageService) {
             'genresArray': $scope.movieGenres,
             'languagesArray': $scope.movieLanguages,
             'actorsArray': $scope.movieActors,
-            'movieType' : 1
+            'movieType' : selected_type
         };
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url, movieData).
