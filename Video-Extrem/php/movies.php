@@ -31,6 +31,7 @@
         public $genresArray;
         public $languagesArray;
         public $actorsArray;
+        public $movieType;
         
         function getMovies() {
             $connection = new connection();
@@ -86,9 +87,9 @@
             }
         }
     
-        function addMovie($pMovieName, $pMovieYear, $pMovieDescription, $pMoviePrice, $pMovieLink, $pGenresArray, $pLanguagesArray, $pActorsArray) {
+        function addMovie($pMovieName, $pMovieYear, $pMovieDescription, $pMoviePrice, $pMovieLink, $pGenresArray, $pLanguagesArray, $pActorsArray,$pMovieType) {
             $connection = new connection();
-            $call = "call addNewMovie('$pMovieYear','$pMovieName', '$pMovieDescription', '$pMoviePrice', '$pMovieLink');";
+            $call = "call addNewMovie('$pMovieYear','$pMovieName', '$pMovieDescription', '$pMoviePrice', '$pMovieLink', '$pMovieType');";
             $result = $connection->consult($call);
             foreach ($pGenresArray as $genreElement) {
                 $call = "call addGenreByMovieNoID('$genreElement');";
@@ -141,9 +142,10 @@
         $movieClass->genresArray = $request->genresArray;
         $movieClass->languagesArray = $request->languagesArray;
         $movieClass->actorsArray = $request->actorsArray;
+        $movieClass->movieType = $request->movieType;
     
         $movieClass->addMovie($movieClass->movieName, $movieClass->movieYear, $movieClass->movieDescription, 
                               $movieClass->moviePrice, $movieClass->movieLink, $movieClass->genresArray, 
-                              $movieClass->languagesArray, $movieClass->actorsArray);
+                              $movieClass->languagesArray, $movieClass->actorsArray, $movieClass->movieType);
     }
 ?>

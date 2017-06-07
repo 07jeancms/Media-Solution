@@ -627,20 +627,34 @@ DELIMITER ;
 
 DELIMITER //
 CREATE PROCEDURE addNewMovie
-	(IN pAno INT, IN pPelicula VARCHAR(200), IN pTrama VARCHAR(1000), IN pPrecio DECIMAL, pLinkImagen VARCHAR(500))
+	(IN pAno INT, IN pPelicula VARCHAR(200), IN pTrama VARCHAR(1000), IN pPrecio DECIMAL, pLinkImagen VARCHAR(500), In pTipoPelicula INT)
 
 	BEGIN
 		DECLARE _CurrentDateTime DATETIME;
 		DECLARE _Code VARCHAR(50);
-		
 		SET _CurrentDateTime = now();
-		SET _Code = (select (codigo + 1) from Peliculas order by CAST(codigo AS SIGNED) DESC LIMIT 1);
-		
-		INSERT INTO Peliculas (ano, pelicula, trama, precio, fechaIngreso, linkImagen, codigo) 
-		VALUES (pAno, pPelicula, pTrama, pPrecio, _CurrentDateTime, pLinkImagen, _Code);
-	END //
-DELIMITER ;
+		IF pTipoPelicula == 0 then
+			SET _Code = (select (codigo + 1) from Peliculas order by CAST(codigo AS SIGNED) DESC LIMIT 1);
+			
+			INSERT INTO Peliculas (ano, pelicula, trama, precio, fechaIngreso, linkImagen, codigo) 
+			VALUES (pAno, pPelicula, pTrama, pPrecio, _CurrentDateTime, pLinkImagen, _Code);
+		END IF;
 
+		IF pTipoPelicula == 1 then
+			SET _Code = (SELECT max(REPLACE(codigo,'BR-','')) + 1 as 'Codigo' FROM Peliculas where codigo Like '%BR-%' order by CAST(codigo AS SIGNED));
+			
+			INSERT INTO Peliculas (ano, pelicula, trama, precio, fechaIngreso, linkImagen, codigo) 
+			VALUES (pAno, pPelicula, pTrama, pPrecio, _CurrentDateTime, pLinkImagen, CONCAT("BR-",_Code));
+		END IF;
+
+		IF pTipoPelicula == 2 then
+			SET _Code = (SELECT max(REPLACE(codigo,'3D-','')) + 1 as 'Codigo' FROM Peliculas where codigo Like '%3D-%' order by CAST(codigo AS SIGNED));
+			
+			INSERT INTO Peliculas (ano, pelicula, trama, precio, fechaIngreso, linkImagen, codigo) 
+			VALUES (pAno, pPelicula, pTrama, pPrecio, _CurrentDateTime, pLinkImagen, CONCAT("3D-",_Code));
+		END IF;
+	END //
+DELIMITER 
 -- call addMovie(2000, "Lord of the Rings", "This is a movies based on Frodo's adventures", 1000, now(), "http://vignette4.wikia.nocookie.net/lotr/images/3/3a/The_Lord_of_the_Rings_Characters.jpg/revision/latest?cb=20150328111911");
 ------------------------------------------------------------------------
 ------------------------------------------------------------------------
@@ -656,6 +670,7 @@ CREATE PROCEDURE deleteMovie
 		call deleteSubtitlesByMovie(pIdPelicula);
 		call deleteCategoryByMovie(pIdPelicula);
 		call deleteLanguageByMovie(pIdPelicula);
+		DELETE FROM ReservacionMaestra WHERE ReservacionMaestra.idPelicula = pIdPelicula;
 		DELETE FROM Peliculas WHERE idPelicula = pIdPelicula;
 		
 	END //
