@@ -91,27 +91,62 @@ var app = angular.module('crudApp', ['ngTable', 'ngResource', 'dndLists', 'smart
        */
 
     function getData() {
-      var adminDiv = document.getElementsByClassName('adminDiv');
-      var adminDivIndex;
-      for (adminDivIndex = 0; adminDivIndex < adminDiv.length; adminDivIndex++) {
-        var id = adminDiv[adminDivIndex].id;
-        var outerHeigth = $('#' + id).outerHeight(true);
-        var offSetTop = $('#' + id).offset().top;
-        offSetTop = Math.floor(offSetTop / 100) * 100;
-        properties = {
-          id: id,
-          outerHeigth: outerHeigth,
-          loaded: false,
-        };
+        var adminDiv = document.getElementsByClassName("adminDiv");
+        var adminDivIndex;
+        for (adminDivIndex = 0; adminDivIndex < adminDiv.length; adminDivIndex++) {
+            var id = adminDiv[adminDivIndex].id;
+            var outerHeigth = $('#' + id).outerHeight(true);
+            var offSetTop = $('#' + id).offset().top;
+            offSetTop = Math.floor(offSetTop / 100) * 100;
+            properties = {
+                "id": id,
+                "outerHeigth": outerHeigth,
+                "loaded": false
+            }
 
-        divs[offSetTop] = properties;
-        actualDivProperties = {
-          "id": id,
-          "time": 1
+
+            divs[offSetTop] = properties;
+            actualDivProperties = {
+                "id" : id,
+                "time" : 1
+            }
+            actualDiv[id] = actualDivProperties;
         }
-        actualDiv[id] = actualDivProperties;
-      }
     }
+
+        function isInDiv(){
+            var actualWindowScreen = $(this).scrollTop();
+            actualWindowScreen = Math.floor(actualWindowScreen / 100) * 100;
+            if (canBeLoaded(actualWindowScreen)) {
+
+
+
+                //Loading actual div
+                var actualId = divs[actualWindowScreen].id;
+                actualDivProperties = {
+                    "id" : actualId,
+                    "time" : 1
+                }
+                actualDiv[actualId] = actualDivProperties;
+                for (var actualTime = 0 ; actualTime < timeSections; actualTime++) {
+                    (function(ind) {
+                        setTimeout(function(){
+
+                            manageData(divs[actualWindowScreen],  actualWindowScreen);
+                            actualDiv[actualId].time = actualDiv[actualId].time +1;
+                        }, waitTime * ind);
+                    })(actualTime);
+                }
+            }
+        }
+        //el evento $(window).scroll detecta el div en el cual estamos ubicados.
+        $(window).scroll(function() {
+            isInDiv();
+        })
+
+        /*Esta funcion se llama una vez que el evento $(window).scroll detecte que estamos en el div indicado.
+        Esta funcion espera una cantidad definida para saber si el usuario si esta esperando datos en donde esta ubicado, o solo esta de paso por el scroll.
+        */
 
     function isInDiv() {
       var actualWindowScreen = $(this).scrollTop();

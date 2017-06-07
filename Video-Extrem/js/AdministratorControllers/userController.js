@@ -43,10 +43,40 @@ function userController($scope, $http, dataManager, messageService) {
     $scope.gobalCreateArrayRoles = [];
     $scope.globalRolesArrayRemove = [];
     $scope.globalRolesArrayAdd = [];
-
     var radios = document.getElementsByTagName('input');
     var value;
+    $scope.actualDiv = dataManager.actualDiv;
+    $scope.actualClass = "";
+    
+    
 
+    $scope.$watch('actualDiv["user"].time', function() {
+            var actualTime = $scope.actualDiv["user"].time;
+            if(actualTime<=3){
+                $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
+            }
+            else{
+                $scope.actualClass = "iconComplete";
+            }
+        
+    });
+    
+    $scope.readRadioButtonValues = function(pClassName, pEventType){
+        $scope.gobalCreateArrayRoles = [];
+        $scope.globalRolesArrayRemove = [];
+        $scope.globalRolesArrayAdd = [];
+
+        var radios = document.getElementsByTagName('input');
+        var value;
+
+        for (var i = 0; i < radios.length; i++) {
+            if (radios[i].type === 'checkbox' && radios[i].checked && radios[i].className == pClassName) {
+                value = radios[i].value;
+                if(pClassName === "rol"){
+                    $scope.gobalCreateArrayRoles.push(value);
+                }
+            }
+        }
     for (var i = 0; i < radios.length; i++) {
       if (radios[i].type === 'checkbox' && radios[i].checked && radios[i].className == pClassName) {
         value = radios[i].value;

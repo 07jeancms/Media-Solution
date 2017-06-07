@@ -22,7 +22,6 @@ function genreController($scope, $http,dataManager,messageService) {
 
     $scope.$watch('actualDiv["genre"].time', function() {
             var actualTime = $scope.actualDiv["genre"].time;
-            console.log("Actual Div Genres "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }
