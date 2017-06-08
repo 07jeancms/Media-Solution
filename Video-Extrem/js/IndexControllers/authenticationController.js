@@ -103,16 +103,11 @@ function userAuthenticationController($scope, $http, dataManager, messageService
           email: user.email,
         }
 
-        alert("authenticateUser");
         $scope.userData = {
           userName: user.name,
           userPassword: user.id,
         };
         $scope.authenticateUser();
-
-
-
-        alert('Good to see you, ' + JSON.stringify(user) + '.' + user.email);
       });
     } else {
       alert('User cancelled login or did not fully authorize.');
@@ -133,7 +128,7 @@ function userAuthenticationController($scope, $http, dataManager, messageService
           password: user.id,
           email: user.email,
         }
-        $scope.$apply()
+        $scope.$apply();
 
       });
     } else {
