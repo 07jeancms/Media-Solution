@@ -48,15 +48,18 @@ function userAuthenticationController($scope, $http, dataManager, messageService
       });
     });
 
-    document.getElementById('fblogout').addEventListener('click', function() {
+    document.getElementById('logout').addEventListener('click', function() {
       FB.getLoginStatus(function(response) {
         if (response && response.status === 'connected') {
           FB.logout(function(response) {
             document.location.reload();
           });
+          $scope.logout();
         }
+
       });
     });
+
     document.getElementById('fbregister').addEventListener('click', function() {
       FB.login(function(response) {
         $scope.registerWithFacebook(response);
@@ -115,6 +118,7 @@ function userAuthenticationController($scope, $http, dataManager, messageService
 
   };
   $scope.registerWithFacebook = function(response) {
+    alert("Registrandose con FB");
     if (response.authResponse) {
       FB.api('/me', {
         locale: 'tr_TR',
@@ -129,6 +133,7 @@ function userAuthenticationController($scope, $http, dataManager, messageService
           email: user.email,
         }
         $scope.$apply();
+
 
       });
     } else {
@@ -180,8 +185,10 @@ function userAuthenticationController($scope, $http, dataManager, messageService
   };
 
   $scope.getUserId = function() {
-    var dencryptedId = CryptoJS.AES.decrypt(sessionStorage.userId, sessionStorage.currentUser).toString(CryptoJS.enc.Utf8);
-    return dencryptedId;
+    if ($scope.checkIfConnected()) {
+      var dencryptedId = CryptoJS.AES.decrypt(sessionStorage.userId, sessionStorage.currentUser).toString(CryptoJS.enc.Utf8);
+      return dencryptedId;
+    }
   }
   $scope.isConnected = function() {
     var dencryptedToken = CryptoJS.AES.decrypt(sessionStorage.userToken, sessionStorage.currentUser).toString(CryptoJS.enc.Utf8);

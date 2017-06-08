@@ -25,39 +25,3 @@ $(function () {
 $('.navbar-collapse ul li a').click(function () {
   $('.navbar-collapse').collapse('hide');
 });
-// Google Maps Scripts
-var map = null;
-// When the window has finished loading create our google map below
-google.maps.event.addDomListener(window, 'load', init);
-google.maps.event.addDomListener(window, 'resize', function () {
-  map.setCenter(new google.maps.LatLng(9.962058, -84.0526522));
-});
-function createMap(lat, lng) {
-  var mapOptions = {
-    // How zoomed in you want the map to start at (always required)
-    zoom: 15,
-    // The latitude and longitude to center the map (always required)
-    center: new google.maps.LatLng(lat, lng),
-    // Video Extrem, Moravia
-    // Disables the default Google Maps UI components
-    disableDefaultUI: true,
-    draggable: false,
-    scrollwheel: false
-  };
-  // Get the HTML DOM element that will contain your map
-  // We are using a div with id="map" seen below in the <body>
-  var mapElement = document.getElementById('map');
-  // Create the Google Map using out element and options defined above
-  map = new google.maps.Map(mapElement, mapOptions);
-  // Custom Map Marker Icon - Customize the map-marker.png file to customize your icon
-  var image = 'img/map-marker.png';
-  var myLatLng = new google.maps.LatLng(lat, lng);
-  var beachMarker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    icon: image
-  });
-}
-function init() {
-  this.createMap(9.962058, -84.0526522);  // Video Extrem, Moravia
-}

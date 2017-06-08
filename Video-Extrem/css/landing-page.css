@@ -729,3 +729,8 @@ td{
 .selectMovieBtn{
   width: 10%;
 }
+
+.wazeLiveMap{
+  width: 100%;
+  height: 30vh;
+}
