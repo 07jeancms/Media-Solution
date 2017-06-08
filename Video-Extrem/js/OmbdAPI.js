@@ -161,11 +161,9 @@ var app = angular.module('crudApp', ['ngTable', 'ngResource', 'dndLists', 'smart
       if (isInRangeTop && isInRangeDown) {
 
         if (actualTime < timeSections) {
-          console.log("Counting " + actualTableId + "  " + actualTime)
         } else {
           getDivData(actualTable);
           actualTable.loaded = true;
-          console.log(actualTableId + " getted");
         }
 
       } else {
@@ -186,7 +184,6 @@ var app = angular.module('crudApp', ['ngTable', 'ngResource', 'dndLists', 'smart
         $http.get(actualDiv.url)
           .then(function(response) {
             divData[actualDivId].data = response.data;
-              console.log(JSON.stringify(divData,null, 2));
           });
 
       }
