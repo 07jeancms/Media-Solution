@@ -11,8 +11,8 @@ app.controller("suggestionsController", suggestionsController);
 suggestionsController.$inject = ['$scope', "$http","dataManager","messageService"];;
 
 function suggestionsController( $scope, $http,dataManager,messageService) {
-    $scope.suggestionDataSet = dataManager.suggestionData;
-    $scope.suggestionsCollection  = {suggestions : []};
+    $scope.suggestionDataSet = dataManager.divData.suggestions;
+    $scope.suggestionsCollection  = {data : []};
     $scope.itemsByPage=5;
     $scope.actualSuggestions = {};
 
@@ -21,8 +21,8 @@ function suggestionsController( $scope, $http,dataManager,messageService) {
     
     
 
-    $scope.$watch('actualDiv["suggestion"].time', function() {
-            var actualTime = $scope.actualDiv["suggestion"].time;
+    $scope.$watch('suggestionDataSet.time', function() {
+            var actualTime = $scope.suggestionDataSet.time;
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }

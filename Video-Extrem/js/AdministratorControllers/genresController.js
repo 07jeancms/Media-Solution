@@ -17,9 +17,7 @@ function genreController($scope, $http,dataManager,messageService) {
     $scope.actualGenre = {};
     $scope.actualClass = "";
 
-
-
-    $scope.$watch('genresDataSet.time', function() {
+    $scope.$watch('genreDataSet.time', function() {
             var actualTime = $scope.genreDataSet.time;
             console.log("Actual Div Genres "+actualTime);
             if(actualTime<=3){

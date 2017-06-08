@@ -1,5 +1,5 @@
 <div>
-    <table st-table="usersCollection.users" st-safe-src="userDataSet.users"  class="table table-striped" >
+    <table st-table="usersCollection.data" st-safe-src="userDataSet.data"  class="table table-striped" >
 
         <thead>
             <tr>
@@ -33,7 +33,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="actualUser in usersCollection.users">
+            <tr ng-repeat="actualUser in usersCollection.data">
                 <td data-title="'Id'"  filter="{Id: 'text'}">{{actualUser.idUsuario}}</td>
                 <td data-title="'Usuario'" filter="{user: 'number'}" sortable="'Year'">{{actualUser.userName}}</td>
                 <td data-title="'Correo'" filter="{rol: 'text'}">{{actualUser.correo}}</td>

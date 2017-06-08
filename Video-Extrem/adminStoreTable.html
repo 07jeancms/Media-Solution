@@ -1,5 +1,5 @@
 <div>
-    <table st-table="storesCollection.stores" st-safe-src="storeDataSet.stores"  class="table table-striped" >
+    <table st-table="storesCollection.data" st-safe-src="storeDataSet.data"  class="table table-striped" >
 
         <thead>
             <tr>
@@ -32,7 +32,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="actualStore in storesCollection.stores">
+            <tr ng-repeat="actualStore in storesCollection.data">
                 <td data-title="'Local'"  filter="{Local: 'text'}">{{actualStore.local}}</td>
                 <td data-title="'Ubicacion'" filter="{Ubicacion: 'text'}">{{actualStore.ubicacion}}</td>
                 <td data-title="'Telefono'" filter="{Telefono: 'text'}">{{actualStore.telefono}}</td>

@@ -62,7 +62,14 @@ var app = angular.module('crudApp', ['ngTable', 'ngResource', 'dndLists', 'smart
         var outerHeigth = $('#' + id).outerHeight(true);
         var offSetTop = $('#' + id).offset().top;
         offSetTop = Math.floor(offSetTop / 100) * 100;
-        var dataLink = "http://www.videoextrem.com/api/" + id + ".php?queryType=select";
+        var dataLink = "";
+        if (id === "bookingMovie"){
+            dataLink = "http://www.videoextrem.com/api/" + id + ".php?queryType=getBookingMaster";
+        }
+        else{
+            dataLink = "http://www.videoextrem.com/api/" + id + ".php?queryType=select";
+        }
+          
         //Create div hash with position as key
         var actualDivProperties = {
           "id": id,

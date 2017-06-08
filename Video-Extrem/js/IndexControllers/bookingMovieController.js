@@ -3,9 +3,9 @@ bookingController.$inject = ['$scope', '$http', 'dataManager', 'messageService']
 
 function bookingController($scope, $http, dataManager, messageService) {
 
-  $scope.bookingDataSet = dataManager.bookingMasterData;
+  $scope.bookingDataSet = dataManager.divData.bookingMovie;
   $scope.bookingCollection = {
-    booking: []
+    data: []
   };
   $scope.itemsByPage = 5;
   $scope.actualBooking = {};
@@ -25,8 +25,8 @@ function bookingController($scope, $http, dataManager, messageService) {
   $scope.actualClass = '';
 
 
-    $scope.$watch('actualDiv["booking"].time', function() {
-            var actualTime = $scope.actualDiv["booking"].time;
+    $scope.$watch('bookingDataSet.time', function() {
+            var actualTime = $scope.bookingDataSet.time;
             if(actualTime<=3){
                 $scope.actualClass = 'iconWaiting' + actualTime + ' fa-spinner fa-spin';
             }

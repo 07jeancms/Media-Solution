@@ -10,8 +10,8 @@ app.controller("categoriesController", categoriesController);
 categoriesController.$inject = ['$scope', "$http","dataManager","messageService"];
 
 function categoriesController($scope, $http,dataManager,messageService) {
-    $scope.categoryDataSet = dataManager.categoryData;
-    $scope.categoriesCollection  = {categories : []};
+    $scope.categoryDataSet = dataManager.divData.categories;
+    $scope.categoriesCollection  = {data : []};
     $scope.itemsByPage=5;
     $scope.actualCategory  = {};
      
@@ -21,8 +21,8 @@ function categoriesController($scope, $http,dataManager,messageService) {
     
     
 
-    $scope.$watch('actualDiv["category"].time', function() {
-            var actualTime = $scope.actualDiv["category"].time;
+    $scope.$watch('categoryDataSet.time', function() {
+            var actualTime = $scope.categoryDataSet.time;
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }

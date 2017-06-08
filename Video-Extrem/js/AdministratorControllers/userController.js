@@ -12,9 +12,9 @@ userController.$inject = ['$scope', '$http', 'dataManager', 'messageService'];
 
 function userController($scope, $http, dataManager, messageService) {
 
-  $scope.userDataSet = dataManager.userData;
+  $scope.userDataSet = dataManager.divData.users;
   $scope.usersCollection = {
-    users: [],
+    data: [],
   };
     
   $scope.itemsByPage = 5;
@@ -29,8 +29,8 @@ function userController($scope, $http, dataManager, messageService) {
   $scope.actualDiv = dataManager.actualDiv;
   $scope.actualClass = '';
 
-  $scope.$watch('actualDiv["user"].time', function () {
-    var actualTime = $scope.actualDiv.user.time;
+  $scope.$watch('userDataSet.time', function () {
+    var actualTime = $scope.userDataSet.time;
     console.log('Actual Div user ' + actualTime);
     if (actualTime <= 3) {
       $scope.actualClass = 'iconWaiting' + actualTime + ' fa-spinner fa-spin';

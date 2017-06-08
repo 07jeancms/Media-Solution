@@ -1,6 +1,6 @@
 
 <div>
-    <table st-table="discountsCollection.discounts" st-safe-src="discountDataSet.discounts" class="table table-striped" >
+    <table st-table="discountsCollection.data" st-safe-src="discountDataSet.data" class="table table-striped" >
         <thead>
             <tr>
                 <th st-sort="link">Link</th>
@@ -24,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="actualDiscount in discountsCollection.discounts">
+            <tr ng-repeat="actualDiscount in discountsCollection.data">
                 <td data-title="'Link'">{{actualDiscount.link}}</td>
                 <td data-title="'Estado'">{{actualDiscount.estado}}</td>
                 <td data-title="'Estado'">{{actualDiscount.nombre}}</td>
