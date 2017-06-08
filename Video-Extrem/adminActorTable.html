@@ -1,5 +1,5 @@
 <div>
-    <table st-table="actorsCollection.actors" st-safe-src="actorDataSet.actors"  class="table table-striped" >
+    <table st-table="actorsCollection.data" st-safe-src="actorDataSet.data"  class="table table-striped" >
 
         <thead>
             <tr>
@@ -24,19 +24,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="actualActor in actorsCollection.actors">
+            <tr ng-repeat="actualActor in actorsCollection.data">
                 <td data-title="'Id'"  filter="{Id: 'text'}">{{actualActor.idActor}}</td>
                 <td data-title="'Actor'" filter="{Actor: 'text'}">{{actualActor.actor}}</td>
-                <td data-title="'Editar'" >                                             
-                    <div class="inline col-lg-12">                                                  
-                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-target="#showActorMModal" aria-hidden="true"> 
-                        </i>                                                 
-                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditActor(actualActor)" data-toggle="modal" data-target="#editActorMModal" aria-hidden="true">  
-                        </i>                                                 
+                <td data-title="'Editar'" >
+                    <div class="inline col-lg-12">
+                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showActor(actualActor)" data-toggle="modal" data-target="#showActorMModal" aria-hidden="true">
+                        </i>
+                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditActor(actualActor)" data-toggle="modal" data-target="#editActorMModal" aria-hidden="true">
+                        </i>
                         <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteActor(actualActor)" aria-hidden="true">
-                        </i>                         
-                    </div>                                         
-                </td>                                   
+                        </i>
+                    </div>
+                </td>
             </tr>
         </tbody>
         <tfoot>

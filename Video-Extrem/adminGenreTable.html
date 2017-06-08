@@ -1,6 +1,6 @@
 
 <div>
-    <table st-table="genresCollection.genres" st-safe-src="genreDataSet.genres"  class="table table-striped" >
+    <table st-table="genresCollection.data" st-safe-src="genreDataSet.data"  class="table table-striped" >
 
         <thead>
             <tr>
@@ -29,17 +29,17 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="actualGenre in genresCollection.genres">
+            <tr ng-repeat="actualGenre in genresCollection.data">
                 <td data-title="'Id'"  filter="{Id: 'text'}">{{actualGenre.idGenero}}</td>
                 <td data-title="'Genero'" filter="{genre: 'number'}" >{{actualGenre.genero}}</td>
                 <td data-title="'Descripcion'">{{actualGenre.descripcion}}</td>
-                <td data-title="'Editar'" >                                             
-                    <div class="inline col-lg-12">                                                  
-                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showGenre(actualGenre)" data-toggle="modal" data-target="#showGenreModal" aria-hidden="true"> </i>                                                 
+                <td data-title="'Editar'" >
+                    <div class="inline col-lg-12">
+                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showGenre(actualGenre)" data-toggle="modal" data-target="#showGenreModal" aria-hidden="true"> </i>
                         <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditGenre(actualGenre)" data-toggle="modal" data-target="#editGenreModal" aria-hidden="true">  </i>
                         <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteGenre(actualGenre)"aria-hidden="true"></i>
                     </div>
-                </td>                       
+                </td>
             </tr>
         </tbody>
         <tfoot>

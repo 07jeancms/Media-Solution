@@ -14,6 +14,12 @@ function userAuthenticationController($scope, $http, dataManager, messageService
 
 
   $scope.actualUser = {};
+
+  $scope.creatingUser = {
+    token: 'NO_TOKEN',
+    arrayRoles: [13],
+  }
+
   $scope.url = 'http://www.videoextrem.com/api/authentication.php?queryType=tokenAuthentication';
   $scope.userData = {
     userName: '',
@@ -33,11 +39,35 @@ function userAuthenticationController($scope, $http, dataManager, messageService
     FB.getLoginStatus(function(response) {
       statusChangeCallback(response);
     });
+    document.getElementById('fblogin').addEventListener('click', function() {
+      FB.login(function(response) {
+        $scope.loginWithFacebook(response);
 
-    FB.login(function(response) {
-      $scope.registerWithFacebook(response);
+      }, {
+        scope: 'email,user_likes'
+      });
+    });
 
-    },{scope: 'email,user_likes'});
+    document.getElementById('fblogout').addEventListener('click', function() {
+      FB.getLoginStatus(function(response) {
+        if (response && response.status === 'connected') {
+          FB.logout(function(response) {
+            document.location.reload();
+          });
+        }
+      });
+    });
+    document.getElementById('fbregister').addEventListener('click', function() {
+      FB.login(function(response) {
+        $scope.registerWithFacebook(response);
+
+      }, {
+        scope: 'email,user_likes'
+      });
+
+
+    }, false);
+
 
     function checkLoginState() {
       FB.getLoginStatus(function(response) {
@@ -58,29 +88,67 @@ function userAuthenticationController($scope, $http, dataManager, messageService
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
-
-  $scope.registerWithFacebook = function(response){
+  $scope.loginWithFacebook = function(response) {
     if (response.authResponse) {
-     FB.api('/me',{ locale: 'tr_TR', fields: 'name, email,birthday, hometown,education,gender,website,work' }, function(user) {
-       var userName = user.name;
-       var password = user.id;
-       var email = user.email;
+      FB.api('/me', {
+        locale: 'tr_TR',
+        fields: 'name, email,birthday, hometown,education,gender,website,work'
+      }, function(user) {
 
-       alert('Good to see you, ' + JSON.stringify(user) + '.'+user.email);
-     });
+        $scope.creatingUser = {
+          token: 'NO_TOKEN',
+          arrayRoles: [13],
+          userName: user.name,
+          password: user.id,
+          email: user.email,
+        }
+
+        alert("authenticateUser");
+        $scope.userData = {
+          userName: user.name,
+          userPassword: user.id,
+        };
+        $scope.authenticateUser();
+
+
+
+        alert('Good to see you, ' + JSON.stringify(user) + '.' + user.email);
+      });
     } else {
-     alert('User cancelled login or did not fully authorize.');
+      alert('User cancelled login or did not fully authorize.');
+    }
+
+  };
+  $scope.registerWithFacebook = function(response) {
+    if (response.authResponse) {
+      FB.api('/me', {
+        locale: 'tr_TR',
+        fields: 'name, email,birthday, hometown,education,gender,website,work'
+      }, function(user) {
+        alert("register");
+        $scope.creatingUser = {
+          token: 'NO_TOKEN',
+          arrayRoles: [13],
+          userName: user.name,
+          password: user.id,
+          email: user.email,
+        }
+        $scope.$apply()
+
+      });
+    } else {
+      alert('User cancelled login or did not fully authorize.');
     }
 
   }
 
 
-  $scope.authenticateUser = function () {
+  $scope.authenticateUser = function() {
     $http.post($scope.url, $scope.userData)
-      .then(function (data, status) {
+      .then(function(data, status) {
         if (data.data[0].result != -1) {
           $scope.saveInStorage(data.data[0].result);
-          messageService.setMessage('Las credenciales coinciden. El usuario ' + $scope.userData.userName + ' con id '+data.data[0].result+' se ha conectado. ');
+          messageService.setMessage('Las credenciales coinciden. El usuario ' + $scope.userData.userName + ' con id ' + data.data[0].result + ' se ha conectado. ');
 
         } else {
           messageService.setMessage('El usuario ' + $scope.userData.userName + ' no se ha podido autenticar');
@@ -94,13 +162,11 @@ function userAuthenticationController($scope, $http, dataManager, messageService
 
   };
 
-  $scope.checkIfConnected =function(){
-    if((sessionStorage.currentUser != null && sessionStorage.userToken != null)&&($scope.isConnected())){
-      //TODO Replace this with the user information.
+  $scope.checkIfConnected = function() {
+    if ((sessionStorage.currentUser != null && sessionStorage.userToken != null) && ($scope.isConnected())) {
       $scope.actualUser.userName = sessionStorage.currentUser;
       return true;
-    }
-    else{
+    } else {
       sessionStorage.removeItem('currentUser');
       sessionStorage.removeItem('userToken');
       $scope.actualUser = {};
@@ -109,7 +175,7 @@ function userAuthenticationController($scope, $http, dataManager, messageService
 
   };
 
-  $scope.saveInStorage =function(userId){
+  $scope.saveInStorage = function(userId) {
     sessionStorage.currentUser = $scope.userData.userName;
     //TODO Replace this with the user information.
     var encrypted = CryptoJS.AES.encrypt('true', $scope.userData.userName);
@@ -118,20 +184,36 @@ function userAuthenticationController($scope, $http, dataManager, messageService
     sessionStorage.userToken = encrypted;
   };
 
-  $scope.getUserId = function(){
+  $scope.getUserId = function() {
     var dencryptedId = CryptoJS.AES.decrypt(sessionStorage.userId, sessionStorage.currentUser).toString(CryptoJS.enc.Utf8);
     return dencryptedId;
   }
-  $scope.isConnected = function(){
+  $scope.isConnected = function() {
     var dencryptedToken = CryptoJS.AES.decrypt(sessionStorage.userToken, sessionStorage.currentUser).toString(CryptoJS.enc.Utf8);
-    return dencryptedToken=='true';
+    return dencryptedToken == 'true';
+  }
+  $scope.addUser = function() {
+    alert("Creating User");
+    var url = 'http://www.videoextrem.com/api/users.php?queryType=add';
+
+    $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+    $http.post(url, $scope.creatingUser)
+      .then(function(data, status) {
+        alert('El usuario ' + $scope.creatingUser.userName + ' ha sido agregado');
+        $scope.userData = {
+          userName: $scope.creatingUser.userName,
+          userPassword: $scope.creatingUser.password,
+        };
+        $scope.authenticateUser()
+
+      });
+
+  };
+  $scope.loadActualUser = function() {
+
   }
 
-  $scope.loadActualUser = function(){
-
-  }
-
-  $scope.logout = function () {
+  $scope.logout = function() {
     sessionStorage.removeItem('currentUser');
     sessionStorage.removeItem('userToken');
     $scope.actualUser = {};

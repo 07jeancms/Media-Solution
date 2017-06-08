@@ -1,40 +1,41 @@
-//                 _             
-//       /\       | |            
-//      /  \   ___| |_ ___  _ __ 
+//                 _
+//       /\       | |
+//      /  \   ___| |_ ___  _ __
 //     / /\ \ / __| __/ _ \| '__|
-//    / ____ \ (__| || (_) | |   
-//   /_/    \_\___|\__\___/|_|   
-//                               
-//   
+//    / ____ \ (__| || (_) | |
+//   /_/    \_\___|\__\___/|_|
+//
+//
 app.controller("actorController", actorController);
 actorController.$inject =['$scope', "$http","dataManager","messageService"];
 
 function actorController($scope, $http,dataManager,messageService) {
-    $scope.actorDataSet = dataManager.actorData;
-    $scope.actorsCollection  = {actors : []};
+    $scope.actorDataSet = dataManager.divData.actors;
+    $scope.actorsCollection  = {data : []};
     $scope.itemsByPage=5;
     $scope.actualActor = {};
 
    $scope.actualDiv = dataManager.actualDiv;
     $scope.actualClass = "";
-    
-    
 
-    $scope.$watch('actualDiv["actor"].time', function() {
-            var actualTime = $scope.actualDiv["actor"].time;
+
+
+    $scope.$watch('actorDataSet.time', function() {
+            var actualTime = $scope.actorDataSet.time;
+            console.log("Actual Div actor "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }
             else{
                 $scope.actualClass = "iconComplete"
             }
-        
+
     });
 
     $scope.deleteActor = function(pActualActor){
         $scope.url = "http://www.videoextrem.com/api/actors.php?queryType=delete";
         $scope.actorData = {
-            'idActor' : pActualActor.idActor 
+            'idActor' : pActualActor.idActor
         }
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.actorData).
@@ -48,7 +49,7 @@ function actorController($scope, $http,dataManager,messageService) {
         var actorNameInput = document.getElementById('actorName').value;
         $scope.url = "http://www.videoextrem.com/api/actors.php?queryType=add";
         $scope.actorData = {
-            'actor' : actorNameInput 
+            'actor' : actorNameInput
         }
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.actorData).

@@ -1,51 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
-        <meta name="author" content="">
 
-<!-- 
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-  _____ _   _  _____ _     _    _ _____  ______  _____ 
- |_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
-   | | |  \| | |    | |   | |  | | |  | | |__  | (___  
-   | | | . ` | |    | |   | |  | | |  | |  __|  \___ \ 
-  _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
- |_____|_| \_|\_____|______\____/|_____/|______|_____/ 
-                                                       
+  <!--
+_____ _   _  _____ _     _    _ _____  ______  _____
+|_   _| \ | |/ ____| |   | |  | |  __ \|  ____|/ ____|
+| | |  \| | |    | |   | |  | | |  | | |__  | (___
+| | | . ` | |    | |   | |  | | |  | |  __|  \___ \
+_| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
+|_____|_| \_|\_____|______\____/|_____/|______|_____/
+
 -->
-        
-        <!-- Bootstrap Core CSS -->
-        <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
 
-        <!-- Custom CSS -->
-        <link href="css/navbar.css" rel="stylesheet">
-        <link href="css/landing-page.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="css/navbar.css" rel="stylesheet">
+  <link href="css/landing-page.css" rel="stylesheet">
 
 
-        <!-- Custom Fonts -->
-        <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css"> 
+  <!-- Custom Fonts -->
+  <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
-        <!-- Include Bootstrap-select CSS, JS -->
-        <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
+  <!-- Include Bootstrap-select CSS, JS -->
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/css/bootstrap-select.min.css" />
 
-        <!--Magic Check-Box-->
-        <link rel="stylesheet" href="node_modules/magic-check/css/magic-check.css">
+  <!--Magic Check-Box-->
+  <link rel="stylesheet" href="node_modules/magic-check/css/magic-check.css">
 
-        <title>Video Extrem</title>
+  <title>Video Extrem</title>
 
-    </head>
+</head>
 
-    <body ng-app="crudApp">
+<body ng-app="crudApp" ng-controller="userAuthenticationController" >
 
-        <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand page-scroll" href="#inicio">
+  <nav class="navbar navbar-custom navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand page-scroll" href="#inicio">
                         <i class="fa fa-play-circle"></i> <span class="light">Video</span> Extreme
                     </a>
                 </div>
@@ -177,469 +176,486 @@
             </div>
         </nav>
 <!--
-_    _ ______          _____  ______ _____  
-| |  | |  ____|   /\   |  __ \|  ____|  __ \ 
+_    _ ______          _____  ______ _____
+| |  | |  ____|   /\   |  __ \|  ____|  __ \
 | |__| | |__     /  \  | |  | | |__  | |__) |
-|  __  |  __|   / /\ \ | |  | |  __| |  _  / 
-| |  | | |____ / ____ \| |__| | |____| | \ \ 
+|  __  |  __|   / /\ \ | |  | |  __| |  _  /
+| |  | | |____ / ____ \| |__| | |____| | \ \
 |_|  |_|______/_/    \_\_____/|______|_|  \_\
 
--->                                              
-        <a name="inicioAdministrator"></a>
-        <header class="intro">
-            <div class="intro-body">
-                <div class="container principalImage">
-                    <div class="row">
-                        <div class="col-md-8 col-md-offset-2">
-                            <h1 class="brand-heading">Video <div class ="exColor">Ex</div>trem</h1>
-                            <p class="intro-text">Entretenimiento y calidad al mejor precio </p>
-                            <br>
-                        </div>
-                        <a href="#movie" class="btn btn-circle page-scroll">
+-->
+  <a name="inicioAdministrator"></a>
+  <header class="intro">
+    <div class="intro-body">
+      <div class="container principalImage">
+        <div class="row">
+          <div class="col-md-8 col-md-offset-2">
+            <h1 class="brand-heading">Video <div class ="exColor">Ex</div>trem</h1>
+            <p ng-if="!checkIfConnected()" class="intro-text">Pagina Administrativa</p>
+
+            <div ng-if="checkIfConnected()">
+              <h3 class="intro-text">Bienvenido,  <div class ="exColor">{{actualUser.userName}}</div></h3>
+              <br>
+            </div>
+
+            <a href="./index.html" class="btn btn-default btn-lg"><i class="fa fa-film fa-fw "></i><span>Pagina Principal </span> </a>
+          </div>
+          <a href="#estrenos" class="btn btn-circle page-scroll">
                             <i class="fa fa-angle-double-down animated"></i>
                         </a>
-                    </div>
-                </div>
-            </div>
-        </header>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<!-- 
- _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______ 
+  <!--
+_____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 |  __ \ /\   / ____|  ____|  / ____/ __ \| \ | |__   __|  ____| \ | |__   __|
-| |__) /  \ | |  __| |__    | |   | |  | |  \| |  | |  | |__  |  \| |  | |   
-|  ___/ /\ \| | |_ |  __|   | |   | |  | | . ` |  | |  |  __| | . ` |  | |   
-| |  / ____ \ |__| | |____  | |___| |__| | |\  |  | |  | |____| |\  |  | |   
-|_| /_/    \_\_____|______|  \_____\____/|_| \_|  |_|  |______|_| \_|  |_|   
+| |__) /  \ | |  __| |__    | |   | |  | |  \| |  | |  | |__  |  \| |  | |
+|  ___/ /\ \| | |_ |  __|   | |   | |  | | . ` |  | |  |  __| | . ` |  | |
+| |  / ____ \ |__| | |____  | |___| |__| | |\  |  | |  | |____| |\  |  | |
+|_| /_/    \_\_____|______|  \_____\____/|_| \_|  |_|  |______|_| \_|  |_|
 
 -->
-        <div class="pageContent">
-            <!-- Peliculas -->
-            <a name="movie"></a>
-            <div class="content-section-a adminDiv"  id="movie" >
-                <div class="container">
-                    <div class="row" ng-controller="movieTableController as movie">
-                        <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa fa-film fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Peliculas</h2>
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
+
+  <div class="pageContent" >
+    <div ng-include="'authenticationNeededMessage.html'" ng-if="!checkIfConnected()"></div>
+    <!-- Peliculas -->
+
+    <a name="movie"></a>
+    <div class="content-section-a adminDiv" id="movies">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="row" ng-controller="movieTableController as movie">
+          <div class="col-lg-6 col-sm-6">
+            <h2><i class="fa fa-film fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Peliculas</h2>
+          </div>
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
 
 
-                            <div>
-                                <div ng-include="'adminMovieTable.html'"></div> 
-                                <div ng-include="'movieModal.html'"></div>
-                                <div ng-include="'backupMoviesModal.html'"></div>  
-                            </div>
-
-
-                            <!-- Button trigger modal -->
-                        </div>
-                    </div>
-                </div>
+            <div>
+              <div ng-include="'adminMovieTable.html'"></div>
+              <div ng-include="'movieModal.html'"></div>
+              <div ng-include="'backupMoviesModal.html'"></div>
             </div>
 
 
+            <!-- Button trigger modal -->
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <!-- Idiomas -->
-            <a name="language"></a>
-            <div class="content-section-b adminDiv" id="language">
-                <div class="container">
-                    <div class="row" ng-controller="languageController as language">
-                        <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa fa-language fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Idiomas</h2>
-                            
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
 
-                            <div >
-                                <div >
-                                    <div ng-include="'adminLanguageTable.html'"></div>
-                                    <div ng-include="'languageModal.html'"></div>
-                                </div>      
-                            </div>
-                            <!-- Button trigger modal -->
-                        </div>
-                    </div>
-                </div>
+
+    <!-- Idiomas -->
+    <a name="language"></a>
+    <div class="content-section-b adminDiv" id="language">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="row" ng-controller="languageController as language">
+          <div class="col-lg-6 col-sm-6">
+            <h2><i class="fa fa-language fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Idiomas</h2>
+
+          </div>
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+
+            <div>
+              <div>
+                <div ng-include="'adminLanguageTable.html'"></div>
+                <div ng-include="'languageModal.html'"></div>
+              </div>
             </div>
+            <!-- Button trigger modal -->
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <!-- Actores -->
-            <a name="actor"></a>
-            <div class="content-section-a adminDiv" id="actor">
-                <div class="container">
-                    <div class="row" ng-controller="actorController as actores">
-                        <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa fa-male fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Actores</h2>
-                            
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-                            <div >
-                                <div >
-                                    <div ng-include="'adminActorTable.html'"></div>
-                                    <div ng-include="'actorM.html'"></div>
-                                </div>
-                            </div>
-                            <!-- Button trigger modal -->
-                        </div>
-                    </div>
-                </div>
+    <!-- Actores -->
+    <a name="actor"></a>
+    <div class="content-section-a adminDiv" id="actors">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="row" ng-controller="actorController as actores">
+          <div class="col-lg-6 col-sm-6">
+            <h2><i class="fa fa-male fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Actores</h2>
+
+          </div>
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <div>
+              <div>
+                <div ng-include="'adminActorTable.html'"></div>
+                <div ng-include="'actorM.html'"></div>
+              </div>
             </div>
+            <!-- Button trigger modal -->
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <!-- Subtitles -->
-            <a name="subtitle"></a>
-            <div class="content-section-b adminDiv" id="subtitle">
-                <div class="container">
-                    <div class="row" ng-controller="subtitlesController as subtitles">
-                         <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa fa-font fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Subtitulos</h2>
-                             
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-                           
-                            <div >
-                                <div >
-                                    <div ng-include="'adminSubtitleTable.html'"></div>
-                                    <div ng-include="'subtitleModal.html'"></div>
-                                </div> 
-                            </div>
-                            <!-- Button trigger modal -->
-                        </div>
-                    </div>
-                </div>
+    <!-- Subtitles -->
+    <a name="subtitle"></a>
+    <div class="content-section-b adminDiv" id="subtitles">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="row" ng-controller="subtitlesController as subtitles">
+          <div class="col-lg-6 col-sm-6">
+            <h2><i class="fa fa-font fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Subtitulos</h2>
+
+          </div>
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+
+            <div>
+              <div>
+                <div ng-include="'adminSubtitleTable.html'"></div>
+                <div ng-include="'subtitleModal.html'"></div>
+              </div>
             </div>
+            <!-- Button trigger modal -->
+          </div>
+        </div>
+      </div>
+    </div>
 
-            <!-- genre -->
-            <a name="genre"></a>
-            <div class="content-section-a adminDiv" id="genre">
-                <div class="container">
-                    <div class="row" ng-controller="genreController">
-                        <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa fa-certificate fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Generos</h2>
-                            
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-                            <div >
-                                <div ng-include="'adminGenreTable.html'"></div>
-                                <div ng-include="'genreModal.html'"></div>
-                            </div> 
-                        </div>
-                        <!-- Button trigger modal -->
-                    </div>
-                </div>
+    <!-- genre -->
+    <a name="genre"></a>
+    <div class="content-section-a adminDiv" id="genres">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="row" ng-controller="genreController">
+          <div class="col-lg-6 col-sm-6">
+            <h2><i class="fa fa-certificate fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Generos</h2>
+
+          </div>
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <div>
+              <div ng-include="'adminGenreTable.html'"></div>
+              <div ng-include="'genreModal.html'"></div>
             </div>
+          </div>
+          <!-- Button trigger modal -->
+        </div>
+      </div>
+    </div>
 
-            <!-- categories -->
-            <a name="category"></a>
-            <div class="content-section-b adminDiv" id="category">
-                <div class="container">
-                    <div class="row" ng-controller="categoriesController as categories">
-                        <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa  fa-th-list fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Categorias</h2>
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-                            <div >
-                                <div >
-                                    <div ng-include="'adminCategoriesTable.html'"></div>
-                                    <div ng-include="'categorieModal.html'"></div>
-                                </div>
-                            </div>
-                            <!-- Button trigger modal -->
-                        </div>
-
-                    </div>
-                </div>
+    <!-- categories -->
+    <a name="category"></a>
+    <div class="content-section-b adminDiv" id="category">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="row" ng-controller="categoriesController as categories">
+          <div class="col-lg-6 col-sm-6">
+            <h2><i class="fa  fa-th-list fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Categorias</h2>
+          </div>
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <div>
+              <div>
+                <div ng-include="'adminCategoriesTable.html'"></div>
+                <div ng-include="'categorieModal.html'"></div>
+              </div>
             </div>
-
-            <!-- suggestions -->
-            <a name="suggestion"></a>
-            <div class="content-section-a adminDiv" id="suggestion">
-                <div class="container">
-                    <div class="actualCategory"  ng-controller="suggestionsController as suggestions">
-                        <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa  fa-pencil fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Sugerencias</h2>
-                            
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-                            <div>
-                                <div>
-                                    <div ng-include="'adminSuggestionTable.html'"></div> 
-                                    <div ng-include="'suggestionModal.html'"></div> 
-                                </div>
-                            </div>
-                            <!-- Button trigger modal -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- users -->
-            <a name="user"></a>
-            <div class="content-section-b adminDiv" id="user">
-                <div class="container">
-                    <div class="row" ng-controller="userController">
-                         <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa fa-user-circle-o fa-lg"  ng-class="actualClass" aria-hidden="true">
-                                </i>&nbsp;Usuarios</h2>
-                             
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-                            
-
-                            <div  >
-                                <div ng-include="'adminUserTable.html'"></div> 
-                                <div ng-include="'userModal.html'"></div> 
-                            </div>
-
-                            <!-- Button trigger modal -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- reservaciones -->
-            <a name="booking"></a>
-            <div class="content-section-b adminDiv" id="booking">
-                <div class="container">
-                    <div class="row" ng-controller="bookingController as booking">
-                        <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa  fa-shopping-basket fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Reservaciones</h2>
-                            
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-
-                            <div  >
-                                <div ng-include="'adminBookingTable.html'"></div> 
-                            </div>
-
-                            <!-- Button trigger modal -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- role -->
-            <a name="role"></a>
-            <div class="content-section-a adminDiv" id="role">
-                <div class="container">
-                    <div class="row" ng-controller="roleController">
-                         <h2><i class="fa  fa-id-card-o fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Roles</h2>
-                        
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-                            <div >
-                                <table st-table="rolesCollection.roles" st-safe-src="rolesData.roles"  class="table table-striped" >
-
-                                    <thead>
-                                        <tr>
-                                            <th st-sort="idRol">Id</th>
-                                            <th st-sort="rol">Rol</th>
-                                            <th> Editar</th>
-                                        </tr>
-                                        <tr>
-                                            <th>
-                                                <input st-search="idRol"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
-                                            </th>
-                                            <th>
-                                                <input st-search="rol"  class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
-                                            </th>
-                                            <th >
-                                                <div class="input-group margin-bottom-sm">
-                                                    <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
-                                                    <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search"/>
-                                                </div>
-
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr ng-repeat="actualRol in rolesCollection.roles">
-                                            <td data-title="'Id'"  filter="{Id: 'text'}">{{actualRol.idRol}}</td>
-                                            <td data-title="'Rol'" filter="{role: 'number'}" sortable="'Year'">{{actualRol.rol}}</td>
-                                            <td data-title="'Editar'" >                                             
-                                                <div class="inline col-lg-12">                                 
-                                                    <i class="editBtn fa fa-film col-lg-4"  ng-click="this.showRol(actualRol)" data-toggle="modal" data-target="#showRolModal" aria-hidden="true"> </i>                                                  
-                                                    <i class="editBtn fa fa-pencil col-lg-4"  ng-click="this.setEditRol(actualRol)" data-toggle="modal" data-target="#editRolModal" aria-hidden="true"></i>                   
-                                                    <i class="editBtn fa fa-trash col-lg-4"  data-target="#messageModal"  ng-click="this.deleteRol(actualRol)"aria-hidden="true"></i>
-                                                </div>                                         
-                                            </td>     
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="5" class="text-center">
-                                                <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
-                                            </td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                            </div>
-                            <!-- Button trigger modal -->
-                            <div ng-include="'roleModal.html'"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- discounts -->
-            <a name="discount"></a>
-            <div class="content-section-b adminDiv" id="discounts">
-                <div class="container">
-                    <div class="row"  ng-controller="discountController">
-                        <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa  fa-picture-o fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Carruseles</h2>
-                            {{actualClass}}
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-                            <div >
-                                <div ng-include="'adminDiscountTable.html'"></div> 
-                                <div ng-include="'discountModal.html'"></div> 
-                            </div>
-                            <!-- Button trigger modal -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- stores -->
-            <a name="local"></a>
-            <div class="content-section-a adminDiv" id="local">
-                <div class="container">
-                    <div class="row"  ng-controller="storeController as stores">
-                        <div class="col-lg-6 col-sm-6">
-                            <h2><i class="fa  fa-home fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Locales</h2>
-                            {{actualClass}}
-                        </div>
-                        <div class="col-lg-12 col-sm-6">
-                            <hr class="section-heading-spacer">
-                            <div class="clearfix"></div>
-                            <div >
-                                <div ng-include="'adminStoreTable.html'"></div> 
-                                <div ng-include="'storeModal.html'"></div> 
-                            </div>
-                            <!-- Button trigger modal -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <!-- Button trigger modal -->
+          </div>
 
         </div>
+      </div>
+    </div>
 
-<!--
- ______ ____   ____ _______ ______ _____  
-|  ____/ __ \ / __ \__   __|  ____|  __ \ 
+    <!-- suggestions -->
+    <a name="suggestion"></a>
+    <div class="content-section-a adminDiv" id="suggestion">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="actualCategory" ng-controller="suggestionsController as suggestions">
+          <div class="col-lg-6 col-sm-6">
+            <h2><i class="fa  fa-pencil fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Sugerencias</h2>
+
+          </div>
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <div>
+              <div>
+                <div ng-include="'adminSuggestionTable.html'"></div>
+                <div ng-include="'suggestionModal.html'"></div>
+              </div>
+            </div>
+            <!-- Button trigger modal -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- users -->
+    <a name="user"></a>
+    <div class="content-section-b adminDiv" id="user">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="row" ng-controller="userController">
+          <div class="col-lg-6 col-sm-6">
+            <h2><i class="fa fa-user-circle-o fa-lg"  ng-class="actualClass" aria-hidden="true">
+                                </i>&nbsp;Usuarios</h2>
+
+          </div>
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+
+
+            <div>
+              <div ng-include="'adminUserTable.html'"></div>
+              <div ng-include="'userModal.html'"></div>
+            </div>
+
+            <!-- Button trigger modal -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- reservaciones -->
+    <a name="booking"></a>
+    <div class="content-section-b adminDiv" id="booking">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="row" ng-controller="bookingController">
+          <div class="col-lg-6 col-sm-6">
+            <h2><i class="fa  fa-shopping-basket fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Reservaciones</h2>
+
+          </div>
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+
+            <div>
+              <div ng-include="'adminBookingTable.html'"></div>
+            </div>
+
+            <!-- Button trigger modal -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- role -->
+    <a name="role"></a>
+    <div class="content-section-a adminDiv" id="role">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="row" ng-controller="roleController">
+          <h2><i class="fa  fa-id-card-o fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Roles</h2>
+
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <div>
+              <table st-table="rolesCollection.roles" st-safe-src="rolesData.roles" class="table table-striped">
+
+                <thead>
+                  <tr>
+                    <th st-sort="idRol">Id</th>
+                    <th st-sort="rol">Rol</th>
+                    <th> Editar</th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <input st-search="idRol" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search" />
+                    </th>
+                    <th>
+                      <input st-search="rol" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search" />
+                    </th>
+                    <th>
+                      <div class="input-group margin-bottom-sm">
+                        <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
+                        <input st-search placeholder="" class="input-filter form-control ng-pristine ng-valid ng-scope ng-empty ng-touched" type="search" />
+                      </div>
+
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="actualRol in rolesCollection.roles">
+                    <td data-title="'Id'" filter="{Id: 'text'}">{{actualRol.idRol}}</td>
+                    <td data-title="'Rol'" filter="{role: 'number'}" sortable="'Year'">{{actualRol.rol}}</td>
+                    <td data-title="'Editar'">
+                      <div class="inline col-lg-12">
+                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showRol(actualRol)" data-toggle="modal" data-target="#showRolModal" aria-hidden="true"> </i>
+                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditRol(actualRol)" data-toggle="modal" data-target="#editRolModal" aria-hidden="true"></i>
+                        <i class="editBtn fa fa-trash col-lg-4" data-target="#messageModal" ng-click="this.deleteRol(actualRol)" aria-hidden="true"></i>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <td colspan="5" class="text-center">
+                      <div st-pagination="" st-items-by-page="itemsByPage" st-template="customPagination.html" st-displayed-pages="5"></div>
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- Button trigger modal -->
+            <div ng-include="'roleModal.html'"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- discounts -->
+    <a name="discount"></a>
+    <div class="content-section-b adminDiv" id="discounts">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="row" ng-controller="discountController">
+          <div class="col-lg-6 col-sm-6">
+            <h2><i class="fa  fa-money fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Carousel</h2> {{actualClass}}
+
+
+          </div>
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <div>
+              <div ng-include="'adminDiscountTable.html'"></div>
+              <div ng-include="'discountModal.html'"></div>
+            </div>
+            <!-- Button trigger modal -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Locales -->
+    <a name="local"></a>
+    <div class="content-section-a adminDiv" id="local">
+      <div class="container" ng-if="checkIfConnected()">
+        <div class="row">
+          <div class="col-lg-12 col-sm-6">
+            <hr class="section-heading-spacer">
+            <div class="clearfix"></div>
+            <h2 class="section-heading">Locales</h2>
+            <div>
+              <div ng-controller="storeController as stores">
+                <div ng-include="'adminStoreTable.html'"></div>
+                <div ng-include="'storeModal.html'"></div>
+              </div>
+            </div>
+            <!-- Button trigger modal -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!--
+______ ____   ____ _______ ______ _____
+|  ____/ __ \ / __ \__   __|  ____|  __ \
 | |__ | |  | | |  | | | |  | |__  | |__) |
-|  __|| |  | | |  | | | |  |  __| |  _  / 
-| |   | |__| | |__| | | |  | |____| | \ \ 
+|  __|| |  | | |  | | | |  |  __| |  _  /
+| |   | |__| | |__| | | |  | |____| | \ \
 |_|    \____/ \____/  |_|  |______|_|  \_\
 
 -->
-        <footer>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <ul class="list-inline">
-                            <li class="footer-menu-divider">&sdot;</li>
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <ul class="list-inline">
+            <li class="footer-menu-divider">&sdot;</li>
 
-                            <li>
-                                <a href="#inicio">Inicio</a>
-                            </li>
+            <li>
+              <a href="#inicio">Inicio</a>
+            </li>
 
-                            <li class="footer-menu-divider">&sdot;</li>
+            <li class="footer-menu-divider">&sdot;</li>
 
-                            <li>
-                                <a href="#estrenos">Estrenos</a>
-                            </li>
+            <li>
+              <a href="#estrenos">Estrenos</a>
+            </li>
 
-                            <li class="footer-menu-divider">&sdot;</li>
+            <li class="footer-menu-divider">&sdot;</li>
 
-                            <li>
-                                <a href="#contact">Nuestras redes sociales</a>
-                            </li>
+            <li>
+              <a href="#contact">Nuestras redes sociales</a>
+            </li>
 
-                            <li class="footer-menu-divider">&sdot;</li>                                
+            <li class="footer-menu-divider">&sdot;</li>
 
-                            <li>
-                                <a href="#sugerencias">Sugerencias</a>
-                            </li>
-                        </ul>
+            <li>
+              <a href="#sugerencias">Sugerencias</a>
+            </li>
+          </ul>
 
-                        <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <div ng-include="messageModal.html"></div> 
-    </body>
+          <p class="copyright text-muted small">Copyright &copy; Video Extrem 2017</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <div ng-include="messageModal.html"></div>
+</body>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
 
-    <!--Angular.js  --->
-    <script src="node_modules/angular/angular.min.js"></script>
+<!--Angular.js  --->
+<script src="node_modules/angular/angular.min.js"></script>
 
-    <!--Angular.js Resources  --->
-    <script src="node_modules/angular-resource/angular-resource.min.js"></script>
+<!--Angular.js Resources  --->
+<script src="node_modules/angular-resource/angular-resource.min.js"></script>
 
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
 
-    <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+<!-- Plugin JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
 
-    <!-- Google Maps API Key-Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
-    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFvXfKy-vn2ilKVHLFrLIuLoE3JQjptfU&sensor=false"></script>
+<!-- Google Maps API Key-Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFvXfKy-vn2ilKVHLFrLIuLoE3JQjptfU&sensor=false"></script>
 
-    <!-- Theme JavaScript -->
-    <script src="js/grayscale.js"></script>
+<!-- Theme JavaScript -->
+<script src="js/grayscale.js"></script>
 
-    <!--OMBD API --->
-    <script src="js/OmbdAPI.js"></script>
+<!--OMBD API --->
+<script src="js/OmbdAPI.js"></script>
 
-    <!--Administrator Controllers --->
 
-    <script src="js/AdministratorControllers/genresController.js"></script>
-    <script src="js/AdministratorControllers/roleController.js"></script>
-    <script src="js/AdministratorControllers/userController.js"></script>
-    <script src="js/AdministratorControllers/movieController.js"></script>
-    <script src="js/AdministratorControllers/actorController.js"></script>
-    <script src="js/AdministratorControllers/categoriesController.js"></script>
-    <script src="js/AdministratorControllers/languageController.js"></script>
-    <script src="js/AdministratorControllers/subtitlesController.js"></script>
-    <script src="js/AdministratorControllers/suggestionController.js"></script>
-    <script src="js/IndexControllers/bookingMovieController.js"></script>
-    <script src="js/AdministratorControllers/discountController.js"></script>
-    <script src="js/AdministratorControllers/storeController.js"></script>
+<script src="js/IndexControllers/authenticationController.js"></script>
 
-    <!-- Include Bootstrap-select CSS, JS -->
-    <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+<!--Administrator Controllers --->
 
-    <!--Angular Table   --->
-    <script src="js/ng-table.min.js"></script>
+<script src="js/AdministratorControllers/genresController.js"></script>
+<script src="js/AdministratorControllers/roleController.js"></script>
+<script src="js/AdministratorControllers/userController.js"></script>
+<script src="js/AdministratorControllers/movieController.js"></script>
+<script src="js/AdministratorControllers/actorController.js"></script>
+<script src="js/AdministratorControllers/categoriesController.js"></script>
+<script src="js/AdministratorControllers/languageController.js"></script>
+<script src="js/AdministratorControllers/subtitlesController.js"></script>
+<script src="js/AdministratorControllers/suggestionController.js"></script>
+<script src="js/IndexControllers/bookingMovieController.js"></script>
+<script src="js/AdministratorControllers/discountController.js"></script>
+<script src="js/AdministratorControllers/storeController.js"></script>
 
-    <!--Smart Table   --->
-    <script src="node_modules/angular-smart-table/dist/smart-table.js"></script>
 
-    <!--Angular Drag and drop   --->
-    <script src="js/dragAndDropList.js"></script>
+<!-- Include Bootstrap-select CSS, JS -->
+<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
+
+<!--Encryption Controllers -->
+<script src="js/encrypt.js"></script>
+
+<!--Angular Table   --->
+<script src="js/ng-table.min.js"></script>
+
+<!--Smart Table   --->
+<script src="node_modules/angular-smart-table/dist/smart-table.js"></script>
+
+<!--Angular Drag and drop   --->
+<script src="js/dragAndDropList.js"></script>
+
 </html>

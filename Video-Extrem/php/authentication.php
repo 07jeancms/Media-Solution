@@ -3,7 +3,7 @@
     include("/connection/connection_class.php");
     header('Content-Type: text/html; charset=utf8_spanish_ci');
     header("Content-Type: text/html;charset=utf-8");
-    header('Access-Contactor-Allow-Origin: *'); 
+    header('Access-Contactor-Allow-Origin: *');
 
     $_queryType ="";
 
@@ -29,16 +29,15 @@
             while($row = mysql_fetch_assoc($result)){
                 $response[] = array("result"=>$row['result']);
             }
-            echo json_encode($response); 
+            echo json_encode($response);
         }
     }
 
     $authenticationClass = new authentication();
 
     if ($_queryType == "tokenAuthentication"){
-        //$authenticationClass->idUser = request->idUser;
-        //$authenticationClass->userName = request->userName;
-        //$authenticationClass->userPassword = request->userPassword;
-        $authenticationClass->authenticateUser('admin', '11111');
+        $authenticationClass->userName = $request->userName;
+        $authenticationClass->userPassword = $request->userPassword;
+        $authenticationClass->authenticateUser( $authenticationClass->userName, $authenticationClass->userPassword);
     }
 ?>

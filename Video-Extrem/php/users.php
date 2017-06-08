@@ -3,7 +3,7 @@
     include("/connection/connection_class.php");
     header('Content-Type: text/html; charset=utf8_spanish_ci');
     header("Content-Type: text/html;charset=utf-8");
-    header('Access-Contactor-Allow-Origin: *'); 
+    header('Access-Contactor-Allow-Origin: *');
 
     $_queryType ="";
 
@@ -35,7 +35,7 @@
             while($row = mysql_fetch_assoc($result)){
                 $users[] = array("idUsuario"=>$row['idUsuario'], "token"=>$row['token'], "fechaIngreso"=>$row['fechaIngreso'], "userName"=>$row['userName'], "correo"=>$row['correo'], "telefono"=>$row['telefono'], "password"=>$row['password']);
             }
-            echo json_encode($users); 
+            echo json_encode($users);
         }
 
         function deleteUser($pUserId) {
@@ -48,13 +48,13 @@
             $connection = new connection();
             $call = "call addUser('$pToken', '$pUserName', '$pEmail', '$pPhone', '$pPassword');";
             $result = $connection->consult($call);
-            
+
             foreach ($pArrayRoles as $roleElement) {
                 $call = "call addRoleByUserNoRoleID('$roleElement');";
                 $result = $connection->consult($call);
             }
         }
-        
+
         function editUser($pUserId, $pUserName, $pEmail, $pPhone, $pPassword, $pArrayAdd, $pArrayRemove) {
             $connection = new connection();
             $call = "call updateUser('$pUserId','$pUserName', '$pEmail', '$pPhone', '$pPassword');";
@@ -62,20 +62,20 @@
             foreach ($pArrayAdd as $addElement) {
                 $call = "call addRoleByUser('$pUserId','$addElement');";
                 $result = $connection->consult($call);
-            }            
+            }
             foreach ($pArrayRemove as $removeElement) {
                 $call = "call deleteRoleByUser('$pUserId','$removeElement');";
                 $result = $connection->consult($call);
             }
         }
-        
-         function authenticateUser($pUserName, $pPassword) {
+
+         function authenticateUser( $pUserName, $pPassword) {
             $connection = new connection();
             $call = "call validateAuthentication( '$pUserName','$pPassword');";
             $result = $connection->consult($call);
-            
+
         }
-        
+
     }
 
     $userClass = new user();
@@ -104,15 +104,15 @@
         $userClass->password = $request->password;
         $userClass->arrayRolesAdd = $request->arrayRolesAdd;
         $userClass->arrayRolesRemove = $request->arrayRolesRemove;
-    
-        $userClass->editUser($userClass->userId, $userClass->userName, $userClass->email, $userClass->phone, $userClass->password, 
+
+        $userClass->editUser($userClass->userId, $userClass->userName, $userClass->email, $userClass->phone, $userClass->password,
                                $userClass->arrayRolesAdd, $userClass->arrayRolesRemove);
     }
 
     if ($_queryType == "auth"){
         $userClass->userName = $request->userName;
         $userClass->password = $request->password;
-    
+
         $userClass->authenticateUser( $userClass->userName,$userClass->password);
     }
 ?>
