@@ -119,16 +119,10 @@
             </div>
             <div ng-cloak ng-if="checkIfConnected()">
               <h3 class="intro-text">Bienvenido,  <div class ="exColor">{{actualUser.userName}}</div></h3>
-              <a href="./indexAdministrator.html" class="btn btn-default btn-lg"><i class="fa fa-user fa-fw "></i><span>Pagina Administrativa</span> </a>
-
+              <a ng-if="hasAdministrativePrevileges()" href="./indexAdministrator.html" class="btn btn-default btn-lg"><i class="fa fa-user fa-fw "></i><span>Pagina Administrativa</span> </a>
               <button ng-click="logout()" class="btn btn-default btn-lg"><i class="fa fa-sign-in fa-fw "></i><span> Cerrar Sesión</span> </button>
               <br>
             </div>
-
-
-
-
-
           </div>
           <a href="#estrenos" class="btn btn-circle page-scroll">
                          <i class="fa fa-angle-double-down animated"></i>

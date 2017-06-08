@@ -118,13 +118,11 @@ function userAuthenticationController($scope, $http, dataManager, messageService
 
   };
   $scope.registerWithFacebook = function(response) {
-    alert("Registrandose con FB");
     if (response.authResponse) {
       FB.api('/me', {
         locale: 'tr_TR',
         fields: 'name, email,birthday, hometown,education,gender,website,work'
       }, function(user) {
-        alert("register");
         $scope.creatingUser = {
           token: 'NO_TOKEN',
           arrayRoles: [13],
@@ -180,6 +178,7 @@ function userAuthenticationController($scope, $http, dataManager, messageService
     //TODO Replace this with the user information.
     var encrypted = CryptoJS.AES.encrypt('true', $scope.userData.userName);
     var encryptedId = CryptoJS.AES.encrypt(userId, $scope.userData.userName);
+    $scope.setAdministrationPreviliges(userId);
     sessionStorage.userId = encryptedId;
     sessionStorage.userToken = encrypted;
   };
@@ -195,7 +194,6 @@ function userAuthenticationController($scope, $http, dataManager, messageService
     return dencryptedToken == 'true';
   }
   $scope.addUser = function() {
-    alert("Creating User");
     var url = 'http://www.videoextrem.com/api/users.php?queryType=add';
 
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
@@ -221,5 +219,37 @@ function userAuthenticationController($scope, $http, dataManager, messageService
     $scope.actualUser = {};
     messageService.setMessage('El usuario ha sido desconectado. ');
   };
+
+  $scope.setAdministrationPreviliges = function(pUserId) {
+    var getRoleUrl = 'http://www.videoextrem.com/api/rolesByUser.php?queryType=select';
+    var userToRetrive = {
+      userId: pUserId,
+    };
+    $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+    var isAdministrator = false;
+    $http.post(getRoleUrl, userToRetrive)
+      .then(function(data, status) {
+        var tempRolesArray = [];
+        for (actualRole = 0; actualRole < data.data.length; actualRole++) {
+
+          isAdministrator = isAdministrator || (data.data[actualRole] != "Cliente");
+        }
+        if (isAdministrator) {
+          var encryptedPrevileges = CryptoJS.AES.encrypt('true', $scope.userData.userName);
+          sessionStorage.userPrevileges = encryptedPrevileges;
+        }
+
+
+      });
+  };
+
+  $scope.hasAdministrativePrevileges = function() {
+    if (sessionStorage.userPrevileges != null) {
+      var dencryptedToken = CryptoJS.AES.decrypt(sessionStorage.userPrevileges, sessionStorage.currentUser).toString(CryptoJS.enc.Utf8);
+      return dencryptedToken == 'true';
+    } else {
+      return false;
+    }
+  }
 
 }
