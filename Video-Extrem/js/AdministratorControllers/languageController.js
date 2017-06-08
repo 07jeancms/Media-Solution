@@ -18,8 +18,6 @@ function languageController ( $scope, $http,dataManager,messageService) {
     $scope.actualLanguage = {};
     $scope.actualClass = "";
 
-
-
     $scope.$watch('languageDataSet.time', function() {
             var actualTime = $scope.languageDataSet.time;
             console.log("Actual Div language "+actualTime);
@@ -29,7 +27,6 @@ function languageController ( $scope, $http,dataManager,messageService) {
             else{
                 $scope.actualClass = "iconComplete";
             }
-
     });
 
     $scope.deleteLanguage = function(pActualIdioma){

@@ -1,5 +1,5 @@
 <div>
-    <table st-table="categoriesCollection.categories" st-safe-src="categoryDataSet.categories"  class="table table-striped" >
+    <table st-table="categoriesCollection.data" st-safe-src="categoryDataSet.data"  class="table table-striped" >
 
         <thead>
             <tr>
@@ -24,7 +24,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="actualCategory in categoriesCollection.categories">
+            <tr ng-repeat="actualCategory in categoriesCollection.data">
                 <td data-title="'Id'"  filter="{Id: 'number'}">{{actualCategory.idCategoria}}</td>
                 <td data-title="'Categoria'" filter="{Categoria: 'text'}" sortable="'Categoria'">{{actualCategory.categoria}}</td>
                 <td data-title="'Editar'" >                                             

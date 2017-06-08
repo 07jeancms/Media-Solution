@@ -1,6 +1,6 @@
 
 <div>
-    <table st-table="suggestionsCollection.suggestions" st-safe-src="suggestionDataSet.suggestions"  class="table table-striped" >
+    <table st-table="suggestionsCollection.data" st-safe-src="suggestionDataSet.data"  class="table table-striped" >
 
         <thead>
             <tr>
@@ -30,7 +30,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="actualSuggestion in suggestionsCollection.suggestions">
+            <tr ng-repeat="actualSuggestion in suggestionsCollection.data">
                 <td data-title="'Local'">{{actualSuggestion.local}}</td>
                 <td data-title="'Enviada por'">{{actualSuggestion.userName}}</td>
                 <td data-title="'Sugerencia'">{{actualSuggestion.sugerencia}}</td>

@@ -13,8 +13,8 @@ app.controller("storeController", storeController);
 storeController.$inject =['$scope', "$http","dataManager","messageService"];
 
 function storeController($scope, $http,dataManager,messageService) {
-    $scope.storeDataSet = dataManager.storeData;
-    $scope.storesCollection  = {stores : []};
+    $scope.storeDataSet = dataManager.divData.stores;
+    $scope.storesCollection  = {data : []};
     $scope.itemsByPage=5;
     $scope.actualStore = {};
     $scope.ubications = [];
@@ -22,6 +22,17 @@ function storeController($scope, $http,dataManager,messageService) {
     $scope.init = function(){
         $scope.populateLocations();
     }
+    
+    $scope.$watch('storeDataSet.time', function() {
+            var actualTime = $scope.storeDataSet.time;
+            console.log("Actual Div stores "+actualTime);
+            if(actualTime<=3){
+                $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
+            }
+            else{
+                $scope.actualClass = "iconComplete";
+            }
+    });
 
     $scope.populateLocations = function(){
         $scope.ubications = [];

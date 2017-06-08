@@ -9,10 +9,21 @@ app.controller("discountController", discountController);
 discountController.$inject =['$scope', "$http","dataManager","messageService"];
 
 function discountController($scope, $http, dataManager, messageService) {
-    $scope.discountDataSet = dataManager.discountData;
-    $scope.discountsCollection  = {discounts : []};
+    $scope.discountDataSet = dataManager.divData.discounts;
+    $scope.discountsCollection  = {data : []};
     $scope.itemsByPage=5;
     $scope.actualDiscounts = {};
+
+    $scope.$watch('discountDataSet.time', function() {
+            var actualTime = $scope.discountDataSet.time;
+            console.log("Actual Div discounts "+actualTime);
+            if(actualTime<=3){
+                $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
+            }
+            else{
+                $scope.actualClass = "iconComplete";
+            }
+    });    
 
     $scope.deleteActor = function(pActualActor){
         $scope.url = "http://www.videoextrem.com/api/actors.php?queryType=delete";

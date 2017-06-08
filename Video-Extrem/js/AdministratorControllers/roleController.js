@@ -11,8 +11,8 @@ roleController.$inject = ['$scope', "$http","dataManager","messageService"];
 
 function roleController ( $scope, $http,dataManager,messageService) {
 
-    $scope.rolesData = dataManager.roleData;
-    $scope.rolesCollection  = {roles : []};
+    $scope.rolesData = dataManager.divData.roles;
+    $scope.rolesCollection  = {data : []};
     $scope.itemsByPage=5;
     $scope.actualRol = {};
      $scope.actualDiv = dataManager.actualDiv;
@@ -20,8 +20,8 @@ function roleController ( $scope, $http,dataManager,messageService) {
     
     
 
-    $scope.$watch('actualDiv["role"].time', function() {
-            var actualTime = $scope.actualDiv["role"].time;
+    $scope.$watch('rolesData.time', function() {
+            var actualTime = $scope.rolesData.time;
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }
