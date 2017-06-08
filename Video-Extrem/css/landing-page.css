@@ -440,6 +440,10 @@ p.copyright {
     cursor: pointer;
 }
 .btn{
+    background-color: rgba(134,0,0,0.7);
+    color: #FFF;
+}
+.secundaryBtn{
     background-color: rgba(134,0,0,0.4);
     color: #FFF;
 }

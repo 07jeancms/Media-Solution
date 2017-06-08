@@ -1,34 +1,34 @@
 
-//     _____                          
-//    / ____|                         
-//   | |  __  ___ _ __  _ __ ___  ___ 
+//     _____
+//    / ____|
+//   | |  __  ___ _ __  _ __ ___  ___
 //   | | |_ |/ _ \ '_ \| '__/ _ \/ __|
 //   | |__| |  __/ | | | | |  __/\__ \
 //    \_____|\___|_| |_|_|  \___||___/
-//                                    
-//  
+//
+//
 app.controller("genreController", genreController);
 genreController.$inject = ['$scope', "$http","dataManager","messageService"];
 
 function genreController($scope, $http,dataManager,messageService) {
-     $scope.genreDataSet = dataManager.genreData;
-    $scope.genresCollection  = {genres : []};
+     $scope.genreDataSet = dataManager.divData.genres;
+    $scope.genresCollection  = {data : []};
     $scope.itemsByPage=5;
     $scope.actualGenre = {};
-    $scope.actualDiv = dataManager.actualDiv;
     $scope.actualClass = "";
-    
-    
 
-    $scope.$watch('actualDiv["genre"].time', function() {
-            var actualTime = $scope.actualDiv["genre"].time;
+
+
+    $scope.$watch('genresDataSet.time', function() {
+            var actualTime = $scope.genreDataSet.time;
+            console.log("Actual Div Genres "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }
             else{
                 $scope.actualClass = "iconComplete"
             }
-        
+
     });
     $scope.addGenre = function(){
         var genreNameInput = document.getElementById('GenreName').value;
@@ -49,7 +49,7 @@ function genreController($scope, $http,dataManager,messageService) {
     $scope.deleteGenre = function(pActualGenre){
         $scope.url = "http://www.videoextrem.com/api/genres.php?queryType=delete";
         $scope.genreData = {
-            'idGenero' : pActualGenre.idGenero 
+            'idGenero' : pActualGenre.idGenero
         }
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.genreData).

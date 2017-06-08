@@ -40,10 +40,12 @@
       <!-- Modal Footer -->
       <div class="modal-footer ">
         <div class="col-lg-12 col-md-12 col-sm-12">
-          {{registrarse}}
-          <button data-toggle="modal" data-target="#messageModal" ng-click="authenticateUser()" class="btn btn-default col-lg-3 col-md-3 col-sm-3 "><i class="fa fa-sign-in fa-fw "></i><span>Inicia Sesion</span> </button>
-          <button class="btn btn-default col-lg-3 col-md-3 col-sm-3" ng-click="registrarse = true ">Registrarse</button>
-          <button class="btn btn-default col-lg-3 col-md-3 col-sm-3" data-dismiss="modal">Regresar</button>
+          <button data-toggle="modal" data-target="#messageModal" ng-click="authenticateUser()" class="btn btn-default"><i class="fa fa-sign-in fa-fw "></i><span>Inicia Sesion</span> </button>
+          <button class="btn secundaryBtn" ng-click="registrarse = true ">Registrarse</button>
+          <button class="btn secundaryBtn" data-dismiss="modal">Regresar</button>
+          <button id="fblogin" class="btn secundaryBtn"><i class="fa fa-facebook "></i><span></span> </button>
+
+
         </div>
       </div>
     </div>
@@ -64,48 +66,44 @@
           <div class="form-group">
             <label class="col-sm-2 control-label" for="inputNombre">Usuario</label>
             <div class="col-sm-10">
-              <input class="form-control" id="userNameInputCreate" placeholder="Usuario" />
+              <input class="form-control" ng-model="creatingUser.userName" placeholder="Usuario" />
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label" for="inputNombre">E-mail</label>
             <div class="col-sm-10">
-              <input type="email" class="form-control" id="emailInputCreate" placeholder="E-mail" />
+              <input class="form-control" ng-model="creatingUser.email" placeholder="E-mail" />
             </div>
           </div>
           <div class="form-group">
             <label class="col-sm-2 control-label" for="inputYear">Contraseña</label>
             <div class="col-sm-10">
-              <input type="password" class="form-control" id="passwordInputCreate" placeholder="Contrasena" />
+              <input type="password" class="form-control" ng-model="creatingUser.password" placeholder="Contrasena" />
             </div>
           </div>
-          <div class="form-group">
-            <label class="col-sm-2 control-label" for="inputYear">Roles</label>
-            <div class="col-md-8">
-              <div class="RolesRadioButtonsCreate" id="radio_roles_create"></div>
-            </div>
-          </div>
+
           <div class="form-group">
             <label class="col-sm-2 control-label" for="inputYear">Telefono</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" id="phoneInputCreate" placeholder="Telefono">
+              <input class="form-control" ng-model="creatingUser.phone" placeholder="Telefono">
             </div>
           </div>
         </form>
       </div>
       <!-- Modal Footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">
+        <button type="button" class="btn secundaryBtn btn-default" data-dismiss="modal">
                         Cancelar
                     </button>
-        <button type="button" class="btn btn-primary" ng-click="isValidUser()">
+
+        <button type="button" class="btn secundaryBtn btn-primary" ng-click="registrarse = false">
+                                Regresar
+                            </button>
+        <button id="fbregister" class="btn secundaryBtn btn-default "><i class="fa fa-facebook "></i><span></span> </button>
+        <button type="button" class="btn btn-primary" ng-click="addUser()">
                         Crear Usuario
                     </button>
-        <button type="button" class="btn btn-primary" ng-click="registrarse = false">
-                                Iniciar Sesión
-                            </button>
-        <fb:login-button autologoutlink="true" onlogin="checkLoginState();" scope="public_profile,email"></fb:login-button>
-        </fb:login-button>
+
       </div>
     </div>
   </div>
@@ -119,12 +117,6 @@
   \_____|_|  \_\______/_/    \_\_|  |______|
 
 -->
-
-<div class="modal fade" id="createUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" ng-hide="registrarse">
-  <div class="modal-dialog">
-
-  </div>
-</div>
 <!--
  ______
 /  ____| |
@@ -171,7 +163,6 @@ ____) | | | | (_) \ V  V /
       <!-- Modal Footer -->
       <div class="modal-footer">
         <button data-toggle="modal" data-target="#messageModal" ng-click="logout()" class="btn btn-default col-lg-3 col-md-3 col-sm-3 "><i class="fa fa-sign-out fa-fw "></i><span>Cerrar Sesión</span> </button>
-
         <button type="button" class="btn btn-default" data-dismiss="modal">
                     Cancelar
                 </button>

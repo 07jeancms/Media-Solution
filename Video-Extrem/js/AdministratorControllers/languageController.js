@@ -1,43 +1,41 @@
 
-//    _                                              
-//   | |                                             
-//   | |     __ _ _ __   __ _ _   _  __ _  __ _  ___ 
+//    _
+//   | |
+//   | |     __ _ _ __   __ _ _   _  __ _  __ _  ___
 //   | |    / _` | '_ \ / _` | | | |/ _` |/ _` |/ _ \
 //   | |___| (_| | | | | (_| | |_| | (_| | (_| |  __/
 //   |______\__,_|_| |_|\__, |\__,_|\__,_|\__, |\___|
-//                       __/ |             __/ |     
-//                      |___/             |___/      
+//                       __/ |             __/ |
+//                      |___/             |___/
 
 app.controller("languageController", languageController);
 languageController.$inject = ['$scope', "$http","dataManager","messageService"];
 
 function languageController ( $scope, $http,dataManager,messageService) {
-    $scope.languageDataSet = dataManager.languageData;
-    $scope.languagesCollection  = {languages : []};
+    $scope.languageDataSet = dataManager.divData.language;
+    $scope.languagesCollection  = {data : []};
     $scope.itemsByPage=5;
     $scope.actualLanguage = {};
-
-    
-    $scope.actualDiv = dataManager.actualDiv;
     $scope.actualClass = "";
-    
-    
 
-    $scope.$watch('actualDiv["language"].time', function() {
-            var actualTime = $scope.actualDiv["language"].time;
+
+
+    $scope.$watch('languageDataSet.time', function() {
+            var actualTime = $scope.languageDataSet.time;
+            console.log("Actual Div language "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }
             else{
-                $scope.actualClass = "iconComplete"
+                $scope.actualClass = "iconComplete";
             }
-        
+
     });
 
     $scope.deleteLanguage = function(pActualIdioma){
         $scope.url = "http://www.videoextrem.com/api/language.php?queryType=delete";
         $scope.languageData = {
-            'idIdioma' : pActualIdioma.idIdioma 
+            'idIdioma' : pActualIdioma.idIdioma
         }
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.languageData).
@@ -51,7 +49,7 @@ function languageController ( $scope, $http,dataManager,messageService) {
         var languageNameInput = document.getElementById('LanguageName').value;
         $scope.url = "http://www.videoextrem.com/api/language.php?queryType=add";
         $scope.languageData = {
-            'idioma' : languageNameInput 
+            'idioma' : languageNameInput
         }
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.languageData).

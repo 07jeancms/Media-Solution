@@ -1,6 +1,5 @@
 <div>
-    <table st-table="subtitlesCollection.subtitles" st-safe-src="subtitleDataSet.subtitles"  class="table table-striped" >
-
+    <table st-table="subtitlesCollection.data" st-safe-src="subtitleDataSet.data"  class="table table-striped" >
         <thead>
             <tr>
                 <th st-sort="idSubtitulo">Id</th>
@@ -24,19 +23,19 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="actualSubtitle in subtitlesCollection.subtitles">
+            <tr ng-repeat="actualSubtitle in subtitlesCollection.data">
                 <td data-title="'Id'"  filter="{Id: 'text'}">{{actualSubtitle.idSubtitulo}}</td>
                 <td data-title="'Subtitulo'" filter="{subtitles: 'number'}" sortable="'Year'">{{actualSubtitle.subtitulo}}</td>
-                <td data-title="'Editar'" >                                             
-                    <div class="inline col-lg-12">                                                  
-                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSubtitle(actualSubtitle)" data-toggle="modal" data-target="#showSubtitleModal" aria-hidden="true"> 
-                        </i>                                                 
-                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditSubtitle(actualSubtitle)" data-toggle="modal" data-target="#editSubtitleModal" aria-hidden="true">  
-                        </i>                                                 
+                <td data-title="'Editar'" >
+                    <div class="inline col-lg-12">
+                        <i class="editBtn fa fa-film col-lg-4" ng-click="this.showSubtitle(actualSubtitle)" data-toggle="modal" data-target="#showSubtitleModal" aria-hidden="true">
+                        </i>
+                        <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditSubtitle(actualSubtitle)" data-toggle="modal" data-target="#editSubtitleModal" aria-hidden="true">
+                        </i>
                         <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteSubtitle(actualSubtitle)" aria-hidden="true">
-                        </i>                         
-                    </div>                                         
-                </td>                                     
+                        </i>
+                    </div>
+                </td>
             </tr>
         </tbody>
         <tfoot>

@@ -29,45 +29,9 @@ var app = angular.module('crudApp', ['ngTable', 'ngResource', 'dndLists', 'smart
     var divs = {};
     var waitTime = 1000;
     var timeSections = 3;
-
+    var timesCalled = 0;
     //Data
-    var roleData = {
-      roles: [],
-    };
-    var movieData = {
-      movies: [],
-    };
-    var languageData = {
-      languages: [],
-    };
-    var actorData = {
-      actors: [],
-    };
-    var subtitleData = {
-      subtitles: [],
-    };
-    var genreData = {
-      genres: [],
-    };
-    var categoryData = {
-      categories: [],
-    };
-    var suggestionData = {
-      suggestions: [],
-    };
-    var discountData = {
-      discounts: [],
-    };
-    var userData = {
-      users: [],
-    };
-    var bookingMasterData = {
-      booking: [],
-    };
-
-    var storeData = {
-      stores: [],
-    };
+    var divData = {};
 
     //Flags
     var actualDiv = {};
@@ -91,27 +55,29 @@ var app = angular.module('crudApp', ['ngTable', 'ngResource', 'dndLists', 'smart
        */
 
     function getData() {
-        var adminDiv = document.getElementsByClassName("adminDiv");
-        var adminDivIndex;
-        for (adminDivIndex = 0; adminDivIndex < adminDiv.length; adminDivIndex++) {
-            var id = adminDiv[adminDivIndex].id;
-            var outerHeigth = $('#' + id).outerHeight(true);
-            var offSetTop = $('#' + id).offset().top;
-            offSetTop = Math.floor(offSetTop / 100) * 100;
-            properties = {
-                "id": id,
-                "outerHeigth": outerHeigth,
-                "loaded": false
-            }
-
-
-            divs[offSetTop] = properties;
-            actualDivProperties = {
-                "id" : id,
-                "time" : 1
-            }
-            actualDiv[id] = actualDivProperties;
+      var adminDiv = document.getElementsByClassName('adminDiv');
+      var adminDivIndex;
+      for (adminDivIndex = 0; adminDivIndex < adminDiv.length; adminDivIndex++) {
+        var id = adminDiv[adminDivIndex].id;
+        var outerHeigth = $('#' + id).outerHeight(true);
+        var offSetTop = $('#' + id).offset().top;
+        offSetTop = Math.floor(offSetTop / 100) * 100;
+        var dataLink = "http://www.videoextrem.com/api/" + id + ".php?queryType=select";
+        //Create div hash with position as key
+        var actualDivProperties = {
+          "id": id,
+          "loaded": false,
+          "outerHeigth": outerHeigth,
+          'url': dataLink,
         }
+        divs[offSetTop] = actualDivProperties;
+        //Create div hash with id as key
+        var actualDivDataProperties = {
+          "time": 1,
+        }
+        divData[id] = actualDivDataProperties;
+
+      }
     }
 
         function isInDiv(){
@@ -152,22 +118,17 @@ var app = angular.module('crudApp', ['ngTable', 'ngResource', 'dndLists', 'smart
       var actualWindowScreen = $(this).scrollTop();
       actualWindowScreen = Math.floor(actualWindowScreen / 100) * 100;
       if (canBeLoaded(actualWindowScreen)) {
-
-
-
         //Loading actual div
         var actualId = divs[actualWindowScreen].id;
-        actualDivProperties = {
-          "id": actualId,
-          "time": 1
-        }
-        actualDiv[actualId] = actualDivProperties;
-        for (var actualTime = 0; actualTime < timeSections; actualTime++) {
+        divData[actualId].time = 1;
+        for (var actualTime = 1; actualTime < timeSections; actualTime++) {
           (function(ind) {
             setTimeout(function() {
 
               manageData(divs[actualWindowScreen], actualWindowScreen);
-              actualDiv[actualId].time = actualDiv[actualId].time + 1;
+
+              divData[actualId].time = divData[actualId].time + 1;
+
             }, waitTime * ind);
           })(actualTime);
         }
@@ -185,130 +146,24 @@ var app = angular.module('crudApp', ['ngTable', 'ngResource', 'dndLists', 'smart
       var actualTableId = actualTable.id;
       var pageSizePorcentage = $('#' + actualTableId).outerHeight(true) * 0.4;
       var newActualWindowScreen = $(this).scrollTop();
-      actualDiv[divs[actualWindowScreen].id];
-      var actualTime = actualDiv[actualTableId].time;
-      if (actualWindowScreen >= newActualWindowScreen - pageSizePorcentage && actualWindowScreen <= newActualWindowScreen + pageSizePorcentage) {
-        switch (actualTableId) {
-          case "role":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              getRolesData();
-              actualTable.loaded = true;
+      var actualTime = divData[actualTableId].time;
 
-              console.log("Role getted");
-            }
-            break;
-          case "movie":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              getMovieData();
-              actualTable.loaded = true;
-              console.log("Movie getted");
-            }
+      var isInRangeTop = (actualWindowScreen >= (newActualWindowScreen - pageSizePorcentage))
+      var isInRangeDown = (actualWindowScreen <= (newActualWindowScreen + pageSizePorcentage))
 
-            break;
-          case "language":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              getLanguageData();
-              actualTable.loaded = true;
-              console.log("language getted");
-            }
-            break;
-          case "actor":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              getActorData();
-              actualTable.loaded = true;
-              console.log("Actor getted");
-            }
-            break;
-          case "subtitle":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              getSubtitleData();
-              actualTable.loaded = true;
-              console.log("subtitle getted");
-            }
-            break;
-          case "genre":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              getGenreData();
-              actualTable.loaded = true;
-              console.log("genre getted");
-            }
-            break;
-          case "category":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              getCategoryData();
-              actualTable.loaded = true;
-              console.log("Category getted");
-            }
-            break;
-          case "suggestion":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              getSuggestionData();
-              actualTable.loaded = true;
-              console.log("suggestion getted");
-            }
-            break;
-          case "user":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              getUserData();
-              actualTable.loaded = true;
-              console.log("user getted");
-            }
-            break;
-          case "discounts":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              getDiscountsData();
-              actualTable.loaded = true;
-              console.log("discounts getted");
-            }
-            break;
-          case "suggestionIndex":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              showTestMessage("suggestionIndex");
-            }
-            break;
-          case "booking":
-            if (actualTime < timeSections) {
-              console.log("Counting " + actualTableId + "  " + actualTime)
-            } else {
-              getBookingMasterData();
-              actualTable.loaded = true;
-            }
-            break;
-          case "local":
-            getStoreData();
-            actualTable.loaded = true;
-            break;
-          default:
-            break;
+      if (isInRangeTop && isInRangeDown) {
+
+        if (actualTime < timeSections) {
+          console.log("Counting " + actualTableId + "  " + actualTime)
+        } else {
+          getDivData(actualTable);
+          actualTable.loaded = true;
+          console.log(actualTableId + " getted");
         }
 
       } else {
-        actualDiv[actualTableId].time = 0;
+        divData[actualTableId].time = 0;
       }
-
-
 
     }
 
@@ -316,119 +171,28 @@ var app = angular.module('crudApp', ['ngTable', 'ngResource', 'dndLists', 'smart
       console.log("NG-APP working on " + pMessage);
     }
 
-    function getStoreData() {
-      $http.get("http://www.videoextrem.com/api/stores.php?queryType=select")
-        .then(function(response) {
-          storeData.stores = response.data;
-        });
+    function getDivData(actualDiv) {
+      var actualDivId = actualDiv.id;
+      var isLoaded = actualDiv.loaded;
+      if (!isLoaded) {
+        actualDiv.loaded = true;
+        $http.get(actualDiv.url)
+          .then(function(response) {
+            divData[actualDivId].data = response.data;
+              console.log(JSON.stringify(divData,null, 2));
+          });
+
+      }
 
     }
 
-    function getDiscountsData() {
-      $http.get("http://www.videoextrem.com/api/discounts.php?queryType=select")
-        .then(function(response) {
-          discountData.discounts = response.data;
-        });
-
-    }
-
-    function getRolesData() {
-      $http.get("http://www.videoextrem.com/api/roles.php?queryType=select")
-        .then(function(response) {
-          roleData.roles = response.data;
-        });
-
-    }
-
-    function getMovieData() {
-      $http.get("http://www.videoextrem.com/api/movies.php?queryType=select")
-        .then(function(response) {
-          movieData.movies = response.data;
-        });
-
-    }
-
-    function getLanguageData() {
-      $http.get("http://www.videoextrem.com/api/language.php?queryType=select")
-        .then(function(response) {
-          languageData.languages = response.data;
-        });
-
-    }
-
-    function getActorData() {
-      $http.get("http://www.videoextrem.com/api/actors.php?queryType=select")
-        .then(function(response) {
-          actorData.actors = response.data;
-        });
-
-    }
-
-    function getSubtitleData() {
-      $http.get("http://www.videoextrem.com/api/subtitles.php?queryType=select")
-        .then(function(response) {
-          subtitleData.subtitles = response.data;
-        });
-
-    }
-
-    function getGenreData() {
-      $http.get("http://www.videoextrem.com/api/genres.php?queryType=select")
-        .then(function(response) {
-          genreData.genres = response.data;
-        });
-
-    }
-
-    function getCategoryData() {
-      $http.get("http://www.videoextrem.com/api/categories.php?queryType=select")
-        .then(function(response) {
-          categoryData.categories = response.data;
-        });
-
-    }
-    //Falta de implementar
-    function getSuggestionData() {
-      $http.get("http://www.videoextrem.com/api/suggestions.php?queryType=select")
-        .then(function(response) {
-          suggestionData.suggestions = response.data;
-        });
-
-    }
-    //falta de implementar
-    function getUserData() {
-      $http.get("http://www.videoextrem.com/api/users.php?queryType=select")
-        .then(function(response) {
-          userData.users = response.data;
-        });
-
-    }
-
-    function getBookingMasterData() {
-      $http.get("http://www.videoextrem.com/api/bookingMovie.php?queryType=getBookingMaster")
-        .then(function(response) {
-          bookingMasterData.booking = response.data;
-        });
-
-    }
     //Se ejectua el getData para cargar la informacion de los divs
     getData();
     //Y se ejecuta una vez el isInDiv() para que cargue los datos de la parte de la pagina de donde inicia
-    isInDiv()
+    isInDiv();
+
     return {
-      roleData: roleData,
-      movieData: movieData,
-      genreData: genreData,
-      languageData: languageData,
-      actorData: actorData,
-      subtitleData: subtitleData,
-      categoryData: categoryData,
-      suggestionData: suggestionData,
-      userData: userData,
-      bookingMasterData: bookingMasterData,
-      discountData: discountData,
-      storeData: storeData,
-      actualDiv: actualDiv
+      divData: divData,
     };
 
 

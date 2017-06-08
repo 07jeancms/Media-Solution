@@ -1,5 +1,5 @@
 <div>
-    <table st-table="moviesCollection.movies" st-safe-src="movieData.movies"  class="table table-striped" >
+    <table st-table="moviesCollection.data" st-safe-src="movieData.data"  class="table table-striped" >
 
         <thead>
             <tr>
@@ -28,18 +28,18 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="actualMovie in moviesCollection.movies">
+            <tr ng-repeat="actualMovie in moviesCollection.data">
                 <td data-title="'pelicula'"  filter="{pelicula: 'text'}">{{actualMovie.pelicula}}</td>
                 <td data-title="'ano'" filter="{ano: 'number'}" sortable="'ano'">{{actualMovie.ano}}</td>
                 <td data-title="'trama'" filter="{trama: 'text'}" sortable="'trama'">{{actualMovie.trama}}</td>
-                <td data-title="'Editar'" >                                             
-                    <div class="inline col-lg-12">                                 
+                <td data-title="'Editar'" >
+                    <div class="inline col-lg-12">
                         <i class="editBtn fa fa-film col-lg-4"  ng-click="this.showMovie(actualMovie)" data-toggle="modal" data-target="#showMovieModal" aria-hidden="true"> </i>
                         <i class="editBtn fa fa-pencil col-lg-4" ng-click="this.setEditMovie(actualMovie)" data-toggle="modal" data-target="#editMovieModal" aria-hidden="true">
                         </i>
                         <i class="editBtn fa fa-trash col-lg-4"  ng-click="this.deleteMovie(actualMovie)"aria-hidden="true"></i>
-                    </div>                                         
-                </td>     
+                    </div>
+                </td>
             </tr>
         </tbody>
         <tfoot>
