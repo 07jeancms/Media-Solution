@@ -13,24 +13,14 @@ function carouselsController($scope, $http, dataManager, messageService) {
     $scope.init = function(pCarousel){
         $scope.loadImages(pCarousel);
     }
-    $scope.actualDiv = dataManager.actualDiv;
     $scope.actualClass = "";
 
 
 
-    $scope.$watch('actualDiv["discounts"].time', function() {
-        var actualTime = $scope.actualDiv["discounts"].time;
-        if(actualTime<=3){
-            $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
-        }
-        else{
-            $scope.actualClass = "iconComplete"
-        }
 
-    });
 
     $scope.loadImages = function(pIdCarousel) {
-        var url = "http://www.videoextrem.com/api/discounts.php?queryType=select1";        
+        var url = "http://www.videoextrem.com/api/discounts.php?queryType=select1";
         var carouselDiv = "";
         var carouselIndicator = "";
 

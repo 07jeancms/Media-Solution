@@ -40,7 +40,7 @@
       <!-- Modal Footer -->
       <div class="modal-footer ">
         <div class="col-lg-12 col-md-12 col-sm-12">
-          <button data-toggle="modal" data-target="#messageModal" ng-click="authenticateUser()" class="btn btn-default"><i class="fa fa-sign-in fa-fw "></i><span>Inicia Sesion</span> </button>
+          <button ng-click="authenticateUser()" class="btn btn-default"><i class="fa fa-sign-in fa-fw "></i><span>Inicia Sesion</span> </button>
           <button class="btn secundaryBtn" ng-click="registrarse = true ">Registrarse</button>
           <button class="btn secundaryBtn" data-dismiss="modal">Regresar</button>
           <button id="fblogin" class="btn secundaryBtn"><i class="fa fa-facebook "></i><span></span> </button>
@@ -99,7 +99,7 @@
         <button type="button" class="btn secundaryBtn btn-primary" ng-click="registrarse = false">
                                 Regresar
                             </button>
-        <button id="fbregister" class="btn secundaryBtn btn-default "><i class="fa fa-facebook "></i><span></span> </button>
+        <button id="fbregister" class="btn secundaryBtn btn-default "><i class="fa fa-facebook "></i></button>
         <button type="button" class="btn btn-primary" ng-click="addUser()">
                         Crear Usuario
                     </button>
@@ -162,7 +162,7 @@ ____) | | | | (_) \ V  V /
       </div>
       <!-- Modal Footer -->
       <div class="modal-footer">
-        <button data-toggle="modal" data-target="#messageModal" ng-click="logout()" class="btn btn-default col-lg-3 col-md-3 col-sm-3 "><i class="fa fa-sign-out fa-fw "></i><span>Cerrar Sesión</span> </button>
+        <button id="logout" class="btn btn-default col-lg-3 col-md-3 col-sm-3 "><i class="fa fa-sign-out fa-fw "></i><span>Cerrar Sesión</span> </button>
         <button type="button" class="btn btn-default" data-dismiss="modal">
                     Cancelar
                 </button>

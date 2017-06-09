@@ -69,7 +69,7 @@ var app = angular.module('crudApp', ['ngTable', 'ngResource', 'dndLists', 'smart
         else{
             dataLink = "http://www.videoextrem.com/api/" + id + ".php?queryType=select";
         }
-          
+
         //Create div hash with position as key
         var actualDivProperties = {
           "id": id,
@@ -299,21 +299,7 @@ var app = angular.module('crudApp', ['ngTable', 'ngResource', 'dndLists', 'smart
 
   }
 
-  app.controller('mediaController', mediaController);
-
-  mediaController.$inject = ['$resource', '$scope', 'messageService'];
-
-  function mediaController($resource, $scope, messageService) {
-    // tip: to debug, open chrome dev tools and uncomment the following line
-    //debugger;
-    $scope.waze = true;
-    $scope.whatsapp = true;
-    $scope.facebook = true;
-    $scope.whatsappMessage = function() {
-      messageService.setMessage('Whatsapp', 'El numero de whatsapp para cualquier consulta es el siguiente: 8472-8298 ');
-
-    };
-  }
+  
 
 
 
