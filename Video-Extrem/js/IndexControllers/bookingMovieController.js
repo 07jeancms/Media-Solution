@@ -84,7 +84,7 @@ function bookingController($scope, $http, dataManager, messageService) {
     if (index === -1) {
       $scope.chartCounter += 1;
       var counter_cart = document.getElementById('pruebita');
-      counter_cart.innerHTML = " Carrito " + $scope.chartCounter;
+      counter_cart.innerHTML = " " + $scope.chartCounter;
       $scope.storesCounter += 1;
       $scope.moviesToBook.push(pBookingMovie);
       if ($scope.storesCounter !== 0) {
@@ -114,11 +114,11 @@ function bookingController($scope, $http, dataManager, messageService) {
       $scope.chartCounter -= 1
       if ($scope.chartCounter > 0) {
         var counter_cart = document.getElementById('pruebita');
-        counter_cart.innerHTML = " Carrito " + $scope.chartCounter;
+        counter_cart.innerHTML = " " + $scope.chartCounter;
       }
       if ($scope.chartCounter == 0) {
         var counter_cart = document.getElementById('pruebita');
-        counter_cart.innerHTML = " Carrito";
+        counter_cart.innerHTML = "";
       }
       $scope.moviesToBook.splice(index, 1);
     }
