@@ -56,217 +56,9 @@ function movieTableController($scope, $http, dataManager, messageService) {
 
   });
 
-<<<<<<< Updated upstream
   $scope.actualDiv = dataManager.actualDiv;
   $scope.actualClass = "";
 
-=======
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    $scope.setAddMovie = function(){
-        $scope.populateGenresCreate();
-        $scope.populateLanguagesCreate();
-        $scope.populateActorsCreate();
-    }
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-
-    $scope.generateBackup = function(){
-        var backupName = document.getElementById('backupName').value;
-        var url = "http://www.videoextrem.com/api/generate_backup_movies_csv_file.php?queryType=getBackup";
-        $scope.backupData = {
-            'file' : backupName
-        };
-
-        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        $http.post(url, $scope.backupData).
-        then(function(data, status) {
-            messageService.setMessage("El archivo " + backupName + " ha sido creado correctamente");
-        })
-
-    }
-
-    $scope.addMovie_aux = function(pClassName){
-        var radios = document.getElementsByTagName('input');
-        var value;                   
-
-        for (var actualInputElement = 0; actualInputElement < radios.length; actualInputElement++) {
-            if (radios[actualInputElement].type === 'checkbox' && radios[actualInputElement].checked && radios[actualInputElement].className == pClassName) {
-                value = radios[actualInputElement].value;
-                if(pClassName === "generoCreate"){
-                    $scope.movieGenres.push(value);
-                }
-                if(pClassName === "idiomaCreate"){
-                    $scope.movieLanguages.push(value);
-                }
-                if(pClassName === "actorCreate"){
-                    $scope.movieActors.push(value);
-                }
-            }
-        }
-    }
-
-    $scope.addMovie = function(){
-        var movieNameCreateInput = document.getElementById("movieNameInputCreate").value;
-        var yearCreateInput = document.getElementById("movieYearInputCreate").value;
-        var descriptionCreateInput = document.getElementById("movieDescriptionInputCreate").value;
-        var priceCreateInput = document.getElementById("moviePriceInputCreate").value;
-        var linkImageCreateInput = document.getElementById("movieImageInputCreate").value;
-
-        var actualArrayGenres = [];
-        var actualArrayLanguages = [];
-        var actualArrayActors = []; 
-
-        var e = document.getElementById("movieTypeHtml");
-        var selected_type = e.options[e.selectedIndex].value;
-        $scope.addMovie_aux("generoCreate");
-        $scope.addMovie_aux("idiomaCreate");
-        $scope.addMovie_aux("actorCreate");
-
-        var url = "http://www.videoextrem.com/api/movies.php?queryType=add";
-
-        var movieData = {
-            'pelicula' : movieNameCreateInput,
-            'ano': yearCreateInput,
-            'trama': descriptionCreateInput,
-            'precio': priceCreateInput,
-            'linkImagen': linkImageCreateInput,
-            'genresArray': $scope.movieGenres,
-            'languagesArray': $scope.movieLanguages,
-            'actorsArray': $scope.movieActors,
-            'movieType' : selected_type
-        };
-        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        $http.post(url, movieData).
-        then(function(data, status) {
-            messageService.setMessage("La pelicula " + movieNameCreateInput + " se ha agregado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000);
-        })
-    }
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    $scope.populateGenresCreate = function(){
-        var radio_genres = document.getElementById("radio_genres_create");
-        radio_genres.innerHTML = '';
-        $http.get("http://www.videoextrem.com/api/genres.php?queryType=select")
-            .then(function(response) {
-            $scope.genresArrayToPopulate = response.data;
-            for(actualGenre=0; actualGenre< $scope.genresArrayToPopulate.length; actualGenre++){
-                var genreElement = $scope.genresArrayToPopulate[actualGenre].genero;
-                var new_button = $scope.createRadioButton(genreElement, genreElement, genreElement, "generoCreate", false);
-                var br = document.createElement("br");
-                radio_genres.appendChild(new_button);
-                radio_genres.appendChild(br);
-            }
-        });
-    }
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    $scope.populateLanguagesCreate = function(){
-        var radio_languages = document.getElementById("radio_languages_create");
-        radio_languages.innerHTML = '';
-        $http.get("http://www.videoextrem.com/api/language.php?queryType=select")
-            .then(function(response) {
-            $scope.languagesArrayToPopulate = response.data;
-            for(actualLanguage=0; actualLanguage< $scope.languagesArrayToPopulate.length; actualLanguage++){
-                var languageElement = $scope.languagesArrayToPopulate[actualLanguage].idioma;
-                var new_button = $scope.createRadioButton(languageElement, languageElement, languageElement, "idiomaCreate", false);
-                var br = document.createElement("br");
-                radio_languages.appendChild(new_button);
-                radio_languages.appendChild(br);
-            }
-        });
-    }
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    $scope.populateActorsCreate = function(){
-        var radio_actors = document.getElementById("actors_languages_create");
-        radio_actors.innerHTML = '';
-        $http.get("http://www.videoextrem.com/api/actors.php?queryType=select")
-            .then(function(response) {
-            $scope.actorsArrayToPopulate = response.data;
-            for(actualActor=0; actualActor< $scope.actorsArrayToPopulate.length; actualActor++){
-                var actorElement = $scope.actorsArrayToPopulate[actualActor].actor;
-                var new_button = $scope.createRadioButton(actorElement, actorElement, actorElement, "actorCreate", false);
-                var br = document.createElement("br");
-                radio_actors.appendChild(new_button);
-                radio_actors.appendChild(br);
-            }
-        });
-    }
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    $scope.populateGeneresByMovie = function(pActualMovie){
-        var url = "http://www.videoextrem.com/api/genresByMovie.php?queryType=select";
-        var movieData = {
-            'idPelicula' : pActualMovie.idPelicula
-        }
-        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        $http.post(url, movieData)
-            .then(function(data, status) {
-            var tempGenresArray = [];
-            for(actualGenre = 0; actualGenre < data.data.length; actualGenre++){
-                tempGenresArray.push(data.data[actualGenre].genero);
-            }
-            $scope.globalGenresArray.push({"idPelicula":pActualMovie.idPelicula, "generos":tempGenresArray});
-        })
-    }
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    $scope.populateLanguagesByMovie = function(pActualMovie){
-        var url = "http://www.videoextrem.com/api/languagesByMovie.php?queryType=select";
-        var movieData = {
-            'idPelicula' : pActualMovie.idPelicula
-        }
-        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        $http.post(url,movieData)
-            .then(function(data, status) {
-            var tempLanguagesArray = [];
-            for(actualLanguage = 0; actualLanguage < data.data.length; actualLanguage++){
-                tempLanguagesArray.push(data.data[actualLanguage].idioma);
-            }
-            $scope.globalLanguagesArray.push({"idPelicula":pActualMovie.idPelicula, "idiomas":tempLanguagesArray});
-        })
-    }        
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    $scope.populateActorsByMovie = function(pActualMovie){
-        var url = "http://www.videoextrem.com/api/actorsByMovie.php?queryType=select";
-        var movieData = {
-            'idPelicula' : pActualMovie.idPelicula
-        }
-        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        $http.post(url,movieData)
-            .then(function(data, status) {
-            var tempActorsArray = [];
-            for(actualActor = 0; actualActor < data.data.length; actualActor++){
-                tempActorsArray.push(data.data[actualActor].actor);
-            }
-            $scope.globalActorsArray.push({"idPelicula":pActualMovie.idPelicula, "actores":tempActorsArray});
-        })
-    }        
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//    
-    $scope.randomColor = function(){
-        var colors = ['#D64900', '#008684', '#860002'];
-        var random_color = colors[Math.floor(Math.random() * colors.length)];
-        $('#sidebar').css('background-color', random_color);
-    }
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    $scope.cleanDropdown = function (comboBox) {
-        while (comboBox.options.length > 0) {                
-            comboBox.remove(0);
-        }        
-    }
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    $scope.cleanRadioValues = function (pId) {
-        var elements = document.getElementById(pId).getElementsByTagName('label');
-        var size = elements.length;
-        for(var i = 0; i < size; i++){
-            elements[i].parentNode.removeChild(elements[i]);
->>>>>>> Stashed changes
 
 
   $scope.$watch('movieData.time', function() {
@@ -721,7 +513,6 @@ function movieTableController($scope, $http, dataManager, messageService) {
         if ($scope.movieGenres.includes(newElementGenre)) {} else {
           $scope.genresArrayAdd.push(newElementGenre);
         }
-<<<<<<< Updated upstream
       }
     }
     if (pClassName === "idioma") {
@@ -729,38 +520,6 @@ function movieTableController($scope, $http, dataManager, messageService) {
         var oldElementLanguage = $scope.movieLanguages[actualLanguage];
         if (actualArrayLanguages.includes(oldElementLanguage)) {} else {
           $scope.languagesArrayRemove.push(oldElementLanguage);
-=======
-        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        $http.post(url,movieData).
-        then(function(data, status) {
-            messageService.setMessage("La pelicula " + $scope.actualMovie.pelicula + " se ha editado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000);
-        })
-    }
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    $scope.updateRadioButtons = function(pClassName){
-        var radios = document.getElementsByTagName('input');
-        var value;
-
-        var actualArrayGenres = [];
-        var actualArrayLanguages = [];
-        var actualArrayActors = [];
-
-        for (var i = 0; i < radios.length; i++) {
-            if (radios[i].type === 'checkbox' && radios[i].checked && radios[i].className == pClassName) {
-                value = radios[i].value;
-                if(pClassName === "genero"){
-                    actualArrayGenres.push(value);
-                }
-                if(pClassName === "idioma"){
-                    actualArrayLanguages.push(value);
-                }
-                if(pClassName === "actor"){
-                    actualArrayActors.push(value);
-                }
-            }
->>>>>>> Stashed changes
         }
       }
 
@@ -895,48 +654,8 @@ function movieTableController($scope, $http, dataManager, messageService) {
         for (actualActorIndex in actors) {
           $scope.addActor(actors[actualActorIndex], actualActorIndex);
         }
-<<<<<<< Updated upstream
         $scope.loading = false;
         $scope.$apply();
-=======
-        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        $http.post(url,movieData).
-        then(function(data, status) {
-            messageService.setMessage("La pelicula " + pActualMovie.pelicula + " se ha borrado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000);
-        })
-    }
-    $scope.reply_click = function(clicked_id){
-        alert(clicked_id);
-    }
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    //-----------------------------------------------------------------------------------------------------------------------------------//
-    $scope.searchMovie = function(){
-
-        $scope.loading = true;
-        var sUrl = 'http://www.omdbapi.com/?t='+$scope.actualMovie.title+'&type=movie&tomatoes=true';
-        return $.ajax(sUrl,{
-            complete: function(p_oXHR, p_sStatus) {
-                var data =$.parseJSON(p_oXHR.responseText);
-                $scope.actualMovie.title = data.Title;
-                var released = data.Released;
-                var year = released.substring(released.length-4, released.length);
-                $scope.actualMovie.year = parseInt(year);
-                $scope.actualMovie.genre = data.Genre;
-                $scope.actualMovie.actors = data.Actors;
-                $scope.actualMovie.language = data.Language;
-                $scope.actualMovie.poster = data.Poster;
-                $scope.actualMovie.plot = data.Plot;
-                var actors = data.Actors.split(",");
-                for (actualActorIndex in actors){
-                    $scope.addActor(actors[actualActorIndex],actualActorIndex);
-                }
-                $scope.loading = false;
-                $scope.$apply();
-
-                return data
-            }}).done(function(data) {
->>>>>>> Stashed changes
 
         return data
       }

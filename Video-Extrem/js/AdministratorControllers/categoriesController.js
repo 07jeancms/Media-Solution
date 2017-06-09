@@ -40,8 +40,8 @@ function categoriesController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.languageData).
         then(function(data, status) {
-            messageService.setMessage("La categoria " + pActualCategory.categoria + " se ha borrado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            alert("La categoria " + pActualCategory.categoria + " ha sido borrada");
+            location.reload();
         })
     }
 
@@ -54,8 +54,8 @@ function categoriesController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.languageData).
         then(function(data, status) {
-            messageService.setMessage("La categoria " + categoryNameInput + " se ha agregado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            alert("La categoria " + categoryNameInput + " ha sido agregada");
+            location.reload();
         })
     }
 
@@ -73,8 +73,8 @@ function categoriesController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.languageData).
         then(function(data, status) {
-            messageService.setMessage("La categoria " + $scope.actualCategory.categoria + " ha sido actualizada a " + categoryNameInput);
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            alert("La categoria " + $scope.actualCategory.categoria + " ha sido actualizada a " + categoryNameInput);
+            location.reload();
         })
     }
 
