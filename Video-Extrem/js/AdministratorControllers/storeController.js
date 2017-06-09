@@ -56,8 +56,8 @@ function storeController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url, storeData).
         then(function(data, status) {
-            alert("El local " + pActualStore.local + " ha sido borrado");
-            location.reload();
+            messageService.setMessage("El local " + pActualStore.local + " se ha borrado correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
     
@@ -103,8 +103,8 @@ function storeController($scope, $http,dataManager,messageService) {
                             $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
                             $http.post(url,storeData).
                             then(function(data, status) {
-                                alert("El local " + storeNameInput + " ha sido creado");
-                                location.reload();
+                                messageService.setMessage("El local " + storeNameInput + " se ha agregado correctamente.");
+                                setTimeout(function() { window.location.reload(true); }, 2000);
                             })
                         }
                     }
@@ -118,8 +118,8 @@ function storeController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.actorData).
         then(function(data, status) {
-            alert("El actor " + actorNameInput + " ha sido agregado");
-            location.reload();
+            messageService.setMessage("El actor " + actorNameInput + " se ha agregado correctamente");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 
@@ -167,8 +167,8 @@ function storeController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url,storeData).
         then(function(data, status) {
-            alert("El local " + pActualStore.local + " ha sido actualizado");
-            location.reload();
+            messageService.setMessage("El local " + pActualStore.local + " se ha editado correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 

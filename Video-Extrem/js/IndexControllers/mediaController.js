@@ -25,8 +25,8 @@ function mediaController($scope, $http, dataManager, messageService) {
     $http.defaults.headers.post['Content-Type'] = $scope.contentType;
     $http.post($scope.url, $scope.actorData).
     then(function (data, status) {
-      alert('El Actor ' + pActualActor.actor + ' ha sido borrado');
-      location.reload();
+      messageService.setMessage('El Actor ' + pActualActor.actor + ' se ha borrado correctamente.');
+      setTimeout(function() { window.location.reload(true); }, 2000); 
     });
   };
 
@@ -39,8 +39,8 @@ function mediaController($scope, $http, dataManager, messageService) {
     $http.defaults.headers.post['Content-Type'] = $scope.contentType;
     $http.post($scope.url, $scope.actorData).
     then(function (data, status) {
-      alert('El actor ' + actorNameInput + ' ha sido agregado');
-      location.reload();
+      messageService.setMessage('El actor ' + actorNameInput + ' se ha agregado correctamente.');
+      setTimeout(function() { window.location.reload(true); }, 2000); 
     });
   };
 
@@ -58,8 +58,8 @@ function mediaController($scope, $http, dataManager, messageService) {
     $http.defaults.headers.post['Content-Type'] = $scope.contentType;
     $http.post($scope.url, $scope.actorData).
     then(function (data, status) {
-      alert('El actor ' + $scope.actualActor.actor + ' ha sido actualizado a ' + actorNameInput);
-      location.reload();
+      messageService.setMessage('El actor ' + $scope.actualActor.actor + ' ha sido actualizado a ' + actorNameInput);
+      setTimeout(function() { window.location.reload(true); }, 2000); 
     });
   };
 
