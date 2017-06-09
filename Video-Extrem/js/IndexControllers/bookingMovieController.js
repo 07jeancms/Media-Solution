@@ -24,7 +24,6 @@ function bookingController($scope, $http, dataManager, messageService) {
   $scope.actualDiv = dataManager.actualDiv;
   $scope.actualClass = '';
 
-
   $scope.$watch('bookingDataSet.time', function() {
     if ($scope.bookingDataSet != null) {
       var actualTime = $scope.bookingDataSet.time;
@@ -48,31 +47,10 @@ function bookingController($scope, $http, dataManager, messageService) {
     $http.post($scope.url, $scope.bookingMovieData).
     then(function(data, status) {
       if (data.data.length === 0) {
-        alert("La pelicula " + movieNameInput + " no se encuentra actualmente en nuestro inventario.");
-      } else {
-        for (actualMovie = 0; actualMovie < data.data.length; actualMovie++) {
-          $scope.moviesSelected.push(data.data[actualMovie]);
-        }
-      }
-    })
-  }
-
-  $scope.getBookingMovie = function() {
-    $scope.moviesSelected = [];
-    var movieNameInput = document.getElementById('movieName').value;
-    $scope.url = "http://www.videoextrem.com/api/bookingMovie.php?queryType=select";
-    $scope.bookingMovieData = {
-      'pelicula': movieNameInput
-    }
-    $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-    $http.post($scope.url, $scope.bookingMovieData).
-    then(function(data, status) {
-      if (data.data.length === 0) {
-        alert("La pelicula " + movieNameInput + " no se encuentra actualmente en nuestro inventario.");
+        messageService.setMessage("La pelicula " + movieNameInput + " no se encuentra actualmente en nuestro inventario.");
       } else {
         for (actualMovie = 0; actualMovie < data.data.length; actualMovie++) {
           $scope.moviesSelectedDataset.moviesBooked.push(data.data[actualMovie]);
-          console.log(data.data[actualMovie]);
         }
       }
     })
@@ -85,7 +63,7 @@ function bookingController($scope, $http, dataManager, messageService) {
     if (index === -1) {
       $scope.chartCounter += 1;
       var counter_cart = document.getElementById('pruebita');
-      counter_cart.innerHTML = " Carrito " + $scope.chartCounter;
+      counter_cart.innerHTML = " " + $scope.chartCounter;
       $scope.storesCounter += 1;
       $scope.moviesToBook.push(pBookingMovie);
       if ($scope.storesCounter !== 0) {
@@ -100,8 +78,12 @@ function bookingController($scope, $http, dataManager, messageService) {
               newOption.value = storeElement;
               selectDropdown.appendChild(newOption);
             }
+            messageService.setMessage("La película ha sido agregada correctamente.");    
           })
       }
+    }
+    else{
+        messageService.setMessage("La película ya se encuentra registrada, por favor selecciona otra película.");
     }
   }
 
@@ -111,18 +93,17 @@ function bookingController($scope, $http, dataManager, messageService) {
       $scope.chartCounter -= 1
       if ($scope.chartCounter > 0) {
         var counter_cart = document.getElementById('pruebita');
-        counter_cart.innerHTML = " Carrito " + $scope.chartCounter;
+        counter_cart.innerHTML = " " + $scope.chartCounter;
       }
       if ($scope.chartCounter == 0) {
         var counter_cart = document.getElementById('pruebita');
-        counter_cart.innerHTML = " Carrito";
+        counter_cart.innerHTML = "";
       }
       $scope.moviesToBook.splice(index, 1);
     }
   }
 
-  $scope.addBooking = function(pBookingMovieList, pUserId) {
-    alert(pUserId);
+  $scope.addBooking = function(pBookingMovieList,pUserId) {
     var selectDropdown = document.getElementById('selectCreateBookingMovie').value;
     var description = document.getElementById('textAreaDescripcion').value;
     $scope.chartCounter = 0;
@@ -144,8 +125,8 @@ function bookingController($scope, $http, dataManager, messageService) {
 
       })
     }
-    alert("Su reserva se ha procesado");
-    location.reload();
+    messageService.setMessage("Su reserva esta siendo procesada");
+    setTimeout(function() { window.location.reload(true); }, 2000); 
   }
   $scope.deleteBookingMaster = function(pActualBookingMasterData) {
     $scope.url = "http://www.videoextrem.com/api/bookingMovie.php?queryType=delete";
@@ -155,8 +136,8 @@ function bookingController($scope, $http, dataManager, messageService) {
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     $http.post($scope.url, $scope.BookingMasterData).
     then(function(data, status) {
-      alert("La reservacion ha sido borrada correctamente");
-      location.reload();
+      messageService.setMessage("La reservacion se ha borrado correctamente.");
+      setTimeout(function() { window.location.reload(true); }, 2000);
     })
   };
 

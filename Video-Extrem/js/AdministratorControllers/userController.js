@@ -29,9 +29,14 @@ function userController($scope, $http, dataManager, messageService) {
   $scope.actualDiv = dataManager.actualDiv;
   $scope.actualClass = '';
 
+<<<<<<< Updated upstream
   $scope.$watch('userDataSet.time', function () {
     var actualTime = $scope.userDataSet.time;
     console.log('Actual Div user ' + actualTime);
+=======
+  $scope.$watch('actualDiv["user"].time', function () {
+    var actualTime = $scope.actualDiv.user.time;
+>>>>>>> Stashed changes
     if (actualTime <= 3) {
       $scope.actualClass = 'iconWaiting' + actualTime + ' fa-spinner fa-spin';
     } else {
@@ -133,8 +138,8 @@ function userController($scope, $http, dataManager, messageService) {
       $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
       $http.post($scope.url, $scope.userData)
         .then(function (data, status) {
-          alert('El usuario ' + pUserName + ' ha sido agregado');
-          location.reload();
+          messageService.setMessage('El usuario ' + pUserName + ' se ha agregado correctamente.');
+          setTimeout(function() { window.location.reload(true); }, 2000);
         });
     }
   };
@@ -154,22 +159,22 @@ function userController($scope, $http, dataManager, messageService) {
               if (phoneInput.length >= 8) {
 
               } else {
-                alert('Ingrese un numero telefonico valido');
+                    messageService.setMessage('Ingrese un numero telefonico valido');
                 break;
               }
             } else {
               break;
             }
           } else {
-            alert('Por favor completa los campos');
+            messageService.setMessage('Por favor completa los campos');
             break;
           }
         } else {
-          alert('Correo existente');
+            messageService.setMessage('Correo existente');
           break;
         }
       } else {
-        alert('Usuario existente');
+        messageService.setMessage('Usuario existente');
         break;
       }
     }
@@ -181,7 +186,7 @@ function userController($scope, $http, dataManager, messageService) {
     var reEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     if (!sEmail.match(reEmail)) {
-      alert('Direccion de correo inválida');
+      messageService.setMessage('Direccion de correo inválida');
       return false;
     }
 
@@ -196,8 +201,8 @@ function userController($scope, $http, dataManager, messageService) {
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     $http.post($scope.url, $scope.userData).
     then(function (data, status) {
-      alert('El usuario ' + pActualUser.userName + ' ha sido borrado');
-      location.reload();
+      messageService.setMessage('El usuario ' + pActualUser.userName + ' se ha borrado correctamente.');
+      setTimeout(function() { window.location.reload(true); }, 2000);
     });
   };
 
@@ -315,11 +320,11 @@ function userController($scope, $http, dataManager, messageService) {
       $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
       $http.post($scope.url, $scope.userData).
       then(function(data, status) {
-        alert("El usuario " + $scope.actualUser.userName + " ha sido actualizado");
-        location.reload();
+        messageService.setMessage("El usuario " + $scope.actualUser.userName + " se ha editado correctamente.");
+        setTimeout(function() { window.location.reload(true); }, 2000);
       });
     } else {
-      alert("Contraseñas no coinciden o nulas");
+      messageService.setMessage("Contraseñas no coinciden o nulas");
     }
   };
 

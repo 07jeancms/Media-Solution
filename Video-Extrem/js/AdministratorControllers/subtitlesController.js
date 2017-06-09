@@ -42,8 +42,8 @@ function subtitlesController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.subtitleData)
             .then(function(data, status) {
-            alert("El subtitulo " + pActualSubtitle.subtitulo + " ha sido borrado");
-            location.reload();
+                messageService.setMessage("El subtitulo " + pActualSubtitle.subtitulo + " se ha borrado correctamente.");
+                setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 
@@ -56,8 +56,8 @@ function subtitlesController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.subtitleData).
         then(function(data, status) {
-            alert("El subtitulo " + subtitleNameInput + " ha sido agregado");
-            location.reload();
+            messageService.setMessage("El subtitulo " + subtitleNameInput + " se ha agregado correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 
@@ -75,8 +75,8 @@ function subtitlesController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.subtitleData).
         then(function(data, status) {
-            alert("El subtitulo " + $scope.actualSubtitle.subtitulo + " ha sido actualizado a " + subtitleNameInput);
-            location.reload();
+            messageService.setMessage("El subtitulo " + $scope.actualSubtitle.subtitulo + " se ha editado a " + subtitleNameInput + "correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 
