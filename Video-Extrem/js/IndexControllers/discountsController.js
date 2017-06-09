@@ -22,8 +22,8 @@ function discountController($scope, $http, dataManager, messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.actorData).
         then(function(data, status) {
-            messageService.setMessage("El Actor " + pActualActor.actor + " se ha borrado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            alert("El Actor " + pActualActor.actor + " ha sido borrado");
+            location.reload();
         })
     }
 
@@ -36,8 +36,8 @@ function discountController($scope, $http, dataManager, messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.actorData).
         then(function(data, status) {
-            messageService.setMessage("El actor " + actorNameInput + " se ha agregado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            alert("El actor " + actorNameInput + " ha sido agregado");
+            location.reload();
         })
     }
 
@@ -124,13 +124,8 @@ function discountController($scope, $http, dataManager, messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url,discountData).
         then(function(data, status) {
-<<<<<<< Updated upstream
             alert("La imagen: " + pActualDiscount.link + " ha sido eliminada");
             location.reload();
-=======
-            messageService.setMessage("El actor " + $scope.actualActor.actor + " ha sido actualizado a " + actorNameInput);
-            setTimeout(function() { window.location.reload(true); }, 2000); 
->>>>>>> Stashed changes
         })
     }
     

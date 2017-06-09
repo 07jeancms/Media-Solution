@@ -48,8 +48,8 @@ function roleController ( $scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.rolData).
         then(function(data, status) {
-            messageService.setMessage("El rol " + rolNameInput + " se ha agregado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000);
+            alert("El rol " + rolNameInput + " ha sido agregado");
+            location.reload();
         })
     }
 
@@ -90,8 +90,8 @@ function roleController ( $scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.rolData).
         then(function(data, status) {
-            messageService.setMessage("El rol " + $scope.actualRol.rol + " se ha editado a " + rolNameInput + "correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000);
+            alert("El rol " + $scope.actualRol.rol + " ha sido actualizado a " + rolNameInput);
+            location.reload();
         })
     }
     //    _____       _      _       

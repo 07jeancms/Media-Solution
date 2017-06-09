@@ -23,7 +23,6 @@ function suggestionsController($scope, $http, dataManager, messageService) {
 
 
 
-
   $scope.$watch('suggestionDataSet.time', function() {
     if ($scope.suggestionDataSet != null) {
 
@@ -72,10 +71,10 @@ function suggestionsController($scope, $http, dataManager, messageService) {
             document.getElementById("textAreaSuggestion").value = '';
           })
       } else {
-        messageService.setMessage("Por favor ingrese una sugerencia");
+        alert("Por favor ingrese una sugerencia");
       }
     } else {
-      messageService.setMessage("Por favor ingrese un local al cual dirigir la sugerencia");
+      alert("Por favor ingrese un local al cual dirigir la sugerencia");
     }
   }
 

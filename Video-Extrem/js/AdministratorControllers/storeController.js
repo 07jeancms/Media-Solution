@@ -47,11 +47,11 @@ function storeController($scope, $http, dataManager, messageService) {
         }
       });
   }
-  
+
   $scope.selectUbication = function(pStore) {
     $scope.actualUbication = pStore;
   }
-  
+
   $scope.deleteStore = function(pActualStore) {
     var url = "http://www.videoextrem.com/api/stores.php?queryType=delete";
     var storeData = {
@@ -60,72 +60,70 @@ function storeController($scope, $http, dataManager, messageService) {
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     $http.post(url, storeData).
     then(function(data, status) {
-      messageService.setMessage("El local " + pActualStore.local + " se ha borrado correctamente.");
-      setTimeout(function() { window.location.reload(true); }, 2000);
+      alert("El local " + pActualStore.local + " ha sido borrado");
+      location.reload();
     })
   }
-    
-     $scope.validateEmail = function(sEmail) {
-         var reEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-           if(!sEmail.match(reEmail)) {
-               alert("Direccion de correo inválida");
-                 return false;
-           }
-         return true;
-     }
-     
-     $scope.isEmptyInput = function(pValue){
-         if (pValue === ""){
-             return true;
-         }
-         else{
-             return false;
-         }
-     }
+  $scope.validateEmail = function(sEmail) {
+    var reEmail = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-    $scope.addStore = function(){
-        var storeNameInput = document.getElementById('createStoreLocal').value;
-        var locationInput = document.getElementById('createStoreLocation').value;
-        var linkInput = document.getElementById('createStoreLink').value;
-        var phoneInput = document.getElementById('createStorePhone').value;
-        var emailInput = document.getElementById('createStoreEmail').value;
-        var url = "http://www.videoextrem.com/api/stores.php?queryType=add";
-        
-        if(!$scope.isEmptyInput(storeNameInput)){
-            if(!$scope.isEmptyInput(locationInput)){
-                if(!$scope.isEmptyInput(linkInput)){
-                    if(!$scope.isEmptyInput(phoneInput)){
-                        if(!$scope.isEmptyInput(emailInput)){
-                            var storeData = {
-                                'storeName' : storeNameInput,
-                                'location' : locationInput,
-                                'link' : linkInput,
-                                'phone' : phoneInput,
-                                'email' : emailInput
-                            };
-                            $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-                            $http.post(url,storeData).
-                            then(function(data, status) {
-                                messageService.setMessage("El local " + storeNameInput + " se ha agregado correctamente.");
-                                setTimeout(function() { window.location.reload(true); }, 2000);
-                            })
-                        }
-                    }
-                }
+    if (!sEmail.match(reEmail)) {
+      alert("Direccion de correo inválida");
+      return false;
+    }
+    return true;
+  }
+
+  $scope.isEmptyInput = function(pValue) {
+    if (pValue === "") {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  $scope.addStore = function() {
+    var storeNameInput = document.getElementById('createStoreLocal').value;
+    var locationInput = document.getElementById('createStoreLocation').value;
+    var linkInput = document.getElementById('createStoreLink').value;
+    var phoneInput = document.getElementById('createStorePhone').value;
+    var emailInput = document.getElementById('createStoreEmail').value;
+    var url = "http://www.videoextrem.com/api/stores.php?queryType=add";
+
+    if (!$scope.isEmptyInput(storeNameInput)) {
+      if (!$scope.isEmptyInput(locationInput)) {
+        if (!$scope.isEmptyInput(linkInput)) {
+          if (!$scope.isEmptyInput(phoneInput)) {
+            if (!$scope.isEmptyInput(emailInput)) {
+              var storeData = {
+                'storeName': storeNameInput,
+                'location': locationInput,
+                'link': linkInput,
+                'phone': phoneInput,
+                'email': emailInput
+              };
+              $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+              $http.post(url, storeData).
+              then(function(data, status) {
+                alert("El local " + storeNameInput + " ha sido creado");
+                location.reload();
+              })
             }
+          }
         }
-        
-        var storeData = {
-            'actor' : actorNameInput 
-        }
-        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        $http.post($scope.url, $scope.actorData).
-        then(function(data, status) {
-            messageService.setMessage("El actor " + actorNameInput + " se ha agregado correctamente");
-            setTimeout(function() { window.location.reload(true); }, 2000);
-        })
-      });
+      }
+    }
+
+    var storeData = {
+      'actor': actorNameInput
+    }
+    $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
+    $http.post($scope.url, $scope.actorData).
+    then(function(data, status) {
+      alert("El actor " + actorNameInput + " ha sido agregado");
+      location.reload();
+    })
   }
 
   $scope.setEditStore = function(pActualStore) {
@@ -170,8 +168,8 @@ function storeController($scope, $http, dataManager, messageService) {
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     $http.post(url, storeData).
     then(function(data, status) {
-      messageService.setMessage("El local " + pActualStore.local + " se ha editado correctamente.");
-      setTimeout(function() { window.location.reload(true); }, 2000);
+      alert("El local " + pActualStore.local + " ha sido actualizado");
+      location.reload();
     })
   }
 

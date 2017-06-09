@@ -11,13 +11,8 @@ app.controller("genreController", genreController);
 genreController.$inject = ['$scope', "$http","dataManager","messageService"];
 
 function genreController($scope, $http,dataManager,messageService) {
-<<<<<<< Updated upstream
      $scope.genreDataSet = dataManager.divData.genres;
     $scope.genresCollection  = {data : []};
-=======
-    $scope.genreDataSet = dataManager.genreData;
-    $scope.genresCollection  = {genres : []};
->>>>>>> Stashed changes
     $scope.itemsByPage=5;
     $scope.actualGenre = {};
     $scope.actualClass = "";
@@ -44,8 +39,8 @@ function genreController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.genreData)
             .then(function(data, status) {
-                messageService.setMessage("El genero " + genreNameInput + " se ha agregado correctamente.");
-                setTimeout(function() { window.location.reload(true); }, 2000);
+            alert("El genero " + genreNameInput + " ha sido agregado");
+            location.reload();
         })
     };
 
@@ -57,8 +52,8 @@ function genreController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.genreData).
         then(function(data, status) {
-            messageService.setMessage("El genero " + pActualGenre.genero + " se ha borrado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000);
+            alert("El genero " + pActualGenre.genero + " ha sido borrado");
+            location.reload();
         })
     };
 
@@ -78,9 +73,9 @@ function genreController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.genreData).
         then(function(data, status) {
-            messageService.setMessage("Nombre anterior: " + $scope.actualGenre.genero + " ==> Nombre actual: " + genreNameInput + "\n"
-                  + "Descripcion anterior: " + $scope.actualGenre.descripcion + " ==> Descripcion actual: " + genreDescriptionInput + "ha sido editado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000);
+            alert("Nombre anterior: " + $scope.actualGenre.genero + " ==> Nombre actual: " + genreNameInput + "\n"
+                  + "Descripcion anterior: " + $scope.actualGenre.descripcion + " ==> Descripcion actual: " + genreDescriptionInput);
+            location.reload();
         })
     };
 
