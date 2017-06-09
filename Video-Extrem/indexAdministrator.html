@@ -191,9 +191,9 @@ _    _ ______          _____  ______ _____
         <div class="row">
           <div class="col-md-8 col-md-offset-2">
             <h1 class="brand-heading">Video <div class ="exColor">Ex</div>trem</h1>
-            <p ng-if="!checkIfConnected()" class="intro-text">Pagina Administrativa</p>
+            <p ng-if="!hasAdministrativePrevileges()" class="intro-text">Pagina Administrativa</p>
 
-            <div ng-if="checkIfConnected()">
+            <div ng-if="hasAdministrativePrevileges()">
               <h3 class="intro-text">Bienvenido,  <div class ="exColor">{{actualUser.userName}}</div></h3>
               <br>
             </div>
@@ -219,12 +219,12 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 -->
 
   <div class="pageContent" >
-    <div ng-include="'authenticationNeededMessage.html'" ng-if="!checkIfConnected()"></div>
+    <div ng-include="'authenticationNeededMessage.html'" ng-if="!hasAdministrativePrevileges()"></div>
     <!-- Peliculas -->
 
     <a name="movie"></a>
     <div class="content-section-a adminDiv" id="movies">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row" ng-controller="movieTableController as movie">
           <div class="col-lg-6 col-sm-6">
             <h2><i class="fa fa-film fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Peliculas</h2>
@@ -252,7 +252,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
     <!-- Idiomas -->
     <a name="language"></a>
     <div class="content-section-b adminDiv" id="language">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row" ng-controller="languageController as language">
           <div class="col-lg-6 col-sm-6">
             <h2><i class="fa fa-language fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Idiomas</h2>
@@ -277,7 +277,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
     <!-- Actores -->
     <a name="actor"></a>
     <div class="content-section-a adminDiv" id="actors">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row" ng-controller="actorController as actores">
           <div class="col-lg-6 col-sm-6">
             <h2><i class="fa fa-male fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Actores</h2>
@@ -301,7 +301,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
     <!-- Subtitles -->
     <a name="subtitle"></a>
     <div class="content-section-b adminDiv" id="subtitles">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row" ng-controller="subtitlesController as subtitles">
           <div class="col-lg-6 col-sm-6">
             <h2><i class="fa fa-font fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Subtitulos</h2>
@@ -326,7 +326,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
     <!-- genre -->
     <a name="genre"></a>
     <div class="content-section-a adminDiv" id="genres">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row" ng-controller="genreController">
           <div class="col-lg-6 col-sm-6">
             <h2><i class="fa fa-certificate fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Generos</h2>
@@ -348,7 +348,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
     <!-- categories -->
     <a name="category"></a>
     <div class="content-section-b adminDiv" id="categories">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row" ng-controller="categoriesController as categories">
           <div class="col-lg-6 col-sm-6">
             <h2><i class="fa  fa-th-list fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Categorias</h2>
@@ -372,7 +372,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
     <!-- suggestions -->
     <a name="suggestion"></a>
     <div class="content-section-a adminDiv" id="suggestions">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="actualCategory" ng-controller="suggestionsController as suggestions">
           <div class="col-lg-6 col-sm-6">
             <h2><i class="fa  fa-pencil fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Sugerencias</h2>
@@ -396,7 +396,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
     <!-- users -->
     <a name="user"></a>
     <div class="content-section-b adminDiv" id="users">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row" ng-controller="userController">
           <div class="col-lg-6 col-sm-6">
             <h2><i class="fa fa-user-circle-o fa-lg"  ng-class="actualClass" aria-hidden="true">
@@ -422,7 +422,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
     <!-- reservaciones -->
     <a name="booking"></a>
     <div class="content-section-b adminDiv" id="bookingMovie">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row" ng-controller="bookingController">
           <div class="col-lg-6 col-sm-6">
             <h2><i class="fa  fa-shopping-basket fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Reservaciones</h2>
@@ -445,7 +445,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
     <!-- role -->
     <a name="role"></a>
     <div class="content-section-a adminDiv" id="roles">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row" ng-controller="roleController">
           <h2><i class="fa  fa-id-card-o fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Roles</h2>
 
@@ -510,7 +510,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
     <!-- discounts -->
     <a name="category"></a>
     <div class="content-section-b adminDiv" id="discounts">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row" ng-controller="discountController as discounts">
           <div class="col-lg-6 col-sm-6">
             <h2><i class="fa  fa-th-list fa-lg"  ng-class="actualClass" aria-hidden="true"></i>&nbsp;Carruseles</h2>
@@ -534,7 +534,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
     <!-- Locales -->
     <a name="local"></a>
     <div class="content-section-a adminDiv" id="stores">
-      <div class="container" ng-if="checkIfConnected()">
+      <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row">
           <div class="col-lg-12 col-sm-6">
             <hr class="section-heading-spacer">

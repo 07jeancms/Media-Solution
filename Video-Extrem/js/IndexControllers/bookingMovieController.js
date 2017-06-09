@@ -24,38 +24,17 @@ function bookingController($scope, $http, dataManager, messageService) {
   $scope.actualDiv = dataManager.actualDiv;
   $scope.actualClass = '';
 
-
-    $scope.$watch('bookingDataSet.time', function() {
-            var actualTime = $scope.bookingDataSet.time;
-            if(actualTime<=3){
-                $scope.actualClass = 'iconWaiting' + actualTime + ' fa-spinner fa-spin';
-            }
-            else{
-                $scope.actualClass = "iconComplete"
-            }
-        
-    });
-
-    $scope.getBookingMovie = function(){
-        $scope.moviesSelected = [];
-        var movieNameInput = document.getElementById('movieName').value;
-        $scope.url = "http://www.videoextrem.com/api/bookingMovie.php?queryType=select";
-        $scope.bookingMovieData = {
-            'pelicula' : movieNameInput
-        }
-        $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
-        $http.post($scope.url, $scope.bookingMovieData).
-        then(function(data, status) {
-            if(data.data.length === 0){
-                messageService.setMessage("La pelicula " + movieNameInput + " no se encuentra actualmente en nuestro inventario.");
-            }
-            else {
-                for(actualMovie=0; actualMovie<data.data.length; actualMovie++){
-                    $scope.moviesSelected.push(data.data[actualMovie]);
-                }
-            }
-        })
+  $scope.$watch('bookingDataSet.time', function() {
+    if ($scope.bookingDataSet != null) {
+      var actualTime = $scope.bookingDataSet.time;
+      if (actualTime <= 3) {
+        $scope.actualClass = 'iconWaiting' + actualTime + ' fa-spinner fa-spin';
+      } else {
+        $scope.actualClass = "iconComplete"
+      }
     }
+
+  });
 
   $scope.getBookingMovie = function() {
     $scope.moviesSelected = [];

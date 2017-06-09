@@ -18,8 +18,8 @@ var app = angular.module('indexApp', ['ngResource']);
     //debugger;
     $scope.whatsapp = '8472-8298';
     $scope.actualUbication = {};
+    $scope.wazeDirection = "https://embed.waze.com/iframe?zoom=16&lat=9.976001&lon=-84.009787&pin=1";
     $scope.ubications = [{
-
         name: 'Moravia',
         telephone: '2241-4908',
         coordinateX: 9.976001,
@@ -47,6 +47,7 @@ var app = angular.module('indexApp', ['ngResource']);
         coordinateY: -84.079634,
       },
     ];
+
     $scope.selectUbication = function (ubication) {
       $scope.actualUbication = ubication;
       createMap(ubication.coordinateX, ubication.coordinateY);

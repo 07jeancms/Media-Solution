@@ -6,65 +6,61 @@
 //   |_|  |_|______|_____/_____/_/    \_\
 //
 app.controller('mediaController', mediaController);
-mediaController.$inject = ['$scope', '$http', 'dataManager', 'messageService'];
+mediaController.$inject = ['$scope', '$http', 'dataManager', 'messageService','$sce'];
 
-function mediaController($scope, $http, dataManager, messageService) {
-  $scope.actorDataSet = dataManager.actorData;
-  $scope.actorsCollection = {
-    actors: [],
-  };
-  $scope.itemsByPage = 5;
-  $scope.actualActor = {};
-  $scope.contentType = 'application/x-www-form-urlencoded; charset=UTF-8';
+function mediaController($scope, $http, dataManager, messageService,$sce) {
 
-  $scope.deleteActor = function (pActualActor) {
-    $scope.url = 'http://www.videoextrem.com/api/actors.php?queryType=delete';
-    $scope.actorData = {
-      idActor: pActualActor.idActor,
-    };
-    $http.defaults.headers.post['Content-Type'] = $scope.contentType;
-    $http.post($scope.url, $scope.actorData).
-    then(function (data, status) {
-      messageService.setMessage('El Actor ' + pActualActor.actor + ' se ha borrado correctamente.');
-      setTimeout(function() { window.location.reload(true); }, 2000); 
-    });
-  };
+  $scope.wazeLiveMap = false;
+  $scope.facebook = false;
+  $scope.waze = true;
+  $scope.whatsapp = true;
+  $scope.facebook = true;
+  $scope.whatsappMessage = function() {
+    messageService.setMessage('Whatsapp', 'El numero de whatsapp para cualquier consulta es el siguiente: 8472-8298 ');
 
-  $scope.addActor = function () {
-    var actorNameInput = document.getElementById('actorName').value;
-    $scope.url = 'http://www.videoextrem.com/api/actors.php?queryType=add';
-    $scope.actorData = {
-      actor: actorNameInput,
-    };
-    $http.defaults.headers.post['Content-Type'] = $scope.contentType;
-    $http.post($scope.url, $scope.actorData).
-    then(function (data, status) {
-      messageService.setMessage('El actor ' + actorNameInput + ' se ha agregado correctamente.');
-      setTimeout(function() { window.location.reload(true); }, 2000); 
-    });
   };
+  $scope.wazeDirection = null;
+  $scope.ubications = [{
+      name: 'Moravia',
+      telephone: '2241-4908',
+      coordinateX: 9.9620633,
+      coordinateY: -84.0526522,
+    },
+    {
 
-  $scope.setEditActor = function (pActualActor) {
-    $scope.actualActor = pActualActor;
-  };
+      name: 'Coronado',
+      telephone: '2529-2479',
+      coordinateX: 9.976001,
+      coordinateY: -84.009787,
+    },
+    {
 
-  $scope.editActor = function () {
-    var actorNameInput = document.getElementById('updateActorName').value;
-    $scope.url = 'http://www.videoextrem.com/api/actors.php?queryType=edit';
-    $scope.actorData = {
-      idActor: $scope.actualActor.idActor,
-      actor: actorNameInput,
-    };
-    $http.defaults.headers.post['Content-Type'] = $scope.contentType;
-    $http.post($scope.url, $scope.actorData).
-    then(function (data, status) {
-      messageService.setMessage('El actor ' + $scope.actualActor.actor + ' ha sido actualizado a ' + actorNameInput);
-      setTimeout(function() { window.location.reload(true); }, 2000); 
-    });
-  };
+      name: 'Sabanilla',
+      telephone: '2273-5331',
+      coordinateX: 9.943956,
+      coordinateY: -84.023248,
+    },
+    {
 
-  $scope.showActor = function (pActualActor) {
-    $scope.actualActor = pActualActor;
-  };
+      name: 'San Jose',
+      telephone: '2221-4150',
+      coordinateX: 9.936233,
+      coordinateY: -84.079634,
+    },
+  ];
+
+  $scope.setWazeDir = function(actualUbication) {
+    var url = "https://embed.waze.com";
+    var type = "iframe";
+    var amountOfZoom = 17;
+    var lat = actualUbication.coordinateX;
+    var lon = actualUbication.coordinateY;
+    var pinAmount = 1;
+
+    $scope.wazeDirection = $sce.trustAsResourceUrl(url + "/" + type + "?zoom=" + amountOfZoom + "&lat=" + lat + "&lon=" + lon + "&pin=" + pinAmount);
+
+
+  }
+
 
 }
