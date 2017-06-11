@@ -1,4 +1,3 @@
-
 //    _
 //   | |
 //   | |     __ _ _ __   __ _ _   _  __ _  __ _  ___
@@ -37,8 +36,8 @@ function languageController ( $scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.languageData).
         then(function(data, status) {
-            messageService.setMessage("El idioma " + pActualIdioma.idioma + " se ha borrado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000);
+            messageService.setMessage("El idioma " + pActualIdioma.idioma + " se ha eliminado correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000); 
         })
     }
 
@@ -52,7 +51,7 @@ function languageController ( $scope, $http,dataManager,messageService) {
         $http.post($scope.url, $scope.languageData).
         then(function(data, status) {
             messageService.setMessage("El idioma " + languageNameInput + " se ha agregado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000);
+            setTimeout(function() { window.location.reload(true); }, 2000); 
         })
     }
 
@@ -70,8 +69,8 @@ function languageController ( $scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.languageData).
         then(function(data, status) {
-            messageService.setMessage("El idioma " + $scope.actualLanguage.idioma + " se ha editado a " + languageNameInput + "correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000);
+            messageService.setMessage("El idioma " + $scope.actualLanguage.idioma + " ha sido actualizado a " + languageNameInput + " correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000); 
         })
     }
 
