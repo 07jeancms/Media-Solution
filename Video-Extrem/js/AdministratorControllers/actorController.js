@@ -22,7 +22,6 @@ function actorController($scope, $http,dataManager,messageService) {
 
     $scope.$watch('actorDataSet.time', function() {
             var actualTime = $scope.actorDataSet.time;
-            console.log("Actual Div actor "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }
@@ -40,8 +39,8 @@ function actorController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.actorData).
         then(function(data, status) {
-            messageService.setMessage("El Actor " + pActualActor.actor + " se ha borrado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            messageService.setMessage("El Actor " + pActualActor.actor + " se ha eliminado correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 
@@ -54,8 +53,8 @@ function actorController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.actorData).
         then(function(data, status) {
-            messageService.setMessage("El actor " + actorNameInput + " ha sido agregado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            messageService.setMessage("El actor " + actorNameInput + " se ha agregado correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 
@@ -73,8 +72,8 @@ function actorController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.actorData).
         then(function(data, status) {
-            messageService.setMessage("El actor " + $scope.actualActor.actor + " ha sido actualizado a " + actorNameInput);
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            messageService.setMessage("El actor " + $scope.actualActor.actor + " ha sido actualizado a " + actorNameInput + " correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 

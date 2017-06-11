@@ -24,7 +24,6 @@ function subtitlesController($scope, $http,dataManager,messageService) {
 
     $scope.$watch('subtitleDataSet.time', function() {
             var actualTime = $scope.subtitleDataSet.time;
-            console.log("Actual Div Subtitles "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }
@@ -42,8 +41,8 @@ function subtitlesController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.subtitleData)
             .then(function(data, status) {
-                messageService.setMessage("El subtitulo " + pActualSubtitle.subtitulo + " se ha borrado correctamente.");
-                setTimeout(function() { window.location.reload(true); }, 2000);
+            messageService.setMessage("El subtitulo " + pActualSubtitle.subtitulo + " se ha borrado correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 
@@ -75,7 +74,7 @@ function subtitlesController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.subtitleData).
         then(function(data, status) {
-            messageService.setMessage("El subtitulo " + $scope.actualSubtitle.subtitulo + " se ha editado a " + subtitleNameInput + "correctamente.");
+            messageService.setMessage("El subtitulo " + $scope.actualSubtitle.subtitulo + " ha sido actualizado a " + subtitleNameInput + " correctamente.");
             setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }

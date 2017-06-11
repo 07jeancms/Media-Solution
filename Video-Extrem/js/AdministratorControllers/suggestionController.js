@@ -46,8 +46,8 @@ function suggestionsController($scope, $http, dataManager, messageService) {
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     $http.post($scope.url, $scope.suggestionData)
       .then(function(data, status) {
-        alert("La sugerencia ha sido eliminada");
-        location.reload();
+        messageService.setMessage("La sugerencia se ha eliminado correctamente.");
+        setTimeout(function() { window.location.reload(true); }, 2000); 
       })
   }
 
@@ -67,7 +67,7 @@ function suggestionsController($scope, $http, dataManager, messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url, suggestionData)
           .then(function(data, status) {
-            alert("Su sugerencia ha sido enviada. Muchas gracias por su opinión");
+            messageService.setMessage("Su sugerencia ha sido enviada. Muchas gracias por su opinión");
             document.getElementById("selectLocal").value = 'local';
             document.getElementById("textAreaSuggestion").value = '';
           })

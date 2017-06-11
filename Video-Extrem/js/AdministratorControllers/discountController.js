@@ -16,7 +16,6 @@ function discountController($scope, $http, dataManager, messageService) {
 
     $scope.$watch('discountDataSet.time', function() {
             var actualTime = $scope.discountDataSet.time;
-            console.log("Actual Div discounts "+actualTime);
             if(actualTime<=3){
                 $scope.actualClass = "iconWaiting"+actualTime+" fa-spinner fa-spin";
             }
@@ -33,8 +32,8 @@ function discountController($scope, $http, dataManager, messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.actorData).
         then(function(data, status) {
-            messageService.setMessage("El Actor " + pActualActor.actor + " se ha borrado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            messageService.setMessage("El Actor " + pActualActor.actor + " se ha eliminado correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 
@@ -47,8 +46,8 @@ function discountController($scope, $http, dataManager, messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.actorData).
         then(function(data, status) {
-            messageService.setMessage("El actor " + actorNameInput + " se ha agregado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            messageService.setMessage("El actor " + actorNameInput + " se agregado correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 
@@ -121,8 +120,8 @@ function discountController($scope, $http, dataManager, messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url, discountData)
             .then(function(data, status) {
-                messageService.setMessage("La imagen: " + url_input + " se ha agregado correctamente.");
-                setTimeout(function() { window.location.reload(true); }, 2000); 
+            messageService.setMessage("La imagen: " + url_input + " se ha agregada correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
     
@@ -135,8 +134,8 @@ function discountController($scope, $http, dataManager, messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url,discountData).
         then(function(data, status) {
-            messageService.setMessage("La imagen: " + pActualDiscount.link + " se ha eliminado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            messageService.setMessage("La imagen: " + pActualDiscount.link + " se ha eliminada correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
     
@@ -163,8 +162,8 @@ function discountController($scope, $http, dataManager, messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post(url,discountData).
         then(function(data, status) {
-            messageService.setMessage("La imagen: " + pActualDiscount.link + " se ha editado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            messageService.setMessage("La imagen: " + pActualDiscount.link + " se ha actualizado correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 }

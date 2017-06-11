@@ -90,7 +90,7 @@ function roleController ( $scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.rolData).
         then(function(data, status) {
-            messageService.setMessage("El rol " + $scope.actualRol.rol + " se ha editado a " + rolNameInput + "correctamente.");
+            messageService.setMessage("El rol " + $scope.actualRol.rol + " ha sido actualizado a " + rolNameInput + " correctamente.");
             setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
@@ -110,7 +110,7 @@ function roleController ( $scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.rolData).
         then(function(data, status) {
-            messageService.setMessage("Eliminado","El rol con id "+pActualRol.idRol+" ha sido eliminado. ");
+            messageService.setMessage("Eliminado","El rol con id "+pActualRol.idRol+" ha sido eliminado correctamente.");
             var index = $scope.rolesData.roles.indexOf(pActualRol);
             if (index !== -1) {
                 $scope.rolesData.roles.splice(index, 1);
@@ -118,7 +118,5 @@ function roleController ( $scope, $http,dataManager,messageService) {
 
         })
     }
-
-
 
 }

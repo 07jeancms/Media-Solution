@@ -40,8 +40,8 @@ function categoriesController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.languageData).
         then(function(data, status) {
-            messageService.setMessage("La categoria " + pActualCategory.categoria + " se ha borrado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            messageService.setMessage("La categoria " + pActualCategory.categoria + " se ha eliminado correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 
@@ -55,7 +55,7 @@ function categoriesController($scope, $http,dataManager,messageService) {
         $http.post($scope.url, $scope.languageData).
         then(function(data, status) {
             messageService.setMessage("La categoria " + categoryNameInput + " se ha agregado correctamente.");
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 
@@ -73,8 +73,8 @@ function categoriesController($scope, $http,dataManager,messageService) {
         $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
         $http.post($scope.url, $scope.languageData).
         then(function(data, status) {
-            messageService.setMessage("La categoria " + $scope.actualCategory.categoria + " ha sido actualizada a " + categoryNameInput);
-            setTimeout(function() { window.location.reload(true); }, 2000); 
+            messageService.setMessage("La categoria " + $scope.actualCategory.categoria + " ha sido actualizada a " + categoryNameInput + " correctamente.");
+            setTimeout(function() { window.location.reload(true); }, 2000);
         })
     }
 

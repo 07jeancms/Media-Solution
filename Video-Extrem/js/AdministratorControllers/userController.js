@@ -29,14 +29,8 @@ function userController($scope, $http, dataManager, messageService) {
   $scope.actualDiv = dataManager.actualDiv;
   $scope.actualClass = '';
 
-<<<<<<< Updated upstream
   $scope.$watch('userDataSet.time', function () {
     var actualTime = $scope.userDataSet.time;
-    console.log('Actual Div user ' + actualTime);
-=======
-  $scope.$watch('actualDiv["user"].time', function () {
-    var actualTime = $scope.actualDiv.user.time;
->>>>>>> Stashed changes
     if (actualTime <= 3) {
       $scope.actualClass = 'iconWaiting' + actualTime + ' fa-spinner fa-spin';
     } else {
@@ -159,7 +153,7 @@ function userController($scope, $http, dataManager, messageService) {
               if (phoneInput.length >= 8) {
 
               } else {
-                    messageService.setMessage('Ingrese un numero telefonico valido');
+                messageService.setMessage('Ingrese un numero telefonico valido');
                 break;
               }
             } else {
@@ -170,7 +164,7 @@ function userController($scope, $http, dataManager, messageService) {
             break;
           }
         } else {
-            messageService.setMessage('Correo existente');
+          messageService.setMessage('Correo existente');
           break;
         }
       } else {
@@ -187,6 +181,7 @@ function userController($scope, $http, dataManager, messageService) {
 
     if (!sEmail.match(reEmail)) {
       messageService.setMessage('Direccion de correo inválida');
+      
       return false;
     }
 
@@ -201,7 +196,7 @@ function userController($scope, $http, dataManager, messageService) {
     $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
     $http.post($scope.url, $scope.userData).
     then(function (data, status) {
-      messageService.setMessage('El usuario ' + pActualUser.userName + ' se ha borrado correctamente.');
+      messageService.setMessage('El usuario ' + pActualUser.userName + ' se ha eliminado correctamente.');
       setTimeout(function() { window.location.reload(true); }, 2000);
     });
   };
@@ -320,7 +315,7 @@ function userController($scope, $http, dataManager, messageService) {
       $http.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded; charset=UTF-8';
       $http.post($scope.url, $scope.userData).
       then(function(data, status) {
-        messageService.setMessage("El usuario " + $scope.actualUser.userName + " se ha editado correctamente.");
+        messageService.setMessage("El usuario " + $scope.actualUser.userName + " ha sido actualizado correctamente.");
         setTimeout(function() { window.location.reload(true); }, 2000);
       });
     } else {

@@ -98,7 +98,7 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         <a href="#">Generos</a>
                         <input type="checkbox" id="drop-1"/>
                         <ul  id="navGendre">
-                            <li><a data-toggle="modal" data-target="#createGenreModal"href="#genre">Agregar</a></li>
+                            <li><a data-toggle="modal" data-target="#createGenreModal" href="#genre">Agregar</a></li>
                             <li><a href="#genre">Buscar </a></li>
                         </ul>
                     </li><li>
@@ -155,7 +155,7 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         <input type="checkbox" id="drop-1"/>
                         <ul  id="navRole">
                             <li><a data-toggle="modal" data-target="#createDiscountModal" href="#role">Agregar</a></li>
-                            <li><a href="#discount">Buscar </a></li>
+                            <li><a href="#Carruseles">Buscar </a></li>
                         </ul>
                     </li>
                     <li>
@@ -165,7 +165,7 @@ _| |_| |\  | |____| |___| |__| | |__| | |____ ____) |
                         <input type="checkbox" id="drop-1"/>
                         <ul  id="navRole">
                             <li><a data-toggle="modal" data-target="#createStoreModal" href="#role">Agregar</a></li>
-                            <li><a href="#discount">Buscar </a></li>
+                            <li><a href="#local">Buscar </a></li>
                         </ul>
                     </li>
                     <li>
@@ -238,6 +238,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
               <div ng-include="'adminMovieTable.html'"></div>
               <div ng-include="'movieModal.html'"></div>
               <div ng-include="'backupMoviesModal.html'"></div>
+              <div ng-include="'messageModal.html'"></div>
             </div>
 
 
@@ -266,6 +267,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
               <div>
                 <div ng-include="'adminLanguageTable.html'"></div>
                 <div ng-include="'languageModal.html'"></div>
+                <div ng-include="'messageModal.html'"></div>
               </div>
             </div>
             <!-- Button trigger modal -->
@@ -290,6 +292,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
               <div>
                 <div ng-include="'adminActorTable.html'"></div>
                 <div ng-include="'actorM.html'"></div>
+                <div ng-include="'messageModal.html'"></div>
               </div>
             </div>
             <!-- Button trigger modal -->
@@ -315,6 +318,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
               <div>
                 <div ng-include="'adminSubtitleTable.html'"></div>
                 <div ng-include="'subtitleModal.html'"></div>
+                <div ng-include="'messageModal.html'"></div>
               </div>
             </div>
             <!-- Button trigger modal -->
@@ -338,6 +342,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <div>
               <div ng-include="'adminGenreTable.html'"></div>
               <div ng-include="'genreModal.html'"></div>
+              <div ng-include="'messageModal.html'"></div>
             </div>
           </div>
           <!-- Button trigger modal -->
@@ -360,6 +365,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
               <div>
                 <div ng-include="'adminCategoriesTable.html'"></div>
                 <div ng-include="'categorieModal.html'"></div>
+                <div ng-include="'messageModal.html'"></div>
               </div>
             </div>
             <!-- Button trigger modal -->
@@ -385,6 +391,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
               <div>
                 <div ng-include="'adminSuggestionTable.html'"></div>
                 <div ng-include="'suggestionModal.html'"></div>
+                <div ng-include="'messageModal.html'"></div>
               </div>
             </div>
             <!-- Button trigger modal -->
@@ -411,6 +418,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             <div>
               <div ng-include="'adminUserTable.html'"></div>
               <div ng-include="'userModal.html'"></div>
+              <div ng-include="'messageModal.html'"></div>
             </div>
 
             <!-- Button trigger modal -->
@@ -434,6 +442,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
             <div>
               <div ng-include="'adminBookingTable.html'"></div>
+              <div ng-include="'messageModal.html'"></div>
             </div>
 
             <!-- Button trigger modal -->
@@ -501,6 +510,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
             </div>
             <!-- Button trigger modal -->
             <div ng-include="'roleModal.html'"></div>
+            <div ng-include="'messageModal.html'"></div>
           </div>
         </div>
       </div>
@@ -508,7 +518,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
 
 
     <!-- discounts -->
-    <a name="category"></a>
+    <a name="Carruseles"></a>
     <div class="content-section-b adminDiv" id="discounts">
       <div class="container" ng-if="hasAdministrativePrevileges()">
         <div class="row" ng-controller="discountController as discounts">
@@ -522,6 +532,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
               <div>
                 <div ng-include="'adminDiscountTable.html'"></div>
                 <div ng-include="'discountModal.html'"></div>
+                <div ng-include="'messageModal.html'"></div>
               </div>
             </div>
             <!-- Button trigger modal -->
@@ -544,6 +555,7 @@ _____        _____ ______    _____ ____  _   _ _______ ______ _   _ _______
               <div ng-controller="storeController as stores">
                 <div ng-include="'adminStoreTable.html'"></div>
                 <div ng-include="'storeModal.html'"></div>
+                <div ng-include="'messageModal.html'"></div>
               </div>
             </div>
             <!-- Button trigger modal -->
@@ -571,25 +583,7 @@ ______ ____   ____ _______ ______ _____
             <li class="footer-menu-divider">&sdot;</li>
 
             <li>
-              <a href="#inicio">Inicio</a>
-            </li>
-
-            <li class="footer-menu-divider">&sdot;</li>
-
-            <li>
-              <a href="#estrenos">Estrenos</a>
-            </li>
-
-            <li class="footer-menu-divider">&sdot;</li>
-
-            <li>
-              <a href="#contact">Nuestras redes sociales</a>
-            </li>
-
-            <li class="footer-menu-divider">&sdot;</li>
-
-            <li>
-              <a href="#sugerencias">Sugerencias</a>
+              <a href="#inicioAdministrator">Inicio</a>
             </li>
           </ul>
 
